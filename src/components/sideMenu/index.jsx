@@ -8,7 +8,7 @@ import MenuList from './menu_list'
 function SideMenu() {
 
   return (
-    <div className='max-xl:hidden absolute left-10 top-12 bottom-12 w-1/5 flex flex-col items-start justify-between text-primary z-10 bg-white'>
+    <div className='max-xl:hidden fixed left-10 top-12 bottom-12 w-1/5 flex flex-col items-start justify-between text-primary z-10 bg-white'>
       <Image src={Logo} alt='ArabHardware' className=' size-12' />
       <MenuList />
       <div className="flex justify-end items-center w-full relative">
