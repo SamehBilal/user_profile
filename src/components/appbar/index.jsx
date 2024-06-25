@@ -32,7 +32,7 @@ function Appbar() {
           <Bell  strokeWidth={2} className='size-8 p-2 hover:bg-primaryLight hover:text-white rounded-full transition cursor-pointer' />
           <span className="w-4"></span>
           <p className="">Good Morning</p>
-          <Image src={PersonImg} alt='user image' className=' size-10 rounded-full' />
+          <Image src={PersonImg} alt='user image' className=' size-10 rounded-lg' />
         </div>
         <div className="flex items-center justify-center gap-4">
           <div className='flex items-center justify-center'>
