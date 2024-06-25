@@ -3,12 +3,14 @@ import {useEffect, useState} from 'react'
 import { Search, SunMoon, LayoutGrid, Bell, ThermometerSun, globe } from 'lucide-react'
 import PersonImg from '@/public/images/person.jpg'
 import Image from 'next/image'
+import Logo from '@/public/images/logo.png'
 
 function Appbar() {
   const [currentNews, setCurrentNews] = useState('Gold sotck prices increased')
 
   return (
-    <nav className="text-black shadow-md w-[calc(100%-(2.5rem+20%))] flex justify-between items-center mx-auto px-8 py-2 absolute top-0 right-0 left-[calc(2.5rem+20%)] ">
+    <nav className="text-black shadow-md w-screen flex justify-between items-center mx-auto px-8 py-2 absolute top-0 right-0 left-0 ">
+      <Image src={Logo} alt='ArabHardware' className=' size-12 lg:mr-8' />
       <div className="flex gap-2 items-center justify-center flex-grow">
         <Search strokeWidth={1} />
         <input className="border-l flex-grow p-2 border-gray-300 bg-transparent text-sm pl-4 placeholder:text-black placeholder:font-light focus-visible:border-primary focus-visible:!ring-primary focus:border-primary focus:!ring-primary" 
@@ -18,7 +20,11 @@ function Appbar() {
       <div className="flex flex-col justify-center items-between">
         <div className="flex items-center justify-end gap-2 text-black">
           <SunMoon  strokeWidth={2} className='size-8 p-2 hover:bg-primaryLight hover:text-white rounded-full transition cursor-pointer' />
-          <LayoutGrid  strokeWidth={2} className='size-8 p-2 hover:bg-primaryLight hover:text-white rounded-full transition cursor-pointer' />
+          <button className='border-none' data-collapse-toggle="grid-dropdown" >
+            <LayoutGrid  strokeWidth={2} className='size-8 p-2 hover:bg-primaryLight hover:text-white rounded-full transition cursor-pointer' />
+          </button>
+          
+          
           <Bell  strokeWidth={2} className='size-8 p-2 hover:bg-primaryLight hover:text-white rounded-full transition cursor-pointer' />
           <span className="w-4"></span>
           <p className="">Good Morning</p>
