@@ -11,7 +11,7 @@ function MenuList
         {
           menuItems.map((_, i)=> 
           <li key={i} className={`flex items-center justify-start py-2 px-8 rounded-lg w-full gap-8 transition 
-          ${i==selectedIndex?'bg-primary text-white font-bold':'hover:bg-primaryLight hover:text-white'}`}>
+          ${i==selectedIndex?'bg-primary  dark:bg-primaryLight text-white dark:text-black font-bold':'hover:bg-primaryLight  dark:hover:bg-primaryLighter hover:text-white'}`}>
             <_.icon  strokeWidth={1} className=' size-8'/>
             <p>{_.title}</p>
           </li>)

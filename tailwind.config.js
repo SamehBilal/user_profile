@@ -19,12 +19,14 @@ module.exports = {
         black: "#161616",
         primary: "#f11320",
         primaryLight: "#F55661",
+        primaryLighter: "#F5566188",
         primaryDark: "#D1333D",
         secondary: "#13F198", 
         secondaryDark: "#27b37b",
         tritory: "#13B6F1",
         tritoryDark: "#3f9cbd",
-        lightGray: "#dddddd55"
+        lightGray: "#dddddd55",
+        darkGray: "#111"
       },
       animation: {
           'text-slide': 'text-slide 12.5s cubic-bezier(0.83, 0, 0.17, 1) infinite',
@@ -53,5 +55,6 @@ module.exports = {
       },
     },
   },
+  darkMode: 'class',
   plugins: [],
 };

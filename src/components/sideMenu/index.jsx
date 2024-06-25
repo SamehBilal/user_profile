@@ -7,7 +7,7 @@ import MenuList from './menu_list'
 function SideMenu() {
 
   return (
-    <div className='max-xl:hidden fixed left-10 top-40 bottom-12 w-1/5 flex flex-col items-start justify-between text-primary z-10 bg-white'>
+    <div className='max-xl:hidden fixed left-10 top-40 bottom-12 w-1/5 flex flex-col items-start justify-between text-primary dark:text-primaryLight z-10 bg-white dark:bg-darkGray'>
       <MenuList />
       <div className="flex justify-end items-center w-full relative">
         <p className='font-extrabold w-1/2'>There is more to discover</p>

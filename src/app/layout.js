@@ -1,6 +1,7 @@
 // import { Poppins } from "next/font/google";
 import "./globals.css";
 import localFont from '@next/font/local'
+import ThemeProvider from "@/components/ThemeProvider";
 
 // const poppins = Poppins({ subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"] });
 
@@ -46,7 +47,11 @@ const helv = localFont({
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${helv.variable} font-sans`}>{children}</body>
+      <body className={`${helv.variable} font-sans`}>
+        <ThemeProvider>
+        {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
