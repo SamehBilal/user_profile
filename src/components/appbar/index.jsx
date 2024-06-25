@@ -1,12 +1,15 @@
 "use client"
-import {useEffect, useState} from 'react'
+import React from 'react'
 import { Search, SunMoon, LayoutGrid, Bell, ThermometerSun, globe } from 'lucide-react'
 import PersonImg from '@/public/images/person.jpg'
 import Image from 'next/image'
 import Logo from '@/public/images/logo.png'
+import { createPopper } from '@popperjs/core';
 
 function Appbar() {
-  const [currentNews, setCurrentNews] = useState('Gold sotck prices increased')
+  const [dropdownPopoverShow, setDropdownPopoverShow] = React.useState(false);
+  const btnDropdownRef = React.createRef();
+  const popoverDropdownRef = React.createRef();
 
   return (
     <nav className="text-black shadow-md w-screen flex justify-between items-center mx-auto px-8 py-2 absolute top-0 right-0 left-0 ">
@@ -20,11 +23,12 @@ function Appbar() {
       <div className="flex flex-col justify-center items-between">
         <div className="flex items-center justify-end gap-2 text-black">
           <SunMoon  strokeWidth={2} className='size-8 p-2 hover:bg-primaryLight hover:text-white rounded-full transition cursor-pointer' />
-          <button className='border-none' data-collapse-toggle="grid-dropdown" >
-            <LayoutGrid  strokeWidth={2} className='size-8 p-2 hover:bg-primaryLight hover:text-white rounded-full transition cursor-pointer' />
-          </button>
-          
-          
+          <div className="relative">
+            <button className='border-none' type="button" ref={btnDropdownRef}>
+              <span class="sr-only">Open grid menu</span>
+              <LayoutGrid  strokeWidth={2} className='size-8 p-2 hover:bg-primaryLight hover:text-white rounded-full transition cursor-pointer' />
+            </button>
+          </div>
           <Bell  strokeWidth={2} className='size-8 p-2 hover:bg-primaryLight hover:text-white rounded-full transition cursor-pointer' />
           <span className="w-4"></span>
           <p className="">Good Morning</p>
