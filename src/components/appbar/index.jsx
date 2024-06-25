@@ -23,7 +23,7 @@ function Appbar() {
       <div className="flex flex-col justify-center items-between">
         <div className="flex items-center justify-end gap-2 text-black">
           <SunMoon  strokeWidth={2} className='size-8 p-2 hover:bg-primaryLight hover:text-white rounded-lg transition cursor-pointer' />
-          <div className="relative">
+          <div className="relative h-8">
             <button className='border-none' type="button" ref={btnDropdownRef}>
               <span class="sr-only">Open grid menu</span>
               <LayoutGrid  strokeWidth={2} className='size-8 p-2 hover:bg-primaryLight hover:text-white rounded-lg transition cursor-pointer' />
