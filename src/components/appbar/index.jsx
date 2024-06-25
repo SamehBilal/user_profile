@@ -22,14 +22,14 @@ function Appbar() {
       </div>
       <div className="flex flex-col justify-center items-between">
         <div className="flex items-center justify-end gap-2 text-black">
-          <SunMoon  strokeWidth={2} className='size-8 p-2 hover:bg-primaryLight hover:text-white rounded-full transition cursor-pointer' />
+          <SunMoon  strokeWidth={2} className='size-8 p-2 hover:bg-primaryLight hover:text-white rounded-lg transition cursor-pointer' />
           <div className="relative">
             <button className='border-none' type="button" ref={btnDropdownRef}>
               <span class="sr-only">Open grid menu</span>
-              <LayoutGrid  strokeWidth={2} className='size-8 p-2 hover:bg-primaryLight hover:text-white rounded-full transition cursor-pointer' />
+              <LayoutGrid  strokeWidth={2} className='size-8 p-2 hover:bg-primaryLight hover:text-white rounded-lg transition cursor-pointer' />
             </button>
           </div>
-          <Bell  strokeWidth={2} className='size-8 p-2 hover:bg-primaryLight hover:text-white rounded-full transition cursor-pointer' />
+          <Bell  strokeWidth={2} className='size-8 p-2 hover:bg-primaryLight hover:text-white rounded-lg transition cursor-pointer' />
           <span className="w-4"></span>
           <p className="">Good Morning</p>
           <Image src={PersonImg} alt='user image' className=' size-10 rounded-lg' />
