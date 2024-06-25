@@ -26,7 +26,7 @@ module.exports = {
         tritory: "#13B6F1",
         tritoryDark: "#3f9cbd",
         lightGray: "#dddddd55",
-        darkGray: "#111"
+        darkGray: "#031D26"
       },
       animation: {
           'text-slide': 'text-slide 12.5s cubic-bezier(0.83, 0, 0.17, 1) infinite',
