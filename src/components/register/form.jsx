@@ -2,10 +2,15 @@ import {useState} from 'react'
 import Button from '../ui/button'
 import FloatingInput from '../ui/floating_input'
 import CheckboxInput from '../ui/checkboxInput'
+import  parse from 'html-react-parser';
+import { siGoogle, siFacebook, siInstagram, siTwitch, siDiscord } from 'simple-icons'
+import Image from 'next/image'
 
 function RegisterForm({toLoginPage}) {
     const [form, setForm] = useState({email:'', password:''})
     const [isLoading, setIsLoading] = useState(false)
+
+    const mediaIcons = [siFacebook, siGoogle, siInstagram, siTwitch, siDiscord]
 
     const handleChange = (e) => {
       setForm(prev=>({
@@ -35,6 +40,16 @@ function RegisterForm({toLoginPage}) {
       placeholder="Password" required={true} label="Password" />
       <CheckboxInput id="agreeToTerms" value={form.agreeToTerms} onChange={handleChange}required={true} label="I Accept terms and conditions"/>
       <Button text={"Register"} className=" self-end" onClick={(e)=>submitForm(e)} isBig={true} disabled={isLoading} />
+    </div>
+    <div className="space-y-4">
+      <p className="">Register with your accout on</p>
+      <div className="flex w-full justify-between items-center">
+        {mediaIcons.map((_, i)=>{
+          return <div key={i} className="w-8 h-8 bg-primaryLight rounded-lg p-2 text-white cursor-pointer hover:bg-lightGray hover:text-primary transition-all duration-500 hover:scale-110">
+        {parse(_.svg)}
+        </div>
+        })}
+      </div>
     </div>
   </div>
   )

@@ -15,3 +15,8 @@ body {
 .dark body {
   @apply bg-darkGray text-white;
 }
+
+svg{
+  fill: currentColor;
+  stroke-width: 2;
+}
