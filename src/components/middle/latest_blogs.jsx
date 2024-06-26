@@ -13,22 +13,18 @@ function LatestBlogs() {
   
   useEffect(()=>{
     const timer = setTimeout(()=>{
-      sliderRef.current.swiper.slideNext(2000);
-      // setActive(sliderRef.current.swiper.realIndex)
+      sliderRef.current.swiper.slideNext(500);
     }, 10000) //next slide in 10 seconds
     return () => clearTimeout(timer)
   }, [sliderRef?.current?.swiper?.realIndex])
 
   const handlePrev = () => {
     if (!sliderRef.current) return;
-    sliderRef.current.swiper.slidePrev(2000);
-    // setActive(sliderRef.current.swiper.realIndex)
+    sliderRef.current.swiper.slidePrev(500);
   }
-
   const handleNext = () => {
     if (!sliderRef.current) return;
-    sliderRef.current.swiper.slideNext(2000);
-    // setActive(sliderRef.current.swiper.realIndex)
+    sliderRef.current.swiper.slideNext(500);
   }
   
   return (
@@ -48,8 +44,7 @@ function LatestBlogs() {
       className='w-auto'>
         {blogList.map((_, i)=>{
           return  <SwiperSlide key={i} 
-          className='!flex items-end justify-between flex-col gap-[-15px] !w-fit bg-lightGray rounded-lg py-2 px-4 shadow-md dark:shadow-gray-300/20' 
-          onClick={()=>{setActive(i)}}>
+          className='!flex items-end justify-between flex-col gap-[-15px] !w-fit bg-lightGray rounded-lg py-2 px-4 shadow-md dark:shadow-gray-300/20'>
             <p className="w-44 mb-8" style={{color: _.color}}>{_.title}</p>
             <Image src={_.img} alt={_.title} className='w-32 h-22 -mt-4 object-contain' />
           </SwiperSlide> 
