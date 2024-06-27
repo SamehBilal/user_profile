@@ -8,7 +8,7 @@ function FloatingInput({
     // console.log('isPassword', isPassword)
     const [hashPass, setHashPass] = useState(isPassword)
     return (
-      <div className="mb-5 relative flex group group-focus-within:border-primary border-black border-b-2 text-sm gap-2 w-full">
+      <div className="mb-5 relative flex group group-focus-within:border-primary border-black border-b-2 text-lg gap-2 w-full">
           <label 
           htmlFor={id} 
           className={`group min-w-32`}>

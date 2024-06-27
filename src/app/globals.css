@@ -2,11 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+:root{ --primary: #f11320; scrollbar-color: var(--primary) #000; scrollbar-width: thin; }
+body { overflow-x: hidden; scroll-behavior: smooth;}
+*{ box-sizing: border-box; margin: 0; padding: 0; }
+body::-webkit-scrollbar { width: 0.5em; background-color: #000; border-radius: 20px; }
+body::-webkit-scrollbar-thumb { background-color: var(--primary); border-radius: 20px; }
 
 body {
   @apply bg-white dark:text-black;

@@ -1,4 +1,4 @@
-// import { Poppins } from "next/font/google";
+import { Markazi_Text } from "next/font/google";
 import "./globals.css";
 import localFont from '@next/font/local'
 import ThemeProvider from "@/components/ThemeProvider";
@@ -9,6 +9,8 @@ export const metadata = {
   title: "Profile dashboard",
   description: "single page profile dashboard",
 };
+
+const markazi_text = Markazi_Text({subsets: ["arabic", "latin"], weight: ["400", "500", "600", "700"]})
 
 const helv = localFont({
   src: [
@@ -47,7 +49,10 @@ const helv = localFont({
 export default function RootLayout({ children }) {
   return (
     <html lang="en" dir="rtl">
-      <body className={`${helv.variable} font-sans`}>
+      <body 
+      className={`${markazi_text.className}`}
+      // className={`${helv.variable} font-sans`}
+      >
         <ThemeProvider>
         {children}
         </ThemeProvider>
