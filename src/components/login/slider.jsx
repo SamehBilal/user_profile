@@ -3,10 +3,11 @@ import React from 'react'
 import {useState, useEffect, useRef} from 'react'
 import SlidesItem from './slidesItem'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { EffectFade } from 'swiper/modules'
+import { EffectFade, Pagination } from 'swiper/modules'
 // Import Swiper styles
 import "swiper/swiper-bundle.css";
 import 'swiper/css/effect-fade';
+import 'swiper/css/pagination';
 import 'swiper/css';
 
 function Slider({setActiveSlide, backgrounds, activeInfo}) {
@@ -15,7 +16,7 @@ function Slider({setActiveSlide, backgrounds, activeInfo}) {
     useEffect(()=>{
       const timer = setTimeout(()=>{
         sliderRef.current.swiper.slideNext(300);
-        // setActiveSlide(sliderRef.current.swiper.realIndex)
+        setActiveSlide(sliderRef.current.swiper.realIndex)
       }, 5000) //next slide in 10 seconds
       return () => clearTimeout(timer)
     }, [sliderRef?.current?.swiper?.realIndex])
@@ -37,7 +38,13 @@ function Slider({setActiveSlide, backgrounds, activeInfo}) {
       ref={sliderRef}
       parallax={true}
       effect='fade'
-      modules={[EffectFade]}
+      modules={[EffectFade, Pagination]}
+      pagination={{
+        clickable: true,
+        renderBullet: function (index, className) {
+          return '<span class="' + className + '">' + '</span>';
+        },
+      }}
       speed='300'
       loop={true}
       slidesPerView={1}

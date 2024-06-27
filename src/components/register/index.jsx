@@ -1,5 +1,5 @@
 import React from 'react'
-import Slider from './slider'
+import Slider from '../login/slider'
 import RegisterForm from './form'
 
 function RegisterPage({toLoginPage, setActiveSlide, activeInfo, backgrounds }) {

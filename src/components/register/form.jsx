@@ -34,15 +34,25 @@ function RegisterForm({toLoginPage}) {
           
         await axios.post(`${ApiBase}/register`, 
           {email, password, firstname, lastname}
-        ).then(data=> {
+        ).then(async data=> {
           if(data.data.message){
             console.log('data.data.message', data.data.message)
             throw new Error(data.data.message)
           }else{
-            setCookie("user", JSON.stringify(data.data.user))
-            setCookie("token", `Bearer:${data.data.authorisation.access_token}`)
-            alert('Registration success')
-            location.reload()
+            await axios.post(SetOpenCart, {
+              "email": "569582528", "password": "12345678"
+            }).then((openData)=>{
+              console.log('openData', openData)
+              console.log('openData', openData.data)
+              setCookie("user", JSON.stringify(data.data.user))
+              setCookie("token", `Bearer:${data.data.authorisation.access_token}`)
+              alert('Registration success')
+              location.reload()
+            })
+            .catch(e=>{
+              console.log('e', e)
+              alert(e)
+            })
           }
         })
         .catch(e=>{

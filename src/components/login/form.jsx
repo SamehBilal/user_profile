@@ -2,12 +2,13 @@ import {useState} from 'react'
 import Button from '../ui/button'
 import FloatingInput from '../ui/floating_input'
 import { en, ar } from '@/public/strings_manager'
-import { ApiBase } from '@/config/api';
+import { ApiBase, SetOpenCart } from '@/config/api';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import { setCookie } from 'cookies-next';
 
 function LoginForm({toRegisterPage}) {
+  
   const router = useRouter()
     const [form, setForm] = useState({login_email:'', login_password:''})
     const [isLoading, setIsLoading] = useState(false)
@@ -28,15 +29,26 @@ function LoginForm({toRegisterPage}) {
           
         await axios.post(`${ApiBase}/login`, 
           {email, password},
-        ).then(data=> {
+        ).then(async data=> {
           if(data.data.message){
             console.log('data.data.message', data.data.message)
             throw new Error(data.data.message)
           }else{
-            setCookie("user", JSON.stringify(data.data.user))
-            setCookie("token", `Bearer:${data.data.authorisation.access_token}`)
-            alert('Registration success')
-            location.reload()
+            await axios.post(SetOpenCart, {
+              "email": "569582528", "password": "12345678"
+            }, {
+            }).then((openData)=>{
+              console.log('openData', openData)
+              console.log('openData', openData.data)
+              setCookie("user", JSON.stringify(data.data.user))
+              setCookie("token", `Bearer:${data.data.authorisation.access_token}`)
+              alert('Registration success')
+              location.reload()
+            })
+            .catch(e=>{
+              console.log('e', e)
+              alert(e)
+            })
           }
         })
         .catch(e=>{
