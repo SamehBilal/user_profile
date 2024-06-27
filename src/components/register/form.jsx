@@ -7,7 +7,7 @@ import { siGoogle, siFacebook, siInstagram, siTwitch, siDiscord } from 'simple-i
 import { setCookie, getCookie } from 'cookies-next';
 import Image from 'next/image'
 import { en, ar } from '@/public/strings_manager';
-import { ApiBase } from '@/config/api';
+import { ApiBase, SetOpenCart } from '@/config/api';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 
