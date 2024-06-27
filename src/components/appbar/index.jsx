@@ -1,5 +1,6 @@
 "use client"
 import React from 'react'
+import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import Logo from '@/public/images/logo.png'
 import { useTheme } from 'next-themes';
@@ -8,10 +9,19 @@ import UserDropdown from './dropdown_lists/user_dropdown';
 import SearchSection from './search_section'
 import NavbarTopMenu from './navbar_top_menu'
 import NavbarBottomMenu from './navbar_bottom_menu'
+import { getCookie } from 'cookies-next';
+
 function Appbar() {
+  const router = useRouter()
   const [gridDropdownPopoverShow, setGridDropdownPopoverShow] = React.useState(false);
   const [userDropdownPopoverShow, setUserDropdownPopoverShow] = React.useState(false);
   const { theme, setTheme } = useTheme();
+  
+  React.useEffect(()=>{
+    if(!getCookie("token") || !getCookie("user")){
+      router.push('/login')
+    }
+  }, [])
 
   return (
     <nav className="text-black dark:text-white shadow-md dark:shadow-gray-300/20 w-screen flex justify-between items-center mx-auto px-8 py-2 absolute top-0 right-0 left-0 ">

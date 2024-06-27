@@ -46,7 +46,7 @@ const helv = localFont({
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" dir="rtl">
       <body className={`${helv.variable} font-sans`}>
         <ThemeProvider>
         {children}

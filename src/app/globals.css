@@ -16,7 +16,7 @@ body {
   @apply bg-darkGray text-white;
 }
 
-svg{
+.simple_icons svg{
   fill: currentColor;
   stroke-width: 2;
 }

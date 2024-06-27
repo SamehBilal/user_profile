@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import Button from '../ui/button'
 import FloatingInput from '../ui/floating_input'
+import { en, ar } from '@/public/strings_manager'
 
 function LoginForm({toRegisterPage}) {
     const [form, setForm] = useState({email:'', password:''})
@@ -18,18 +19,18 @@ function LoginForm({toRegisterPage}) {
 
   return (<div className="w-full h-full bg-white rounded-r-lg px-14 py-8 space-y-8">
     <div className="space-y-4">
-      <h2 className='text-2xl'>Login</h2>
+      <h2 className='text-2xl'>{ar.login.title}</h2>
       <p className=''>
-        Don`t have an account? <span className='text-primary cursor-pointer' onClick={toRegisterPage}>Create your account</span> it takes less than one minutes
+      {ar.login.subTitle1} <span className='text-primary cursor-pointer' onClick={toRegisterPage}>{ar.login.subTitle2}</span> {ar.login.subTitle3}
       </p>
     </div>
-    <div className="flex flex-col gap-4 items-start justify-center">
+    <form className="flex flex-col gap-4 items-start justify-center" onSubmit={(e)=>submitForm}>
       <FloatingInput id="email" type="email" value={form.email} onChange={handleChange}
-      placeholder="Email" required={true} label="Email" />
+      placeholder={ar.login.email} required={true} label={ar.login.email} />
       <FloatingInput id="password" type="password" value={form.password} onChange={handleChange}
-      placeholder="Password" required={true} label="Password" />
-      <Button text={"Login"} className=" self-end" onClick={(e)=>submitForm(e)} isBig={true} disabled={isLoading} />
-    </div>
+      placeholder={ar.login.password} required={true} label={ar.login.password} />
+      <Button text={ar.login.btn} type='submit' className=" self-end" onClick={(e)=>submitForm(e)} isBig={true} disabled={isLoading} />
+    </form>
   </div>
   )
 }

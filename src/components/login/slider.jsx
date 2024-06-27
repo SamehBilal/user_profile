@@ -3,8 +3,10 @@ import React from 'react'
 import {useState, useEffect, useRef} from 'react'
 import SlidesItem from './slidesItem'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import { EffectFade } from 'swiper/modules'
 // Import Swiper styles
 import "swiper/swiper-bundle.css";
+import 'swiper/css/effect-fade';
 import 'swiper/css';
 
 function Slider({setActiveSlide, backgrounds, activeInfo}) {
@@ -34,6 +36,8 @@ function Slider({setActiveSlide, backgrounds, activeInfo}) {
       id='login-slider'
       ref={sliderRef}
       parallax={true}
+      effect='fade'
+      modules={[EffectFade]}
       speed='300'
       loop={true}
       slidesPerView={1}

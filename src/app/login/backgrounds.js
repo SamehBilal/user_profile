@@ -8,6 +8,6 @@ export const backgrounds = [
     {title: "Hello World1.", img: img1, color: "#031D26", desc: "Lorem ipsum dolor sit amet consectetur elit"},
     {title: "Hello World2.", img: img2, color: "#fff", desc: "Lorem ipsum dolor sit amet consectetur elit"},
     {title: "NIVADA DLSS.", img: img3, color: "#fff", desc: "Accelerating performance in your faviorate games"},
-    {title: "RTX.  It's on", img: img4, color: "#27b37b", desc: "NIVADA DLSS3 Available now"},
+    {title: "اخبار ومتابعات كل لحظة على جديد", img: img4, color: "#27b37b", desc: "Cyberpunk"},
     {title: "Hello World5.", img: img5, color: "#fff", desc: "Lorem ipsum dolor sit amet consectetur elit"},
 ]
