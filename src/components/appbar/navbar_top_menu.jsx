@@ -3,6 +3,7 @@ import { SunMoon, LayoutGrid, Bell } from 'lucide-react'
 import Image from 'next/image'
 // import PersonImg from '@/public/images/person.jpg'
 import PersonImg from '@/public/images/demo_user.png'
+import { en, ar } from '@/public/strings_manager'
 
 function NavbarTopMenu({setTheme, setGridDropdownPopoverShow, theme, setUserDropdownPopoverShow}) {
   return (
@@ -13,7 +14,7 @@ function NavbarTopMenu({setTheme, setGridDropdownPopoverShow, theme, setUserDrop
         className='size-8 p-2 hover:bg-primaryLight  dark:hover:bg-primaryLighter hover:text-white rounded-lg transition cursor-pointer' />
         <Bell  strokeWidth={2} className='size-8 p-2 hover:bg-primaryLight  dark:hover:bg-primaryLighter hover:text-white rounded-lg transition cursor-pointer' />
         <span className="w-4"></span>
-        <p className="">Good Morning</p>
+        <p className="">{ar.navbar.greeting}</p>
         <Image src={PersonImg} alt='user image' className=' size-10 rounded-lg block cursor-pointer'
         onClick={()=>setUserDropdownPopoverShow(prev=>!prev)} />
     </div>

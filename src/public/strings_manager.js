@@ -1,0 +1,69 @@
+export const ar = {
+    navbar: {
+        "greeting": "صباح الفل",
+        "searchPlaceholder": "عن ماذا تبحث اليوم",
+        "login": "تسجيل دخول"
+    },
+    middle: {
+        latestInStore: "الأحدث في المتجر:",
+        latestInBlogs: "أحدث المدونات:",
+        latestInGaming: "أحدث اخبار الألعاب:",
+        imageMessage: "اكتشف المزيد لدينا"
+    },
+    login: {
+        title: "تسجيل الدخول",
+        subTitle1: "ليس لديك حساب؟",
+        subTitle2: "اعمل حساب",
+        subTitle3: "بأقل من دقيقة",
+        email: "البريد الالكتروني",
+        password: "كلمة السر",
+        btn: "تسجيل الدخول",
+    },
+    register: {
+        title: "التسجيل",
+        subTitle1:"لديك حساب؟",
+        subTitle2: "سجل دخولك اليه",
+        email: "البريد الالكتروني",
+        password: "كلمة السر",
+        firstName: "الاسم الاول",
+        lastName: "الاسم الاخير",
+        terms: "اقبل الاحكام وشروط الاستخدام",
+        registerFrom: "تسجيل الدخول عن طريق",
+        btn: "التسجيل",
+    }
+}
+
+export const en = {
+    navbar: {
+        "greeting": "Good Morning",
+        "searchPlaceholder": "What do you need today",
+        "login": "Login"
+    },
+    middle: {
+        latestInStore: "Latest in store:",
+        latestInBlogs: "Latest in blogs:",
+        latestInGaming: "Latest in gaming:",
+        imageMessage: "There is more to discover"
+    },
+    login: {
+        title: "Login",
+        subTitle1: "Don`t have an account?",
+        subTitle2: "Create your account",
+        subTitle3: "it takes less than one minutes",
+        email: "Email",
+        password: "Password",
+        btn: "Login",
+    },
+    register: {
+        title: "Register",
+        subTitle1: "Already have an account?",
+        subTitle2: "Login to your account",
+        email: "Email",
+        password: "Password",
+        firstName: "First Name",
+        lastName: "Last Name",
+        terms: "I Accept terms and conditions",
+        registerFrom: "Register with your accout on",
+        btn: "Register",
+    }
+}

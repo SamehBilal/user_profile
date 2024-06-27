@@ -45,7 +45,7 @@ function LatestBlogs() {
         {blogList.map((_, i)=>{
           return  <SwiperSlide key={i} 
           className='!flex items-end justify-between flex-col gap-[-15px] !w-fit bg-lightGray rounded-lg py-2 px-4 shadow-md dark:shadow-gray-300/20'>
-            <p className="w-44 mb-8" style={{color: _.color}}>{_.title}</p>
+            <p className="w-44 mb-8" style={{color: _.color}}>{_.arTitle}</p>
             <Image src={_.img} alt={_.title} className='w-32 h-22 -mt-4 object-contain' />
           </SwiperSlide> 
         })}
