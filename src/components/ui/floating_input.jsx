@@ -22,7 +22,7 @@ function FloatingInput({
           value={value}
           disabled={disabled}
           onChange={onChange}
-          className={`group placeholder:text-transparent block pb-2 px-0 w-full font-light text-gray-900 bg-transparent appearance-none dark:text-white focus:outline-none focus:ring-0 focus:border-primary peer
+          className={`group placeholder:text-transparent block pb-2 px-0 w-full font-light text-gray-900 bg-transparent appearance-none focus:outline-none focus:ring-0 focus:border-primary peer
             ${className}`}
           placeholder={placeholder}
           required={required} />
