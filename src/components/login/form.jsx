@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import { setCookie } from 'cookies-next';
 import Image from 'next/image';
-import TextLogo from '@/public/images/text-logo.svg'
+import TextLogo from '@/public/images/logo_icon.png'
 import OrBy from './or_by';
 
 function LoginForm({toRegisterPage}) {
@@ -37,21 +37,21 @@ function LoginForm({toRegisterPage}) {
             console.log('data.data.message', data.data.message)
             throw new Error(data.data.message)
           }else{
-            await axios.post(SetOpenCart, {
-              "email": "569582528", "password": "12345678"
-            }, {
-            }).then((openData)=>{
-              console.log('openData', openData)
-              console.log('openData', openData.data)
+            // await axios.post(SetOpenCart, {
+            //   "email": "569582528", "password": "12345678"
+            // }, {
+            // }).then((openData)=>{
+            //   console.log('openData', openData)
+            //   console.log('openData', openData.data)
               setCookie("user", JSON.stringify(data.data.user))
               setCookie("token", `Bearer:${data.data.authorisation.access_token}`)
               alert('Registration success')
               location.reload()
-            })
-            .catch(e=>{
-              console.log('e', e)
-              alert(e)
-            })
+            // })
+            // .catch(e=>{
+            //   console.log('e', e)
+            //   alert(e)
+            // })
           }
         })
         .catch(e=>{
@@ -62,7 +62,7 @@ function LoginForm({toRegisterPage}) {
         }
     }
 
-  return (<div className="w-full h-full bg-white rounded-r-lg px-14 py-8 space-y-8 relative">
+  return (<div className="w-full h-full bg-white rounded-l-lg px-14 py-8 space-y-8 relative">
     <div className="w-full space-y-4">
       <div className="w-full flex justify-center items-center">
         <Image src={TextLogo} alt='arabhardware' className='w-36' />

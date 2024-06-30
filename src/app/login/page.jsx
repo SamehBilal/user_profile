@@ -32,9 +32,7 @@ function Page() {
     <div className='w-screen min-h-screen overflow-hidden flex justify-center items-center'>
       {/* <Appbar /> */}
       <Image src={backgrounds[activeSlide].img} alt={backgrounds[activeSlide].title}
-      className='w-screen lg:h-full h-[200%] blur-sm object-cover absolute -z-10 saturate-[.5] brightness-50' />
-      <Image src={Logo} alt="Arabhardware"
-      className='w-14 absolute top-10 right-10 z-20' />
+      className='w-screen lg:h-full h-[200%] blur-lg object-cover absolute -z-10 brightness-150' />
 
       <Swiper
         id='login-swiper'

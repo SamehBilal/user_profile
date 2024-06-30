@@ -46,7 +46,7 @@ function Slider({setActiveSlide, backgrounds, activeInfo}) {
       className='w-full'>
         {backgrounds.map((_, i)=>{
           return  <SwiperSlide key={i}
-          className='!flex items-end justify-between flex-col !w-full rounded-l-lg' >
+          className='!flex items-end justify-between flex-col !w-full rounded-r-lg' >
             <SlidesItem activeInfo={backgrounds[i]} />
           </SwiperSlide> 
         })}
