@@ -68,7 +68,7 @@ function LoginForm({toRegisterPage}) {
     </p>
   }
 
-  return (<div className="w-full h-full bg-white rounded-l-lg px-14 py-8 space-y-8 relative">
+  return (<div className="w-full h-full bg-white rounded-l-lg px-14 py-8 space-y-8 relative mb-28">
     <div className="w-full space-y-4">
       <div className="w-full flex justify-center items-center">
         <Image src={TextLogo} alt='arabhardware' className='w-36' />
