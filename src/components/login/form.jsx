@@ -71,13 +71,10 @@ function LoginForm({toRegisterPage}) {
   return (<div className="w-full h-full bg-white rounded-l-lg px-14 py-8 space-y-8 relative mb-28">
     <div className="w-full space-y-4">
       <div className="w-full flex justify-center items-center">
-        <Image src={TextLogo} alt='arabhardware' className='w-36' />
+        <Image src={TextLogo} alt='arabhardware' className='w-20' />
       </div>
       <div className="w-full space-y-2">
         <h2 className='text-2xl text-center text-zinc-500'>{ar.login.title}</h2>
-        <p className='text-center'>
-        {ar.login.subTitle1} <span className='text-primary cursor-pointer' onClick={toRegisterPage}>{ar.login.subTitle2}</span> {ar.login.subTitle3}
-        </p>
       </div>
     </div>
     <form className="w-full flex flex-col gap-4 items-center justify-center" onSubmit={(e)=>submitForm}>

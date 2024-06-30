@@ -42,7 +42,7 @@ function Page() {
         effect='flip'
         pagination={false}
         modules={[EffectFlip]}
-        className='w-4/5 lg:h-3/4 h-4/5 max-w-7xl !flex items-center justify-center'>
+        className='w-4/5 max-w-7xl !flex items-center justify-center'>
           <SwiperSlide 
             className='swiper-no-swiping !flex items-center justify-center flex-col gap-[-15px] !w-full !h-auto  rounded-lg'>
               <LoginPage toRegisterPage={toRegisterPage} setActiveSlide={setActiveSlide} activeInfo={backgrounds[activeSlide]} backgrounds={backgrounds} />

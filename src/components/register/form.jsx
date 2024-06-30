@@ -83,13 +83,10 @@ function RegisterForm({toLoginPage}) {
   return (<div className="w-full h-full bg-white rounded-l-lg px-14 py-8 space-y-8 relative mb-28">
     <div className="space-y-4">
       <div className="w-full flex justify-center items-center">
-        <Image src={TextLogo} alt='arabhardware' className='w-36' />
+        <Image src={TextLogo} alt='arabhardware' className='w-20' />
       </div>
       <div className="space-y-2">
         <h2 className='text-2xl text-center text-zinc-500'>{ar.login.title}</h2>
-        <p className='text-center'>
-        {ar.register.subTitle1} <span className='text-primary cursor-pointer' onClick={toLoginPage}>{ar.register.subTitle2}</span>
-        </p>
       </div>
     </div>
     <div className="flex flex-col gap-4 items-center justify-center">
