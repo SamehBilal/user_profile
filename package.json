@@ -22,7 +22,8 @@
     "react-dom": "^18",
     "react-select": "^5.8.0",
     "simple-icons": "^12.4.0",
-    "swiper": "^11.1.4"
+    "swiper": "^11.1.4",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "daisyui": "^4.12.6",

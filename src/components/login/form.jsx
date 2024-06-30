@@ -9,12 +9,14 @@ import { setCookie } from 'cookies-next';
 import Image from 'next/image';
 import TextLogo from '@/public/images/logo_icon.png'
 import OrBy from './or_by';
+import { Eye, EyeOff } from 'lucide-react';
 
 function LoginForm({toRegisterPage}) {
   
   const router = useRouter()
     const [form, setForm] = useState({login_email:'', login_password:''})
     const [isLoading, setIsLoading] = useState(false)
+    const [isPasswordShown, setIsPasswordShown] = useState(false)
 
     const handleChange = (e) => {
       setForm(prev=>({
@@ -68,7 +70,7 @@ function LoginForm({toRegisterPage}) {
     </p>
   }
 
-  return (<div className="w-full h-full bg-white rounded-l-lg px-14 py-8 space-y-8 relative mb-28">
+  return (<div className="w-full h-full bg-white rounded-l-lg px-14 py-8 space-y-8 relative mb-32">
     <div className="w-full space-y-4">
       <div className="w-full flex justify-center items-center">
         <Image src={TextLogo} alt='arabhardware' className='w-20' />
@@ -82,7 +84,8 @@ function LoginForm({toRegisterPage}) {
       <FloatingInput id="login_email" type="email" value={form.login_email} onChange={handleChange}
       placeholder={ar.login.email} required={true} label={ar.login.email} />
       <FloatingInput id="login_password" type="password" value={form.login_password} onChange={handleChange}
-      placeholder={ar.login.password} required={true} label={ar.login.password} />
+      placeholder={ar.login.password} required={true} label={ar.login.password} 
+      Icon={isPasswordShown? Eye: EyeOff} setIsPasswordShown={setIsPasswordShown} isPasswordShown={isPasswordShown} />
       <Button text={ar.login.btn} type='submit' className="" onClick={(e)=>submitForm(e)} isBig={true} disabled={isLoading} />
     </form>
 

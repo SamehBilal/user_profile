@@ -15,33 +15,17 @@ const markazi_text = Markazi_Text({subsets: ["arabic", "latin"], weight: ["400",
 const helv = localFont({
   src: [
     {
-      path: '../../public/helvetica-neue-5/HelveticaNeueUltraLight.otf',
-      weight: '100'
-    },
-    {
-      path: '../../public/helvetica-neue-5/HelveticaNeueLight.otf',
-      weight: '200'
-    },
-    {
-      path: '../../public/helvetica-neue-5/HelveticaNeueThin.otf',
-      weight: '300'
-    },
-    {
-      path: '../../public/helvetica-neue-5/HelveticaNeueMedium.otf',
+      path: '../../public/helvetica/HelveticaNeuelroman.ttf',
       weight: '400'
     },
     {
-      path: '../../public/helvetica-neue-5/HelveticaNeueHeavy.otf',
+      path: '../../public/helvetica/HelveticaNeuellight.ttf',
       weight: '500'
     },
     {
-      path: '../../public/helvetica-neue-5/HelveticaNeueBold.otf',
+      path: '../../public/helvetica/HekveticaNeuelbold.ttf',
       weight: '600'
     },
-    {
-      path: '../../public/helvetica-neue-5/HelveticaNeueBlack.otf',
-      weight: '900'
-    }
   ],
   display: 'swap',
   variable: '--font-helv'
@@ -51,8 +35,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" dir="rtl">
       <body 
-      className={`${markazi_text.className}`}
-      // className={`${helv.variable} font-sans`}
+      // className={`${markazi_text.className}`}
+      className={`${helv.variable} font-sans`}
       >
         <ThemeProvider>
         {children}

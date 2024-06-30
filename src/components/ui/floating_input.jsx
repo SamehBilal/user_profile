@@ -2,16 +2,13 @@ import {useState} from 'react'
 
 function FloatingInput({
     id= "", className = "", type = "text", label = "", placeholder = "", required = false, value = "", 
-    disabled = false, onChange = ()=>{}, multiple = false
+    disabled = false, onChange = ()=>{}, multiple = false, Icon=null, setIsPasswordShown, isPasswordShown
 }) {
     const isPassword = type === "password"
-    // console.log('isPassword', isPassword)
-    const [hashPass, setHashPass] = useState(isPassword)
-    return (
-        
-      <div className="mt-2 w-full relative">
+
+    return (<div className="mt-2 w-full relative">
           <input 
-          type={isPassword? (hashPass? 'password': 'text'): type} 
+          type={isPassword? (isPasswordShown? 'text': 'password'): type} 
           multiple={multiple}
           id={id}
           name={id}
@@ -27,6 +24,10 @@ function FloatingInput({
           className={`absolute text-sm text-zinc-500 duration-300 transform -translate-y-6 top-3 origin-[0] start-0 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:-translate-y-6`}>
               {label}
           </label>
+          {Icon && <div className="absolute left-4 top-0 flex items-center justify-center p-2" onClick={()=>setIsPasswordShown((prev)=>!prev)}>
+            <Icon className={`size-6 transition  ${value==''?'text-zinc-500':'text-zinc-900'}`} />
+          </div>
+          }
       </div>)
 }
 

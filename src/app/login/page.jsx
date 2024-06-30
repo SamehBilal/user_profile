@@ -3,7 +3,6 @@ import Image from 'next/image'
 import { backgrounds } from './backgrounds'
 import LoginPage from '@/components/login'
 import RegisterPage from '@/components/register'
-import Logo from '@/public/images/logo.png'
 import {useState, useEffect, useRef} from 'react'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -32,7 +31,7 @@ function Page() {
     <div className='w-screen min-h-screen overflow-hidden flex justify-center items-center'>
       {/* <Appbar /> */}
       <Image src={backgrounds[activeSlide].img} alt={backgrounds[activeSlide].title}
-      className='w-screen lg:h-full h-[200%] blur-lg object-cover absolute -z-10 brightness-150' />
+      className='w-screen lg:h-full h-[250%] blur-lg object-cover absolute -z-10 brightness-150' />
 
       <Swiper
         id='login-swiper'

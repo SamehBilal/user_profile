@@ -17,6 +17,7 @@ function RegisterForm({toLoginPage}) {
   const router = useRouter()
     const [form, setForm] = useState({email:'', password:'', firstname: '', lastname: ''})
     const [isLoading, setIsLoading] = useState(false)
+    const [errorMsg, setErrorMsg] = useState("")
 
     const mediaIcons = [siGoogle, siFacebook, siTwitch, siDiscord]
 
@@ -34,33 +35,41 @@ function RegisterForm({toLoginPage}) {
         }else{
           setIsLoading(true)
           
-        await axios.post(`${ApiBase}/register`, 
-          {email, password, firstname, lastname}
-        ).then(async data=> {
-          if(data.data.message){
-            console.log('data.data.message', data.data.message)
-            throw new Error(data.data.message)
-          }else{
-            // await axios.post(SetOpenCart, {
-            //   "email": "569582528", "password": "12345678"
-            // }).then((openData)=>{
-            //   console.log('openData', openData)
-            //   console.log('openData', openData.data)
-              setCookie("user", JSON.stringify(data.data.user))
-              setCookie("token", `Bearer:${data.data.authorisation.access_token}`)
-              alert('Registration success')
-              location.reload()
-            // })
-            // .catch(e=>{
-            //   console.log('e', e)
-            //   alert(e)
-            // })
-          }
-        })
-        .catch(e=>{
-          console.log('e', e)
-          alert(e)
-        })
+          await axios.post('/api/register', 
+            {email, password, firstname, lastname}
+          ).then(async res=>{
+            if(res.data?.message) alert(res.data.message)
+            else{
+              await axios.post(`${ApiBase}/register`, 
+                {email, password, firstname, lastname}
+              ).then(async data=> {
+                if(data.data.message){
+                  console.log('data.data.message', data.data.message)
+                  throw new Error(data.data.message)
+                }else{
+                  // await axios.post(SetOpenCart, {
+                  //   "email": "569582528", "password": "12345678"
+                  // }).then((openData)=>{
+                  //   console.log('openData', openData)
+                  //   console.log('openData', openData.data)
+                    setCookie("user", JSON.stringify(data.data.user))
+                    setCookie("token", `Bearer:${data.data.authorisation.access_token}`)
+                    alert('Registration success')
+                    location.reload()
+                  // })
+                  // .catch(e=>{
+                  //   console.log('e', e)
+                  //   alert(e)
+                  // })
+                }
+              })
+              .catch(e=>{
+                console.log('e', e)
+                alert(e)
+              })
+            }
+          }).catch(e=>console.error(e))
+
         setIsLoading(false)
         }
     }
@@ -80,7 +89,7 @@ function RegisterForm({toLoginPage}) {
       }
     }, [])
 
-  return (<div className="w-full h-full bg-white rounded-l-lg px-14 py-8 space-y-8 relative mb-28">
+  return (<div className="w-full h-full bg-white rounded-l-lg px-14 py-8 space-y-8 relative mb-32">
     <div className="space-y-4">
       <div className="w-full flex justify-center items-center">
         <Image src={TextLogo} alt='arabhardware' className='w-20' />

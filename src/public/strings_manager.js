@@ -23,7 +23,7 @@ export const ar = {
     register: {
         title: "تسجيل حساب جديد في عرب هاردوير",
         subTitle1:"لديك حساب؟",
-        subTitle2: "سجل دخولك اليه",
+        subTitle2: "تسجيل الدخول.",
         email: "البريد الالكتروني",
         password: "كلمة السر",
         firstName: "الاسم الاول",

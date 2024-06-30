@@ -24,6 +24,9 @@ function Slider({setActiveSlide, backgrounds, activeInfo}) {
       // setActiveSlide(sliderRef.current.swiper.realIndex)
     }
 
+    if(sliderRef?.current && sliderRef?.current?.swiper?.realIndex)
+    console.log('sliderRef?.current?.swiper?.realIndex', sliderRef?.current?.swiper?.realIndex)
+
   return (
     <Swiper
       id='login-slider'
@@ -37,8 +40,16 @@ function Slider({setActiveSlide, backgrounds, activeInfo}) {
           return '<span class="' + className + '">' + '</span>';
         },
       }}
-      onRealIndexChange={()=>setActiveSlide(sliderRef.current.swiper.realIndex)}
-      autoplay={{ delay: 10000 }}
+      onSlideChange={(swiper) => {
+        if(setActiveSlide) {
+          // console.log("slide change to", swiper.realIndex)
+          setActiveSlide(swiper.realIndex)
+        }
+      }}
+      autoplay={{ 
+        delay: 8000,
+        disableOnInteraction: false,
+      }}
       speed='300'
       loop={true}
       slidesPerView={1}
