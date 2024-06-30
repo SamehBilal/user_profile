@@ -2,12 +2,12 @@ import React from 'react'
 import { siGoogle, siFacebook, siTwitch, siDiscord } from 'simple-icons'
 import  parse from 'html-react-parser';
 
-function OrBy({text}) {
+function OrBy({text, DontHaveAnAccount}) {
     const mediaIcons = [siGoogle, siFacebook, siTwitch, siDiscord]
 
   return (
-    <div className="space-y-4 absolute bottom-8 w-[calc(100%-7rem)] left-1/2 -translate-x-1/2">
-      <div className="flex w-3/4 gap-4 items-center justify-center mx-auto">
+    <div className="space-y-4 absolute bottom-8 max-w-[calc(100%-7rem)] left-1/2 -translate-x-1/2 w-2/4">
+      <div className="flex gap-4 items-center justify-center mx-auto">
         <div className="h-[1px] bg-zinc-300 flex-grow"></div>
         <p className="text-zinc-500">{text}</p>
         <div className="h-[1px] bg-zinc-300 flex-grow"></div>
@@ -19,6 +19,7 @@ function OrBy({text}) {
         </div>
         })}
       </div>
+      <DontHaveAnAccount />
     </div>
   )
 }

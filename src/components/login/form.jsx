@@ -61,6 +61,12 @@ function LoginForm({toRegisterPage}) {
         setIsLoading(false)
         }
     }
+    
+  const DontHaveAnAccount = ({}) => {
+    return <p className='text-center'>
+      {ar.login.subTitle1} <span className='text-primary cursor-pointer' onClick={toRegisterPage}>{ar.login.subTitle2}</span> {ar.login.subTitle3}
+    </p>
+  }
 
   return (<div className="w-full h-full bg-white rounded-l-lg px-14 py-8 space-y-8 relative">
     <div className="w-full space-y-4">
@@ -83,7 +89,7 @@ function LoginForm({toRegisterPage}) {
       <Button text={ar.login.btn} type='submit' className="" onClick={(e)=>submitForm(e)} isBig={true} disabled={isLoading} />
     </form>
 
-    <OrBy text={ar.login.loginFrom} />
+    <OrBy text={ar.login.loginFrom} DontHaveAnAccount={DontHaveAnAccount} />
   </div>
   )
 }

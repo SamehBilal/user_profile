@@ -64,6 +64,12 @@ function RegisterForm({toLoginPage}) {
         setIsLoading(false)
         }
     }
+    
+    const DontHaveAnAccount = ({}) => {
+      return <p className='text-center'>
+      {ar.register.subTitle1} <span className='text-primary cursor-pointer' onClick={toLoginPage}>{ar.register.subTitle2}</span>
+      </p>
+    }
 
     useEffect(()=>{
       if(getCookie("token") && getCookie("token").startsWith("Bearer:") &&
@@ -98,7 +104,7 @@ function RegisterForm({toLoginPage}) {
       <CheckboxInput id="agreeToTerms" value={form.agreeToTerms} onChange={handleChange}required={true} label={ar.register.terms}/>
       <Button text={ar.register.btn} className="" onClick={(e)=>submitForm(e)} isBig={true} disabled={isLoading} />
     </div>
-    <OrBy text={ar.register.registerFrom} />
+    <OrBy text={ar.register.registerFrom} DontHaveAnAccount={DontHaveAnAccount} />
   </div>
   )
 }
