@@ -6,8 +6,8 @@ import { thisDomain } from "@/config/api"
 function UserDropdown({userDropdownPopoverShow=false, setUserDropdownPopoverShow, user }) {
   console.log('user', user)
   const logoutFunction = () => {
-    deleteCookie("user", {domain: thisDomain})
-    deleteCookie("token", {domain: thisDomain})
+    deleteCookie("user", {domain: thisDomain, path: '/login'})
+    deleteCookie("token", {domain: thisDomain, path: '/login'})
     setUserDropdownPopoverShow(prev=>!prev)
   }
   return (
