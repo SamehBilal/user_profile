@@ -93,10 +93,12 @@ function RegisterForm({toLoginPage}) {
       </div>
     </div>
     <div className="flex flex-col gap-4 items-center justify-center">
-      <FloatingInput id="firstname" type="text" value={form.firstname} onChange={handleChange}
-      placeholder={ar.register.firstName} required={true} label={ar.register.firstName} />
-      <FloatingInput id="lastname" type="text" value={form.lastname} onChange={handleChange}
-      placeholder={ar.register.lastName} required={true} label={ar.register.lastName} />
+      <div className="flex items-center justify-between w-full gap-8">
+        <FloatingInput id="firstname" type="text" value={form.firstname} onChange={handleChange}
+        placeholder={ar.register.firstName} required={true} label={ar.register.firstName} />
+        <FloatingInput id="lastname" type="text" value={form.lastname} onChange={handleChange}
+        placeholder={ar.register.lastName} required={true} label={ar.register.lastName} />
+      </div>
       <FloatingInput id="email" type="email" value={form.email} onChange={handleChange}
       placeholder={ar.register.email} required={true} label={ar.register.email} />
       <FloatingInput id="password" type="password" value={form.password} onChange={handleChange}
