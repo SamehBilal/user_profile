@@ -2,7 +2,7 @@ export const ApiBase = "https://arabhardware.com/api/v1"
 export const SetOpenCart = "https://stg22x.promise.com.sa/index.php?route=extension/mstore/account/login"
 
 // export const thisDomain = "localhost"
-export const thisDomain = "app.vercel.user-profile-lyart"
+export const thisDomain = "user-profile-lyart.vercel.app"
 
 let res={
 	"status": "success",
