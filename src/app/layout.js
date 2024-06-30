@@ -10,7 +10,7 @@ export const metadata = {
   description: "single page profile dashboard",
 };
 
-const markazi_text = Markazi_Text({subsets: ["arabic", "latin"], weight: ["400", "500", "600", "700"]})
+const markazi_text = Markazi_Text({subsets: ["arabic", "latin"], weight: ["400", "500", "600", "700"], display: 'swap'})
 
 const helv = localFont({
   src: [
@@ -43,6 +43,7 @@ const helv = localFont({
       weight: '900'
     }
   ],
+  display: 'swap',
   variable: '--font-helv'
 })
 

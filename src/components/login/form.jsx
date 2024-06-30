@@ -6,6 +6,9 @@ import { ApiBase, SetOpenCart } from '@/config/api';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import { setCookie } from 'cookies-next';
+import Image from 'next/image';
+import TextLogo from '@/public/images/text-logo.svg'
+import OrBy from './or_by';
 
 function LoginForm({toRegisterPage}) {
   
@@ -59,20 +62,28 @@ function LoginForm({toRegisterPage}) {
         }
     }
 
-  return (<div className="w-full h-full bg-white rounded-r-lg px-14 py-8 space-y-8">
-    <div className="space-y-4">
-      <h2 className='text-2xl'>{ar.login.title}</h2>
-      <p className=''>
-      {ar.login.subTitle1} <span className='text-primary cursor-pointer' onClick={toRegisterPage}>{ar.login.subTitle2}</span> {ar.login.subTitle3}
-      </p>
+  return (<div className="w-full h-full bg-white rounded-r-lg px-14 py-8 space-y-8 relative">
+    <div className="w-full space-y-4">
+      <div className="w-full flex justify-center items-center">
+        <Image src={TextLogo} alt='arabhardware' className='w-36' />
+      </div>
+      <div className="w-full space-y-2">
+        <h2 className='text-2xl text-center text-zinc-500'>{ar.login.title}</h2>
+        <p className='text-center'>
+        {ar.login.subTitle1} <span className='text-primary cursor-pointer' onClick={toRegisterPage}>{ar.login.subTitle2}</span> {ar.login.subTitle3}
+        </p>
+      </div>
     </div>
-    <form className="flex flex-col gap-4 items-start justify-center" onSubmit={(e)=>submitForm}>
+    <form className="w-full flex flex-col gap-4 items-center justify-center" onSubmit={(e)=>submitForm}>
+
       <FloatingInput id="login_email" type="email" value={form.login_email} onChange={handleChange}
       placeholder={ar.login.email} required={true} label={ar.login.email} />
       <FloatingInput id="login_password" type="password" value={form.login_password} onChange={handleChange}
       placeholder={ar.login.password} required={true} label={ar.login.password} />
-      <Button text={ar.login.btn} type='submit' className=" self-end" onClick={(e)=>submitForm(e)} isBig={true} disabled={isLoading} />
+      <Button text={ar.login.btn} type='submit' className="" onClick={(e)=>submitForm(e)} isBig={true} disabled={isLoading} />
     </form>
+
+    <OrBy text={ar.login.loginFrom} />
   </div>
   )
 }

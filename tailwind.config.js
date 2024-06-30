@@ -55,6 +55,11 @@ module.exports = {
       },
     },
   },
+  variants: {
+    extends: {
+      transform: ["responsive", "hover", "focus", "active"],
+    }
+  },
   darkMode: 'class',
   plugins: [],
 };

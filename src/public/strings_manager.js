@@ -11,16 +11,17 @@ export const ar = {
         imageMessage: "اكتشف المزيد لدينا"
     },
     login: {
-        title: "تسجيل الدخول",
+        title: "مرحبا بك في عرب هاردوير",
         subTitle1: "ليس لديك حساب؟",
         subTitle2: "اعمل حساب",
         subTitle3: "بأقل من دقيقة",
         email: "البريد الالكتروني",
         password: "كلمة السر",
+        loginFrom: "أو عن طريق",
         btn: "تسجيل الدخول",
     },
     register: {
-        title: "التسجيل",
+        title: "تسجيل حساب جديد في عرب هاردوير",
         subTitle1:"لديك حساب؟",
         subTitle2: "سجل دخولك اليه",
         email: "البريد الالكتروني",
@@ -28,7 +29,7 @@ export const ar = {
         firstName: "الاسم الاول",
         lastName: "الاسم الاخير",
         terms: "اقبل الاحكام وشروط الاستخدام",
-        registerFrom: "تسجيل الدخول عن طريق",
+        registerFrom: "أو عن طريق",
         btn: "التسجيل",
     }
 }
@@ -52,6 +53,7 @@ export const en = {
         subTitle3: "it takes less than one minutes",
         email: "Email",
         password: "Password",
+        registerFrom: "or by",
         btn: "Login",
     },
     register: {
@@ -63,7 +65,7 @@ export const en = {
         firstName: "First Name",
         lastName: "Last Name",
         terms: "I Accept terms and conditions",
-        registerFrom: "Register with your accout on",
+        registerFrom: "or by",
         btn: "Register",
     }
 }

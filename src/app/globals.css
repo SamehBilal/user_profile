@@ -41,3 +41,11 @@ body .swiper-pagination-bullet-active{
     width: var(--swiper-pagination-bullet-active-width, var(--swiper-pagination-bullet-size, 8px));
     border-radius: var(--swiper-pagination-bullet-active-border-radius);
 }
+
+.peer{
+  z-index: 1000;
+}
+.peer:placeholder-shown ~ .peer-placeholder-shown\:text-primary {
+  --tw-text-opacity: 1;
+  color: rgb(241 19 32 / var(--tw-text-opacity)) /* #f11320 */;
+}

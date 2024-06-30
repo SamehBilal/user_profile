@@ -46,11 +46,11 @@ function Page() {
         modules={[EffectFlip]}
         className='w-4/5 lg:h-3/4 h-4/5 max-w-7xl !flex'>
           <SwiperSlide 
-            className='swiper-no-swiping !flex items-end justify-between flex-col gap-[-15px] !w-full !h-auto bg-lightGray rounded-lg shadow-md dark:shadow-gray-300/20'>
+            className='swiper-no-swiping !flex items-end justify-between flex-col gap-[-15px] !w-full !h-auto bg-lightGray rounded-lg shadow-md dark:shadow-zinc-300/20'>
               <LoginPage toRegisterPage={toRegisterPage} setActiveSlide={setActiveSlide} activeInfo={backgrounds[activeSlide]} backgrounds={backgrounds} />
           </SwiperSlide>
           <SwiperSlide 
-            className='swiper-no-swiping !flex items-end justify-between flex-col gap-[-15px] !w-full !h-auto bg-lightGray rounded-lg shadow-md dark:shadow-gray-300/20'>
+            className='swiper-no-swiping !flex items-end justify-between flex-col gap-[-15px] !w-full !h-auto bg-lightGray rounded-lg shadow-md dark:shadow-zinc-300/20'>
               <RegisterPage toLoginPage={toLoginPage} setActiveSlide={setActiveSlide} activeInfo={backgrounds[activeSlide]} backgrounds={backgrounds} />
           </SwiperSlide>
       </Swiper>

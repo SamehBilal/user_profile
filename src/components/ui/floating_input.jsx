@@ -8,12 +8,8 @@ function FloatingInput({
     // console.log('isPassword', isPassword)
     const [hashPass, setHashPass] = useState(isPassword)
     return (
-      <div className="mb-5 relative flex group group-focus-within:border-primary border-black border-b-2 text-lg gap-2 w-full">
-          <label 
-          htmlFor={id} 
-          className={`group min-w-32`}>
-              {label}
-          </label>
+        
+      <div className="mt-2 w-full relative">
           <input 
           type={isPassword? (hashPass? 'password': 'text'): type} 
           multiple={multiple}
@@ -22,10 +18,15 @@ function FloatingInput({
           value={value}
           disabled={disabled}
           onChange={onChange}
-          className={`group placeholder:text-transparent block pb-2 px-0 w-full font-light text-gray-900 bg-transparent appearance-none focus:outline-none focus:ring-0 focus:border-primary peer
+          className={`block py-2.5 px-0 w-full text-sm text-zinc-900 bg-transparent border-0 border-b-2 border-zinc-300 appearance-none focus:outline-none focus:ring-0 focus:border-primary peer placeholder:text-transparent
             ${className}`}
           placeholder={placeholder}
           required={required} />
+          <label 
+          htmlFor={id} 
+          className={`absolute text-sm text-zinc-500 duration-300 transform -translate-y-6 top-3 origin-[0] start-0 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:-translate-y-6`}>
+              {label}
+          </label>
       </div>)
 }
 

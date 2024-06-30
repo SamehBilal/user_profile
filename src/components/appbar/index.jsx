@@ -24,7 +24,7 @@ function Appbar() {
   }, [])
 
   return (
-    <nav className="text-black dark:text-white shadow-md dark:shadow-gray-300/20 w-screen flex justify-between items-center mx-auto px-8 py-2 absolute top-0 right-0 left-0 ">
+    <nav className="text-black dark:text-white shadow-md dark:shadow-zinc-300/20 w-screen flex justify-between items-center mx-auto px-8 py-2 absolute top-0 right-0 left-0 ">
       <Image src={Logo} alt='ArabHardware' className=' size-12 lg:mr-8' />
       <SearchSection />
       <div className="flex flex-col justify-center items-between">
