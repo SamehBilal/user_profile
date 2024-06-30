@@ -15,12 +15,15 @@ function Appbar() {
   const router = useRouter()
   const [gridDropdownPopoverShow, setGridDropdownPopoverShow] = React.useState(false);
   const [userDropdownPopoverShow, setUserDropdownPopoverShow] = React.useState(false);
+  const [user, setUser] = React.useState(null)
   const { theme, setTheme } = useTheme();
   
   React.useEffect(()=>{
-    // if(!getCookie("token") || !getCookie("user")){
-    //   router.push('/login')
-    // }
+    if(!getCookie("token") || !getCookie("user")){
+      // router.push('/login')
+    }else{
+      setUser(getCookie("user"))
+    }
   }, [])
 
   return (
@@ -33,7 +36,7 @@ function Appbar() {
         <NavbarBottomMenu />
 
         <GridDropdown gridDropdownPopoverShow={gridDropdownPopoverShow} />
-        <UserDropdown userDropdownPopoverShow={userDropdownPopoverShow} />
+        <UserDropdown userDropdownPopoverShow={userDropdownPopoverShow} setUserDropdownPopoverShow={setUserDropdownPopoverShow} user={user} />
       </div>
 </nav>
   )

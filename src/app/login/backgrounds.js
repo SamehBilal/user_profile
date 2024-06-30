@@ -7,7 +7,7 @@ import img6 from '@/public/images/login/bg/6.jpg'
 
 export const backgrounds = [
     {
-        title: "آخر الأخبار في عرب هاردوير", 
+        title: "آخر الأخبار", 
         img: img1, color: "#031D26", 
         desc: "أحدث الأخبار والتحديثات على مدار الساعة. كن أول من يعرف، تابع الأحداث لحظة بلحظة مع تغطية شاملة."
     },

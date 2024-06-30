@@ -2,7 +2,8 @@ export const ar = {
     navbar: {
         "greeting": "صباح الفل",
         "searchPlaceholder": "عن ماذا تبحث اليوم",
-        "login": "تسجيل دخول"
+        "login": "تسجيل دخول",
+        "logout": "تسجيل خروج"
     },
     middle: {
         latestInStore: "الأحدث في المتجر:",
@@ -14,7 +15,7 @@ export const ar = {
         title: "مرحبا بك في عرب هاردوير",
         subTitle1: "ليس لديك حساب؟",
         subTitle2: "اعمل حساب",
-        subTitle3: "بأقل من دقيقة",
+        subTitle3: "",
         email: "البريد الالكتروني",
         password: "كلمة السر",
         loginFrom: "أو عن طريق",
@@ -38,7 +39,8 @@ export const en = {
     navbar: {
         "greeting": "Good Morning",
         "searchPlaceholder": "What do you need today",
-        "login": "Login"
+        "login": "Login",
+        "logout": "Logout"
     },
     middle: {
         latestInStore: "Latest in store:",
