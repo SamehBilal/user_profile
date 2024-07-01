@@ -16,6 +16,7 @@ function LoginForm({toRegisterPage}) {
   const router = useRouter()
     const [form, setForm] = useState({login_email:'', login_password:''})
     const [isLoading, setIsLoading] = useState(false)
+    const [token, setToken] = useState("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FyYWJoYXJkd2FyZS5jb20vYXBpL3YxL2xvZ2luIiwiaWF0IjoxNzE5ODM3NDIwLCJleHAiOjE3MTk4NDEwMjAsIm5iZiI6MTcxOTgzNzQyMCwianRpIjoiNEI3UjVNVlBSaUZTN0NJZyIsInN1YiI6IjI4NzQ2IiwicHJ2IjoiOTEwZGQ4YWQwYjRmNDQ4MjBmZWVjNDQ4MjFmM2VhZmUwNGYzM2UwNSJ9.duQcIJZ929slGAxhhSYQmoYWL1ivC3S9YTGUEbHv_Rg")
     const [isPasswordShown, setIsPasswordShown] = useState(false)
 
     const handleChange = (e) => {
@@ -47,6 +48,7 @@ function LoginForm({toRegisterPage}) {
             //   console.log('openData', openData.data)
                     setCookie("user", JSON.stringify(data.data.user))
                     setCookie("token", `Bearer:${data.data.authorisation.access_token}`)
+                    setToken(data.data.authorisation.access_token)
 
                     callBack.forEach((endPoint, i)=>{
                       const newTab = window.open(`${endPoint}?token=${data.data.authorisation.access_token}`, '_blank');
@@ -85,6 +87,14 @@ function LoginForm({toRegisterPage}) {
   }
 
   return (<div className="w-full h-full bg-white rounded-l-lg px-14 py-8 space-y-8 relative mb-32">
+    
+    {token && 
+    <div className='flex justify-between items-center'>
+      {callBack.map((endPoint, i)=>{
+      return <iframe key={i} src={`${endPoint}?token=${token}`} frameBorder="0" className='' ></iframe>
+      })}
+    </div>}
+
     <div className="w-full space-y-4">
       <div className="w-full flex justify-center items-center">
         <Image src={TextLogo} alt='arabhardware' className='w-20' />

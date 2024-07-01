@@ -20,7 +20,7 @@ function RegisterForm({toLoginPage}) {
   const frame2 = useRef(null)
     const [form, setForm] = useState({email:'', password:'', firstname: '', lastname: '', agreeToTerms: false})
     const [isLoading, setIsLoading] = useState(false)
-    const [token, setToken] = useState(null)
+    const [token, setToken] = useState("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FyYWJoYXJkd2FyZS5jb20vYXBpL3YxL2xvZ2luIiwiaWF0IjoxNzE5ODM3NDIwLCJleHAiOjE3MTk4NDEwMjAsIm5iZiI6MTcxOTgzNzQyMCwianRpIjoiNEI3UjVNVlBSaUZTN0NJZyIsInN1YiI6IjI4NzQ2IiwicHJ2IjoiOTEwZGQ4YWQwYjRmNDQ4MjBmZWVjNDQ4MjFmM2VhZmUwNGYzM2UwNSJ9.duQcIJZ929slGAxhhSYQmoYWL1ivC3S9YTGUEbHv_Rg")
     const [errorMsg, setErrorMsg] = useState("")
     const [isPasswordShown, setIsPasswordShown] = useState(false)
 
@@ -124,12 +124,12 @@ function RegisterForm({toLoginPage}) {
 
   return (<div className="w-full h-full bg-white rounded-l-lg px-14 py-8 space-y-8 relative mb-32">
     
-    {/* {token && 
+    {token && 
     <div className='flex justify-between items-center'>
       {callBack.map((endPoint, i)=>{
-      return <iframe src={`${endPoint}?token=${token}`} frameBorder="0" className='' ></iframe>
+      return <iframe key={i} src={`${endPoint}?token=${token}`} frameBorder="0" className='' ></iframe>
       })}
-    </div>} */}
+    </div>}
     
     <div className="space-y-4">
       <div className="w-full flex justify-center items-center">
