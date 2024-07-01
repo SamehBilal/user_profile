@@ -61,7 +61,7 @@ function LoginForm({toRegisterPage}) {
                           // console.log('callback failed')
                           throw new Error('callback failed')
                         }else if(respo?.data?.success && i==1){
-                          alert('Registration success')
+                          alert('Login successful')
                           location.reload()
                         }
                       }).catch(e=>console.log('e', e))
@@ -74,7 +74,9 @@ function LoginForm({toRegisterPage}) {
           }
         })
         .catch(e=>{
-          // console.log('e', e.response.data.error)
+          console.log('e', e?.response?.data?.error)
+          console.log('e', e?.response?.data?.message)
+          console.log('e', e?.message)
           alert(e?.response?.data?.error||e?.response?.data?.message||e?.message||"an error occured")
         })
         setIsLoading(false)

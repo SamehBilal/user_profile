@@ -83,8 +83,10 @@ function RegisterForm({toLoginPage}) {
                 }
               })
               .catch(e=>{
-                console.log('e', e)
-                alert(e)
+                console.log('error', e?.response?.data?.error)
+                console.log('message', e?.response?.data?.message)
+                console.log('e.message', e?.message)
+                alert(e?.response?.data?.error||e?.response?.data?.message||e?.message||"an error occured")
               })
             }
           }).catch(e=>console.error(e))
