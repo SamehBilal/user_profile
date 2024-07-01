@@ -75,7 +75,7 @@ function LoginForm({toRegisterPage}) {
         })
         .catch(e=>{
           // console.log('e', e.response.data.error)
-          alert(e?.response?.data?.error||e?.message||"an error occured")
+          alert(e?.response?.data?.error||e?.response?.data?.message||e?.message||"an error occured")
         })
         setIsLoading(false)
         }
