@@ -16,7 +16,7 @@ import { Eye, EyeOff } from 'lucide-react';
 
 function RegisterForm({toLoginPage}) {
   const router = useRouter()
-    const [form, setForm] = useState({email:'', password:'', firstname: '', lastname: ''})
+    const [form, setForm] = useState({email:'', password:'', firstname: '', lastname: '', agreeToTerms: false})
     const [isLoading, setIsLoading] = useState(false)
     const [errorMsg, setErrorMsg] = useState("")
     const [isPasswordShown, setIsPasswordShown] = useState(false)
@@ -31,8 +31,8 @@ function RegisterForm({toLoginPage}) {
     }
     const submitForm = async(e) => {
         e.preventDefault()
-        const {email, password, firstname, lastname} = form
-        if(email == '' || password == '' || firstname == '' || lastname == ''){
+        const {email, password, firstname, lastname, agreeToTerms} = form
+        if(email == '' || password == '' || firstname == '' || lastname == '' || !agreeToTerms){
           alert('all information are required')
         }else{
           setIsLoading(true)

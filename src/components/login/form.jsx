@@ -105,6 +105,7 @@ function LoginForm({toRegisterPage}) {
       <FloatingInput id="login_password" type="password" value={form.login_password} onChange={handleChange}
       placeholder={ar.login.password} required={true} label={ar.login.password} 
       Icon={isPasswordShown? Eye: EyeOff} setIsPasswordShown={setIsPasswordShown} isPasswordShown={isPasswordShown} />
+      <p className="text-zinc-500 cursor-pointer self-start mb-1">{ar.login.forget}</p>
       <Button text={ar.login.btn} type='submit' className="" onClick={(e)=>submitForm(e)} isBig={true} disabled={isLoading} />
     </form>
 

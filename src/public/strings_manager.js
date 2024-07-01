@@ -20,6 +20,7 @@ export const ar = {
         password: "كلمة السر",
         loginFrom: "أو عن طريق",
         btn: "تسجيل الدخول",
+        forget: "نسيت كلمة المرور؟"
     },
     register: {
         title: "تسجيل حساب جديد في عرب هاردوير",
@@ -57,6 +58,7 @@ export const en = {
         password: "Password",
         registerFrom: "or by",
         btn: "Login",
+        forget: "Forget Passord?"
     },
     register: {
         title: "Register",
