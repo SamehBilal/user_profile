@@ -48,23 +48,18 @@ function LoginForm({toRegisterPage}) {
                     setCookie("user", JSON.stringify(data.data.user))
                     setCookie("token", `Bearer:${data.data.authorisation.access_token}`)
 
-                    callBack.map(async (endPoint, i)=>{
-                      // console.log(i, ": ", endPoint)
-                      await axios.get(endPoint, {
-                        params: {
-                          token: data.data.authorisation.access_token
-                        }
-                      })
-                      .then((respo)=>{
-                        // console.log('respo', respo?.data?.success, respo?.data?.message)
-                        if(!respo?.data?.success) {
-                          // console.log('callback failed')
-                          throw new Error('callback failed')
-                        }else if(respo?.data?.success && i==1){
-                          alert('Login successful')
-                          location.reload()
-                        }
-                      }).catch(e=>console.log('e', e))
+                    callBack.forEach((endPoint, i)=>{
+                      const newTab = window.open(`${endPoint}?token=${data.data.authorisation.access_token}`, '_blank');
+                      newTab.window.blur();
+                      newTab.blur();
+                      console.log('newTab', newTab)
+                        setTimeout(() => {
+                          newTab.close();
+                          if(i==1) {
+                            alert('successfully loged in')
+                            location.reload()
+                          }
+                        }, 10000);
                     })
             // })
             // .catch(e=>{

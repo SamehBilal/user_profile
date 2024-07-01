@@ -3,6 +3,8 @@ import Link from "next/link"
 import { en, ar } from "@/public/strings_manager"
 import { deleteCookie, setCookie } from "cookies-next"
 import { thisDomain } from "@/config/api"
+// import axios from "axios"
+// import { ApiBase } from "@/config/api"
 
 function UserDropdown({userDropdownPopoverShow=false, setUserDropdownPopoverShow, user }) {
   const logoutFunction = () => {

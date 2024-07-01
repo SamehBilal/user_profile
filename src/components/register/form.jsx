@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useRef} from 'react'
 import Button from '../ui/button'
 import FloatingInput from '../ui/floating_input'
 import CheckboxInput from '../ui/checkboxInput'
@@ -16,8 +16,11 @@ import { Eye, EyeOff } from 'lucide-react';
 
 function RegisterForm({toLoginPage}) {
   const router = useRouter()
+  const frame1 = useRef(null)
+  const frame2 = useRef(null)
     const [form, setForm] = useState({email:'', password:'', firstname: '', lastname: '', agreeToTerms: false})
     const [isLoading, setIsLoading] = useState(false)
+    const [token, setToken] = useState(null)
     const [errorMsg, setErrorMsg] = useState("")
     const [isPasswordShown, setIsPasswordShown] = useState(false)
 
@@ -29,21 +32,34 @@ function RegisterForm({toLoginPage}) {
         [e.target.name]: e.target.value
       }))
     }
+
+    const handleCheckboxChange = (e) => {
+      setForm(prev=>({
+        ...prev,
+        agreeToTerms: e.target.checked
+      }))
+    };
+
     const submitForm = async(e) => {
         e.preventDefault()
         const {email, password, firstname, lastname, agreeToTerms} = form
         if(email == '' || password == '' || firstname == '' || lastname == '' || !agreeToTerms){
+          console.log('email', email)
+          console.log('password', password)
+          console.log('firstname', firstname)
+          console.log('lastname', lastname)
+          console.log('agreeToTerms', agreeToTerms)
           alert('all information are required')
         }else{
           setIsLoading(true)
           
           await axios.post('/api/register', 
-            {email, password, firstname, lastname}
+            {email, password, firstname, lastname} //check if valid
           ).then(async res=>{
             if(res.data?.message) alert(res.data.message)
             else{
               await axios.post(`${ApiBase}/register`, 
-                {email, password, firstname, lastname}
+                {email, password, firstname, lastname} //add user to db
               ).then(async data=> {
                 if(data.data.message){
                   console.log('data.data.message', data.data.message)
@@ -56,24 +72,20 @@ function RegisterForm({toLoginPage}) {
                   //   console.log('openData', openData.data)
                     setCookie("user", JSON.stringify(data.data.user))
                     setCookie("token", `Bearer:${data.data.authorisation.access_token}`)
+                    setToken(data.data.authorisation.access_token)
 
-                    callBack.map(async (endPoint, i)=>{
-                      // console.log(i, ": ", endPoint)
-                      await axios.get(endPoint, {
-                        params: {
-                          token: data.data.authorisation.access_token
-                        }
-                      })
-                      .then((respo)=>{
-                        // console.log('respo', respo?.data?.success, respo?.data?.message)
-                        if(!respo?.data?.success) {
-                          // console.log('callback failed')
-                          throw new Error('callback failed')
-                        }else if(respo?.data?.success && i==1){
-                          alert('Registration success')
-                          location.reload()
-                        }
-                      }).catch(e=>console.log('e', e))
+                    callBack.forEach((endPoint, i)=>{
+                      const newTab = window.open(`${endPoint}?token=${data.data.authorisation.access_token}`, '_blank');
+                      newTab.window.blur();
+                      newTab.blur();
+                      console.log('newTab', newTab)
+                        setTimeout(() => {
+                          newTab.close();
+                          if(i==1) {
+                            alert('successfully registered')
+                            location.reload()
+                          }
+                        }, 10000);
                     })
                   // })
                   // .catch(e=>{
@@ -105,12 +117,20 @@ function RegisterForm({toLoginPage}) {
       if(getCookie("token") && getCookie("token").startsWith("Bearer:") &&
       getCookie("user") && JSON.parse(getCookie("user"))){
         console.log('user', JSON.parse(getCookie("user")))
-        // console.log('token', getCookie("token"))
+        console.log('token', getCookie("token"))
         router.push('/')
       }
     }, [])
 
   return (<div className="w-full h-full bg-white rounded-l-lg px-14 py-8 space-y-8 relative mb-32">
+    
+    {/* {token && 
+    <div className='flex justify-between items-center'>
+      {callBack.map((endPoint, i)=>{
+      return <iframe src={`${endPoint}?token=${token}`} frameBorder="0" className='' ></iframe>
+      })}
+    </div>} */}
+    
     <div className="space-y-4">
       <div className="w-full flex justify-center items-center">
         <Image src={TextLogo} alt='arabhardware' className='w-20' />
@@ -131,7 +151,7 @@ function RegisterForm({toLoginPage}) {
       <FloatingInput id="password" type="password" value={form.password} onChange={handleChange}
       placeholder={ar.register.password} required={true} label={ar.register.password} 
       Icon={isPasswordShown? Eye: EyeOff} setIsPasswordShown={setIsPasswordShown} isPasswordShown={isPasswordShown} />
-      <CheckboxInput id="agreeToTerms" value={form.agreeToTerms} onChange={handleChange}required={true} label={ar.register.terms}/>
+      <CheckboxInput id="agreeToTerms" value={form.agreeToTerms} onChange={handleCheckboxChange}required={true} label={ar.register.terms}/>
       <Button text={ar.register.btn} className="" onClick={(e)=>submitForm(e)} isBig={true} disabled={isLoading} />
     </div>
     <OrBy text={ar.register.registerFrom} DontHaveAnAccount={DontHaveAnAccount} />
