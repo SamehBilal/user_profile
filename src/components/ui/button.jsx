@@ -6,7 +6,7 @@ function Button({type="button", className="", text="", isBig = true, withIcon = 
     type={type} 
     onClick={onClick}
     disabled={disabled}
-    className={`text-white bg-zinc-500 ring-2 hover:animate-pulse hover:bg-primary ring-zinc-300 rounded-lg focus:outline-none text-sm px-8 py-2.5 max-3xl:p-1 text-center rounded-djm font-bold flex-default gap-2
+    className={`text-white bg-zinc-500 ring-2 hover:animate-pulse hover:bg-primary ring-zinc-300 rounded-lg focus:outline-none text-sm px-8 py-2.5 max-3xl:p-1 text-center rounded-djm font-bold flex items-center justify-center gap-2
     ${isBig? " w-full": " w-fit px-2"} 
     ${className}`}
     >

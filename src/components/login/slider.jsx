@@ -24,8 +24,8 @@ function Slider({setActiveSlide, backgrounds, activeInfo}) {
       // setActiveSlide(sliderRef.current.swiper.realIndex)
     }
 
-    if(sliderRef?.current && sliderRef?.current?.swiper?.realIndex)
-    console.log('sliderRef?.current?.swiper?.realIndex', sliderRef?.current?.swiper?.realIndex)
+    // if(sliderRef?.current && sliderRef?.current?.swiper?.realIndex)
+    // console.log('sliderRef?.current?.swiper?.realIndex', sliderRef?.current?.swiper?.realIndex)
 
   return (
     <Swiper

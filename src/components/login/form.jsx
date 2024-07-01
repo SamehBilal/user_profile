@@ -2,7 +2,7 @@ import {useState} from 'react'
 import Button from '../ui/button'
 import FloatingInput from '../ui/floating_input'
 import { en, ar } from '@/public/strings_manager'
-import { ApiBase, SetOpenCart } from '@/config/api';
+import { ApiBase, SetOpenCart, callBack } from '@/config/api';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import { setCookie } from 'cookies-next';
@@ -45,10 +45,27 @@ function LoginForm({toRegisterPage}) {
             // }).then((openData)=>{
             //   console.log('openData', openData)
             //   console.log('openData', openData.data)
-              setCookie("user", JSON.stringify(data.data.user))
-              setCookie("token", `Bearer:${data.data.authorisation.access_token}`)
-              alert('Registration success')
-              location.reload()
+                    setCookie("user", JSON.stringify(data.data.user))
+                    setCookie("token", `Bearer:${data.data.authorisation.access_token}`)
+
+                    callBack.map(async (endPoint, i)=>{
+                      // console.log(i, ": ", endPoint)
+                      await axios.get(endPoint, {
+                        params: {
+                          token: data.data.authorisation.access_token
+                        }
+                      })
+                      .then((respo)=>{
+                        // console.log('respo', respo?.data?.success, respo?.data?.message)
+                        if(!respo?.data?.success) {
+                          // console.log('callback failed')
+                          throw new Error('callback failed')
+                        }else if(respo?.data?.success && i==1){
+                          alert('Registration success')
+                          location.reload()
+                        }
+                      }).catch(e=>console.log('e', e))
+                    })
             // })
             // .catch(e=>{
             //   console.log('e', e)
@@ -57,8 +74,8 @@ function LoginForm({toRegisterPage}) {
           }
         })
         .catch(e=>{
-          console.log('e', e)
-          alert(e)
+          // console.log('e', e.response.data.error)
+          alert(e?.response?.data?.error||e?.message||"an error occured")
         })
         setIsLoading(false)
         }

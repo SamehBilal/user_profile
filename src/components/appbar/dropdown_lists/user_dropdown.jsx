@@ -1,19 +1,18 @@
+"use client"
 import Link from "next/link"
 import { en, ar } from "@/public/strings_manager"
 import { deleteCookie, setCookie } from "cookies-next"
 import { thisDomain } from "@/config/api"
-import { useRouter } from "next/navigation"
 
 function UserDropdown({userDropdownPopoverShow=false, setUserDropdownPopoverShow, user }) {
-  const router = useRouter()
   const logoutFunction = () => {
-    deleteCookie("user", {domain: thisDomain, path: '/'})
-    deleteCookie("token", {domain: thisDomain, path: '/'})
+    deleteCookie("user", {domain: thisDomain})
+    deleteCookie("token", {domain: thisDomain})
     setCookie("user", "%%%")
     setCookie("token", "%%%")
     console.log('loggin out')
     setUserDropdownPopoverShow(prev=>!prev)
-    router.refresh()
+    location.reload()
   }
   return (
     <div

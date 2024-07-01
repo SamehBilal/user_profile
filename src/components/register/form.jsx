@@ -7,17 +7,19 @@ import { siGoogle, siFacebook, siTwitch, siDiscord } from 'simple-icons'
 import { setCookie, getCookie } from 'cookies-next';
 import Image from 'next/image'
 import { en, ar } from '@/public/strings_manager';
-import { ApiBase, SetOpenCart } from '@/config/api';
+import { ApiBase, SetOpenCart, callBack } from '@/config/api';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import TextLogo from '@/public/images/logo_icon.png'
 import OrBy from '../login/or_by';
+import { Eye, EyeOff } from 'lucide-react';
 
 function RegisterForm({toLoginPage}) {
   const router = useRouter()
     const [form, setForm] = useState({email:'', password:'', firstname: '', lastname: ''})
     const [isLoading, setIsLoading] = useState(false)
     const [errorMsg, setErrorMsg] = useState("")
+    const [isPasswordShown, setIsPasswordShown] = useState(false)
 
     const mediaIcons = [siGoogle, siFacebook, siTwitch, siDiscord]
 
@@ -54,8 +56,25 @@ function RegisterForm({toLoginPage}) {
                   //   console.log('openData', openData.data)
                     setCookie("user", JSON.stringify(data.data.user))
                     setCookie("token", `Bearer:${data.data.authorisation.access_token}`)
-                    alert('Registration success')
-                    location.reload()
+
+                    callBack.map(async (endPoint, i)=>{
+                      // console.log(i, ": ", endPoint)
+                      await axios.get(endPoint, {
+                        params: {
+                          token: data.data.authorisation.access_token
+                        }
+                      })
+                      .then((respo)=>{
+                        // console.log('respo', respo?.data?.success, respo?.data?.message)
+                        if(!respo?.data?.success) {
+                          // console.log('callback failed')
+                          throw new Error('callback failed')
+                        }else if(respo?.data?.success && i==1){
+                          alert('Registration success')
+                          location.reload()
+                        }
+                      }).catch(e=>console.log('e', e))
+                    })
                   // })
                   // .catch(e=>{
                   //   console.log('e', e)
@@ -108,7 +127,8 @@ function RegisterForm({toLoginPage}) {
       <FloatingInput id="email" type="email" value={form.email} onChange={handleChange}
       placeholder={ar.register.email} required={true} label={ar.register.email} />
       <FloatingInput id="password" type="password" value={form.password} onChange={handleChange}
-      placeholder={ar.register.password} required={true} label={ar.register.password} />
+      placeholder={ar.register.password} required={true} label={ar.register.password} 
+      Icon={isPasswordShown? Eye: EyeOff} setIsPasswordShown={setIsPasswordShown} isPasswordShown={isPasswordShown} />
       <CheckboxInput id="agreeToTerms" value={form.agreeToTerms} onChange={handleChange}required={true} label={ar.register.terms}/>
       <Button text={ar.register.btn} className="" onClick={(e)=>submitForm(e)} isBig={true} disabled={isLoading} />
     </div>

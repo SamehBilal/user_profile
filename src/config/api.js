@@ -1,4 +1,5 @@
 export const ApiBase = "https://arabhardware.com/api/v1"
+export const callBack = ["https://arabhardware.com/auth/arabhardware/callback", "https://arabhardware.net/auth/arabhardware/callback"]
 export const SetOpenCart = "https://stg22x.promise.com.sa/index.php?route=extension/mstore/account/login"
 
 // export const thisDomain = "localhost"
