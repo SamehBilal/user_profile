@@ -76,7 +76,7 @@ function RegisterForm({toLoginPage}) {
 
                     callBack.forEach((endPoint, i)=>{
                       const newTab = window.open(`${endPoint}?token=${data.data.authorisation.access_token}`, '_blank');
-                      newTab.window.blur();
+                      newTab?.window?.blur();
                       newTab.blur();
                       console.log('newTab', newTab)
                         setTimeout(() => {
