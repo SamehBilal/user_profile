@@ -78,7 +78,7 @@ function RegisterForm({toLoginPage}) {
                       const newTab = window.open(`${endPoint}?token=${data.data.authorisation.access_token}`, '_blank');
                       // if(newTab?.window) newTab?.window?.blur();
                       newTab?.blur();
-                      console.log('newTab', newTab)
+                      // console.log('newTab', newTab)
                         setTimeout(() => {
                           newTab.close();
                           if(i==1) {
