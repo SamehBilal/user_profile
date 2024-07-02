@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import Button from '../ui/button'
 import FloatingInput from '../ui/floating_input'
 import { en, ar } from '@/public/strings_manager'
@@ -14,9 +14,10 @@ import { Eye, EyeOff } from 'lucide-react';
 function LoginForm({toRegisterPage}) {
   
   const router = useRouter()
+  const tokenString = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FyYWJoYXJkd2FyZS5jb20vYXBpL3YxL2xvZ2luIiwiaWF0IjoxNzE5ODM3NDIwLCJleHAiOjE3MTk4NDEwMjAsIm5iZiI6MTcxOTgzNzQyMCwianRpIjoiNEI3UjVNVlBSaUZTN0NJZyIsInN1YiI6IjI4NzQ2IiwicHJ2IjoiOTEwZGQ4YWQwYjRmNDQ4MjBmZWVjNDQ4MjFmM2VhZmUwNGYzM2UwNSJ9.duQcIJZ929slGAxhhSYQmoYWL1ivC3S9YTGUEbHv_Rg"
     const [form, setForm] = useState({login_email:'', login_password:''})
     const [isLoading, setIsLoading] = useState(false)
-    const [token, setToken] = useState("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FyYWJoYXJkd2FyZS5jb20vYXBpL3YxL2xvZ2luIiwiaWF0IjoxNzE5ODM3NDIwLCJleHAiOjE3MTk4NDEwMjAsIm5iZiI6MTcxOTgzNzQyMCwianRpIjoiNEI3UjVNVlBSaUZTN0NJZyIsInN1YiI6IjI4NzQ2IiwicHJ2IjoiOTEwZGQ4YWQwYjRmNDQ4MjBmZWVjNDQ4MjFmM2VhZmUwNGYzM2UwNSJ9.duQcIJZ929slGAxhhSYQmoYWL1ivC3S9YTGUEbHv_Rg")
+    const [token, setToken] = useState(null)
     const [isPasswordShown, setIsPasswordShown] = useState(false)
 
     const handleChange = (e) => {
@@ -46,23 +47,23 @@ function LoginForm({toRegisterPage}) {
             // }).then((openData)=>{
             //   console.log('openData', openData)
             //   console.log('openData', openData.data)
-                    setCookie("user", JSON.stringify(data.data.user))
-                    setCookie("token", `Bearer:${data.data.authorisation.access_token}`)
-                    setToken(data.data.authorisation.access_token)
+            setCookie("user", JSON.stringify(data.data.user))
+            setCookie("token", `Bearer:${data.data.authorisation.access_token}`)
+            setToken(data.data.authorisation.access_token)
 
-                    callBack.forEach((endPoint, i)=>{
-                      const newTab = window.open(`${endPoint}?token=${data.data.authorisation.access_token}`, '_blank');
-                      // if(newTab?.window) newTab?.window?.blur();
-                      newTab?.blur();
-                      console.log('newTab', newTab)
-                        setTimeout(() => {
-                          newTab.close();
-                          if(i==1) {
-                            alert('successfully loged in')
-                            location.reload()
-                          }
-                        }, 10000);
-                    })
+            callBack.forEach((endPoint, i)=>{
+              const newTab = window.open(`${endPoint}?token=${data.data.authorisation.access_token}`, '_blank');
+              // if(newTab?.window) newTab?.window?.blur();
+              newTab?.blur();
+              console.log('newTab', newTab)
+                setTimeout(() => {
+                  newTab.close();
+                  if(i==1) {
+                    alert('successfully loged in')
+                    location.reload()
+                  }
+                }, 10000);
+            })
             // })
             // .catch(e=>{
             //   console.log('e', e)
@@ -79,6 +80,17 @@ function LoginForm({toRegisterPage}) {
         setIsLoading(false)
         }
     }
+
+    // useEffect(()=>{
+    //   if(document){
+    //     const iframe1 = document.getElementById('iframe-1')
+    //     const iframe0 = document.getElementById('iframe-0')
+    //     console.log(iframe0, iframe1)
+    //     iframe0.contentWindow.postMessage({ token }, 'https://arabhardware.com/auth/arabhardware/callback');
+    //     iframe1.contentWindow.postMessage({ token }, 'https://arabhardware.net/auth/arabhardware/callback');
+    //   }
+    // }, [])
+
     
   const DontHaveAnAccount = ({}) => {
     return <p className='text-center'>
@@ -91,7 +103,7 @@ function LoginForm({toRegisterPage}) {
     {token && 
     <div className='flex justify-between items-center'>
       {callBack.map((endPoint, i)=>{
-      return <iframe key={i} src={`${endPoint}?token=${token}`} frameBorder="0" className='' ></iframe>
+      return <iframe id={`iframe-${i}`} key={i} src={`${endPoint}?token=${token}`} frameBorder="0" className='' ></iframe>
       })}
     </div>}
 
