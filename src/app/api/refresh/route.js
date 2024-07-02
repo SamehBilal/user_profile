@@ -13,18 +13,18 @@ export async function GET(request) {
     console.log('origin: ', request.url)
 
     try{
-        if (allowedOrigins.includes(origin)) {
+        // if (allowedOrigins.includes(origin)) {
             const cookieStore = cookies()
             const token = cookieStore.get('token')?.value || null
             console.log('token', token)
-            const user = JSON.parse(cookieStore.get('user')?.value) || null
+            const user = (cookieStore.get('user') && cookieStore.get('user').value)? (JSON.parse(cookieStore.get('user')?.value)) :null
             console.log('user', user)
 
             // Return the token
             return NextResponse.json({ token, user }, { status: 200 });
-        } else {
-            return NextResponse.json({ message: 'Unauthorized request' }, { status: 401 }); // Unauthorized origin
-        }
+        // } else {
+            // return NextResponse.json({ message: 'Unauthorized request' }, { status: 401 }); // Unauthorized origin
+        // }
     }catch (error) {
         console.log('error', error)
         return NextResponse.json({ message: 'Server Error'+error.message }, { status: 500 }); // Unauthorized origin

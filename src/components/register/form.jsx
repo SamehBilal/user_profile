@@ -126,7 +126,10 @@ function RegisterForm({toLoginPage}) {
     {token && 
     <div className='flex justify-between items-center'>
       {callBack.map((endPoint, i)=>{
-      return <iframe key={i} src={`${endPoint}?token=${token}`} frameBorder="0" className='' ></iframe>
+      return <iframe key={i} 
+      // src={`${endPoint}?token=${token}`} 
+      src='https://arabhardware.com/auth/arabhardware/callback?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FyYWJoYXJkd2FyZS5jb20vYXBpL3YxL2xvZ2luIiwiaWF0IjoxNzE5OTA5NjQxLCJleHAiOjE3MTk5MTMyNDEsIm5iZiI6MTcxOTkwOTY0MSwianRpIjoiOHgyTGYyWDE4a0FNUm94SiIsInN1YiI6IjkzOSIsInBydiI6IjkxMGRkOGFkMGI0ZjQ0ODIwZmVlYzQ0ODIxZjNlYWZlMDRmMzNlMDUifQ.-lRHIWGTXWpuA2edz2Dul4NrhHxY1XZPuL6dVi5mYMM'
+      frameBorder="0" className='' ></iframe>
       })}
     </div>}
     
