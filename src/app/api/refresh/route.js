@@ -13,6 +13,7 @@ export async function GET(request) {
     console.log('origin: ', request.url)
 
     try{
+        // cookies().set('token', 'shaza', { secure: true, sameSite: "None" })
         // if (allowedOrigins.includes(origin)) {
             const cookieStore = cookies()
             const token = cookieStore.get('token')?.value || null
