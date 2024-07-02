@@ -120,7 +120,6 @@ function RegisterForm({toLoginPage}) {
         console.log('token', getCookie("token"))
         router.push('/')
       }
-      // TODO: parent.postMessage({ user: getCookie('user'), token: getCookie('token') }, '*');
     }, [])
 
   return (<div className="w-full h-full bg-white rounded-l-lg px-14 py-8 space-y-8 relative mb-32">

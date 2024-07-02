@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react'
+import {useEffect, useState, useRef} from 'react'
 import Button from '../ui/button'
 import FloatingInput from '../ui/floating_input'
 import { en, ar } from '@/public/strings_manager'
@@ -12,7 +12,7 @@ import OrBy from './or_by';
 import { Eye, EyeOff } from 'lucide-react';
 
 function LoginForm({toRegisterPage}) {
-  
+  const iframe0 = useRef(null)
   const router = useRouter()
   const tokenString = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FyYWJoYXJkd2FyZS5jb20vYXBpL3YxL2xvZ2luIiwiaWF0IjoxNzE5ODM3NDIwLCJleHAiOjE3MTk4NDEwMjAsIm5iZiI6MTcxOTgzNzQyMCwianRpIjoiNEI3UjVNVlBSaUZTN0NJZyIsInN1YiI6IjI4NzQ2IiwicHJ2IjoiOTEwZGQ4YWQwYjRmNDQ4MjBmZWVjNDQ4MjFmM2VhZmUwNGYzM2UwNSJ9.duQcIJZ929slGAxhhSYQmoYWL1ivC3S9YTGUEbHv_Rg"
     const [form, setForm] = useState({login_email:'', login_password:''})
@@ -82,15 +82,12 @@ function LoginForm({toRegisterPage}) {
         }
     }
 
-    // useEffect(()=>{
-    //   if(document){
-    //     const iframe1 = document.getElementById('iframe-1')
-    //     const iframe0 = document.getElementById('iframe-0')
-    //     console.log(iframe0, iframe1)
-    //     iframe0.contentWindow.postMessage({ token }, 'https://arabhardware.com/auth/arabhardware/callback');
-    //     iframe1.contentWindow.postMessage({ token }, 'https://arabhardware.net/auth/arabhardware/callback');
-    //   }
-    // }, [])
+    useEffect(()=>{
+      if(iframe0.current){
+        console.log(iframe0, token)
+        iframe0.current.contentWindow.postMessage({ token }, 'https://arabhardware.com/auth/arabhardware/callback');
+      }
+    }, [iframe0?.current])
 
     
   const DontHaveAnAccount = ({}) => {
@@ -104,7 +101,7 @@ function LoginForm({toRegisterPage}) {
     {token && 
     <div className='flex justify-between items-center'>
       {callBack.map((endPoint, i)=>{
-      return <iframe id={`iframe-${i}`} key={i} 
+      return <iframe id={`iframe-${i}`} key={i} ref={iframe0}
       src={`${endPoint}?token=${token}`} 
       // src='https://arabhardware.com/auth/arabhardware/callback?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FyYWJoYXJkd2FyZS5jb20vYXBpL3YxL2xvZ2luIiwiaWF0IjoxNzE5OTA5NjQxLCJleHAiOjE3MTk5MTMyNDEsIm5iZiI6MTcxOTkwOTY0MSwianRpIjoiOHgyTGYyWDE4a0FNUm94SiIsInN1YiI6IjkzOSIsInBydiI6IjkxMGRkOGFkMGI0ZjQ0ODIwZmVlYzQ0ODIxZjNlYWZlMDRmMzNlMDUifQ.-lRHIWGTXWpuA2edz2Dul4NrhHxY1XZPuL6dVi5mYMM'
       frameBorder="0" className='' ></iframe>
