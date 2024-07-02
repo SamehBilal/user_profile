@@ -1,6 +1,6 @@
 export const ApiBase = "https://arabhardware.com/api/v1"
 export const callBack = ["https://arabhardware.com/auth/arabhardware/callback"]
-export const SetOpenCart = "https://stg22x.promise.com.sa/index.php?route=extension/mstore/account/login"
+export const SetOpenCart = "https://stg.ahw.store/index.php?route=account/callback&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FyYWJoYXJkd2FyZS5jb20vYXBpL3YxL2xvZ2luIiwiaWF0IjoxNzE5OTIwNjY5LCJleHAiOjE3MTk5MjQyNjksIm5iZiI6MTcxOTkyMDY2OSwianRpIjoiUnZ1YXFLZUNuOENZcEFtRSIsInN1YiI6IjI4NzMxIiwicHJ2IjoiOTEwZGQ4YWQwYjRmNDQ4MjBmZWVjNDQ4MjFmM2VhZmUwNGYzM2UwNSJ9.uZeyIOS8sznw2pTgHoOUaDEoqQ5H5TsSImOzhc-vskE"
 
 // export const thisDomain = "localhost"
 export const thisDomain = "user-profile-lyart.vercel.app"
