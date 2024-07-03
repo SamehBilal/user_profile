@@ -19,7 +19,6 @@ function Appbar() {
   const { theme, setTheme } = useTheme();
   
   React.useEffect(()=>{
-    // parent.postMessage({ user: getCookie('user'), token: getCookie('token') }, '*');
     if(!getCookie("token") || !getCookie("user") || getCookie("user")=="%%%"|| getCookie("token")=="%%%"){
       // router.push('/login')
     }else{
@@ -28,7 +27,7 @@ function Appbar() {
   }, [])
 
   return (
-    <nav className="text-black dark:text-white shadow-md dark:shadow-zinc-300/20 w-screen flex justify-between items-center mx-auto px-8 py-2 absolute top-0 right-0 left-0 ">
+    <nav className=" text-black dark:text-white shadow-md dark:shadow-zinc-300/20 w-screen flex justify-between items-center mx-auto px-8 py-2 absolute top-0 right-0 left-0 ">
       <Image src={Logo} alt='ArabHardware' className=' size-12 lg:mr-8' />
       <SearchSection />
       <div className="flex flex-col justify-center items-between">

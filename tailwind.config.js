@@ -28,6 +28,12 @@ module.exports = {
         lightGray: "#dddddd55",
         darkGray: "#031D26"
       },
+      maxWidth: {
+        'grid': 'calc(1600px + 10%)'
+      },
+      padding: {
+        'grid': '0 5%'
+      },
       animation: {
           'text-slide': 'text-slide 12.5s cubic-bezier(0.83, 0, 0.17, 1) infinite',
       },

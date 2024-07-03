@@ -54,7 +54,7 @@ function Slider({setActiveSlide, backgrounds, activeInfo}) {
       loop={true}
       slidesPerView={1}
       spaceBetween={0}
-      className='w-full'>
+      className='w-full rounded-r-lg'>
         {backgrounds.map((_, i)=>{
           return  <SwiperSlide key={i}
           className='!flex items-end justify-between flex-col !w-full rounded-r-lg' >

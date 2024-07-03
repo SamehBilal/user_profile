@@ -3,14 +3,27 @@ import {useEffect, useState} from 'react'
 import { setCookie, getCookie, deleteCookie } from 'cookies-next'
 
 function Page() {
-    const [token, setToken] = useState(getCookie("token"))
+    const token = getCookie("token")
+    const user = getCookie("user")
+
+    useEffect(()=>{
+    parent.postMessage({ user, token }, '*');
+      // window.addEventListener('message', (event) => {
+      //   if (event.origin === 'http://localhost:3000') {
+      //     console.log(event.data)
+      //   }
+      // });
+  
+      return () => {}
+    }, [])
 
     useEffect(()=>{
         console.log('getCookie("token")', getCookie("token"))
     }, [])
   return (
-    <div>
-    {token}
+    <div className='w-full h-full space-y-4 p-grid max-w-grid'>
+        <p className=' break-all text-left' id='token'>{token}</p>
+        <p className=' break-all text-left' id='user'>{user}</p>
     </div>
   )
 }
