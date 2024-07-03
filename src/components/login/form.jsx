@@ -47,8 +47,8 @@ function LoginForm({toRegisterPage}) {
             // }).then((openData)=>{
             //   console.log('openData', openData)
             //   console.log('openData', openData.data)
-            setCookie("user", JSON.stringify(data.data.user))
-            setCookie("token", `Bearer:${data.data.authorisation.access_token}`)
+            setCookie("user", JSON.stringify(data.data.user), {secure: true, sameSite: "None"})
+            setCookie("token", `Bearer:${data.data.authorisation.access_token}`, {secure: true, sameSite: "None"})
             setToken(data.data.authorisation.access_token)
 
             callBack.forEach((endPoint, i)=>{

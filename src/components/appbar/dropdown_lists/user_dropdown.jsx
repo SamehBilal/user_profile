@@ -10,8 +10,8 @@ function UserDropdown({userDropdownPopoverShow=false, setUserDropdownPopoverShow
   const logoutFunction = () => {
     deleteCookie("user", {domain: thisDomain})
     deleteCookie("token", {domain: thisDomain})
-    setCookie("user", "%%%")
-    setCookie("token", "%%%")
+    setCookie("user", "%%%", {secure: true, sameSite: "None"})
+    setCookie("token", "%%%", {secure: true, sameSite: "None"})
     console.log('loggin out')
     setUserDropdownPopoverShow(prev=>!prev)
     location.reload()
