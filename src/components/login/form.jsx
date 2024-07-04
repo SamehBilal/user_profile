@@ -35,9 +35,25 @@ function LoginForm({toRegisterPage}) {
         [e.target.name]: e.target.value
       }))
     }
-    const submitForgetForm = (e) => {
+    const submitForgetForm = async (e) => {
       e.preventDefault()
-      console.log('forgetForm', forgetForm)
+      const email = forgetForm.forget_email
+      if(email == ''){
+        alert('all information are required')
+      }else{
+        setIsLoading(true)
+        
+      await axios.post(`${ApiBase}/forget-password`, 
+        {email},
+      ).then(async data=> {
+        if(data.data.success){
+          alert(data.data.message)
+        }else{
+          alert(data.data.message)
+        }
+        setIsLoading(false)
+      })
+      }
     }
     const submitForm = async(e) => {
         e.preventDefault()
