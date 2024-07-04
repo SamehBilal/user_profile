@@ -5,8 +5,9 @@
 :root{ 
   --primary: #f11320; 
   --swiper-theme-color: #f11320 !important;
-  scrollbar-color: var(--primary) #000; 
-  scrollbar-width: thin; 
+  --scrollbar-color: #71717a ;
+  scrollbar-color: var(--scrollbar-color) #00000000; 
+  scrollbar-width: auto; 
   --swiper-pagination-color: var(--swiper-theme-color);
   --swiper-pagination-bullet-size: 8px;
   --swiper-pagination-bullet-width: 8px;

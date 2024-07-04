@@ -37,11 +37,16 @@ module.exports = {
       animation: {
           'text-slide': 'text-slide 12.5s cubic-bezier(0.83, 0, 0.17, 1) infinite',
           'fade': 'fade 900ms ease-in-out',
+          'scale-up': 'scale-up 300ms ease-in-out',
       },
       keyframes: {
         'fade': {
           '0%': {  opacity: 0 },
           '100%': {  opacity: 1 },
+        },
+        'scale-up': {
+          '0%': {  opacity: 0, transform: 'translateX(-50%) scale(1,0)' },
+          '100%': {  opacity: 1, transform: 'translateX(-50%) scale(1,1)' },
         },
         'text-slide': {
             '0%, 16%': {
