@@ -48,16 +48,16 @@ module.exports = {
                 transform: 'translateY(0%)',
             },
             '20%, 36%': {
-                transform: 'translateY(-16.66%)',
+                transform: 'translateY(-19.5%)',
             },
             '40%, 56%': {
-                transform: 'translateY(-33.33%)',
+                transform: 'translateY(-34.5%)',
             },
             '60%, 76%': {
-                transform: 'translateY(-50%)',
+                transform: 'translateY(-53%)',
             },
             '80%, 96%': {
-                transform: 'translateY(-66.66%)',
+                transform: 'translateY(-69%)',
             },
             '96.1%': {
                 transform: 'translateY(-83.33%)',

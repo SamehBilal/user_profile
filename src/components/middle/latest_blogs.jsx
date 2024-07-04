@@ -44,9 +44,12 @@ function LatestBlogs() {
       className='w-auto'>
         {blogList.map((_, i)=>{
           return  <SwiperSlide key={i} 
-          className='!flex items-end justify-between flex-col gap-[-15px] !w-fit bg-lightGray rounded-lg py-2 px-4 shadow-md dark:shadow-zinc-300/20'>
-            <p className="w-44 mb-8" style={{color: _.color}}>{_.arTitle}</p>
-            <Image src={_.img} alt={_.title} className='w-32 h-22 -mt-4 object-contain' />
+          className='!flex flex-col items-end justify-between !w-fit bg-zinc-200 rounded-lg p-4 shadow-md dark:shadow-zinc-300/20 gap-4'>
+            <div className="flex items-center justify-between w-fit">
+              <Image src={_.img} alt={_.title} className='size-20 -mt-4 object-contain object-right' />
+              <p className="w-44 mb-1" style={{color: _.color}}>{_.arTitle}</p>
+            </div>
+            <p className="text-zinc-700 text-xs cursor-pointer">Read more</p>
           </SwiperSlide> 
         })}
     </Swiper>
