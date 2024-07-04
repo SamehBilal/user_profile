@@ -2,11 +2,13 @@ import React from 'react'
 import { siGoogle, siFacebook, siTwitch, siDiscord } from 'simple-icons'
 import  parse from 'html-react-parser';
 
-function OrBy({text, DontHaveAnAccount}) {
+function OrBy({text, DontHaveAnAccount, isForgetPswFormShown}) {
     const mediaIcons = [siGoogle, siFacebook, siTwitch, siDiscord]
 
   return (
-    <div className="space-y-4 absolute bottom-6 max-w-[calc(100%-7rem)] left-1/2 -translate-x-1/2 w-full">
+    <>
+    {!isForgetPswFormShown &&
+      <div className="space-y-4 absolute bottom-6 max-w-[calc(100%-7rem)] left-1/2 -translate-x-1/2 w-full">
       <DontHaveAnAccount />
       <div className="flex gap-4 items-center justify-center mx-auto">
         <div className="h-[1px] bg-zinc-300 flex-grow"></div>
@@ -21,6 +23,8 @@ function OrBy({text, DontHaveAnAccount}) {
         })}
       </div>
     </div>
+    }
+    </>
   )
 }
 

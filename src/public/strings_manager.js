@@ -20,6 +20,9 @@ export const ar = {
         password: "كلمة السر",
         loginFrom: "أو عن طريق",
         btn: "تسجيل الدخول",
+        lost: "نسيت كلمة المرور؟ ادخل بريدك الالكتروني وسنقوم بارسال رسالة اليك لتعيين كلمة مرور جديدة.",
+        back: "العودة لصفحة تسجيل الدخول",
+        forgetBtn: "ارسال",
         forget: "نسيت كلمة المرور؟"
     },
     register: {
@@ -58,6 +61,9 @@ export const en = {
         password: "Password",
         registerFrom: "or by",
         btn: "Login",
+        lost: "Lost your password? Please enter your email address. You will receive a link to create a new password.",
+        back: "Back to login page",
+        forgetBtn: "Send",
         forget: "Forget Passord?"
     },
     register: {

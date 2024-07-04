@@ -10,20 +10,34 @@ import Image from 'next/image';
 import TextLogo from '@/public/images/logo_icon.png'
 import OrBy from './or_by';
 import { Eye, EyeOff } from 'lucide-react';
+import MainForm from './main_form';
+import ForgetForm from './forget_form';
 
 function LoginForm({toRegisterPage}) {
   const router = useRouter()
   const tokenString = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FyYWJoYXJkd2FyZS5jb20vYXBpL3YxL2xvZ2luIiwiaWF0IjoxNzE5ODM3NDIwLCJleHAiOjE3MTk4NDEwMjAsIm5iZiI6MTcxOTgzNzQyMCwianRpIjoiNEI3UjVNVlBSaUZTN0NJZyIsInN1YiI6IjI4NzQ2IiwicHJ2IjoiOTEwZGQ4YWQwYjRmNDQ4MjBmZWVjNDQ4MjFmM2VhZmUwNGYzM2UwNSJ9.duQcIJZ929slGAxhhSYQmoYWL1ivC3S9YTGUEbHv_Rg"
     const [form, setForm] = useState({login_email:'', login_password:''})
+    const [forgetForm, setForgetForm] = useState({forget_email:''})
     const [isLoading, setIsLoading] = useState(false)
     const [token, setToken] = useState(null)
     const [isPasswordShown, setIsPasswordShown] = useState(false)
+    const [isForgetPswFormShown, setIsForgetPswFormShown] = useState(false)
 
     const handleChange = (e) => {
       setForm(prev=>({
         ...prev,
         [e.target.name]: e.target.value
       }))
+    }
+    const handleForgetFormChange = (e) => {
+      setForgetForm(prev=>({
+        ...prev,
+        [e.target.name]: e.target.value
+      }))
+    }
+    const submitForgetForm = (e) => {
+      e.preventDefault()
+      console.log('forgetForm', forgetForm)
     }
     const submitForm = async(e) => {
         e.preventDefault()
@@ -112,18 +126,32 @@ function LoginForm({toRegisterPage}) {
         <h2 className='text-2xl text-center text-zinc-500'>{ar.login.title}</h2>
       </div>
     </div>
-    <form className="w-full flex flex-col gap-4 items-center justify-center" onSubmit={(e)=>submitForm}>
+    <MainForm 
+      setIsForgetPswFormShown={setIsForgetPswFormShown}
+      isForgetPswFormShown={isForgetPswFormShown}
+      setIsPasswordShown={setIsPasswordShown}
+      isPasswordShown={isPasswordShown}
+      form={form}
+      submitForm={submitForm}
+      handleChange={handleChange}
+      isLoading={isLoading}
+      ar={ar}
+    />
+    <ForgetForm
+      setIsForgetPswFormShown={setIsForgetPswFormShown}
+      isForgetPswFormShown={isForgetPswFormShown}
+      form={forgetForm}
+      submitForm={submitForgetForm}
+      handleChange={handleForgetFormChange}
+      isLoading={isLoading}
+      ar={ar}
+    />
 
-      <FloatingInput id="login_email" type="email" value={form.login_email} onChange={handleChange}
-      placeholder={ar.login.email} required={true} label={ar.login.email} />
-      <FloatingInput id="login_password" type="password" value={form.login_password} onChange={handleChange}
-      placeholder={ar.login.password} required={true} label={ar.login.password} 
-      Icon={isPasswordShown? Eye: EyeOff} setIsPasswordShown={setIsPasswordShown} isPasswordShown={isPasswordShown} />
-      <p className="text-zinc-500 cursor-pointer self-start mb-1">{ar.login.forget}</p>
-      <Button text={ar.login.btn} type='submit' className="" onClick={(e)=>submitForm(e)} isBig={true} disabled={isLoading} />
-    </form>
-
-    <OrBy text={ar.login.loginFrom} DontHaveAnAccount={DontHaveAnAccount} />
+    <OrBy 
+      text={ar.login.loginFrom} 
+      DontHaveAnAccount={DontHaveAnAccount}
+      isForgetPswFormShown={isForgetPswFormShown}
+    />
   </div>
   )
 }
