@@ -9,12 +9,6 @@ const schema = z.object({
   password: z.string().min(8).regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/),
 });
 
-// To handle a GET request to /api
-export async function GET(request) {
-    // Do whatever you want
-    return NextResponse.json({ message: "مرحبا بالعالم" }, { status: 200 });
-}
-
 export async function POST(req, res) {
   try {
     const body = await req.json();

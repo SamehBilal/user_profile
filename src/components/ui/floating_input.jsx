@@ -2,11 +2,12 @@ import {useState} from 'react'
 
 function FloatingInput({
     id= "", className = "", type = "text", label = "", placeholder = "", required = false, value = "", 
+    isSuccess=false, isError=false,
     disabled = false, onChange = ()=>{}, multiple = false, Icon=null, setIsPasswordShown, isPasswordShown
 }) {
     const isPassword = type === "password"
 
-    return (<div className="mt-2 w-full relative border border-solid border-zinc-300 hover:bg-zinc-200 transition focus-within:border-black">
+    return (<div className="mt-2 w-full relative border border-solid border-zinc-300 hover:bg-zinc-200 transition focus-within:border-black focus-within:ring ring-black">
           <input 
           type={isPassword? (isPasswordShown? 'text': 'password'): type} 
           multiple={multiple}
@@ -15,7 +16,9 @@ function FloatingInput({
           value={value}
           disabled={disabled}
           onChange={onChange}
-          className={`block pt-5 pb-1 px-4 w-full text-sm text-zinc-900 bg-transparent appearance-none focus:outline-none focus:ring-0 peer placeholder:text-transparent
+          className={`block pt-5 pb-1 px-4 w-full text-sm text-zinc-900 bg-transparent appearance-none focus:outline-none focus:ring-0 peer placeholder:text-transparent 
+            ${isSuccess?'ring ring-green-700': ''}
+            ${isError?'ring ring-red-700': ''}
             ${className}`}
           placeholder={placeholder}
           required={required} />

@@ -1,4 +1,4 @@
-import {useEffect, useState, useRef} from 'react'
+import {useEffect, useState, useRef, Suspense} from 'react'
 import Button from '@/components/ui/button';
 import FloatingInput from '@/components/ui/floating_input';
 import { en, ar } from '@/public/strings_manager'
@@ -9,51 +9,94 @@ import { setCookie } from 'cookies-next';
 import Image from 'next/image';
 import TextLogo from '@/public/images/logo_icon.png'
 import { Eye, EyeOff } from 'lucide-react';
+import SearchParamsComponent from './searchParamsComponent';
 
 function ResetForm({}) {
   const router = useRouter()
-  const tokenString = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FyYWJoYXJkd2FyZS5jb20vYXBpL3YxL2xvZ2luIiwiaWF0IjoxNzE5ODM3NDIwLCJleHAiOjE3MTk4NDEwMjAsIm5iZiI6MTcxOTgzNzQyMCwianRpIjoiNEI3UjVNVlBSaUZTN0NJZyIsInN1YiI6IjI4NzQ2IiwicHJ2IjoiOTEwZGQ4YWQwYjRmNDQ4MjBmZWVjNDQ4MjFmM2VhZmUwNGYzM2UwNSJ9.duQcIJZ929slGAxhhSYQmoYWL1ivC3S9YTGUEbHv_Rg"
-    const [form, setForm] = useState({login_email:'', login_password:''})
-    const [isLoading, setIsLoading] = useState(false)
-    const [token, setToken] = useState(null)
-    const [isPasswordShown, setIsPasswordShown] = useState(false)
+  const [form, setForm] = useState({password1:'', password2: '', token: null})
+  const [formError, setFormError] = useState({password1: false, password2: false})
+  const [formSuccess, setFormSuccess] = useState({password1: false, password2: false})
+  const [isLoading, setIsLoading] = useState(false)
+  const [token, setToken] = useState(null)
+  const [isPasswordShown, setIsPasswordShown] = useState(false)
 
-    const handleChange = (e) => {
+    const handleChange = async (e) => {
+      // update form
       setForm(prev=>({
         ...prev,
         [e.target.name]: e.target.value
       }))
-    }
-    const submitForm = async(e) => {
-        e.preventDefault()
-        const email = form.login_email, password = form.login_password
-        if(email == '' || password == ''){
-          alert('all information are required')
-        }else{
-          setIsLoading(true)
-          
-        await axios.post(`${ApiBase}/login`, 
-          {email, password},
-        ).then(async data=> {
-          if(data.data.message){
-            console.log('data.data.message', data.data.message)
-            throw new Error(data.data.message)
-          }else{
-            alert('password was changed sucessfully')
-            router.push('/login')
+      // check for errors or success
+      if(e.target.name == 'password1'){
+        await axios.post('/api/reset', {password1: e.target.value})
+        .then(res=>{
+          if(e.target.value == ''){ //if empty make the error and success false
+            setFormSuccess(prev=>({...prev, password1: false}))
+            setFormError(prev=>({...prev, password1: false}))
+          }else{ //else check for errors and success
+            if(res.data?.message){ 
+              setFormError(prev=>({...prev, password1: true}))
+              setFormSuccess(prev=>({...prev, password1: false}))
+            }else{
+              setFormError(prev=>({...prev, password1: false}))
+              setFormSuccess(prev=>({...prev, password1: true}))
+            }
           }
-        })
-        .catch(e=>{
-          console.log('e', e?.response?.data?.error)
-          console.log('e', e?.response?.data?.message)
-          console.log('e', e?.message)
-          alert(e?.response?.data?.error||e?.response?.data?.message||e?.message||"an error occured")
-        })
-        setIsLoading(false)
+        }).catch(e=>console.log('e', e))
+      }else if(e.target.name == 'password2'){
+        if(e.target.value == ''){ //if empty make the error and success false
+          setFormSuccess(prev=>({...prev, password2: false}))
+          setFormError(prev=>({...prev, password2: false}))
+        }else{ //else check for errors and success
+          if(form.password1 != e.target.value){
+            setFormError(prev=>({...prev, password2: true}))
+            setFormSuccess(prev=>({...prev, password2: false}))
+          }else{
+            setFormError(prev=>({...prev, password2: false}))
+            setFormSuccess(prev=>({...prev, password2: true}))
+          }
         }
+      }
     }
 
+    const submitForm = async(e) => {
+        e.preventDefault()
+        const password1 = form.password1, password2 = form.password2, token = form.token
+        if(password1 == '' || password2 == '' || !token){
+          alert('all information are required')
+          console.log('password1, password2, token', password1, password2, token)
+        }else if(formError.password1 || formError.password2){
+          alert('please make sure to provide the correct data')
+        }else{
+          setIsLoading(true)
+          const finalForm = {password: password1, token: token}
+          console.log('finalForm', finalForm)
+          await axios.post(`${ApiBase}/reset-password`, 
+                finalForm,
+          ).then(async data=> {
+            if(data.data.status){
+              alert('An error occured, please try again')
+            }else{
+              alert('password was changed sucessfully')
+              
+            }
+          })
+          .catch(e=>{
+            console.log('e', e?.response?.data?.error)
+            console.log('e', e?.response?.data?.message)
+            console.log('e', e?.message)
+            alert(e?.response?.data?.error||e?.response?.data?.message||e?.message||"an error occured")
+          })
+        }
+        
+        setIsLoading(false)
+    }
+    // console.log('form', form)
+
   return (<div className="w-full h-full bg-white rounded-l-lg px-14 py-8 space-y-8 relative mb-32">
+    <Suspense fallback={<div>Loading...</div>}>
+      <SearchParamsComponent setToken={(token)=>setForm(prev=>({...prev, token }))} />
+    </Suspense>
     <div className="w-full space-y-4">
       <div className="w-full flex justify-center items-center">
         <Image src={TextLogo} alt='arabhardware' className='w-20' />
@@ -68,14 +111,20 @@ function ResetForm({}) {
       <p className="text-zinc-500 cursor-pointer self-start mb-1">
       {ar.login.lost}
       </p>
-      <FloatingInput id="reset_password1" type="password" value={form.reset_password1} onChange={handleChange}
+      <FloatingInput id="password1" type="password" value={form.password1} onChange={handleChange}
       placeholder={ar.login.password1} required={true} label={ar.login.password1} 
+      isSuccess={formSuccess.password1} isError={formError.password1}
       Icon={isPasswordShown? Eye: EyeOff} setIsPasswordShown={setIsPasswordShown} isPasswordShown={isPasswordShown} />
-      <p className="text-primary text-sm w-full mb-2 hidden">{ar.login.password1Error}</p>
-      <FloatingInput id="reset_password2" type="password" value={form.reset_password2} onChange={handleChange}
+      <p className={`text-primary text-sm w-full mb-2 ${formError.password1?'':'hidden'}`}>
+        {ar.login.password1Error}
+      </p>
+      <FloatingInput id="password2" type="password" value={form.password2} onChange={handleChange}
       placeholder={ar.login.password2} required={true} label={ar.login.password2} 
+      isSuccess={formSuccess.password2} isError={formError.password2}
       Icon={isPasswordShown? Eye: EyeOff} setIsPasswordShown={setIsPasswordShown} isPasswordShown={isPasswordShown} />
-      <p className="text-primary text-sm w-full mb-2 hidden">{ar.login.password2Error}</p>
+      <p className={`text-primary text-sm w-full mb-2 ${formError.password2?'':'hidden'}`}>
+        {ar.login.password2Error}
+      </p>
 
       <Button text={ar.login.forgetBtn} type='submit' className="" onClick={(e)=>submitForm(e)} isBig={true} disabled={isLoading} />
     </form>
