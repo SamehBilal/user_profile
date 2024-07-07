@@ -1,6 +1,7 @@
 
 import { NextResponse } from "next/server";
 import { cookies } from 'next/headers'
+import { corsMiddleware } from "../middleware/cors_middleware";
 
 export async function GET(request) {
     const allowedOrigins = [
@@ -31,3 +32,4 @@ export async function GET(request) {
         return NextResponse.json({ message: 'Server Error'+error.message }, { status: 500 }); // Unauthorized origin
     }
 }
+export default corsMiddleware(GET)
