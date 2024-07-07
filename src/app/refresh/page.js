@@ -22,8 +22,8 @@ function Page() {
     }, [])
   return (
     <div className='w-full h-full space-y-4 p-grid max-w-grid'>
-        <p className=' break-all text-left' id='token'>{token}</p>
-        <p className=' break-all text-left' id='user'>{user}</p>
+        {token && <p className=' break-all text-left' id='token'>{token}</p>}
+        {user && <p className=' break-all text-left' id='user'>{user}</p>}
     </div>
   )
 }
