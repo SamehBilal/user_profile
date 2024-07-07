@@ -1,7 +1,6 @@
 
 import { NextResponse } from "next/server";
 import { cookies } from 'next/headers'
-import cors from 'cors';
 
 export async function GET(request, response) {
     const allowedOrigins = [
