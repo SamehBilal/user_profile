@@ -10,11 +10,11 @@ function PagesLinks({setIsExpanded={setMoreDropdownPopoverShow}, isExpanded={mor
         {title: "المزيد"}
     ]
   return (
-    <ul className='flex items-center justify-center gap-4 text-black'>
+    <ul className='flex items-center justify-center gap-4 text-black dark:text-white'>
         {pagesLinksList.map((_, i)=>{
             const isMoreEl = i==pagesLinksList.length-1
             return <li key={i} className={`cursor-pointer transition 
-            ${i==0?'font-bold':'hover:text-primary'}
+            ${i==0?'font-bold':'hover:text-primary dark:hover:text-primaryLight'}
             ${isMoreEl?'relative':''}`}
             onClick={isMoreEl?()=>setIsExpanded(prev=>!prev):()=>{}}>
                 <span id={`more_dropdown_${i}`}>{_.title}</span>

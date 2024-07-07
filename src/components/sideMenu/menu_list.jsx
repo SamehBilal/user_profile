@@ -7,7 +7,7 @@ function MenuList
   const [selectedIndex, setSelectedIndex] = useState(0)
 
   return (
-    <ul className='flex flex-col items-start justify-center w-full text-black'>
+    <ul className='flex flex-col items-start justify-center w-full text-black dark:text-white'>
         {
           menuItems.map((_, i)=> 
           <li key={i} className={`flex items-center justify-start py-2 px-8 rounded-lg w-full gap-8 transition cursor-pointer 

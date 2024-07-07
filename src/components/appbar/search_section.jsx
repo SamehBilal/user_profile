@@ -8,8 +8,8 @@ function SearchSection() {
   const [searchValue, setSearchValue] = useState('')
   
   return (
-    <div className="flex items-center justify-center bg-zinc-200 rounded-3xl ">
-          <div className="rounded-3xl text-zinc-700 h-10 pr-4 flex items-center justify-center">
+    <div className="flex items-center justify-center bg-zinc-200 dark:bg-zinc-700 text-zinc-700 dark:text-zinc-200 rounded-3xl ">
+          <div className="rounded-3xl h-10 pr-4 flex items-center justify-center">
             <Search strokeWidth={1} className='p-1' />
           </div>
         <div className="rounded-3xl flex items-center justify-between">
@@ -21,7 +21,7 @@ function SearchSection() {
             className=' disabled:opacity-0'>
             <X strokeWidth={1} className='p-1' />
           </button>
-          <div className="bg-primary rounded-3xl text-white h-10 px-4 flex items-center justify-center">
+          <div className="bg-primary dark:bg-primaryLight rounded-3xl text-white h-10 px-4 flex items-center justify-center">
             <Search strokeWidth={3} className='p-1' />
           </div>
         </div>
