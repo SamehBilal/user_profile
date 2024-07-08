@@ -4,6 +4,7 @@ import Link from "next/link"
 import { en, ar } from "@/public/strings_manager"
 import { deleteCookie, setCookie } from "cookies-next"
 import { thisDomain } from "@/config/api"
+import { cookieDommains } from "@/config/api"
 // import axios from "axios"
 // import { ApiBase } from "@/config/api"
 
@@ -24,8 +25,13 @@ function UserDropdown({isExpanded=false, setIsExpanded, user }) {
   const logoutFunction = () => {
     deleteCookie("user", {domain: thisDomain})
     deleteCookie("token", {domain: thisDomain})
-    setCookie("user", "%%%", {secure: true, sameSite: "None"})
-    setCookie("token", "%%%", {secure: true, sameSite: "None"})
+    setCookie("user", "%%%", {secure: true, sameSite: "None", domain})
+    cookieDommains.forEach(item=>{
+      setCookie(
+        item.title, 
+        "%%%", 
+        {secure: true, sameSite: "None", domain: item.domain})
+    })
     console.log('loggin out')
     setIsExpanded(prev=>!prev)
     location.reload()

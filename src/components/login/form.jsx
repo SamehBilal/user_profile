@@ -12,6 +12,7 @@ import OrBy from './or_by';
 import { Eye, EyeOff } from 'lucide-react';
 import MainForm from './main_form';
 import ForgetForm from './forget_form';
+import { cookieDommains } from '@/config/api';
 
 function LoginForm({toRegisterPage}) {
   const router = useRouter()
@@ -77,7 +78,13 @@ function LoginForm({toRegisterPage}) {
             //   console.log('openData', openData)
             //   console.log('openData', openData.data)
             setCookie("user", JSON.stringify(data.data.user), {secure: true, sameSite: "None"})
-            setCookie("token", `Bearer:${data.data.authorisation.access_token}`, {secure: true, sameSite: "None"})
+            // setCookie("token", `Bearer:${data.data.authorisation.access_token}`, {secure: true, sameSite: "None"})
+            cookieDommains.forEach(item=>{
+              setCookie(
+                item.title, 
+                item.bearer?`Bearer:${data.data.authorisation.access_token}`:data.data.authorisation.access_token, 
+                {secure: true, sameSite: "None", domain: item.domain})
+            })
             setToken(data.data.authorisation.access_token)
 
             callBack.forEach((endPoint, i)=>{

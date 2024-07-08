@@ -2,7 +2,7 @@ import {useEffect, useState, useRef, Suspense} from 'react'
 import Button from '@/components/ui/button';
 import FloatingInput from '@/components/ui/floating_input';
 import { en, ar } from '@/public/strings_manager'
-import { ApiBase, SetOpenCart, callBack } from '@/config/api';
+import { ApiBase, SetOpenCart, callBack, cookieDommains } from '@/config/api';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import { setCookie } from 'cookies-next';
@@ -76,7 +76,12 @@ function ResetForm({}) {
           ).then(async data=> {
             if(data.data.status){
               setCookie("user", JSON.stringify(data.data.user), {secure: true, sameSite: "None"})
-              setCookie("token", `Bearer:${data.data.authorisation.access_token}`, {secure: true, sameSite: "None"})
+              cookieDommains.forEach(item=>{
+                setCookie(
+                  item.title, 
+                  item.bearer?`Bearer:${data.data.authorisation.access_token}`:data.data.authorisation.access_token, 
+                  {secure: true, sameSite: "None", domain: item.domain})
+              })
               setToken(data.data.authorisation.access_token)
               alert('password was changed sucessfully')
             }else{

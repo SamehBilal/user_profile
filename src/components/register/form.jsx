@@ -7,7 +7,7 @@ import { siGoogle, siFacebook, siTwitch, siDiscord } from 'simple-icons'
 import { setCookie, getCookie } from 'cookies-next';
 import Image from 'next/image'
 import { en, ar } from '@/public/strings_manager';
-import { ApiBase, SetOpenCart, callBack } from '@/config/api';
+import { ApiBase, SetOpenCart, callBack, cookieDommains } from '@/config/api';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import TextLogo from '@/public/images/logo_icon.png'
@@ -70,7 +70,12 @@ function RegisterForm({toLoginPage}) {
                   //   console.log('openData', openData)
                   //   console.log('openData', openData.data)
                     setCookie("user", JSON.stringify(data.data.user), {secure: true, sameSite: "None"})
-                    setCookie("token", `Bearer:${data.data.authorisation.access_token}`, {secure: true, sameSite: "None"})
+                    cookieDommains.forEach(item=>{
+                      setCookie(
+                        item.title, 
+                        item.bearer?`Bearer:${data.data.authorisation.access_token}`:data.data.authorisation.access_token, 
+                        {secure: true, sameSite: "None", domain: item.domain})
+                    })
                     setToken(data.data.authorisation.access_token)
 
                     callBack.forEach((endPoint, i)=>{

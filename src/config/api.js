@@ -2,6 +2,14 @@ export const ApiBase = "https://arabhardware.com/api/v1"
 export const callBack = ["https://arabhardware.net/auth/arabhardware/callback", "https://arabhardware.com/auth/arabhardware/callback"]
 export const SetOpenCart = "https://stg.ahw.store/index.php?route=account/callback&token="
 
+export const cookieDommains = [
+	{title: "token", domain: "localhost", bearer: true},
+	{title: "token", domain: "user-profile-lyart.vercel.app", bearer: true},
+	{title: "arabhardware_session", domain: ".arabhardware.net", bearer: false}, 
+	{title: "arabhardware_session", domain: ".arabhardware.com", bearer: false}, 
+	{title: "token", domain: ".stg.ahw.store", bearer: false},
+]
+
 // export const thisDomain = "localhost"
 export const thisDomain = "user-profile-lyart.vercel.app"
 
