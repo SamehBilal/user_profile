@@ -71,47 +71,20 @@ function LoginForm({toRegisterPage}) {
             console.log('data.data.message', data.data.message)
             throw new Error(data.data.message)
           }else{
-            // await axios.post(SetOpenCart, {
-            //   "email": "569582528", "password": "12345678"
-            // }, {
-            // }).then((openData)=>{
-            //   console.log('openData', openData)
-            //   console.log('openData', openData.data)
             setCookie("user", JSON.stringify(data.data.user), {secure: true, sameSite: "None"})
-            // setCookie("token", `Bearer:${data.data.authorisation.access_token}`, {secure: true, sameSite: "None"})
             cookieDommains.forEach(item=>{
               setCookie(
                 item.title, 
                 item.bearer?`Bearer:${data.data.authorisation.access_token}`:data.data.authorisation.access_token, 
                 {secure: true, sameSite: "None", domain: item.domain})
-            })
+              })
             setToken(data.data.authorisation.access_token)
-
-            callBack.forEach((endPoint, i)=>{
-              // TODO: uncomment
-              // const newTab = window.open(`${endPoint}?token=${data.data.authorisation.access_token}`, '_blank');
-              // // if(newTab?.window) newTab?.window?.blur();
-              // newTab?.blur();
-              // console.log('newTab', newTab)
-              //   setTimeout(() => {
-              //     newTab.close();
-              //     if(i==1) {
-              //       alert('successfully loged in')
-              //       location.reload()
-              //     }
-              //   }, 10000);
-            })
-            // })
-            // .catch(e=>{
-            //   console.log('e', e)
-            //   alert(e)
-            // })
+            setTimeout(() => {
+              location.reload()
+            }, 5000);
           }
         })
         .catch(e=>{
-          console.log('e', e?.response?.data?.error)
-          console.log('e', e?.response?.data?.message)
-          console.log('e', e?.message)
           alert(e?.response?.data?.error||e?.response?.data?.message||e?.message||"an error occured")
         })
         setIsLoading(false)

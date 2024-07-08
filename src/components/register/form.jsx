@@ -64,11 +64,6 @@ function RegisterForm({toLoginPage}) {
                   console.log('data.data.message', data.data.message)
                   throw new Error(data.data.message)
                 }else{
-                  // await axios.post(SetOpenCart, {
-                  //   "email": "569582528", "password": "12345678"
-                  // }).then((openData)=>{
-                  //   console.log('openData', openData)
-                  //   console.log('openData', openData.data)
                     setCookie("user", JSON.stringify(data.data.user), {secure: true, sameSite: "None"})
                     cookieDommains.forEach(item=>{
                       setCookie(
@@ -77,26 +72,9 @@ function RegisterForm({toLoginPage}) {
                         {secure: true, sameSite: "None", domain: item.domain})
                     })
                     setToken(data.data.authorisation.access_token)
-
-                    callBack.forEach((endPoint, i)=>{
-                      // TODO: uncomment
-                      // const newTab = window.open(`${endPoint}?token=${data.data.authorisation.access_token}`, '_blank');
-                      // // if(newTab?.window) newTab?.window?.blur();
-                      // newTab?.blur();
-                      // // console.log('newTab', newTab)
-                      //   setTimeout(() => {
-                      //     newTab.close();
-                      //     if(i==1) {
-                      //       alert('successfully registered')
-                      //       location.reload()
-                      //     }
-                      //   }, 10000);
-                    })
-                  // })
-                  // .catch(e=>{
-                  //   console.log('e', e)
-                  //   alert(e)
-                  // })
+                    setTimeout(() => {
+                      location.reload()
+                    }, 5000);
                 }
               })
               .catch(e=>{
