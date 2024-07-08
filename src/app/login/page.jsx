@@ -40,14 +40,15 @@ function Page() {
         speed='500'
         effect='flip'
         pagination={false}
+        allowTouchMove= {false}
         modules={[EffectFlip]}
-        className='w-4/5 max-w-grid !p-grid !flex items-center justify-center'>
+        className='w-4/5 max-w-grid !flex items-center justify-center'>
           <SwiperSlide 
-            className='swiper-no-swiping !flex items-center justify-center flex-col gap-[-15px] !w-full !h-auto  rounded-lg'>
+            className={`swiper-no-swiping !flex items-center justify-center flex-col gap-[-15px] !w-full !h-auto rounded-lg`}>
               <LoginPage toRegisterPage={toRegisterPage} setActiveSlide={setActiveSlide} activeInfo={backgrounds[activeSlide]} backgrounds={backgrounds} />
           </SwiperSlide>
           <SwiperSlide 
-            className='swiper-no-swiping !flex items-center justify-center flex-col gap-[-15px] !w-full !h-auto  rounded-lg'>
+            className={`swiper-no-swiping !flex items-center justify-center flex-col gap-[-15px] !w-full !h-auto rounded-lg`}>
               <RegisterPage toLoginPage={toLoginPage} setActiveSlide={setActiveSlide} activeInfo={backgrounds[activeSlide]} backgrounds={backgrounds} />
           </SwiperSlide>
       </Swiper>

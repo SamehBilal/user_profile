@@ -5,9 +5,9 @@ export const SetOpenCart = "https://stg.ahw.store/index.php?route=account/callba
 export const cookieDommains = [
 	{title: "token", domain: "localhost", bearer: true},
 	{title: "token", domain: "user-profile-lyart.vercel.app", bearer: true},
-	{title: "arabhardware_session", domain: ".arabhardware.net", bearer: false}, 
-	{title: "arabhardware_session", domain: ".arabhardware.com", bearer: false}, 
-	{title: "token", domain: ".stg.ahw.store", bearer: false},
+	{title: "jwt_token", domain: ".arabhardware.net", bearer: false}, 
+	{title: "jwt_token", domain: ".arabhardware.com", bearer: false}, 
+	{title: "jwt_token", domain: ".stg.ahw.store", bearer: false},
 ]
 
 // export const thisDomain = "localhost"

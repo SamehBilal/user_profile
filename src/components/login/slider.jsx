@@ -54,6 +54,7 @@ function Slider({setActiveSlide, backgrounds, activeInfo}) {
       loop={true}
       slidesPerView={1}
       spaceBetween={0}
+      allowTouchMove= {false}
       className='w-full rounded-r-lg'>
         {backgrounds.map((_, i)=>{
           return  <SwiperSlide key={i}
