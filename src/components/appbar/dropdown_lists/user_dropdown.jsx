@@ -25,7 +25,7 @@ function UserDropdown({isExpanded=false, setIsExpanded, user }) {
   const logoutFunction = () => {
     deleteCookie("user", {domain: thisDomain})
     deleteCookie("token", {domain: thisDomain})
-    setCookie("user", "%%%", {secure: true, sameSite: "None", domain})
+    setCookie("user", "%%%", {secure: true, sameSite: "None", domain: thisDomain})
     cookieDommains.forEach(item=>{
       setCookie(
         item.title, 
