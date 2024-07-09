@@ -69,6 +69,7 @@ function RegisterForm({toLoginPage}) {
                         {secure: true, sameSite: "None", domain: item.domain})
                     })
                     setToken(data.data.authorisation.access_token)
+                    toast.success('تم تسجيل الدخول بنجاح')
                     setTimeout(() => {
                       location.reload()
                       setIsLoading(false)

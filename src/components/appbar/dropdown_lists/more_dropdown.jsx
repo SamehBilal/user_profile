@@ -8,8 +8,8 @@ const MoreDropdown = ({isExpanded, setIsExpanded, moreBtnId}) => {
 
   const handleOutsideClick = (e) => {
     const moreBtn = document.getElementById(moreBtnId)
-    console.log('moreBtn', moreBtn)
-    console.log('e.target', e.target)
+    // console.log('moreBtn', moreBtn)
+    // console.log('e.target', e.target)
     if (dropdownRef.current && !dropdownRef.current.contains(e.target) && e.target != moreBtn) {
       setIsExpanded(false);
     }

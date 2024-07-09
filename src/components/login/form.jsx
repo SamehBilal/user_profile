@@ -35,7 +35,7 @@ function LoginForm({toRegisterPage}) {
     
     // const recaptaSecretKey = process?.env?.RECAPTCHA_SECRET_KEY;
     const recaptaSecretKey = "6Ld1uQsqAAAAAMxfabq4tdWDCGYbEZD0ZDdusTP3";
-    console.log('recaptaSecretKey', recaptaSecretKey)
+    // console.log('recaptaSecretKey', recaptaSecretKey)
 
     const { executeRecaptcha } = useGoogleReCaptcha();
 

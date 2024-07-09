@@ -14,6 +14,7 @@ import ToasterComponent from "@/components/toaster"
 function UserDropdown({isExpanded=false, setIsExpanded, user }) {
   const dropdownRef = useRef(null)
   const [isLoggingOut, setIsLoggingOut] = useState(false)
+  const token = (getCookie('token')&&getCookie('token').length>1)? getCookie('token')?.split(' ')[1]: ''
 
   const handleOutsideClick = (e) => {
     if (dropdownRef?.current && !dropdownRef?.current?.contains(e.target)) {
@@ -38,20 +39,20 @@ function UserDropdown({isExpanded=false, setIsExpanded, user }) {
         "null",
         {secure: true, sameSite: "None", domain: item.domain})
     })
+    toast.loading('جار تسجيل الخروج')
+    setCookie("user", "null", {secure: true, sameSite: "None", domain: thisDomain})
+    cookieDommains.forEach(item=>{
+      setCookie(
+        item.title, 
+        "null",
+        {secure: true, sameSite: "None", domain: item.domain})
+    })
     await axios.post(
       `${ApiBase}/logout`,
       {},
       {headers: { Authorization: `${token}`, Accept: 'application/json' }}
     )
     .then(res=>{
-      toast.loading('جار تسجيل الخروج')
-      setCookie("user", "null", {secure: true, sameSite: "None", domain: thisDomain})
-      cookieDommains.forEach(item=>{
-        setCookie(
-          item.title, 
-          "null",
-          {secure: true, sameSite: "None", domain: item.domain})
-      })
       setTimeout(() => {
         setIsLoggingOut(false)
         setIsExpanded(prev=>!prev)
@@ -61,6 +62,7 @@ function UserDropdown({isExpanded=false, setIsExpanded, user }) {
       toast.error(e.message)
       setIsLoggingOut(false)
       setIsExpanded(prev=>!prev)
+      location.reload()
     })
   }
   return (
