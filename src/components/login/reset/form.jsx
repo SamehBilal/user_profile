@@ -10,6 +10,8 @@ import Image from 'next/image';
 import TextLogo from '@/public/images/logo_icon.png'
 import { Eye, EyeOff } from 'lucide-react';
 import SearchParamsComponent from './searchParamsComponent';
+import toast from 'react-hot-toast';
+import ToasterComponent from '@/components/toaster';
 
 function ResetForm({}) {
   const router = useRouter()
@@ -63,10 +65,10 @@ function ResetForm({}) {
         e.preventDefault()
         const password1 = form.password1, password2 = form.password2, token = form.token
         if(password1 == '' || password2 == '' || !token){
-          alert('all information are required')
+          toast.error('كل المعلومات مطلوبة')
           console.log('password1, password2, token', password1, password2, token)
         }else if(formError.password1 || formError.password2){
-          alert('please make sure to provide the correct data')
+          toast.error('برجاء ادخال معلومات صالحة')
         }else{
           setIsLoading(true)
           const finalForm = {password: password1, token: token}
@@ -79,20 +81,20 @@ function ResetForm({}) {
               cookieDommains.forEach(item=>{
                 setCookie(
                   item.title, 
-                  item.bearer?`Bearer:${data.data.authorisation.access_token}`:data.data.authorisation.access_token, 
+                  item.bearer?`Bearer ${data.data.authorisation.access_token}`:data.data.authorisation.access_token, 
                   {secure: true, sameSite: "None", domain: item.domain})
               })
               setToken(data.data.authorisation.access_token)
-              alert('password was changed sucessfully')
+              toast.success('تم تغيير كلمة المرور')
             }else{
-              alert('An error occured, please try again')
+              toast.error('اللينك غير صالح')
             }
           })
           .catch(e=>{
             console.log('e', e?.response?.data?.error)
             console.log('e', e?.response?.data?.message)
             console.log('e', e?.message)
-            alert(e?.response?.data?.error||e?.response?.data?.message||e?.message||"an error occured")
+            toast.error(e?.response?.data?.error||e?.response?.data?.message||e?.message||"حدث خطأ")
           })
         }
         
@@ -101,14 +103,15 @@ function ResetForm({}) {
 
     useEffect(()=>{
       if(token){
-        setTimeout(()=>{
+        // setTimeout(()=>{
           router.push('/login')
-        }, 5000)
+        // }, 5000)
       }
     }, [token])
     // console.log('form', form)
 
   return (<div className="w-full h-full bg-white rounded-l-lg px-14 py-8 space-y-8 relative mb-32">
+    <ToasterComponent />
     <Suspense fallback={<div>Loading...</div>}>
       <SearchParamsComponent setToken={(token)=>setForm(prev=>({...prev, token }))} />
     </Suspense>

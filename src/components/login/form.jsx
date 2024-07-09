@@ -1,6 +1,4 @@
 import {useEffect, useState, useRef} from 'react'
-import Button from '../ui/button'
-import FloatingInput from '../ui/floating_input'
 import { en, ar } from '@/public/strings_manager'
 import { ApiBase, SetOpenCart, callBack } from '@/config/api';
 import { useRouter } from 'next/navigation';
@@ -9,10 +7,21 @@ import { setCookie } from 'cookies-next';
 import Image from 'next/image';
 import TextLogo from '@/public/images/logo_icon.png'
 import OrBy from './or_by';
-import { Eye, EyeOff } from 'lucide-react';
 import MainForm from './main_form';
 import ForgetForm from './forget_form';
 import { cookieDommains } from '@/config/api';
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+import GoogleCaptchaWrapper from '@/app/google-captcha-wrapper';
+import toast from 'react-hot-toast';
+import ToasterComponent from '@/components/toaster';
+
+export default function Home({toRegisterPage}) {
+  return (
+    <GoogleCaptchaWrapper>
+      <LoginForm toRegisterPage={toRegisterPage} />
+    </GoogleCaptchaWrapper>
+  );
+}
 
 function LoginForm({toRegisterPage}) {
   const router = useRouter()
@@ -23,6 +32,12 @@ function LoginForm({toRegisterPage}) {
     const [token, setToken] = useState(null)
     const [isPasswordShown, setIsPasswordShown] = useState(false)
     const [isForgetPswFormShown, setIsForgetPswFormShown] = useState(false)
+    
+    // const recaptaSecretKey = process?.env?.RECAPTCHA_SECRET_KEY;
+    const recaptaSecretKey = "6Ld1uQsqAAAAAMxfabq4tdWDCGYbEZD0ZDdusTP3";
+    console.log('recaptaSecretKey', recaptaSecretKey)
+
+    const { executeRecaptcha } = useGoogleReCaptcha();
 
     const handleChange = (e) => {
       setForm(prev=>({
@@ -40,7 +55,7 @@ function LoginForm({toRegisterPage}) {
       e.preventDefault()
       const email = forgetForm.forget_email
       if(email == ''){
-        alert('all information are required')
+        toast.error('البريد الالكتروني فارغ')
       }else{
         setIsLoading(true)
         
@@ -48,46 +63,86 @@ function LoginForm({toRegisterPage}) {
         {email},
       ).then(async data=> {
         if(data.data.success){
-          alert(data.data.message)
+          toast.error(data.data.message)
         }else{
-          alert(data.data.message)
+          toast.error(data.data.message)
         }
         setIsLoading(false)
       })
       }
     }
-    const submitForm = async(e) => {
-        e.preventDefault()
+
+    const handleSubmitForm = (e) => {
+      e.preventDefault();
+    // if (!executeRecaptcha) {
+    //   toast.error('Execute recaptcha not available yet')
+    //   toast.error('likely meaning key not recaptcha key not set')
+    //   return;
+    // }
+    // executeRecaptcha("userFormSubmit").then((gReCaptchaToken) => {
+      // submitForm(gReCaptchaToken);
+    // });
+      submitForm();
+    }
+    const submitForm = async() => {
         const email = form.login_email, password = form.login_password
         if(email == '' || password == ''){
-          alert('all information are required')
+          toast.error('كل المعلومات مطلوبة')
         }else{
           setIsLoading(true)
-          
+
+          // const recaptchaData = `secret=${recaptaSecretKey}&response=${gReCaptchaToken}`;
+          // console.log('recaptchaData', recaptchaData)
+          //   let res = await axios.post(
+          //     `https://www.google.com/recaptcha/api/siteverify`,
+          //     recaptchaData,
+          //     {
+          //       headers: {
+          //         "Content-Type": "application/x-www-form-urlencoded",
+          //       },
+          //     }
+          //   ).then(async res=>{
+              
+            // if (res && res.data?.success && res.data?.score > 0.5) {
+            //   console.log("res.data?.score:", res.data?.score);
+
+        // sending login request
         await axios.post(`${ApiBase}/login`, 
-          {email, password},
+          {email, password,},
         ).then(async data=> {
-          if(data.data.message){
-            console.log('data.data.message', data.data.message)
-            throw new Error(data.data.message)
-          }else{
-            setCookie("user", JSON.stringify(data.data.user), {secure: true, sameSite: "None"})
-            cookieDommains.forEach(item=>{
-              setCookie(
-                item.title, 
-                item.bearer?`Bearer:${data.data.authorisation.access_token}`:data.data.authorisation.access_token, 
-                {secure: true, sameSite: "None", domain: item.domain})
-              })
-            setToken(data.data.authorisation.access_token)
-            setTimeout(() => {
-              location.reload()
-            }, 5000);
-          }
+            if(data.data.message){
+              console.log('data.data.message', data.data.message)
+              throw new Error(data.data.message)
+            }else{
+              setCookie("user", JSON.stringify(data.data.user), {secure: true, sameSite: "None"})
+              cookieDommains.forEach(item=>{
+                setCookie(
+                  item.title, 
+                  item.bearer?`Bearer ${data.data.authorisation.access_token}`:data.data.authorisation.access_token, 
+                  {secure: true, sameSite: "None", domain: item.domain})
+                })
+              setToken(data.data.authorisation.access_token)
+              toast.success('تم تسجيل الدخول بنجاح')
+              setTimeout(() => {
+                location.reload()
+                setIsLoading(false)
+              }, 5000);
+            }
         })
         .catch(e=>{
-          alert(e?.response?.data?.error||e?.response?.data?.message||e?.message||"an error occured")
+          toast.error(e?.response?.data?.error||e?.response?.data?.message||e?.message||"حدث خطأ")
+          setIsLoading(false)
         })
-        setIsLoading(false)
+            
+              // } else {
+              //   console.log("fail: res.data?.score:", res.data?.score);
+              //   alert('fail recaptcha: you are a robot')
+              // }
+            // }).catch(e=>{
+            //   console.log("recaptcha error:", e);
+            //   alert("recaptcha error:")
+            // })
+          
         }
     }
     
@@ -98,6 +153,7 @@ function LoginForm({toRegisterPage}) {
   }
 
   return (<div className="w-full h-full bg-white rounded-l-lg px-14 py-8 space-y-8 relative mb-32">
+    <ToasterComponent />
     
     {token && 
     <div className='flex justify-between items-center max-h-[50vh]'>
@@ -128,7 +184,7 @@ function LoginForm({toRegisterPage}) {
       setIsPasswordShown={setIsPasswordShown}
       isPasswordShown={isPasswordShown}
       form={form}
-      submitForm={submitForm}
+      submitForm={handleSubmitForm}
       handleChange={handleChange}
       isLoading={isLoading}
       ar={ar}
@@ -148,8 +204,5 @@ function LoginForm({toRegisterPage}) {
       DontHaveAnAccount={DontHaveAnAccount}
       isForgetPswFormShown={isForgetPswFormShown}
     />
-  </div>
-  )
+  </div>)
 }
-
-export default LoginForm

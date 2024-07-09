@@ -20,6 +20,8 @@
     "next-themes": "^0.3.0",
     "react": "^18",
     "react-dom": "^18",
+    "react-google-recaptcha-v3": "^1.10.1",
+    "react-hot-toast": "^2.4.1",
     "react-select": "^5.8.0",
     "simple-icons": "^12.4.0",
     "swiper": "^11.1.4",

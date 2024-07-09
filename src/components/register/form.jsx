@@ -13,6 +13,8 @@ import axios from 'axios';
 import TextLogo from '@/public/images/logo_icon.png'
 import OrBy from '../login/or_by';
 import { Eye, EyeOff } from 'lucide-react';
+import toast from 'react-hot-toast';
+import ToasterComponent from '@/components/toaster';
 
 function RegisterForm({toLoginPage}) {
   const router = useRouter()
@@ -43,19 +45,14 @@ function RegisterForm({toLoginPage}) {
         e.preventDefault()
         const {email, password, firstname, lastname, agreeToTerms} = form
         if(email == '' || password == '' || firstname == '' || lastname == '' || !agreeToTerms){
-          console.log('email', email)
-          console.log('password', password)
-          console.log('firstname', firstname)
-          console.log('lastname', lastname)
-          console.log('agreeToTerms', agreeToTerms)
-          alert('all information are required')
+          toast.error('كل المعلومات مطلوبة')
         }else{
           setIsLoading(true)
           
           await axios.post('/api/register', 
             {email, password, firstname, lastname} //check if valid
           ).then(async res=>{
-            if(res.data?.message) alert(res.data.message)
+            if(res.data?.message) toast.error(res.data.message)
             else{
               await axios.post(`${ApiBase}/register`, 
                 {email, password, firstname, lastname} //add user to db
@@ -68,12 +65,13 @@ function RegisterForm({toLoginPage}) {
                     cookieDommains.forEach(item=>{
                       setCookie(
                         item.title, 
-                        item.bearer?`Bearer:${data.data.authorisation.access_token}`:data.data.authorisation.access_token, 
+                        item.bearer?`Bearer ${data.data.authorisation.access_token}`:data.data.authorisation.access_token, 
                         {secure: true, sameSite: "None", domain: item.domain})
                     })
                     setToken(data.data.authorisation.access_token)
                     setTimeout(() => {
                       location.reload()
+                      setIsLoading(false)
                     }, 5000);
                 }
               })
@@ -81,12 +79,13 @@ function RegisterForm({toLoginPage}) {
                 console.log('error', e?.response?.data?.error)
                 console.log('message', e?.response?.data?.message)
                 console.log('e.message', e?.message)
-                alert(e?.response?.data?.error||e?.response?.data?.message||e?.message||"an error occured")
+                toast.error(e?.response?.data?.error||e?.response?.data?.message||e?.message||"حدث خطأ")
+                setIsLoading(false)
               })
             }
           }).catch(e=>console.error(e))
 
-        setIsLoading(false)
+        // setIsLoading(false)
         }
     }
     
@@ -97,7 +96,7 @@ function RegisterForm({toLoginPage}) {
     }
 
     useEffect(()=>{
-      if(getCookie("token") && getCookie("token").startsWith("Bearer:") &&
+      if(getCookie("token") && getCookie("token").startsWith("Bearer ") &&
       getCookie("user") && JSON.parse(getCookie("user"))){
         console.log('user', JSON.parse(getCookie("user")))
         console.log('token', getCookie("token"))
@@ -106,6 +105,7 @@ function RegisterForm({toLoginPage}) {
     }, [])
 
   return (<div className="w-full h-full bg-white rounded-l-lg px-14 py-8 space-y-8 relative mb-32">
+    <ToasterComponent />
     
     {token && 
     <div className='flex justify-between items-center max-h-[50vh]'>

@@ -6,6 +6,7 @@ import { Eye, EyeOff } from 'lucide-react';
 function MainForm({
     setIsForgetPswFormShown, isForgetPswFormShown, setIsPasswordShown, isPasswordShown, 
     form, submitForm, handleChange, isLoading, ar}) {
+
   return (<form className={`w-full flex-col gap-4 items-center justify-center 
     ${isForgetPswFormShown? 'hidden ': 'flex animate-fade'}` }
     onSubmit={(e)=>submitForm}>
