@@ -4,6 +4,7 @@ import Image from 'next/image'
 // import PersonImg from '@/public/images/person.jpg'
 import PersonImg from '@/public/images/demo_user.png'
 import { en, ar } from '@/public/strings_manager'
+import MorningList from './morning_list'
 
 function NavbarTopMenu({setTheme, setMoreDropdownPopoverShow, theme, setUserDropdownPopoverShow}) {
   return (
@@ -14,7 +15,8 @@ function NavbarTopMenu({setTheme, setMoreDropdownPopoverShow, theme, setUserDrop
         className='size-8 p-2 border hover:shadow-lg rounded-lg transition cursor-pointer' />
         <Bell  strokeWidth={2} className='size-8 p-2 border hover:shadow-lg rounded-lg transition cursor-pointer' />
         <span className="w-4"></span>
-        <p className="">{ar.navbar.greeting}</p>
+        <MorningList />
+        {/* <p className="">{ar.navbar.greeting}</p> */}
         <Image src={PersonImg} alt='user image' className=' size-10 rounded-lg block cursor-pointer'
         onClick={()=>setUserDropdownPopoverShow(prev=>!prev)} />
     </div>

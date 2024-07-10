@@ -26,16 +26,25 @@ const MoreDropdown = ({isExpanded, setIsExpanded}) => {
     ${isExpanded?'animate-scale-up':'hidden'}`} ref={dropdownRef}>
       <div className="w-full flex items-start justify-around">
         {moreData.map((head, index)=>{
-          return <div className="space-y-8" key={index}>
-            <h4 className='font-bold'>{head.title}</h4>
-            <ul className='space-y-2'>
-              {head.list.map((el, i)=>{
-                return <p key={i} className="">
-                  {el.title}
-                </p>
-              })}
-            </ul>
-          </div>
+          return <>
+          {head.title? 
+          <div className="space-y-8" key={index}>
+          <h4 className='font-bold'>{head.title}</h4>
+          <ul className='space-y-2'>
+            {head.list.map((el, i)=>{
+              return <p key={i} className="">
+                {el.title}
+              </p>
+            })}
+          </ul>
+        </div>
+        :<div className='space-y-2'>
+          {head.map((Comp, i)=>{
+            return <Comp key={i} />
+          })}
+        </div>
+        }
+          </>
         })}
       </div>
     </div>

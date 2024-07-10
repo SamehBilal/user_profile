@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 750">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fda730;
+      }
+
+      .cls-1, .cls-2 {
+        stroke-width: 0px;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+
+      .cls-3 {
+        fill: #000;
+        font-family: Jazeel-Bold, Jazeel;
+        font-size: 195.26px;
+        font-weight: 700;
+      }
+    </style>
+  </defs>
+  <rect class="cls-1" x="206.5" y="62.1" width="667.01" height="667.01" rx="111.92" ry="111.92"/>
+  <g>
+    <rect class="cls-2" x="454.56" y="182" width="170.88" height="85.44"/>
+    <polygon class="cls-2" points="625.44 267.44 625.44 352.89 540 352.89 540 438.33 625.44 438.33 625.44 609.21 710.88 609.21 710.88 267.44 625.44 267.44"/>
+    <rect class="cls-2" x="369.12" y="267.44" width="85.44" height="170.88"/>
+    <rect class="cls-2" x="369.12" y="523.77" width="85.44" height="85.44"/>
+  </g>
+  <!-- <text class="cls-3" transform="translate(315.39 928.37)"><tspan x="0" y="0">جنميج</tspan></text> -->
+</svg>
