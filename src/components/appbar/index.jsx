@@ -6,6 +6,7 @@ import Logo from '@/public/images/logo.png'
 import { useTheme } from 'next-themes';
 import GridDropdown from './dropdown_lists/grid_dropdown'
 import UserDropdown from './dropdown_lists/user_dropdown';
+import MoreDropdown from './dropdown_lists/more_dropdown'
 import SearchSection from './search_section'
 import NavbarTopMenu from './navbar_top_menu'
 import NavbarBottomMenu from './navbar_bottom_menu'
@@ -38,10 +39,11 @@ function Appbar() {
         <PagesLinks setIsExpanded={setMoreDropdownPopoverShow} isExpanded={moreDropdownPopoverShow} />
         <div className="flex flex-col justify-center items-between">
           <NavbarTopMenu setTheme={setTheme} theme={theme} 
-          setGridDropdownPopoverShow={setGridDropdownPopoverShow} 
+          setMoreDropdownPopoverShow={setMoreDropdownPopoverShow} 
           setUserDropdownPopoverShow={setUserDropdownPopoverShow} />
           {/* <NavbarBottomMenu /> */}
 
+          <MoreDropdown isExpanded={moreDropdownPopoverShow} setIsExpanded={setMoreDropdownPopoverShow} />
           <GridDropdown isExpanded={gridDropdownPopoverShow} setIsExpanded={setGridDropdownPopoverShow} />
           <UserDropdown isExpanded={userDropdownPopoverShow} setIsExpanded={setUserDropdownPopoverShow} user={user} />
         </div>

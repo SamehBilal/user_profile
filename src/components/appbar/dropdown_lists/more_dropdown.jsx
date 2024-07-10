@@ -3,12 +3,12 @@
 import { useRef, useEffect } from 'react';
 import { moreData } from './data';
 
-const MoreDropdown = ({isExpanded, setIsExpanded, moreBtnId}) => {
+const MoreDropdown = ({isExpanded, setIsExpanded}) => {
   const dropdownRef = useRef(null)
 
   const handleOutsideClick = (e) => {
-    const moreBtn = document.getElementById(moreBtnId)
-    // console.log('moreBtn', moreBtn)
+    const moreBtn = document.getElementById('more_dropdown_trigger')
+    // console.log('dropdownRef.current', dropdownRef.current)
     // console.log('e.target', e.target)
     if (dropdownRef.current && !dropdownRef.current.contains(e.target) && e.target != moreBtn) {
       setIsExpanded(false);
