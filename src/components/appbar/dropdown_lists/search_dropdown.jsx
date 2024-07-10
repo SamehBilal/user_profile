@@ -26,7 +26,7 @@ function SearchDropdown({isExpanded=false, setIsExpanded, setValue }) {
       ${isExpanded?'':'hidden'}`}
     ref={dropdownRef}>
       {ar.navbar.searchAbout.items.map((item, i)=>{
-        return <div className='flex items-start justify-center gap-4 p-2 hover:bg-zinc-300 text-sm w-full cursor-pointer'
+        return <div key={i} className='flex items-start justify-center gap-4 p-2 hover:bg-zinc-300 text-sm w-full cursor-pointer'
         onClick={()=>{setValue(item.title); setIsExpanded(false)}}>
           <item.icon />
           <div className="space-y-2 w-full">
