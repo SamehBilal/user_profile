@@ -7,7 +7,7 @@ import { siGoogle, siFacebook, siTwitch, siDiscord } from 'simple-icons'
 import { setCookie, getCookie } from 'cookies-next';
 import Image from 'next/image'
 import { en, ar } from '@/public/strings_manager';
-import { ApiBase, SetOpenCart, callBack, cookieDommains } from '@/config/api';
+import { ApiBase, storeLoginDomain, callBack, cookieDommains } from '@/config/api';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import TextLogo from '@/public/images/logo_icon.png'
@@ -117,7 +117,7 @@ function RegisterForm({toLoginPage}) {
       frameBorder="0" className='hidden' ></iframe>
       })}
       <iframe id={`iframe-cart`}
-      src={`${SetOpenCart}${token}`} 
+      src={`${storeLoginDomain}${token}`} 
       // src='https://arabhardware.com/auth/arabhardware/callback?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FyYWJoYXJkd2FyZS5jb20vYXBpL3YxL2xvZ2luIiwiaWF0IjoxNzE5OTA5NjQxLCJleHAiOjE3MTk5MTMyNDEsIm5iZiI6MTcxOTkwOTY0MSwianRpIjoiOHgyTGYyWDE4a0FNUm94SiIsInN1YiI6IjkzOSIsInBydiI6IjkxMGRkOGFkMGI0ZjQ0ODIwZmVlYzQ0ODIxZjNlYWZlMDRmMzNlMDUifQ.-lRHIWGTXWpuA2edz2Dul4NrhHxY1XZPuL6dVi5mYMM'
       frameBorder="0" className='hidden' ></iframe>
     </div>}

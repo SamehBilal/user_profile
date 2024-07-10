@@ -32,7 +32,7 @@ function UserDropdown({isExpanded=false, setIsExpanded, user }) {
   const logoutFunction = async () => {
     setIsLoggingOut(true)
     const token = getCookie('token')
-    console.log('logout token', token)
+    // console.log('logout token', token)
     cookieDommains.forEach(item=>{
       setCookie(
         item.title, 

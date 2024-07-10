@@ -1,6 +1,6 @@
 import {useEffect, useState, useRef} from 'react'
 import { en, ar } from '@/public/strings_manager'
-import { ApiBase, SetOpenCart, callBack } from '@/config/api';
+import { ApiBase, storeLoginDomain, callBack } from '@/config/api';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import { setCookie } from 'cookies-next';
@@ -38,6 +38,14 @@ function LoginForm({toRegisterPage}) {
     // console.log('recaptaSecretKey', recaptaSecretKey)
 
     const { executeRecaptcha } = useGoogleReCaptcha();
+
+    useEffect(()=>{
+      if(isForgetPswFormShown){
+        setForm({login_email:'', login_password:''})
+      }else{
+        setForgetForm({forget_email:''})
+      }
+    }, [isForgetPswFormShown])
 
     const handleChange = (e) => {
       setForm(prev=>({
@@ -165,7 +173,7 @@ function LoginForm({toRegisterPage}) {
       })
       }
       <iframe id={`iframe-cart`}
-      src={`${SetOpenCart}${token}`} 
+      src={`${storeLoginDomain}${token}`} 
       frameBorder="0" className='hidden' ></iframe>
     </div>}
     

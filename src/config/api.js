@@ -1,6 +1,6 @@
 export const ApiBase = "https://arabhardware.com/api/v1"
 export const callBack = ["https://arabhardware.net/auth/arabhardware/callback", "https://arabhardware.com/auth/arabhardware/callback"]
-export const SetOpenCart = "https://stg.ahw.store/index.php?route=account/callback&token="
+export const storeLoginDomain = "https://stg.ahw.store/index.php?route=account/callback&token="
 
 export const logoutDomains = ["https://arabhardware.net/auth/arabhardware/callback/logout", 
 	"https://arabhardware.com/auth/arabhardware/callback/logout", "https://stg.ahw.store"]
