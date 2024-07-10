@@ -1,7 +1,16 @@
+import { ShoppingBag, BriefcaseBusiness, Newspaper } from "lucide-react"
 export const ar = {
     navbar: {
         "greeting": "صباح الفل",
         "searchPlaceholder": "عن ماذا تبحث اليوم",
+        "searchAbout": {
+            title: "ابحث في",
+            items: [
+                {title: "المتجر", desc: "ابحث عن منتجات في المتجر", icon: ShoppingBag},
+                {title: "الأعمال", desc: "ابحث عن اعمال في موقع الاعمال", icon: BriefcaseBusiness},
+                {title: "الأخبار", desc: "ابحث عن مقالات في موقع الاخبار", icon: Newspaper},
+            ]
+        },
         "login": "تسجيل دخول",
         "logout": "تسجيل خروج"
     },
@@ -47,6 +56,14 @@ export const en = {
     navbar: {
         "greeting": "Good Morning",
         "searchPlaceholder": "What do you need today",
+        "searchAbout": {
+            title: "topic",
+            items: [
+                {title: "store", desc: "products in store", icon: ShoppingBag},
+                {title: "business", desc: "work in business", icon: BriefcaseBusiness},
+                {title: "news", desc: "articles in news", icon: Newspaper},
+            ]
+        },
         "login": "Login",
         "logout": "Logout"
     },

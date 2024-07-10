@@ -18,6 +18,9 @@ function Appbar() {
   const [gridDropdownPopoverShow, setGridDropdownPopoverShow] = React.useState(false);
   const [userDropdownPopoverShow, setUserDropdownPopoverShow] = React.useState(false);
   const [moreDropdownPopoverShow, setMoreDropdownPopoverShow] = React.useState(false)
+  const [searchTypeDropdownPopoverShow, setSearchTypeDropdownPopoverShow] = React.useState(false)
+
+  const [searchTypeDropdownValue, setSearchTypeDropdownValue] = React.useState(0)
   const [user, setUser] = React.useState(null)
   const { theme, setTheme } = useTheme();
   
@@ -34,7 +37,8 @@ function Appbar() {
       <div className="p-grid max-w-grid flex justify-between items-center mx-auto px-8 py-2 ">
         <div className="flex items-center justify-center gap-4">
           <Image src={Logo} alt='ArabHardware' className='size-12 lg:mr-8' />
-          <SearchSection />
+          <SearchSection isExpanded={searchTypeDropdownPopoverShow} setIsExpanded={setSearchTypeDropdownPopoverShow}
+          typeValue={searchTypeDropdownValue} setTypeValue={setSearchTypeDropdownValue} />
         </div>
         <PagesLinks setIsExpanded={setMoreDropdownPopoverShow} isExpanded={moreDropdownPopoverShow} />
         <div className="flex flex-col justify-center items-between">
