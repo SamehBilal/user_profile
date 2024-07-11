@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { en, ar } from "@/public/strings_manager"
 import { deleteCookie, getCookie, setCookie } from "cookies-next"
-import { thisDomain } from "@/config/api"
+import { storeLogoutDomain, thisDomain } from "@/config/api"
 import { cookieDommains, logoutDomains, ApiBase } from "@/config/api"
 import { LoaderCircle } from 'lucide-react'
 import axios from "axios"
@@ -32,31 +32,14 @@ function UserDropdown({isExpanded=false, setIsExpanded, user }) {
   const logoutFunction = async () => {
     setIsLoggingOut(true)
     const token = getCookie('token')
-      setCookie(
+      deleteCookie(
         "token",
-        "null",
         {secure: true, sameSite: "None"})
       deleteCookie(
         "jwt_token",
         {secure: true, sameSite: "None", domain: ".arabhardware.com"})
       deleteCookie(
         "jwt_token",
-        {secure: true, sameSite: "None", domain: ".arabhardware.net"})
-      setCookie(
-        "jwt_token",
-        "x",
-        {secure: true, sameSite: "None", domain: ".arabhardware.com"})
-      setCookie(
-        "jwt_token",
-        "x",
-        {secure: true, sameSite: "None", domain: ".arabhardware.net"})
-      setCookie(
-        "jwt_logout",
-        "x",
-        {secure: true, sameSite: "None", domain: ".arabhardware.com"})
-      setCookie(
-        "jwt_logout",
-        "x",
         {secure: true, sameSite: "None", domain: ".arabhardware.net"})
         
     toast.loading('جار تسجيل الخروج')
@@ -71,9 +54,16 @@ function UserDropdown({isExpanded=false, setIsExpanded, user }) {
     className={`max-h-44 flex flex-col justify-center items-center gap-0 absolute rtl:left-10 ltr:right-10 top-12 bg-zinc-200 rounded-l-lg rounded-br-lg text-black 
     ${isExpanded?'':'hidden'}`}>
       <ToasterComponent />
-      {isLoggingOut && logoutDomains.map((endPoint, i)=>{
-      return <iframe key={i} src={`${endPoint}`} frameBorder="0" className='hidden' ></iframe>
+      {isLoggingOut && 
+      <>
+      {logoutDomains.map((endPoint, i)=>{
+        return <iframe key={i} src={`${endPoint}`} frameBorder="0" className='hidden' ></iframe>
       })}
+      <iframe id={`iframe-cart`}
+      src={`${storeLogoutDomain}&token=${token}`} 
+      frameBorder="0" className='hidden' ></iframe>
+      </>
+      }
       {!user
       ?<Link href={`/login`} 
       className="flex items-center justify-center cursor-pointer hover:bg-zinc-400 rounded-l-lg rounded-br-lg p-4">
