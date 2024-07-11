@@ -160,6 +160,7 @@ function LoginForm({toRegisterPage}) {
         // if(iframe){
         //   iframe.postMessage
         // }
+        console.log('token', token)
         await axios.post(`${storeLoginDomain}`,
               { token },
               { headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` }}
@@ -170,9 +171,9 @@ function LoginForm({toRegisterPage}) {
               console.log({ data: null }, { status: 200 });
           })
       }
-      if(token && token!= null){
-        // console.log('storeLoging in...')
-        // storeLogin()
+      if(token && token!= "null"){
+        console.log('storeLoging in...')
+        storeLogin()
       }
     }, [token])
     
@@ -194,9 +195,9 @@ function LoginForm({toRegisterPage}) {
       frameBorder="0" className='hidden' ></iframe>
       })
       }
-      <iframe id={`iframe-cart`}
+      {/* <iframe id={`iframe-cart`}
       src={`/api/store_login`} 
-      frameBorder="0" className='' ></iframe>
+      frameBorder="0" className='' ></iframe> */}
     </div>}
     
 

@@ -51,15 +51,23 @@ function UserDropdown({isExpanded=false, setIsExpanded, user }) {
         "jwt_token",
         "x",
         {secure: true, sameSite: "None", domain: ".arabhardware.net"})
+      setCookie(
+        "jwt_logout",
+        "x",
+        {secure: true, sameSite: "None", domain: ".arabhardware.com"})
+      setCookie(
+        "jwt_logout",
+        "x",
+        {secure: true, sameSite: "None", domain: ".arabhardware.net"})
         
     toast.loading('جار تسجيل الخروج')
-    setCookie("user", "null", {secure: true, sameSite: "None", domain: thisDomain})
-    cookieDommains.forEach(item=>{
-      setCookie(
-        item.title, 
-        "null",
-        {secure: true, sameSite: "None", domain: item.domain})
-    })
+    // setCookie("user", "null", {secure: true, sameSite: "None"})
+    // cookieDommains.forEach(item=>{
+    //   setCookie(
+    //     item.title, 
+    //     "null",
+    //     {secure: true, sameSite: "None", domain: item.domain})
+    // })
       setTimeout(() => {
         setIsLoggingOut(false)
         setIsExpanded(prev=>!prev)

@@ -26,6 +26,6 @@ export async function  GET(request, response) {
   
     }catch (error) {
         console.log('error', error)
-        return NextResponse.json({ message: 'Server Error'+error.message }, { status: 400 }); // Unauthorized origin
+        return NextResponse.json({ message: 'Server Error'+error.message }, { status: 400 });
     }
 }
