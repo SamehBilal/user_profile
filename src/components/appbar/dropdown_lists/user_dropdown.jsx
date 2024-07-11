@@ -52,6 +52,7 @@ function UserDropdown({isExpanded=false, setIsExpanded, user }) {
         location.reload()
       }, 7000);
   }
+  // any comment
   return (
     <div ref={dropdownRef}
     className={`max-h-44 flex flex-col justify-center items-center gap-0 absolute rtl:left-10 ltr:right-10 top-12 bg-zinc-200 rounded-l-lg rounded-br-lg text-black 
