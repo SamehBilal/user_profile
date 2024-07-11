@@ -129,13 +129,6 @@ function LoginForm({toRegisterPage}) {
                   item.bearer?`Bearer ${data.data.authorisation.access_token}`:data.data.authorisation.access_token, 
                   {secure: true, sameSite: "None", domain: item.domain})
                 })
-              deleteCookie(
-                "jwt_logout",
-                {secure: true, sameSite: "None", domain: ".arabhardware.net"})
-              deleteCookie(
-                "jwt_logout",
-                {secure: true, sameSite: "None", domain: ".arabhardware.com"})
-
               setToken(data.data.authorisation.access_token)
               toast.success('تم تسجيل الدخول بنجاح')
               setTimeout(() => {
