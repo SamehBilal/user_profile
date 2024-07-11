@@ -11,8 +11,9 @@ export default function SearchParamsComponent({}) {
 
     useEffect(()=>{
         if(token){
-          deleteCookie(
-            'token', 
+          setCookie(
+            'token',
+            'null', 
             {secure: true, sameSite: "None"}
           )
           deleteCookie(
@@ -22,15 +23,16 @@ export default function SearchParamsComponent({}) {
 
         }
         if(user){
-          deleteCookie(
+          setCookie(
             'user', 
+            'null',
             {secure: true, sameSite: "None"}
           )
           deleteCookie(
             'token', 
             {secure: true, sameSite: "None", domain: ".user-profile-lyart.vercel.app"}
           )
-          
+
         }
     }, [])
   
