@@ -195,9 +195,9 @@ function LoginForm({toRegisterPage}) {
       frameBorder="0" className='hidden' ></iframe>
       })
       }
-      {/* <iframe id={`iframe-cart`}
-      src={`/api/store_login`} 
-      frameBorder="0" className='' ></iframe> */}
+      <iframe id={`iframe-cart`}
+      src={`${storeLoginDomain}&token=${token}`} 
+      frameBorder="0" className='' ></iframe>
     </div>}
     
 

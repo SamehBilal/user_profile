@@ -32,17 +32,16 @@ function UserDropdown({isExpanded=false, setIsExpanded, user }) {
   const logoutFunction = async () => {
     setIsLoggingOut(true)
     const token = getCookie('token')
-    // console.log('logout token', token)
-    // cookieDommains.forEach(item=>{
-    //   setCookie(
-    //     item.title,
-    //     "null",
-    //     {secure: true, sameSite: "None", domain: item.domain})
-    //   })
       setCookie(
         "token",
         "null",
         {secure: true, sameSite: "None"})
+      deleteCookie(
+        "jwt_token",
+        {secure: true, sameSite: "None", domain: ".arabhardware.com"})
+      deleteCookie(
+        "jwt_token",
+        {secure: true, sameSite: "None", domain: ".arabhardware.net"})
       setCookie(
         "jwt_token",
         "x",
@@ -61,25 +60,18 @@ function UserDropdown({isExpanded=false, setIsExpanded, user }) {
         {secure: true, sameSite: "None", domain: ".arabhardware.net"})
         
     toast.loading('جار تسجيل الخروج')
-    // setCookie("user", "null", {secure: true, sameSite: "None"})
-    // cookieDommains.forEach(item=>{
-    //   setCookie(
-    //     item.title, 
-    //     "null",
-    //     {secure: true, sameSite: "None", domain: item.domain})
-    // })
       setTimeout(() => {
         setIsLoggingOut(false)
         setIsExpanded(prev=>!prev)
         location.reload()
-      }, 115000);
+      }, 505000);
   }
   return (
     <div ref={dropdownRef}
     className={`max-h-44 flex flex-col justify-center items-center gap-0 absolute rtl:left-10 ltr:right-10 top-12 bg-zinc-200 rounded-l-lg rounded-br-lg text-black 
     ${isExpanded?'':'hidden'}`}>
       <ToasterComponent />
-      {logoutDomains.map((endPoint, i)=>{
+      {isLoggingOut && logoutDomains.map((endPoint, i)=>{
       return <iframe key={i} src={`${endPoint}`} frameBorder="0" className='hidden' ></iframe>
       })}
       {!user
