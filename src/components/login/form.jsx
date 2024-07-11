@@ -156,10 +156,10 @@ function LoginForm({toRegisterPage}) {
 
     useEffect(()=>{
       const storeLogin = async() => {
-        let iframe = document.getElementById('iframe-cart')
-        if(iframe){
-          iframe.postMessage
-        }
+        // let iframe = document.getElementById('iframe-cart')
+        // if(iframe){
+        //   iframe.postMessage
+        // }
         await axios.post(`${storeLoginDomain}`,
               { token },
               { headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` }}

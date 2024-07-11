@@ -7,24 +7,22 @@ import { cookies } from 'next/headers'
 export async function  GET(request, response) {
     try{
         const token = request?.cookies?.get('token')?.value?.split(' ')[1] ?? 'null'
+        let data = null
         console.log('token', token)
         await axios.post(`${storeLoginDomain}`,
             { token },
             { headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` }}
         ).then(res=>{
             if(res.status){ 
-                console.log({ data: res.data }, { status: 200 });
-                return NextResponse.json({ data: res.data }, { status: 200 });
-                console.log('not returned yet!!')
-            }else{
-                return NextResponse.json({ data: null }, { status: 200 })
+                console.log('success', res.data);
+                data=res.data
             }
         }).catch(e=>{
             console.log('e', e)
             console.log({ data: null }, { status: 200 });
-            return NextResponse.json({ data: null }, { status: 200 })
         })
-        return NextResponse.json({ data: null }, { status: 200 })
+        console.log('data', data)
+        return NextResponse.json({ data }, { status: 200 })
   
     }catch (error) {
         console.log('error', error)
