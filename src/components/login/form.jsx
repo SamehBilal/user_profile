@@ -3,7 +3,7 @@ import { en, ar } from '@/public/strings_manager'
 import { ApiBase, storeLoginDomain, callBack } from '@/config/api';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
-import { setCookie } from 'cookies-next';
+import { deleteCookie, setCookie } from 'cookies-next';
 import Image from 'next/image';
 import TextLogo from '@/public/images/logo_icon.png'
 import OrBy from './or_by';
@@ -129,6 +129,13 @@ function LoginForm({toRegisterPage}) {
                   item.bearer?`Bearer ${data.data.authorisation.access_token}`:data.data.authorisation.access_token, 
                   {secure: true, sameSite: "None", domain: item.domain})
                 })
+              deleteCookie(
+                "jwt_logout",
+                {secure: true, sameSite: "None", domain: ".arabhardware.net"})
+              deleteCookie(
+                "jwt_logout",
+                {secure: true, sameSite: "None", domain: ".arabhardware.com"})
+
               setToken(data.data.authorisation.access_token)
               toast.success('تم تسجيل الدخول بنجاح')
               setTimeout(() => {
