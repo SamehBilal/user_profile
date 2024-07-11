@@ -163,7 +163,7 @@ function LoginForm({toRegisterPage}) {
         console.log('token', token)
         await axios.post(`${storeLoginDomain}`,
               { token },
-              { headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` }}
+              { headers: { 'Content-Type': 'application/json' }}
           ).then(res=>{
               if(res.status) console.log({ data: res.data }, { status: 200 });
           }).catch(e=>{

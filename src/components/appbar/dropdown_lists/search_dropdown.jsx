@@ -4,13 +4,13 @@ import Image from 'next/image'
 import { en, ar } from '@/public/strings_manager'
 
 function SearchDropdown({isExpanded=false, setIsExpanded, setValue }) {
-  console.log('isExpanded', isExpanded)
+  // console.log('isExpanded', isExpanded)
   const dropdownRef = useRef(null)
 
   const handleOutsideClick = (e) => {
     const SearchDropdownBtn = document.getElementById('search_dropdown_btn')
-    console.log('SearchDropdownBtn', SearchDropdownBtn)
-    console.log('e.target', e.target)
+    // console.log('SearchDropdownBtn', SearchDropdownBtn)
+    // console.log('e.target', e.target)
     if (dropdownRef.current && !dropdownRef.current.contains(e.target) && e.target!=SearchDropdownBtn) {
       setIsExpanded(false);
     }
