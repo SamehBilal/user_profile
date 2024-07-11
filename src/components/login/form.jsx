@@ -153,29 +153,6 @@ function LoginForm({toRegisterPage}) {
           
         }
     }
-
-    useEffect(()=>{
-      const storeLogin = async() => {
-        // let iframe = document.getElementById('iframe-cart')
-        // if(iframe){
-        //   iframe.postMessage
-        // }
-        console.log('token', token)
-        await axios.post(`${storeLoginDomain}`,
-              { token },
-              { headers: { 'Content-Type': 'application/json' }}
-          ).then(res=>{
-              if(res.status) console.log({ data: res.data }, { status: 200 });
-          }).catch(e=>{
-              console.log('e', e)
-              console.log({ data: null }, { status: 200 });
-          })
-      }
-      if(token && token!= "null"){
-        console.log('storeLoging in...')
-        storeLogin()
-      }
-    }, [token])
     
   const DontHaveAnAccount = ({}) => {
     return <p className='text-center'>
