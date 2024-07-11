@@ -73,7 +73,7 @@ function RegisterForm({toLoginPage}) {
                     setTimeout(() => {
                       location.reload()
                       setIsLoading(false)
-                    }, 100000);
+                    }, 7000);
                 }
               })
               .catch(e=>{
