@@ -68,18 +68,12 @@ function RegisterForm({toLoginPage}) {
                         item.bearer?`Bearer ${data.data.authorisation.access_token}`:data.data.authorisation.access_token, 
                         {secure: true, sameSite: "None", domain: item.domain})
                     })
-                    deleteCookie(
-                      "jwt_logout",
-                      {secure: true, sameSite: "None", domain: ".arabhardware.net"})
-                    deleteCookie(
-                      "jwt_logout",
-                      {secure: true, sameSite: "None", domain: ".arabhardware.com"})
                     setToken(data.data.authorisation.access_token)
                     toast.success('تم تسجيل الدخول بنجاح')
                     setTimeout(() => {
                       location.reload()
                       setIsLoading(false)
-                    }, 10000);
+                    }, 100000);
                 }
               })
               .catch(e=>{
