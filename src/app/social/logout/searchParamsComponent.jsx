@@ -19,6 +19,7 @@ export default function SearchParamsComponent({}) {
             'token', 
             {secure: true, sameSite: "None", domain: ".user-profile-lyart.vercel.app"}
           )
+
         }
         if(user){
           deleteCookie(
@@ -29,6 +30,7 @@ export default function SearchParamsComponent({}) {
             'token', 
             {secure: true, sameSite: "None", domain: ".user-profile-lyart.vercel.app"}
           )
+          
         }
     }, [])
   
