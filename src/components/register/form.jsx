@@ -2,8 +2,6 @@ import {useState, useEffect, useRef} from 'react'
 import Button from '../ui/button'
 import FloatingInput from '../ui/floating_input'
 import CheckboxInput from '../ui/checkboxInput'
-import  parse from 'html-react-parser';
-import { siGoogle, siFacebook, siTwitch, siDiscord } from 'simple-icons'
 import { setCookie, getCookie } from 'cookies-next';
 import Image from 'next/image'
 import { en, ar } from '@/public/strings_manager';
@@ -24,8 +22,6 @@ function RegisterForm({toLoginPage}) {
     const [token, setToken] = useState(null)
     const [errorMsg, setErrorMsg] = useState("")
     const [isPasswordShown, setIsPasswordShown] = useState(false)
-
-    const mediaIcons = [siGoogle, siFacebook, siTwitch, siDiscord]
 
     const handleChange = (e) => {
       setForm(prev=>({
