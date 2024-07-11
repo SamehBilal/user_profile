@@ -131,10 +131,10 @@ function LoginForm({toRegisterPage}) {
                 })
               setToken(data.data.authorisation.access_token)
               toast.success('تم تسجيل الدخول بنجاح')
-              // setTimeout(() => {
-              //   location.reload()
-              //   setIsLoading(false)
-              // }, 115000);
+              setTimeout(() => {
+                location.reload()
+                setIsLoading(false)
+              }, 5000);
             }
         })
         .catch(e=>{

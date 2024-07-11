@@ -33,6 +33,9 @@ function UserDropdown({isExpanded=false, setIsExpanded, user }) {
     setIsLoggingOut(true)
     const token = getCookie('token')
       deleteCookie(
+        "user",
+        {secure: true, sameSite: "None"})
+      deleteCookie(
         "token",
         {secure: true, sameSite: "None"})
       deleteCookie(
@@ -47,7 +50,7 @@ function UserDropdown({isExpanded=false, setIsExpanded, user }) {
         setIsLoggingOut(false)
         setIsExpanded(prev=>!prev)
         location.reload()
-      }, 505000);
+      }, 5000);
   }
   return (
     <div ref={dropdownRef}
