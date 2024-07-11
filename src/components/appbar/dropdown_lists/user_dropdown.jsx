@@ -35,10 +35,19 @@ function UserDropdown({isExpanded=false, setIsExpanded, user }) {
     // console.log('logout token', token)
     cookieDommains.forEach(item=>{
       setCookie(
-        item.title, 
+        item.title,
         "null",
         {secure: true, sameSite: "None", domain: item.domain})
-    })
+      })
+      setCookie(
+        "arabhardware_session",
+        "null",
+        {secure: true, sameSite: "None", domain: ".arabhardware.com"})
+      setCookie(
+        "arabhardware_session",
+        "null",
+        {secure: true, sameSite: "None", domain: ".arabhardware.net"})
+        
     toast.loading('جار تسجيل الخروج')
     setCookie("user", "null", {secure: true, sameSite: "None", domain: thisDomain})
     cookieDommains.forEach(item=>{
@@ -47,23 +56,11 @@ function UserDropdown({isExpanded=false, setIsExpanded, user }) {
         "null",
         {secure: true, sameSite: "None", domain: item.domain})
     })
-    await axios.post(
-      `${ApiBase}/logout`,
-      {},
-      {headers: { Authorization: `${token}`, Accept: 'application/json' }}
-    )
-    .then(res=>{
       setTimeout(() => {
         setIsLoggingOut(false)
         setIsExpanded(prev=>!prev)
         location.reload()
-      }, 5000);
-    }).catch(e=>{
-      toast.error(e.message)
-      setIsLoggingOut(false)
-      setIsExpanded(prev=>!prev)
-      location.reload()
-    })
+      }, 115000);
   }
   return (
     <div ref={dropdownRef}
@@ -83,7 +80,11 @@ function UserDropdown({isExpanded=false, setIsExpanded, user }) {
       {ar.navbar.logout}
       {isLoggingOut && <LoaderCircle className='animate-spin' />}
       </div>}
-        
+      {/* <div onClick={logoutFunction}
+      className="flex items-center justify-center gap-2 cursor-pointer hover:bg-zinc-400 rounded-l-lg rounded-br-lg p-4">
+      {ar.navbar.logout}
+      {isLoggingOut && <LoaderCircle className='animate-spin' />}
+      </div> */}
         
     </div>
   )

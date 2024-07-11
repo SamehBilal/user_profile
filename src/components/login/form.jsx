@@ -134,7 +134,7 @@ function LoginForm({toRegisterPage}) {
               setTimeout(() => {
                 location.reload()
                 setIsLoading(false)
-              }, 5000);
+              }, 115000);
             }
         })
         .catch(e=>{
@@ -153,6 +153,28 @@ function LoginForm({toRegisterPage}) {
           
         }
     }
+
+    useEffect(()=>{
+      const storeLogin = async() => {
+        let iframe = document.getElementById('iframe-cart')
+        if(iframe){
+          iframe.postMessage
+        }
+        await axios.post(`${storeLoginDomain}`,
+              { token },
+              { headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` }}
+          ).then(res=>{
+              if(res.status) console.log({ data: res.data }, { status: 200 });
+          }).catch(e=>{
+              console.log('e', e)
+              console.log({ data: null }, { status: 200 });
+          })
+      }
+      if(token && token!= null){
+        // console.log('storeLoging in...')
+        // storeLogin()
+      }
+    }, [token])
     
   const DontHaveAnAccount = ({}) => {
     return <p className='text-center'>
@@ -173,8 +195,8 @@ function LoginForm({toRegisterPage}) {
       })
       }
       <iframe id={`iframe-cart`}
-      src={`${storeLoginDomain}${token}`} 
-      frameBorder="0" className='hidden' ></iframe>
+      src={`/api/store_login`} 
+      frameBorder="0" className='' ></iframe>
     </div>}
     
 

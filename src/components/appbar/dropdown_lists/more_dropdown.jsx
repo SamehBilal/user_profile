@@ -26,7 +26,7 @@ const MoreDropdown = ({isExpanded, setIsExpanded}) => {
     ${isExpanded?'animate-scale-up':'hidden'}`} ref={dropdownRef}>
       <div className="w-full flex items-start justify-around">
         {moreData.map((head, index)=>{
-          return <>
+          return <div key={index} >
           {head.title? 
           <div className="space-y-8" key={index}>
           <h4 className='font-bold'>{head.title}</h4>
@@ -44,7 +44,7 @@ const MoreDropdown = ({isExpanded, setIsExpanded}) => {
           })}
         </div>
         }
-          </>
+          </div>
         })}
       </div>
     </div>
