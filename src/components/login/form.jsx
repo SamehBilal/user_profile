@@ -134,7 +134,7 @@ function LoginForm({toRegisterPage}) {
               setTimeout(() => {
                 location.reload()
                 setIsLoading(false)
-              }, 5000);
+              }, 7000);
             }
         })
         .catch(e=>{

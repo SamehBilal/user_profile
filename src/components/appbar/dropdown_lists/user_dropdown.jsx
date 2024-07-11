@@ -50,7 +50,7 @@ function UserDropdown({isExpanded=false, setIsExpanded, user }) {
         setIsLoggingOut(false)
         setIsExpanded(prev=>!prev)
         location.reload()
-      }, 5000);
+      }, 7000);
   }
   return (
     <div ref={dropdownRef}
