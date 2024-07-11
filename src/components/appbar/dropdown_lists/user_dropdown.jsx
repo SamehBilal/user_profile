@@ -33,19 +33,23 @@ function UserDropdown({isExpanded=false, setIsExpanded, user }) {
     setIsLoggingOut(true)
     const token = getCookie('token')
     // console.log('logout token', token)
-    cookieDommains.forEach(item=>{
+    // cookieDommains.forEach(item=>{
+    //   setCookie(
+    //     item.title,
+    //     "null",
+    //     {secure: true, sameSite: "None", domain: item.domain})
+    //   })
       setCookie(
-        item.title,
+        "token",
         "null",
-        {secure: true, sameSite: "None", domain: item.domain})
-      })
+        {secure: true, sameSite: "None"})
       setCookie(
-        "arabhardware_session",
-        "null",
+        "jwt_token",
+        "x",
         {secure: true, sameSite: "None", domain: ".arabhardware.com"})
       setCookie(
-        "arabhardware_session",
-        "null",
+        "jwt_token",
+        "x",
         {secure: true, sameSite: "None", domain: ".arabhardware.net"})
         
     toast.loading('جار تسجيل الخروج')
