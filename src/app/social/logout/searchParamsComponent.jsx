@@ -1,38 +1,23 @@
 
 import { useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
-import { setCookie, deleteCookie } from 'cookies-next'
+import { useCookies } from 'next-client-cookies';
+import { deleteCookie, getCookie } from 'cookies-next';
 import { thisDomain } from '@/config/api'
 
 export default function SearchParamsComponent({}) {
     const searchParams = useSearchParams()
-    const token = searchParams.get('token')
-    const user = searchParams.get('user')
+    const cookies = useCookies();
 
     useEffect(()=>{
+      const token = getCookie('token')
+      const user = getCookie('user')
+      console.log('token, user', token, user)
         if(token){
-          setCookie(
-            'token',
-            'null', 
-            {secure: true, sameSite: "None"}
-          )
-          deleteCookie(
-            'token', 
-            {secure: true, sameSite: "None", domain: ".user-profile-lyart.vercel.app"}
-          )
-
+          deleteCookie('token', {secure: true, sameSite: "None"})
         }
         if(user){
-          setCookie(
-            'user', 
-            'null',
-            {secure: true, sameSite: "None"}
-          )
-          deleteCookie(
-            'token', 
-            {secure: true, sameSite: "None", domain: ".user-profile-lyart.vercel.app"}
-          )
-
+          deleteCookie('user', {secure: true, sameSite: "None"})
         }
     }, [])
   
