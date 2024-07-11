@@ -1,3 +1,4 @@
+"use client"
 import SearchParamsComponent from './searchParamsComponent'
 
 function Page() {
