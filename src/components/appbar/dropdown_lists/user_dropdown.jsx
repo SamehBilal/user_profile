@@ -3,8 +3,7 @@ import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { en, ar } from "@/public/strings_manager"
 import { deleteCookie, getCookie, setCookie } from "cookies-next"
-import { storeLogoutDomain, cookieDommains, storeLoginDomain } from "@/config/api"
-import { cookieDommains, logoutDomains, ApiBase } from "@/config/api"
+import { storeLogoutDomain, cookieDommains, storeLoginDomain, logoutDomains, ApiBase } from "@/config/api"
 import { LoaderCircle } from 'lucide-react'
 import axios from "axios"
 import toast from 'react-hot-toast';
