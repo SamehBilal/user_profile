@@ -14,15 +14,16 @@ import ToasterComponent from "@/components/toaster"
 function UserDropdown({isExpanded=false, setIsExpanded, user }) {
   const dropdownRef = useRef(null)
   const [isLoggingOut, setIsLoggingOut] = useState(false)
-  const token = getCookie('jwt_token')
+  const [token, setToken] = (getCookie('jwt_token')&&getCookie('jwt_token').length>1)? getCookie('jwt_token'): ''
 
   const handleOutsideClick = (e) => {
-    // TODO:REMOVE
-    console.log('token', token)
+    setToken((getCookie('jwt_token')&&getCookie('jwt_token').length>1)? getCookie('jwt_token'): '')
     if (dropdownRef?.current && !dropdownRef?.current?.contains(e.target)) {
       setIsExpanded(false);
     }
   };
+    // TODO:REMOVE
+    console.log('token', token)
 
   useEffect(() => {
     document.addEventListener('mousedown', handleOutsideClick);
