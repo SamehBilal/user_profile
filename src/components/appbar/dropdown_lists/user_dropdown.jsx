@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { en, ar } from "@/public/strings_manager"
 import { deleteCookie, getCookie, setCookie } from "cookies-next"
-import { storeLogoutDomain, thisDomain } from "@/config/api"
+import { storeLogoutDomain, thisDomain, storeLoginDomain } from "@/config/api"
 import { cookieDommains, logoutDomains, ApiBase } from "@/config/api"
 import { LoaderCircle } from 'lucide-react'
 import axios from "axios"
@@ -84,6 +84,10 @@ function UserDropdown({isExpanded=false, setIsExpanded, user }) {
       frameBorder="0" className='hidden' ></iframe>
       </>
       }
+      {token && token.length>5 &&
+      <iframe id={`iframe-cart`}
+      src={`${storeLoginDomain}&token=${token}`} 
+      frameBorder="0" className='hidden' ></iframe>}
       {!user
       ?<Link href={`/login`} 
       className="flex items-center justify-center cursor-pointer hover:bg-zinc-400 rounded-l-lg rounded-br-lg p-4">
