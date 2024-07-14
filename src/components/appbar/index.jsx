@@ -25,7 +25,7 @@ function Appbar() {
   const { theme, setTheme } = useTheme();
   
   React.useEffect(()=>{
-    if(!getCookie("token") || !getCookie("user") || getCookie("user")=="null"|| getCookie("token")=="null"){
+    if(!getCookie("jwt_token") || !getCookie("user") || getCookie("user")=="null"|| getCookie("jwt_token")=="null"){
       // router.push('/login')
     }else{
       setUser(getCookie("user"))

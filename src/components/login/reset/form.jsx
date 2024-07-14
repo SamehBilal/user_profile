@@ -81,7 +81,7 @@ function ResetForm({}) {
               cookieDommains.forEach(item=>{
                 setCookie(
                   item.title, 
-                  item.bearer?`Bearer ${data.data.authorisation.access_token}`:data.data.authorisation.access_token, 
+                  data.data.authorisation.access_token, 
                   {secure: true, sameSite: "None", domain: item.domain})
               })
               setToken(data.data.authorisation.access_token)

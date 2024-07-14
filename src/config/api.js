@@ -8,15 +8,14 @@ export const logoutDomains = ["https://arabhardware.net/auth/arabhardware/callba
 	"https://arabhardware.com/auth/arabhardware/callback/logout"]
 
 export const cookieDommains = [
-	{title: "token", domain: "localhost", bearer: true},
-	{title: "token", domain: "user-profile-lyart.vercel.app", bearer: true},
+	{title: "jwt_token", domain: "localhost", bearer: false},
 	{title: "jwt_token", domain: ".arabhardware.net", bearer: false}, 
 	{title: "jwt_token", domain: ".arabhardware.com", bearer: false}, 
 	{title: "jwt_token", domain: ".stg.ahw.store", bearer: false},
 ]
 
 // export const thisDomain = "localhost"
-export const thisDomain = "user-profile-lyart.vercel.app"
+export const thisDomain = ".arabhardware.com"
 
 let res={
 	"status": "success",

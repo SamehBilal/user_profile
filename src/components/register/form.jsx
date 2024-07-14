@@ -61,7 +61,7 @@ function RegisterForm({toLoginPage, returnUrl}) {
                     cookieDommains.forEach(item=>{
                       setCookie(
                         item.title, 
-                        item.bearer?`Bearer ${data.data.authorisation.access_token}`:data.data.authorisation.access_token, 
+                        data.data.authorisation.access_token, 
                         {secure: true, sameSite: "None", domain: item.domain})
                     })
                     setToken(data.data.authorisation.access_token)
@@ -93,10 +93,9 @@ function RegisterForm({toLoginPage, returnUrl}) {
     }
 
     useEffect(()=>{
-      if(getCookie("token") && getCookie("token").startsWith("Bearer ") &&
-      getCookie("user") && JSON.parse(getCookie("user"))){
+      if(getCookie("jwt_token") && getCookie("user") && JSON.parse(getCookie("user"))){
         console.log('user', JSON.parse(getCookie("user")))
-        console.log('token', getCookie("token"))
+        console.log('jwt_token', getCookie("jwt_token"))
         router.push('/')
       }
     }, [])
