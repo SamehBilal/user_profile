@@ -97,6 +97,7 @@ function LoginForm({toRegisterPage, returnUrl}) {
         if(email == '' || password == ''){
           toast.error('كل المعلومات مطلوبة')
         }else{
+          console.log('start laoding')
           setIsLoading(true)
 
           // const recaptchaData = `secret=${recaptaSecretKey}&response=${gReCaptchaToken}`;
@@ -115,34 +116,49 @@ function LoginForm({toRegisterPage, returnUrl}) {
             //   console.log("res.data?.score:", res.data?.score);
 
         // sending login request
-        await axios.post(`${ApiBase}/login`, 
-          {email, password,},
-        ).then(async data=> {
-            if(data.data.message){
-              console.log('data.data.message', data.data.message)
-              throw new Error(data.data.message)
-            }else{
-              setCookie("user", JSON.stringify(data.data.user), {secure: true, sameSite: "None"})
-              cookieDommains.forEach(item=>{
-                setCookie(
-                  item.title, 
-                  data.data.authorisation.access_token, 
-                  {secure: true, sameSite: "None", domain: item.domain})
-                })
-              setToken(data.data.authorisation.access_token)
-              toast.success('تم تسجيل الدخول بنجاح')
-                console.log('returning to url: ', returnUrl)
-              setTimeout(() => {
-                location.href = returnUrl
-                setIsLoading(false)
-              }, 7000);
-            }
-        })
-        .catch(e=>{
-          toast.error(e?.response?.data?.error||e?.response?.data?.message||e?.message||"حدث خطأ")
+
+        console.log('post data')
+        await axios.post('/api/login', 
+          {email, password} //check if valid
+        ).then(async res=>{
+          console.log(res.data.message)
+          if(res.data?.message) {
+            toast.error(res.data.message)
+            setIsLoading(false)
+          }else{
+            console.log('post second data')
+            await axios.post(`${ApiBase}/login`, 
+              {email, password,},
+            ).then(async data=> {
+                if(data.data.message){
+                  console.log('data.data.message', data.data.message)
+                  throw new Error(data.data.message)
+                }else{
+                  setCookie("user", JSON.stringify(data.data.user), {secure: true, sameSite: "None"})
+                  cookieDommains.forEach(item=>{
+                    setCookie(
+                      item.title, 
+                      data.data.authorisation.access_token, 
+                      {secure: true, sameSite: "None", domain: item.domain})
+                    })
+                  setToken(data.data.authorisation.access_token)
+                  toast.success('تم تسجيل الدخول بنجاح')
+                    console.log('returning to url: ', returnUrl)
+                  setTimeout(() => {
+                    location.href = returnUrl
+                    setIsLoading(false)
+                  }, 7000);
+                }
+            })
+            .catch(e=>{
+              toast.error(e?.response?.data?.error||e?.response?.data?.message||e?.message||"حدث خطأ")
+              setIsLoading(false)
+            })
+          }
+        }).catch(e=>{
+          console.error(e)
           setIsLoading(false)
         })
-            
               // } else {
               //   console.log("fail: res.data?.score:", res.data?.score);
               //   alert('fail recaptcha: you are a robot')
@@ -177,7 +193,6 @@ function LoginForm({toRegisterPage, returnUrl}) {
       src={`${storeLoginDomain}&token=${token}`} 
       frameBorder="0" className='hidden' ></iframe>
     </div>}
-    
 
     <div className="w-full space-y-4">
       <div className="w-full flex justify-center items-center">
