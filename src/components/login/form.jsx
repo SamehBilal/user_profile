@@ -13,7 +13,7 @@ import { cookieDommains } from '@/config/api';
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import GoogleCaptchaWrapper from '@/app/google-captcha-wrapper';
 import toast from 'react-hot-toast';
-import ToasterComponent from '@/components/toaster';
+import ToasterComponent from '@/components/toaster_bottom';
 
 export default function Home({toRegisterPage, returnUrl}) {
   return (

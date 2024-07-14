@@ -12,7 +12,7 @@ import TextLogo from '@/public/images/logo_icon.png'
 import OrBy from '../login/or_by';
 import { Eye, EyeOff } from 'lucide-react';
 import toast from 'react-hot-toast';
-import ToasterComponent from '@/components/toaster';
+import ToasterComponent from '@/components/toaster_bottom';
 
 function RegisterForm({toLoginPage, returnUrl}) {
   const router = useRouter()

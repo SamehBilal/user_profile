@@ -1,9 +1,9 @@
 import React from 'react'
 import { Toaster } from 'react-hot-toast'
 
-function ToasterComponent() {
+function ToasterTopComponent() {
   return (<Toaster
-    position="top-left"
+    position="top-center"
     reverseOrder={false}
     gutter={5}
     containerClassName=""
@@ -15,6 +15,7 @@ function ToasterComponent() {
       style: {
         background: '#fff',
         color: '#363636',
+        border: '1px dotted #000'
       },
       success: {
         duration: 3000,
@@ -41,4 +42,4 @@ function ToasterComponent() {
   />)
 }
 
-export default ToasterComponent
+export default ToasterTopComponent

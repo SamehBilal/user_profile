@@ -11,7 +11,7 @@ import TextLogo from '@/public/images/logo_icon.png'
 import { Eye, EyeOff } from 'lucide-react';
 import SearchParamsComponent from './searchParamsComponent';
 import toast from 'react-hot-toast';
-import ToasterComponent from '@/components/toaster';
+import ToasterComponent from '@/components/toaster_bottom';
 
 function ResetForm({}) {
   const router = useRouter()

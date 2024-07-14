@@ -7,7 +7,7 @@ import { storeLogoutDomain, cookieDommains, storeLoginDomain, logoutDomains, Api
 import { LoaderCircle } from 'lucide-react'
 import axios from "axios"
 import toast from 'react-hot-toast';
-import ToasterComponent from "@/components/toaster"
+import ToasterComponent from "@/components/toaster_top"
 // import { ApiBase } from "@/config/api"
 
 function UserDropdown({isExpanded=false, setIsExpanded, user }) {

@@ -1,8 +1,8 @@
 export const ApiBase = "https://arabhardware.com/api/v1"
 export const callBack = ["https://arabhardware.net/auth/arabhardware/callback", "https://arabhardware.com/auth/arabhardware/callback"]
-// export const storeLoginDomain = "https://stg.ahw.store/index.php?route=account/callback&token="
-export const storeLoginDomain = "https://stg.ahw.store/index.php?route=extension/api/auth/login"
-export const storeLogoutDomain = "https://stg.ahw.store/index.php?route=extension/api/auth/logout"
+// export const storeLoginDomain = "https://ahw.store/index.php?route=account/callback&token="
+export const storeLoginDomain = "https://ahw.store/index.php?route=extension/api/auth/login"
+export const storeLogoutDomain = "https://ahw.store/index.php?route=extension/api/auth/logout"
 
 export const logoutDomains = ["https://arabhardware.net/auth/arabhardware/callback/logout", 
 	"https://arabhardware.com/auth/arabhardware/callback/logout"]
@@ -11,7 +11,7 @@ export const cookieDommains = [
 	{title: "jwt_token", domain: "localhost", bearer: false},
 	{title: "jwt_token", domain: ".arabhardware.net", bearer: false}, 
 	{title: "jwt_token", domain: ".arabhardware.com", bearer: false}, 
-	{title: "jwt_token", domain: ".stg.ahw.store", bearer: false},
+	{title: "jwt_token", domain: ".ahw.store", bearer: false},
 ]
 
 // export const thisDomain = "localhost"
