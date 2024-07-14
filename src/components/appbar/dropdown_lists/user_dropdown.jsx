@@ -22,8 +22,6 @@ function UserDropdown({isExpanded=false, setIsExpanded, user }) {
       setIsExpanded(false);
     }
   };
-    // TODO:REMOVE
-    console.log('token', token)
 
   useEffect(() => {
     document.addEventListener('mousedown', handleOutsideClick);
