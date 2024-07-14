@@ -14,7 +14,7 @@ import { Eye, EyeOff } from 'lucide-react';
 import toast from 'react-hot-toast';
 import ToasterComponent from '@/components/toaster';
 
-function RegisterForm({toLoginPage}) {
+function RegisterForm({toLoginPage, returnUrl}) {
   const router = useRouter()
   const tokenString = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FyYWJoYXJkd2FyZS5jb20vYXBpL3YxL2xvZ2luIiwiaWF0IjoxNzE5ODM3NDIwLCJleHAiOjE3MTk4NDEwMjAsIm5iZiI6MTcxOTgzNzQyMCwianRpIjoiNEI3UjVNVlBSaUZTN0NJZyIsInN1YiI6IjI4NzQ2IiwicHJ2IjoiOTEwZGQ4YWQwYjRmNDQ4MjBmZWVjNDQ4MjFmM2VhZmUwNGYzM2UwNSJ9.duQcIJZ929slGAxhhSYQmoYWL1ivC3S9YTGUEbHv_Rg"
     const [form, setForm] = useState({email:'', password:'', firstname: '', lastname: '', agreeToTerms: false})
@@ -67,7 +67,7 @@ function RegisterForm({toLoginPage}) {
                     setToken(data.data.authorisation.access_token)
                     toast.success('تم تسجيل الدخول بنجاح')
                     setTimeout(() => {
-                      location.reload()
+                      location.href = returnUrl
                       setIsLoading(false)
                     }, 7000);
                 }

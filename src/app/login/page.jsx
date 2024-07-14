@@ -4,6 +4,7 @@ import { backgrounds } from './backgrounds'
 import LoginPage from '@/components/login'
 import RegisterPage from '@/components/register'
 import {useState, useEffect, useRef} from 'react'
+import SearchParamsComponent from './searchParamsComponent'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { EffectFlip } from 'swiper/modules';
@@ -17,6 +18,7 @@ import Appbar from '@/components/appbar'
 function Page() {
   const sliderRef = useRef() 
   const [activeSlide, setActiveSlide] = useState(0)
+  const [returnUrl, setReturnUrl] = useState('https://arabhardware.net')
 
   const toLoginPage = () => {
     if (!sliderRef.current) return;
@@ -30,6 +32,7 @@ function Page() {
   return (
     <div className='w-screen min-h-screen overflow-hidden flex justify-center items-center'>
       {/* <Appbar /> */}
+      <SearchParamsComponent setReturnUrl={setReturnUrl} />
       <Image src={backgrounds[activeSlide].img} alt={backgrounds[activeSlide].title}
       className='w-screen lg:h-full h-[250%] blur-lg object-cover absolute -z-10 brightness-150' />
 
@@ -45,11 +48,13 @@ function Page() {
         className='w-4/5 max-w-grid !flex items-center justify-center'>
           <SwiperSlide 
             className={`swiper-no-swiping !flex items-center justify-center flex-col gap-[-15px] !w-full !h-auto rounded-lg`}>
-              <LoginPage toRegisterPage={toRegisterPage} setActiveSlide={setActiveSlide} activeInfo={backgrounds[activeSlide]} backgrounds={backgrounds} />
+              <LoginPage toRegisterPage={toRegisterPage} setActiveSlide={setActiveSlide} activeInfo={backgrounds[activeSlide]} 
+              backgrounds={backgrounds} returnUrl={returnUrl} />
           </SwiperSlide>
           <SwiperSlide 
             className={`swiper-no-swiping !flex items-center justify-center flex-col gap-[-15px] !w-full !h-auto rounded-lg`}>
-              <RegisterPage toLoginPage={toLoginPage} setActiveSlide={setActiveSlide} activeInfo={backgrounds[activeSlide]} backgrounds={backgrounds} />
+              <RegisterPage toLoginPage={toLoginPage} setActiveSlide={setActiveSlide} activeInfo={backgrounds[activeSlide]} 
+              backgrounds={backgrounds} returnUrl={returnUrl} />
           </SwiperSlide>
       </Swiper>
     </div>

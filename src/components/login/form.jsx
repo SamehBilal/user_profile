@@ -15,15 +15,15 @@ import GoogleCaptchaWrapper from '@/app/google-captcha-wrapper';
 import toast from 'react-hot-toast';
 import ToasterComponent from '@/components/toaster';
 
-export default function Home({toRegisterPage}) {
+export default function Home({toRegisterPage, returnUrl}) {
   return (
     <GoogleCaptchaWrapper>
-      <LoginForm toRegisterPage={toRegisterPage} />
+      <LoginForm toRegisterPage={toRegisterPage} returnUrl={returnUrl} />
     </GoogleCaptchaWrapper>
   );
 }
 
-function LoginForm({toRegisterPage}) {
+function LoginForm({toRegisterPage, returnUrl}) {
   const router = useRouter()
   const tokenString = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FyYWJoYXJkd2FyZS5jb20vYXBpL3YxL2xvZ2luIiwiaWF0IjoxNzE5ODM3NDIwLCJleHAiOjE3MTk4NDEwMjAsIm5iZiI6MTcxOTgzNzQyMCwianRpIjoiNEI3UjVNVlBSaUZTN0NJZyIsInN1YiI6IjI4NzQ2IiwicHJ2IjoiOTEwZGQ4YWQwYjRmNDQ4MjBmZWVjNDQ4MjFmM2VhZmUwNGYzM2UwNSJ9.duQcIJZ929slGAxhhSYQmoYWL1ivC3S9YTGUEbHv_Rg"
     const [form, setForm] = useState({login_email:'', login_password:''})
@@ -131,8 +131,9 @@ function LoginForm({toRegisterPage}) {
                 })
               setToken(data.data.authorisation.access_token)
               toast.success('تم تسجيل الدخول بنجاح')
+                console.log('returning to url: ', returnUrl)
               setTimeout(() => {
-                location.reload()
+                location.href = returnUrl
                 setIsLoading(false)
               }, 7000);
             }

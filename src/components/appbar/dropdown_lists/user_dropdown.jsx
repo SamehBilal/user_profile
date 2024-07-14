@@ -44,13 +44,29 @@ function UserDropdown({isExpanded=false, setIsExpanded, user }) {
       deleteCookie(
         "jwt_token",
         {secure: true, sameSite: "None", domain: ".arabhardware.net"})
+
+      await axios.post(`${ApiBase}/logout`,
+        {}, {
+          headers: { "Authorization": `Bearer ${token}`, "Accept": "application/json" }
+        }).then(res=>{
+          console.log('res', res?.data?.message)
+          toast.success('logout successfull')
+          toast.loading('جار تسجيل الخروج')
+          setTimeout(() => {
+            setIsLoggingOut(false)
+            setIsExpanded(prev=>!prev)
+            location.reload()
+          }, 7000);
+        }).catch(e=>{
+          console.log('e', e)
+          toast.error(e.message)
+          setTimeout(() => {
+            setIsLoggingOut(false)
+            setIsExpanded(prev=>!prev)
+            // location.reload()
+          }, 7000);
+        })
         
-    toast.loading('جار تسجيل الخروج')
-      setTimeout(() => {
-        setIsLoggingOut(false)
-        setIsExpanded(prev=>!prev)
-        location.reload()
-      }, 7000);
   }
   // any comment
   return (
