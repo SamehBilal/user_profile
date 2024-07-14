@@ -14,7 +14,7 @@ import ToasterComponent from "@/components/toaster"
 function UserDropdown({isExpanded=false, setIsExpanded, user }) {
   const dropdownRef = useRef(null)
   const [isLoggingOut, setIsLoggingOut] = useState(false)
-  const [token, setToken] = getCookie('jwt_token')?? ''
+  const [token, setToken] = useState('')
 
   const handleOutsideClick = (e) => {
     setToken(getCookie('jwt_token')?? '')
