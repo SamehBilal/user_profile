@@ -8,12 +8,6 @@ function Page() {
 
     useEffect(()=>{
     parent.postMessage({ user, token }, '*');
-      // window.addEventListener('message', (event) => {
-      //   if (event.origin === 'http://localhost:3000') {
-      //     console.log(event.data)
-      //   }
-      // });
-  
       return () => {}
     }, [])
 

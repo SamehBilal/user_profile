@@ -13,7 +13,7 @@ export default function SearchParamsComponent({setReturnUrl}) {
             (!returnUrl?.includes('arabhardware.com') && !returnUrl?.includes('arabhardware.net') && !returnUrl?.includes('ahw.store'))) {
         returnUrl = "https://arabhardware.net"}
     
-        console.log('returnUrl', returnUrl)
+        // console.log('returnUrl', returnUrl)
 
         setReturnUrl(returnUrl)
     }, [])
