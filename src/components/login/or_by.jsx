@@ -24,7 +24,7 @@ function OrBy({text, DontHaveAnAccount, isForgetPswFormShown}) {
       <div className="flex w-2/4 justify-between items-center simple_icons mx-auto">
         {mediaIcons.map((_, i)=>{ 
           return _.href
-          ?<a key={i} href={_.href} target="_blank" rel="noopener noreferrer"
+          ?<a key={i} href={_.href} rel="noopener noreferrer"
           className='w-8 h-8 bg-lightGray rounded-lg p-2 text-zinc-700 cursor-pointer hover:bg-zinc-700 hover:text-white transition-all duration-500 hover:scale-110'>
             {parse(_.icon.svg)}
           </a>
