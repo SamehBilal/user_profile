@@ -91,7 +91,7 @@ function UserDropdown({isExpanded=false, setIsExpanded, user }) {
       <iframe id={`iframe-cart`}
       src={`${storeLoginDomain}&token=${token}`} 
       frameBorder="0" className='hidden' ></iframe>}
-      {!user
+      {!token || token.length<5
       ?<Link href={`/login`} 
       className="flex items-center justify-center cursor-pointer hover:bg-zinc-400 rounded-l-lg rounded-br-lg p-4">
         {ar.navbar.login}
