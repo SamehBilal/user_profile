@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { en, ar } from "@/public/strings_manager"
 import { deleteCookie, getCookie, setCookie } from "cookies-next"
-import { storeLogoutDomain, thisDomain, storeLoginDomain } from "@/config/api"
+import { storeLogoutDomain, cookieDommains, storeLoginDomain } from "@/config/api"
 import { cookieDommains, logoutDomains, ApiBase } from "@/config/api"
 import { LoaderCircle } from 'lucide-react'
 import axios from "axios"
@@ -25,6 +25,14 @@ function UserDropdown({isExpanded=false, setIsExpanded, user }) {
 
   useEffect(() => {
     document.addEventListener('mousedown', handleOutsideClick);
+    if(token && token.length>5){
+      cookieDommains.forEach(item=>{
+        setCookie(
+          item.title, 
+          data.data.authorisation.access_token, 
+          {secure: true, sameSite: "None", domain: item.domain})
+        })
+    }
     return () => {
       document.removeEventListener('mousedown', handleOutsideClick);
     };
