@@ -4,7 +4,7 @@ import { z } from 'zod';
 
 const schema = z.object({
   email: z.string().email(),
-  password: z.string().min(8).regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&$.#])[A-Za-z\d@$!%*?&$.#]+$/),
+  password: z.string().min(8).regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&$.#+^_=()])[A-Za-z\d@$!%*?&$.#+^_=()]+$/),
 });
 
 export async function POST(req, res) {
