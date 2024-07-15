@@ -19,21 +19,20 @@ function Page() {
   const sliderRef = useRef() 
   const [activeSlide, setActiveSlide] = useState(0)
   const [returnUrl, setReturnUrl] = useState('https://arabhardware.net')
-  const [initialSlide, setInitialSlide] = useState(0)
 
   const toLoginPage = () => {
     if (!sliderRef.current) return;
     sliderRef.current.swiper.slideTo(0, 2000);
   }
-  const toRegisterPage = () => {
+  const toRegisterPage = ({speed=2000}) => {
     if (!sliderRef.current) return;
-    sliderRef.current.swiper.slideTo(1, 2000);
+    sliderRef.current.swiper.slideTo(1, speed);
   }
 
   return (
     <div className='w-screen min-h-screen overflow-hidden flex justify-center items-center'>
       {/* <Appbar /> */}
-      <SearchParamsComponent setReturnUrl={setReturnUrl} setInitialSlide={setInitialSlide} />
+      <SearchParamsComponent setReturnUrl={setReturnUrl} toRegisterPage={toRegisterPage} />
       <Image src={backgrounds[activeSlide].img} alt={backgrounds[activeSlide].title}
       className='w-screen lg:h-full h-[250%] blur-lg object-cover absolute -z-10 brightness-150' />
 
