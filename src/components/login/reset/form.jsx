@@ -142,14 +142,14 @@ function ResetForm({}) {
       <p className="text-zinc-500 cursor-pointer self-start mb-1">
       {ar.login.lost}
       </p>
-      <FloatingInput id="password1" type="password" value={form.password1} onChange={handleChange}
+      <FloatingInput id="password1" type="password" value={form.password1} onChange={handleChange} autoComplete='new-password'
       placeholder={ar.login.password1} required={true} label={ar.login.password1} 
       isSuccess={formSuccess.password1} isError={formError.password1}
       Icon={isPasswordShown? Eye: EyeOff} setIsPasswordShown={setIsPasswordShown} isPasswordShown={isPasswordShown} />
       <p className={`text-primary text-sm w-full mb-2 ${formError.password1?'':'hidden'}`}>
         {ar.login.password1Error}
       </p>
-      <FloatingInput id="password2" type="password" value={form.password2} onChange={handleChange}
+      <FloatingInput id="password2" type="password" value={form.password2} onChange={handleChange} autoComplete='new-password'
       placeholder={ar.login.password2} required={true} label={ar.login.password2} 
       isSuccess={formSuccess.password2} isError={formError.password2}
       Icon={isPasswordShown? Eye: EyeOff} setIsPasswordShown={setIsPasswordShown} isPasswordShown={isPasswordShown} />
