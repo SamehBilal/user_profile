@@ -12,7 +12,7 @@ function Page() {
     }, [])
 
     useEffect(()=>{
-        console.log('getCookie("jwt_token")', getCookie("jwt_token"))
+        // console.log('getCookie("jwt_token")', getCookie("jwt_token"))
     }, [])
   return (
     <div className='w-full h-full space-y-4 p-grid max-w-grid'>

@@ -48,6 +48,9 @@ function UserDropdown({isExpanded=false, setIsExpanded, user }) {
         {secure: true, sameSite: "None"})
       deleteCookie(
         "jwt_token",
+        {secure: true, sameSite: "None", domain: "arabhardware.com"})
+      deleteCookie(
+        "jwt_token",
         {secure: true, sameSite: "None", domain: ".arabhardware.com"})
       deleteCookie(
         "jwt_token",

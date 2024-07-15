@@ -19,6 +19,7 @@ function Page() {
   const sliderRef = useRef() 
   const [activeSlide, setActiveSlide] = useState(0)
   const [returnUrl, setReturnUrl] = useState('https://arabhardware.net')
+  console.log('returnUrl page:', returnUrl)
 
   const toLoginPage = () => {
     if (!sliderRef.current) return;

@@ -117,7 +117,6 @@ function LoginForm({toRegisterPage, returnUrl}) {
 
         // sending login request
 
-        console.log('post data')
         await axios.post('/api/login', 
           {email, password} //check if valid
         ).then(async res=>{
@@ -126,7 +125,6 @@ function LoginForm({toRegisterPage, returnUrl}) {
             toast.error(res.data.message)
             setIsLoading(false)
           }else{
-            console.log('post second data')
             await axios.post(`${ApiBase}/login`, 
               {email, password,},
             ).then(async data=> {
