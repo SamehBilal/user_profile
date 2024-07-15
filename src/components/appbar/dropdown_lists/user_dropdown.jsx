@@ -17,12 +17,13 @@ function UserDropdown({isExpanded=false, setIsExpanded, user }) {
 
   const handleOutsideClick = (e) => {
     setToken(getCookie('jwt_token')?? '')
-    if (dropdownRef?.current && !dropdownRef?.current?.contains(e.target)) {
+    if (dropdownRef?.current && !dropdownRef?.current?.contains(e?.target)) {
       setIsExpanded(false);
     }
   };
 
   useEffect(() => {
+    handleOutsideClick()
     document.addEventListener('mousedown', handleOutsideClick);
     if(token && token.length>5){
       cookieDommains.forEach(item=>{
