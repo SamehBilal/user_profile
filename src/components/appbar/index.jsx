@@ -25,10 +25,10 @@ function Appbar() {
   const { theme, setTheme } = useTheme();
   
   React.useEffect(()=>{
-    if(!getCookie("jwt_token") || !getCookie("user") || getCookie("user")=="null"|| getCookie("jwt_token")=="null"){
+    if(!getCookie("jwt_token") || getCookie("jwt_token")=="null"){
       // router.push('/login')
     }else{
-      setUser(getCookie("user"))
+      // setUser(getCookie("user"))
     }
   }, [])
 
@@ -49,7 +49,7 @@ function Appbar() {
 
           <MoreDropdown isExpanded={moreDropdownPopoverShow} setIsExpanded={setMoreDropdownPopoverShow} />
           <GridDropdown isExpanded={gridDropdownPopoverShow} setIsExpanded={setGridDropdownPopoverShow} />
-          <UserDropdown isExpanded={userDropdownPopoverShow} setIsExpanded={setUserDropdownPopoverShow} user={user} />
+          <UserDropdown isExpanded={userDropdownPopoverShow} setIsExpanded={setUserDropdownPopoverShow} />
         </div>
       </div>
 </nav>

@@ -57,7 +57,6 @@ function RegisterForm({toLoginPage, returnUrl}) {
                   console.log('data.data.message', data.data.message)
                   throw new Error(data.data.message)
                 }else{
-                    setCookie("user", JSON.stringify(data.data.user), {secure: true, sameSite: "None"})
                     cookieDommains.forEach(item=>{
                       setCookie(
                         item.title, 
@@ -129,7 +128,7 @@ function RegisterForm({toLoginPage, returnUrl}) {
     <div className="flex flex-col gap-4 items-center justify-center">
       <div className="flex items-center justify-between w-full gap-8">
         <FloatingInput id="firstname" type="text" value={form.firstname} onChange={handleChange} autoComplete='off webauthn'
-        placeholder={ar.register.firstName} required={true} label={ar.register.firstName} />
+        placeholder={ar.register.firstName} required={true} label={ar.register.firstName} autoFocus={true} />
         <FloatingInput id="lastname" type="text" value={form.lastname} onChange={handleChange} autoComplete='off webauthn'
         placeholder={ar.register.lastName} required={true} label={ar.register.lastName} />
       </div>

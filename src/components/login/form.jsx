@@ -132,7 +132,6 @@ function LoginForm({toRegisterPage, returnUrl}) {
                   console.log('data.data.message', data.data.message)
                   throw new Error(data.data.message)
                 }else{
-                  setCookie("user", JSON.stringify(data.data.user), {secure: true, sameSite: "None"})
                   cookieDommains.forEach(item=>{
                     setCookie(
                       item.title, 

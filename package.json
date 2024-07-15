@@ -23,6 +23,7 @@
     "react-google-recaptcha-v3": "^1.10.1",
     "react-hot-toast": "^2.4.1",
     "react-select": "^5.8.0",
+    "sharp": "^0.33.4",
     "simple-icons": "^12.4.0",
     "swiper": "^11.1.4",
     "zod": "^3.23.8"

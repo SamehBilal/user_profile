@@ -77,7 +77,6 @@ function ResetForm({}) {
                 finalForm,
           ).then(async data=> {
             if(data.data.status){
-              setCookie("user", JSON.stringify(data.data.user), {secure: true, sameSite: "None"})
               cookieDommains.forEach(item=>{
                 setCookie(
                   item.title, 
@@ -143,7 +142,7 @@ function ResetForm({}) {
       {ar.login.lost}
       </p>
       <FloatingInput id="password1" type="password" value={form.password1} onChange={handleChange} autoComplete='new-password'
-      placeholder={ar.login.password1} required={true} label={ar.login.password1} 
+      placeholder={ar.login.password1} required={true} label={ar.login.password1} autoFocus={true}
       isSuccess={formSuccess.password1} isError={formError.password1}
       Icon={isPasswordShown? Eye: EyeOff} setIsPasswordShown={setIsPasswordShown} isPasswordShown={isPasswordShown} />
       <p className={`text-primary text-sm w-full mb-2 ${formError.password1?'':'hidden'}`}>

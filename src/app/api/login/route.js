@@ -1,10 +1,11 @@
 
 import { NextResponse } from "next/server";
 import { z } from 'zod';
-
+// /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/
+// /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&$.#+^_=()])[A-Za-z\d@$!%*?&$.#+^_=()]+$/
 const schema = z.object({
   email: z.string().email(),
-  password: z.string().min(8).regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&$.#+^_=()])[A-Za-z\d@$!%*?&$.#+^_=()]+$/),
+  password: z.string().min(8).regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/),
 });
 
 export async function POST(req, res) {

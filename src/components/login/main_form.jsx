@@ -11,7 +11,7 @@ function MainForm({
     ${isForgetPswFormShown? 'hidden ': 'flex animate-fade'}` }
     onSubmit={(e)=>submitForm}>
 
-      <FloatingInput id="login_email" type="email" value={form.login_email} onChange={handleChange}
+      <FloatingInput id="login_email" type="email" value={form.login_email} onChange={handleChange} autoFocus={true}
       placeholder={ar.login.email} required={true} label={ar.login.email} />
       <FloatingInput id="login_password" type="password" value={form.login_password} onChange={handleChange}
       placeholder={ar.login.password} required={true} label={ar.login.password} 

@@ -2,7 +2,7 @@ import {useState} from 'react'
 
 function FloatingInput({
     id= "", className = "", type = "text", label = "", placeholder = "", required = false, value = "", 
-    isSuccess=false, isError=false, autoComplete='off',
+    isSuccess=false, isError=false, autoComplete = 'off', autoFocus = false,
     disabled = false, onChange = ()=>{}, multiple = false, Icon=null, setIsPasswordShown, isPasswordShown
 }) {
     const isPassword = type === "password"
@@ -16,6 +16,7 @@ function FloatingInput({
           value={value}
           disabled={disabled}
           onChange={onChange}
+          autoFocus={autoFocus}
           autoComplete={autoComplete}
           className={`block pt-5 pb-1 px-4 w-full text-sm text-zinc-900 bg-transparent appearance-none focus:outline-none focus:ring-0 peer placeholder:text-transparent 
             ${isSuccess?'ring ring-green-700': ''}

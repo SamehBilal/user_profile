@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import { z } from 'zod';
 
 const schema = z.object({
-  password1: z.string().min(8).regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&$#])[A-Za-z\d@$!%*?&$#]+$/),
+  password1: z.string().min(8).regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/),
 });
 
 // To handle a GET request to /api

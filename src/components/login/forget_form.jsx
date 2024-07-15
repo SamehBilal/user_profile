@@ -13,7 +13,7 @@ function ForgetForm({
         {ar.login.lost}
         </p>
 
-      <FloatingInput id="forget_email" type="email" value={form.forget_email} onChange={handleChange}
+      <FloatingInput id="forget_email" type="email" value={form.forget_email} onChange={handleChange} autoFocus={true}
       placeholder={ar.login.email} required={true} label={ar.login.email} />
 
       <p className="text-primary cursor-pointer self-start mb-1" 
