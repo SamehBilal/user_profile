@@ -27,7 +27,8 @@ function Page() {
         const timer = setTimeout(() => {
           console.log('local', localStorage.getItem("returnUrl"))
           console.log('returnUrl', returnUrl)
-            location.href = localStorage.getItem("returnUrl") ?? returnUrl
+          // ${sessionId ?`?session_id=${sessionId}`:''}
+            location.href = `${returnUrl ?? localStorage.getItem("returnUrl")}${sessionId ?`?session_id=${sessionId}`:''}`
         }, 12000);
         return ()=>{
             clearTimeout(timer)

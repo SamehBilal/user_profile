@@ -15,8 +15,8 @@ export default function SearchParamsComponent({setReturnUrl,setToken, setSession
       async function getSessionId () {
           await axios.get(`${storeSession}`, {})
           .then(res=>{
-            console.log('res.data.data', res.data.data, res.data.data?.session_id)
             const sessionId = res?.data?.data?.session_id ?? null
+            console.log('res.data.data', sessionId)
             setSessionId(sessionId)
 
             // if it wans't there, or it wasn't apart of the .com, .net or .store then set it to .net
@@ -24,8 +24,9 @@ export default function SearchParamsComponent({setReturnUrl,setToken, setSession
               !(returnUrl?.includes('arabhardware.com') || returnUrl?.includes('arabhardware.net') || returnUrl?.includes('ahw.store'))) {
               returnUrl = "https://arabhardware.net"
             }
-            returnUrl = `${returnUrl}${sessionId ?`?session_id=${sessionId}`:''}`
+            returnUrl = `${returnUrl}`
             localStorage.setItem("returnUrl", returnUrl)
+            localStorage.setItem("sessionId", sessionId)
 
             setReturnUrl(returnUrl)
           }).catch(e=>console.log('e', e))
