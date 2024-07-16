@@ -3,9 +3,12 @@ import {useState, useEffect, useRef} from 'react'
 import { callBack, storeLoginDomain, cookieDommains } from '@/config/api'
 import { setCookie } from 'cookies-next'
 import SearchParamsComponent from './searchParamsComponent'
+import Image from 'next/image'
+import LoadingImg from '@/public/images/loading_login.jpeg'
 
 function Page() {
     const [isMounted, setIsMounted] = useState(false)
+    const [sessionId, setSessionId] = useState(null)
     const [returnUrl, setReturnUrl] = useState('https://arabhardware.net')
     const [token, setToken] = useState(null)
 
@@ -21,15 +24,17 @@ function Page() {
             )
         }
         const timer = setTimeout(() => {
-            location.href = localStorage.getItem("returnUrl") ?? returnUrl
+          console.log('local', localStorage.getItem("returnUrl"))
+          console.log('returnUrl', returnUrl)
+            // location.href = localStorage.getItem("returnUrl") ?? returnUrl
         }, 7000);
         return ()=>{
             clearTimeout(timer)
         }
     }, [token])
   return (
-    <>
-      <SearchParamsComponent setReturnUrl={setReturnUrl} setToken={setToken} />
+    <div className='w-screen h-screen'>
+      <SearchParamsComponent setReturnUrl={setReturnUrl} setToken={setToken} setSessionId={setSessionId} />
         {token && 
         <div className='flex items-center justify-between p-grid max-w-grid'>
         {
@@ -39,11 +44,13 @@ function Page() {
         frameBorder="0" className='hidden' ></iframe>
         })
         }
-        <iframe id={`iframe-cart`}
-        src={`${storeLoginDomain}&token=${token}`} 
-        frameBorder="0" className='hidden' ></iframe>
+        {sessionId && <iframe id={`iframe-cart`}
+        src={`${storeLoginDomain}&token=${token}&session_id=${sessionId}`} 
+        frameBorder="0" className='hidden' ></iframe>}
         </div>}
-    </>
+
+        <Image src={LoadingImg} alt='Loading Arabhardware pixilized smile' className='size-full object-cover'  />
+    </div>
   )
 }
 

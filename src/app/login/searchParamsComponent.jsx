@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import axios from "axios";
 import { storeSession } from "@/config/api";
 
-export default function SearchParamsComponent({setReturnUrl, toRegisterPage}) {
+export default function SearchParamsComponent({setReturnUrl, toRegisterPage, setSessionId}) {
   const [isMounted, setIsMounted] = useState(false)
     const searchParams = useSearchParams()
     let returnUrl = searchParams.get('url_return')??''
@@ -19,6 +19,7 @@ export default function SearchParamsComponent({setReturnUrl, toRegisterPage}) {
         .then(res=>{
           console.log('res.data.data', res.data.data, res.data.data?.session_id)
           const sessionId = res?.data?.data?.session_id ?? null
+          setSessionId(sessionId)
           
 
           // if it wans't there, or it wasn't apart of the .com, .net or .store then set it to .net

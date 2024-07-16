@@ -19,6 +19,7 @@ function Page() {
   const sliderRef = useRef() 
   const [activeSlide, setActiveSlide] = useState(0)
   const [returnUrl, setReturnUrl] = useState('https://arabhardware.net')
+  const [sessionId, setSessionId] = useState(null)
 
   const toLoginPage = () => {
     if (!sliderRef.current) return;
@@ -32,7 +33,7 @@ function Page() {
   return (
     <div className='w-screen min-h-screen overflow-hidden flex justify-center items-center'>
       {/* <Appbar /> */}
-      <SearchParamsComponent setReturnUrl={setReturnUrl} toRegisterPage={toRegisterPage} />
+      <SearchParamsComponent setReturnUrl={setReturnUrl} toRegisterPage={toRegisterPage} setSessionId={setSessionId} />
       <Image src={backgrounds[activeSlide].img} alt={backgrounds[activeSlide].title}
       className='w-screen lg:h-full h-[250%] blur-lg object-cover absolute -z-10 brightness-150' />
 
@@ -49,12 +50,12 @@ function Page() {
           <SwiperSlide 
             className={`swiper-no-swiping !flex items-center justify-center flex-col gap-[-15px] !w-full !h-auto rounded-lg`}>
               <LoginPage toRegisterPage={toRegisterPage} setActiveSlide={setActiveSlide} activeInfo={backgrounds[activeSlide]} 
-              backgrounds={backgrounds} returnUrl={returnUrl} />
+              backgrounds={backgrounds} returnUrl={returnUrl} sessionId={sessionId} />
           </SwiperSlide>
           <SwiperSlide 
             className={`swiper-no-swiping !flex items-center justify-center flex-col gap-[-15px] !w-full !h-auto rounded-lg`}>
               <RegisterPage toLoginPage={toLoginPage} setActiveSlide={setActiveSlide} activeInfo={backgrounds[activeSlide]} 
-              backgrounds={backgrounds} returnUrl={returnUrl} />
+              backgrounds={backgrounds} returnUrl={returnUrl} sessionId={sessionId} />
           </SwiperSlide>
       </Swiper>
     </div>
