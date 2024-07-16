@@ -3,6 +3,7 @@ export const callBack = ["https://arabhardware.net/auth/arabhardware/callback", 
 // export const storeLoginDomain = "https://ahw.store/index.php?route=account/callback&token="
 export const storeLoginDomain = "https://ahw.store/index.php?route=extension/api/auth/login"
 export const storeLogoutDomain = "https://ahw.store/index.php?route=extension/api/auth/logout"
+export const storeSession = "https://ahw.store/?route=extension/api/session"
 
 export const logoutDomains = ["https://arabhardware.net/auth/arabhardware/callback/logout", 
 	"https://arabhardware.com/auth/arabhardware/callback/logout"]
@@ -16,6 +17,7 @@ export const cookieDommains = [
 
 // export const thisDomain = "localhost"
 export const thisDomain = ".arabhardware.com"
+
 
 let res={
 	"status": "success",
