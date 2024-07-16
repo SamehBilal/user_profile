@@ -28,7 +28,7 @@ function Page() {
           console.log('local', localStorage.getItem("returnUrl"))
           console.log('returnUrl', returnUrl)
             location.href = localStorage.getItem("returnUrl") ?? returnUrl
-        }, 7000);
+        }, 12000);
         return ()=>{
             clearTimeout(timer)
         }
