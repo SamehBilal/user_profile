@@ -30,6 +30,7 @@ function Page() {
             )
         }
         const timer = setTimeout(() => {
+          console.log('to', `${returnUrl}${(sessionId && returnUrl.includes('ahw.store')) ?`&session_id=${sessionId}`:''}`)
             // location.href = `${returnUrl}${(sessionId && returnUrl.includes('ahw.store')) ?`&session_id=${sessionId}`:''}`
         }, 12000);
         return ()=>{
