@@ -4,7 +4,7 @@ import { callBack, storeLoginDomain, cookieDommains } from '@/config/api'
 import { setCookie } from 'cookies-next'
 import SearchParamsComponent from './searchParamsComponent'
 import Image from 'next/image'
-import LoadingImg from '@/public/images/loading_login.jpeg'
+import LoadingImg from '@/public/images/loading_login.jpg'
 
 function Page() {
     const [isMounted, setIsMounted] = useState(false)
@@ -12,6 +12,7 @@ function Page() {
     const [returnUrl, setReturnUrl] = useState('https://arabhardware.net')
     const [token, setToken] = useState(null)
 
+    // console.log('returnUrl', returnUrl)
     useEffect(()=>{
       localStorage.removeItem(returnUrl)
         setIsMounted(true)
@@ -25,11 +26,10 @@ function Page() {
             )
         }
         const timer = setTimeout(() => {
-          console.log('local', localStorage.getItem("returnUrl"))
-          console.log('returnUrl', returnUrl)
+          // console.log('returnUrl', returnUrl)
           // ${sessionId ?`?session_id=${sessionId}`:''}
-            location.href = `${returnUrl ?? localStorage.getItem("returnUrl")}${sessionId ?`?session_id=${sessionId}`:''}`
-        }, 12000);
+            location.href = `${returnUrl}${(sessionId && returnUrl.includes('ahw.store')) ?`&session_id=${sessionId}`:''}`
+        }, 3000);
         return ()=>{
             clearTimeout(timer)
         }
@@ -51,7 +51,7 @@ function Page() {
         frameBorder="0" className='hidden' ></iframe>}
       </div>}
 
-        <Image src={LoadingImg} alt='Loading Arabhardware pixilized smile' className='size-full object-cover'  />
+        <Image src={LoadingImg} alt='Loading Arabhardware pixilized smile' className='size-full object-cover object-top'  />
     </div>
   )
 }
