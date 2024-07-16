@@ -37,7 +37,7 @@ function Page() {
         // console.log('returnUrl', returnUrl)
         // console.log('to', `${returnUrl}${(sessionId && returnUrl.includes('ahw.store')) ?`&session_id=${sessionId}`:''}`)
           location.href = `${returnUrl}${(sessionId && returnUrl.includes('ahw.store')) ?`&session_id=${sessionId}`:''}`
-      }, 3000);
+      }, 12000);
       return ()=>{
           clearTimeout(timer)
       }
