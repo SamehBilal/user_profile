@@ -8,7 +8,6 @@ export default function SearchParamsComponent({setReturnUrl, toRegisterPage}) {
   const [isMounted, setIsMounted] = useState(false)
     const searchParams = useSearchParams()
     let returnUrl = searchParams.get('url_return')??''
-    let sessionId = searchParams.get('session_id')
     let user = searchParams.get('user')
     //  example: https://arabhardware.com/home?session_id=hello
     useEffect(()=>{
