@@ -45,7 +45,7 @@ function Page() {
         frameBorder="0" className='' ></iframe>
         })
         }
-        {sessionId && <iframe id={`iframe-cart`}
+        {<iframe id={`iframe-cart`}
         src={`${storeLoginDomain}&token=${token}&sessionId=${sessionId}`} 
         frameBorder="0" className='' ></iframe>}
       </div>}
