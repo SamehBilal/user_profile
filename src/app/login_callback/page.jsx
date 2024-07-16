@@ -21,7 +21,7 @@ function Page() {
             )
         }
         const timer = setTimeout(() => {
-            // location.href = localStorage.getItem("returnUrl") ?? returnUrl
+            location.href = localStorage.getItem("returnUrl") ?? returnUrl
         }, 7000);
         return ()=>{
             clearTimeout(timer)
