@@ -16,7 +16,7 @@ function Page() {
     const [returnUrl, setReturnUrl] = useState('https://arabhardware.net')
     const [token, setToken] = useState(null)
 
-    // console.log('returnUrl', returnUrl)
+    console.log('returnUrl', returnUrl)
     useEffect(()=>{
       localStorage.removeItem(returnUrl)
         setIsMounted(true)
@@ -29,16 +29,21 @@ function Page() {
               )}
             )
         }
-        const timer = setTimeout(() => {
-          console.log('to', `${returnUrl}${(sessionId && returnUrl.includes('ahw.store')) ?`&session_id=${sessionId}`:''}`)
-            // location.href = `${returnUrl}${(sessionId && returnUrl.includes('ahw.store')) ?`&session_id=${sessionId}`:''}`
-        }, 12000);
-        return ()=>{
-            clearTimeout(timer)
-        }
     }, [token])
 
-    if(sessionId){console.log('sessionId', sessionId)}
+    useEffect(()=>{
+      // console.log('changed', returnUrl)
+      const timer = setTimeout(() => {
+        // console.log('returnUrl', returnUrl)
+        // console.log('to', `${returnUrl}${(sessionId && returnUrl.includes('ahw.store')) ?`&session_id=${sessionId}`:''}`)
+          location.href = `${returnUrl}${(sessionId && returnUrl.includes('ahw.store')) ?`&session_id=${sessionId}`:''}`
+      }, 3000);
+      return ()=>{
+          clearTimeout(timer)
+      }
+    }, [returnUrl])
+
+    // if(sessionId){console.log('sessionId', sessionId)}
   return (
     <div className='w-screen h-screen'>
       <SearchParamsComponent setReturnUrl={setReturnUrl} setToken={setToken} setSessionId={setSessionId} />

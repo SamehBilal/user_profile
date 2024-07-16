@@ -16,8 +16,9 @@ export default function SearchParamsComponent({setReturnUrl,setToken, setSession
           await axios.get(`${storeSession}`, {})
           .then(res=>{
             const sessionId = res?.data?.data?.session_id ?? null
-            console.log('res.data.data', sessionId)
+            // console.log('res.data.data', sessionId)
             setSessionId(sessionId)
+            // console.log('returnUrl0', returnUrl)
 
             // if it wans't there, or it wasn't apart of the .com, .net or .store then set it to .net
             if(!returnUrl || 
@@ -25,25 +26,27 @@ export default function SearchParamsComponent({setReturnUrl,setToken, setSession
               returnUrl = "https://arabhardware.net"
             }
             returnUrl = `${returnUrl}`
+            // console.log('returnUrl1', returnUrl)
             localStorage.setItem("returnUrl", returnUrl)
             localStorage.setItem("sessionId", sessionId)
 
             setReturnUrl(returnUrl)
+            // console.log('returnUrl2', returnUrl)
           }).catch(e=>{
             console.log('e', e)
             
             // // if it wans't there, or it wasn't apart of the .com, .net or .store then set it to .net
-            // const sessionId = '5e1c84c809bf4cbc5c841418a3'
-            // setSessionId(sessionId)
             // if(!returnUrl || 
             //   !(returnUrl?.includes('arabhardware.com') || returnUrl?.includes('arabhardware.net') || returnUrl?.includes('ahw.store'))) {
             //   returnUrl = "https://arabhardware.net"
             // }
             // returnUrl = `${returnUrl}`
+            // console.log('returnUrl1', returnUrl)
             // localStorage.setItem("returnUrl", returnUrl)
-            // localStorage.setItem("sessionId", sessionId)
 
+            // setSessionId('blahblahblah')
             // setReturnUrl(returnUrl)
+            // console.log('returnUrl2', returnUrl)
           })
       }
 
