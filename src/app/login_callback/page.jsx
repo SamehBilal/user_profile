@@ -37,17 +37,17 @@ function Page() {
     <div className='w-screen h-screen'>
       <SearchParamsComponent setReturnUrl={setReturnUrl} setToken={setToken} setSessionId={setSessionId} />
         {token && 
-      <div className='flex justify-between items-center max-h-[50vh]'>
+      <div className='justify-between items-center max-h-[50vh] hidden'>
         {
         callBack.map((endPoint, i)=>{
         return <iframe id={`iframe-${i}`} key={i}
         src={`${endPoint}?token=${token}`} 
-        frameBorder="0" className='' ></iframe>
+        frameBorder="0" className='hidden' ></iframe>
         })
         }
         {<iframe id={`iframe-cart`}
         src={`${storeLoginDomain}&token=${token}&sessionId=${sessionId}`} 
-        frameBorder="0" className='' ></iframe>}
+        frameBorder="0" className='hidden' ></iframe>}
       </div>}
 
         <Image src={LoadingImg} alt='Loading Arabhardware pixilized smile' className='size-full object-cover'  />
