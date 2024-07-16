@@ -187,9 +187,9 @@ function LoginForm({toRegisterPage, returnUrl, sessionId}) {
       frameBorder="0" className='hidden' ></iframe>
       })
       }
-      <iframe id={`iframe-cart`}
+      {sessionId && <iframe id={`iframe-cart`}
       src={`${storeLoginDomain}&token=${token}&sessionId=${sessionId}`} 
-      frameBorder="0" className='hidden' ></iframe>
+      frameBorder="0" className='' ></iframe>}
     </div>}
 {/* https://myaccount.arabhardware.com/login_callback?url_return=https://arabhardware.net?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FyYWJoYXJkd2FyZS5jb20vYXV0aC9nb29nbGUvY2FsbGJhY2siLCJpYXQiOjE3MjExMjM3OTgsImV4cCI6MTcyMzcxNTc5OCwibmJmIjoxNzIxMTIzNzk4LCJqdGkiOiJ5RlRMek5MUWdUeTkxRm1iIiwic3ViIjoiMjg5NzkiLCJwcnYiOiI5MTBkZDhhZDBiNGY0NDgyMGZlZWM0NDgyMWYzZWFmZTA0ZjMzZTA1In0.Wf-uaSVE_lWw7AIH9Xo-kameHow3vgUx7-6WsfgO370 */}
     <div className="w-full space-y-4">

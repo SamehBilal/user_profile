@@ -13,6 +13,7 @@ function Page() {
     const [token, setToken] = useState(null)
 
     useEffect(()=>{
+      localStorage.removeItem(returnUrl)
         setIsMounted(true)
         if(isMounted && token && token.length>5){
             cookieDommains.forEach(item=>{
@@ -26,7 +27,7 @@ function Page() {
         const timer = setTimeout(() => {
           console.log('local', localStorage.getItem("returnUrl"))
           console.log('returnUrl', returnUrl)
-            // location.href = localStorage.getItem("returnUrl") ?? returnUrl
+            location.href = localStorage.getItem("returnUrl") ?? returnUrl
         }, 7000);
         return ()=>{
             clearTimeout(timer)
@@ -36,18 +37,18 @@ function Page() {
     <div className='w-screen h-screen'>
       <SearchParamsComponent setReturnUrl={setReturnUrl} setToken={setToken} setSessionId={setSessionId} />
         {token && 
-        <div className='flex items-center justify-between p-grid max-w-grid'>
+      <div className='flex justify-between items-center max-h-[50vh]'>
         {
         callBack.map((endPoint, i)=>{
         return <iframe id={`iframe-${i}`} key={i}
         src={`${endPoint}?token=${token}`} 
-        frameBorder="0" className='hidden' ></iframe>
+        frameBorder="0" className='' ></iframe>
         })
         }
         {sessionId && <iframe id={`iframe-cart`}
-        src={`${storeLoginDomain}&token=${token}&session_id=${sessionId}`} 
-        frameBorder="0" className='hidden' ></iframe>}
-        </div>}
+        src={`${storeLoginDomain}&token=${token}&sessionId=${sessionId}`} 
+        frameBorder="0" className='' ></iframe>}
+      </div>}
 
         <Image src={LoadingImg} alt='Loading Arabhardware pixilized smile' className='size-full object-cover'  />
     </div>

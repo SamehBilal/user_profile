@@ -9,6 +9,7 @@ export default function SearchParamsComponent({setReturnUrl,setToken, setSession
     const searchParams = useSearchParams()
     let returnUrl = searchParams.get('url_return')??''
     let token = searchParams.get('token')
+    // console.log('token', token)
     
     useEffect(()=>{
       async function getSessionId () {
