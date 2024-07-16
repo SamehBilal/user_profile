@@ -36,7 +36,7 @@ function SentencesAnimation({sentences=[]}) {
                 opacity: 0,
                 color: 'black',
                 stagger: 0.2,
-            }, 3*i)
+            }, 4*i)
         })
 
     }, []);

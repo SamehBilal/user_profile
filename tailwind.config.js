@@ -36,11 +36,22 @@ module.exports = {
       },
       animation: {
           'text-slide': 'text-slide 12.5s cubic-bezier(0.83, 0, 0.17, 1) infinite',
+          'bounce-little': 'bounce-little 1s infinite;',
           'morning-slide': 'morning-slide 12.5s linear infinite',
           'fade': 'fade 900ms ease-in-out',
           'scale-up': 'scale-up 300ms ease-in-out',
       },
       keyframes: {
+        'bounce-little': {
+          '0%, 100%': {
+            'transform': 'translateY(-15%)',
+            'animation-timing-function': 'cubic-bezier(0.8,0,1,1)'
+          },
+          '50%': {
+              'transform': 'none',
+              'animation-timing-function': 'cubic-bezier(0,0,0.2,1)'
+          }
+        },
         'fade': {
           '0%': {  opacity: 0 },
           '100%': {  opacity: 1 },

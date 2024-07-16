@@ -30,14 +30,14 @@ function Page() {
             )
         }
         const timer = setTimeout(() => {
-          // console.log('returnUrl', returnUrl)
-          // ${sessionId ?`?session_id=${sessionId}`:''}
-            // location.href = `${returnUrl}${(sessionId && returnUrl.includes('ahw.store')) ?`&session_id=${sessionId}`:''}`
+            location.href = `${returnUrl}${(sessionId && returnUrl.includes('ahw.store')) ?`&session_id=${sessionId}`:''}`
         }, 12000);
         return ()=>{
             clearTimeout(timer)
         }
     }, [token])
+
+    if(sessionId){console.log('sessionId', sessionId)}
   return (
     <div className='w-screen h-screen'>
       <SearchParamsComponent setReturnUrl={setReturnUrl} setToken={setToken} setSessionId={setSessionId} />
@@ -50,8 +50,8 @@ function Page() {
           frameBorder="0" className='hidden' ></iframe>
           })
           }
-          {<iframe id={`iframe-cart`}
-          src={`${storeLoginDomain}&token=${token}&sessionId=${sessionId}`} 
+          {sessionId && <iframe id={`iframe-cart`}
+          src={`${storeLoginDomain}&token=${token}&session_id=${sessionId}`} 
           frameBorder="0" className='hidden' ></iframe>}
         </div>}
 
@@ -59,7 +59,7 @@ function Page() {
 
         <div className="absolute left-1/2 -translate-x-1/2 max-w-grid p-grid py-8 flex flex-col justify-center items-center w-full gap-8">
         <Image src={WhiteLogo} alt='arabhardware' className='w-24 '/>
-          <Image src={SmileEmoji} alt='smile emoji' className='size-96 '/>
+          <Image src={SmileEmoji} alt='smile emoji' className='mt-10 size-64 animate-bounce-little'/>
           <SentencesAnimation sentences={senteces} />
         </div>
     </div>
