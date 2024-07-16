@@ -9,16 +9,6 @@ export default function SearchParamsComponent({setReturnUrl,setToken}) {
     const searchParams = useSearchParams()
     let returnUrl = searchParams.get('url_return')??''
     let token = searchParams.get('token')
-
-    // const getSessionId = async () => {
-    //   await axios.get(`${storeSession}`,
-    //   ).then(res=>{
-    //     console.log('res.data?.data?.session_id', res.data?.data?.session_id)
-    //     return res.data?.data?.session_id
-    //   }).catch(e=>{
-    //     console.log('e', e)
-    //   })
-    // }
     
     useEffect(()=>{
       async function getSessionId () {
@@ -26,7 +16,6 @@ export default function SearchParamsComponent({setReturnUrl,setToken}) {
           .then(res=>{
             console.log('res.data.data', res.data.data, res.data.data?.session_id)
             const sessionId = res?.data?.data?.session_id ?? null
-            
 
             // if it wans't there, or it wasn't apart of the .com, .net or .store then set it to .net
             if(!returnUrl || 

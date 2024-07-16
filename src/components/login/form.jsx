@@ -132,6 +132,7 @@ function LoginForm({toRegisterPage, returnUrl}) {
                   console.log('data.data.message', data.data.message)
                   throw new Error(data.data.message)
                 }else{
+                  location.href = `https://myaccount.arabhardware.com/login_callback?url_return=${returnUrl}&token=${data.data.authorisation.access_token}`
                   cookieDommains.forEach(item=>{
                     setCookie(
                       item.title, 
@@ -141,10 +142,10 @@ function LoginForm({toRegisterPage, returnUrl}) {
                   setToken(data.data.authorisation.access_token)
                   toast.success('تم تسجيل الدخول بنجاح')
                     console.log('returning to url: ', returnUrl)
-                  setTimeout(() => {
-                    location.href = returnUrl
-                    setIsLoading(false)
-                  }, 7000);
+                  // setTimeout(() => {
+                  //   location.href = returnUrl
+                  //   setIsLoading(false)
+                  // }, 7000);
                 }
             })
             .catch(e=>{
