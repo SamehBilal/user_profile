@@ -4,7 +4,6 @@ import { deleteCookie, getCookie, setCookie } from "cookies-next"
 import { storeLogoutDomain, cookieDommains, storeLoginDomain, logoutDomains, ApiBase } from "@/config/api"
 import axios from "axios"
 
-
 function LogoutPage() {
     const [isLoggingOut, setIsLoggingOut] = useState(false)
     const [token, setToken] = useState('')
@@ -33,18 +32,9 @@ function LogoutPage() {
               headers: { "Authorization": `Bearer ${token}`, "Accept": "application/json" }
             }).then(res=>{
               console.log('res', res?.data?.message)
-            //   setTimeout(() => {
-                // setIsLoggingOut(false)
-                // location.reload()
-            //   }, 7000);
             }).catch(e=>{
               console.log('e', e)
-            //   setTimeout(() => {
-                // setIsLoggingOut(false)
-                // location.reload()
-            //   }, 7000);
             })
-            
     }
 
   useEffect(() => {

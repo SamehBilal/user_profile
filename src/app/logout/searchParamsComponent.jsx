@@ -3,13 +3,14 @@ import { useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import axios from "axios";
 import { storeSession } from "@/config/api";
+import { getCookie } from 'cookies-next';
 
 export default function SearchParamsComponent({setReturnUrl,setToken, setSessionId}) {
   const [isMounted, setIsMounted] = useState(false)
     const searchParams = useSearchParams()
     let returnUrl = searchParams.get('url_return')
-    let token = searchParams.get('token')
-    // console.log('token', token)
+    let token = searchParams.get('token') || getCookie('jwt_token')
+    setToken(token)
     
     useEffect(()=>{
       async function getSessionId () {
@@ -29,7 +30,6 @@ export default function SearchParamsComponent({setReturnUrl,setToken, setSession
             returnUrl = `${returnUrl}`
             // console.log('returnUrl1', returnUrl)
             localStorage.setItem("returnUrl", returnUrl)
-            // localStorage.setItem("session_id", sessionId)
 
             setReturnUrl(returnUrl)
             // console.log('returnUrl2', returnUrl)
@@ -42,10 +42,12 @@ export default function SearchParamsComponent({setReturnUrl,setToken, setSession
             //   returnUrl = "https://arabhardware.net"
             // }
             // returnUrl = `${returnUrl}`
+            // const sessionId = 'blahblahblah'
             // // console.log('returnUrl1', returnUrl)
             // localStorage.setItem("returnUrl", returnUrl)
+            // localStorage.setItem("session_id", sessionId)
 
-            // setSessionId('blahblahblah')
+            // setSessionId(sessionId)
             // setReturnUrl(returnUrl)
             // console.log('returnUrl2', returnUrl)
           })
@@ -55,8 +57,6 @@ export default function SearchParamsComponent({setReturnUrl,setToken, setSession
       if(isMounted){
         getSessionId()
       }
-
-      if(token) setToken(token)
     }, [isMounted])
   
   // OCSESSID

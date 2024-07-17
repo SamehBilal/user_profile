@@ -1,6 +1,6 @@
 "use client"
 import {useState, useEffect, useRef} from 'react'
-import { callBack, storeLoginDomain, cookieDommains, storeSession } from '@/config/api'
+import { callBack, storeLoginDomain, cookieDommains } from '@/config/api'
 import { setCookie } from 'cookies-next'
 import SearchParamsComponent from './searchParamsComponent'
 import Image from 'next/image'
