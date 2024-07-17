@@ -34,7 +34,7 @@ function Page() {
     useEffect(()=>{
       const timer = setTimeout(() => {
         // console.log('to', `${returnUrl}${(sessionId && returnUrl.includes('?')) ?`&`:'?'}session_id=${sessionId}`)
-        location.href = `${returnUrl}${(sessionId && returnUrl.includes('?')) ?`&`:'?'}session_id=${sessionId}`
+        location.href = `${returnUrl}${(sessionId && returnUrl.includes('?')) ?`&`:'?'}session_id=${localStorage.getItem('session_id')}`
       }, 12000);
       return ()=>{
           clearTimeout(timer)
@@ -55,7 +55,7 @@ function Page() {
           })
           }
           {sessionId && <iframe id={`iframe-cart`}
-          src={`${storeLoginDomain}&token=${token}&session_id=${sessionId}`} 
+          src={`${storeLoginDomain}&token=${token}&session_id=${localStorage?.getItem('session_id')??''}`} 
           frameBorder="0" className='hidden' ></iframe>}
         </div>}
 
