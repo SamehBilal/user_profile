@@ -13,11 +13,11 @@ export default function SearchParamsComponent({setReturnUrl,setToken, setSession
     
     useEffect(()=>{
       async function getSessionId () {
-          // await axios.get(`${storeSession}`, {})
-          // .then(res=>{
-          //   const sessionId = res?.data?.data?.session_id ?? null
-          //   // console.log('res.data.data', sessionId)
-          //   setSessionId(sessionId)
+          await axios.get(`${storeSession}`, {})
+          .then(res=>{
+            const sessionId = res?.data?.data?.session_id ?? null
+            console.log('res.data.data', sessionId)
+            setSessionId(sessionId)
             // console.log('returnUrl0', returnUrl)
 
             // if it wans't there, or it wasn't apart of the .com, .net or .store then set it to .net
@@ -28,26 +28,26 @@ export default function SearchParamsComponent({setReturnUrl,setToken, setSession
             returnUrl = `${returnUrl}`
             // console.log('returnUrl1', returnUrl)
             localStorage.setItem("returnUrl", returnUrl)
-            // localStorage.setItem("sessionId", sessionId)
+            localStorage.setItem("sessionId", sessionId)
 
             setReturnUrl(returnUrl)
             // console.log('returnUrl2', returnUrl)
-          // }).catch(e=>{
-          //   console.log('e', e)
+          }).catch(e=>{
+            console.log('e', e)
             
-          //   // // for testing only
-          //   // if(!returnUrl || 
-          //   //   !(returnUrl?.includes('arabhardware.com') || returnUrl?.includes('arabhardware.net') || returnUrl?.includes('ahw.store'))) {
-          //   //   returnUrl = "https://arabhardware.net"
-          //   // }
-          //   // returnUrl = `${returnUrl}`
-          //   // // console.log('returnUrl1', returnUrl)
-          //   // localStorage.setItem("returnUrl", returnUrl)
+            // // for testing only
+            // if(!returnUrl || 
+            //   !(returnUrl?.includes('arabhardware.com') || returnUrl?.includes('arabhardware.net') || returnUrl?.includes('ahw.store'))) {
+            //   returnUrl = "https://arabhardware.net"
+            // }
+            // returnUrl = `${returnUrl}`
+            // // console.log('returnUrl1', returnUrl)
+            // localStorage.setItem("returnUrl", returnUrl)
 
-          //   // setSessionId('blahblahblah')
-          //   // setReturnUrl(returnUrl)
-          //   // console.log('returnUrl2', returnUrl)
-          // })
+            // setSessionId('blahblahblah')
+            // setReturnUrl(returnUrl)
+            // console.log('returnUrl2', returnUrl)
+          })
       }
 
       setIsMounted(true)

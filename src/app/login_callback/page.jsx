@@ -34,21 +34,8 @@ function Page() {
 
     useEffect(()=>{
       const timer = setTimeout(() => {
-            const getSessionId = async() => {
-              await axios.get(`${storeSession}`, {})
-              .then(res=>{
-                const sessionId = res?.data?.data?.session_id ?? null
-                localStorage.setItem('session_id', sessionId)
-                // console.log('to', `${returnUrl}${(sessionId && returnUrl.includes('ahw.store')) ?`&session_id=${sessionId}`:''}`)
-                  location.href = `${returnUrl}${(sessionId && returnUrl.includes('ahw.store')) ?`&session_id=${sessionId}`:''}`
-              }).catch(e=>{
-                const sessionId = 'blahblah'
-                localStorage.setItem('session_id', sessionId)
-                // console.log('to', `${returnUrl}${(sessionId && returnUrl.includes('ahw.store')) ?`&session_id=${sessionId}`:''}`)
-                  location.href = `${returnUrl}${(sessionId && returnUrl.includes('ahw.store')) ?`&session_id=${sessionId}`:''}`
-              })
-            }
-            getSessionId()
+        console.log('to', `${returnUrl}${(sessionId && returnUrl.includes('?')) ?`&session_id=${sessionId}`:''}`)
+        location.href = `${returnUrl}${(sessionId && returnUrl.includes('?')) ?`&session_id=${sessionId}`:''}`
       }, 12000);
       return ()=>{
           clearTimeout(timer)
@@ -58,7 +45,7 @@ function Page() {
     // if(sessionId){console.log('sessionId', sessionId)}
   return (
     <div className='w-screen h-screen'>
-      <SearchParamsComponent setReturnUrl={setReturnUrl} setToken={setToken} />
+      <SearchParamsComponent setReturnUrl={setReturnUrl} setToken={setToken} setSessionId={setSessionId} />
         {token && 
         <div className='justify-between items-center max-h-[50vh] hidden'>
           {
