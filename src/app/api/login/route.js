@@ -5,7 +5,7 @@ import { z } from 'zod';
 // /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&$.#+^_=()])[A-Za-z\d@$!%*?&$.#+^_=()]+$/
 const schema = z.object({
   email: z.string().email(),
-  password: z.string().min(8).regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/),
+  password: z.string(),
 });
 
 export async function POST(req, res) {
@@ -26,7 +26,7 @@ export async function POST(req, res) {
       if (issues.email) {
         return NextResponse.json({ message: 'بريد الكتروني غير صالح' }, { status: 200 });
       } else if (issues.password) {
-        return NextResponse.json({ message: 'يجب ان تحتوي كلمة السر على 8 احرف على الأقل، تتضمن حرف كبير وحرف صغير ورمز ورقم' }, { status: 200 });
+        return NextResponse.json({ message: 'كلمة مرور غير صالحة' }, { status: 200 });
       } else {
         return NextResponse.json({ message: 'فشل التحقق' }, { status: 200 });
       }
