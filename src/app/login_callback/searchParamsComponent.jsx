@@ -17,7 +17,8 @@ export default function SearchParamsComponent({setReturnUrl,setToken, setSession
           .then(res=>{
             const sessionId = res?.data?.data?.session_id ?? null
             console.log('res.data.data', sessionId)
-            // setSessionId(sessionId) <=TODO: remove the comment
+            setSessionId(sessionId) //<=TODO: remove the comment
+            localStorage.setItem("session_id", sessionId)
             // console.log('returnUrl0', returnUrl)
 
             // if it wans't there, or it wasn't apart of the .com, .net or .store then set it to .net
@@ -57,8 +58,8 @@ export default function SearchParamsComponent({setReturnUrl,setToken, setSession
         //   const cookie = iframe.contentDocument.cookie;
         //   console.log('cookie', cookie)
         // }, 4000);
-        console.log('sessionId', localStorage.getItem('session_id')) // <= TODO: remove this
-        setSessionId(localStorage.getItem('session_id')) // <= TODO: remove this
+        // console.log('sessionId', localStorage.getItem('session_id')) // <= TODO: remove this
+        // setSessionId(localStorage.getItem('session_id')) // <= TODO: remove this
         getSessionId()
       }
 
