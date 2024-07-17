@@ -1,14 +1,16 @@
-import Image from "next/image";
-import SideMenu from "@/components/sideMenu";
-import AppBar from "@/components/appbar";
-import Middle from "@/components/middle";
+"use client"
+import { useEffect } from "react";
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
+  const router = useRouter()
+
+  useEffect(()=>{
+    router.push('/login')
+  }, [])
+  
   return (
     <main className="px-10 py-12 w-full min-h-screen bg-white dark:bg-darkGray">
-      <SideMenu />
-      <AppBar />
-      <Middle />
     </main>
   );
 }

@@ -140,7 +140,7 @@ function LoginForm({toRegisterPage, returnUrl, sessionId}) {
                       {secure: true, sameSite: "None", domain: item.domain})
                     })
                   setToken(data.data.authorisation.access_token)
-                  toast.success('تم تسجيل الدخول بنجاح')
+                  toast.loading("جاري تسجيل الدخول")
                     console.log('returning to url: ', returnUrl)
                   // setTimeout(() => {
                   //   location.href = returnUrl
