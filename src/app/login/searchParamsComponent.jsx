@@ -21,7 +21,7 @@ export default function SearchParamsComponent({setReturnUrl, toRegisterPage, set
           const sessionId = res?.data?.data?.session_id ?? null
           setSessionId(sessionId)
           
-
+// src="https://ahw.store/index.php?route=extension/api/auth/login&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FyYWJoYXJkd2FyZS5jb20vYXV0aC9nb29nbGUvY2FsbGJhY2siLCJpYXQiOjE3MjEyMDU3OTEsImV4cCI6MTcyMzc5Nzc5MSwibmJmIjoxNzIxMjA1NzkxLCJqdGkiOiJkdEx6SVlRek1MMnFXRlhHIiwic3ViIjoiMjkwMTIiLCJwcnYiOiI5MTBkZDhhZDBiNGY0NDgyMGZlZWM0NDgyMWYzZWFmZTA0ZjMzZTA1In0.7-OgHnroHsgfTQH8kvXXl77Qio46FSm-ePo3_ke7O3k&session_id=5e1c84c809bf4cbc5c841418a3"
           // if it wans't there, or it wasn't apart of the .com, .net or .store then set it to .net
           if(!returnUrl || 
             !(returnUrl?.includes('arabhardware.com') || returnUrl?.includes('arabhardware.net') || returnUrl?.includes('ahw.store'))) {
