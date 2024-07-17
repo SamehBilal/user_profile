@@ -97,7 +97,7 @@ function RegisterForm({toLoginPage, returnUrl, sessionId}) {
         // && getCookie("user") && JSON.parse(getCookie("user"))
         // console.log('user', JSON.parse(getCookie("user")))
         // console.log('jwt_token', getCookie("jwt_token"))
-        router.push('/')
+        // router.push('/')
       }
     }, [])
 
