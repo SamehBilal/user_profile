@@ -6,7 +6,7 @@ import SearchParamsComponent from './searchParamsComponent'
 import Image from 'next/image'
 import LoadingImg from '@/public/images/loading_login.png'
 import WhiteLogo from '@/public/images/logos/white_logo.png'
-import SmileEmoji from '@/public/images/smile_emoji.png'
+import SadEmoji from '@/public/images/sad_emoji.png'
 import SentencesAnimation from './sentences_animation'
 import { senteces } from './sentences'
 import axios from 'axios'
@@ -81,11 +81,11 @@ return (
         frameBorder="0" className='hidden' ></iframe>}
       </div>}
 
-      <Image src={LoadingImg} alt='Loading Arabhardware pixilized smile' className='size-full object-cover object-top absolute -z-10'  />
+      <Image src={LoadingImg} alt='Loading Arabhardware pixilized sad' className='size-full object-cover object-top absolute -z-10'  />
 
       <div className="absolute left-1/2 -translate-x-1/2 max-w-grid p-grid py-8 flex flex-col justify-center items-center w-full gap-8">
       <Image src={WhiteLogo} alt='arabhardware' className='w-24 '/>
-        <Image src={SmileEmoji} alt='smile emoji' className='mt-10 size-64 animate-bounce-little'/>
+        <Image src={SadEmoji} alt='sad emoji' className='mt-10 size-64 animate-bounce-little'/>
         <SentencesAnimation sentences={senteces} />
       </div>
   </div>
