@@ -41,8 +41,13 @@ module.exports = {
           'fade': 'fade 900ms ease-in-out',
           'scale-up': 'scale-up 300ms ease-in-out',
           'slide-up': 'slide-up 12s linear infinite',
+          'wiggle': 'wiggle 1s ease-in-out infinite',
       },
       keyframes: {
+        'wiggle': {
+          '0%, 100%': { transform: 'rotate(-12deg)' },
+          '50%': { transform: 'rotate(12deg)' },
+        },
         'bounce-little': {
           '0%, 100%': {
             'transform': 'translateY(-15%)',

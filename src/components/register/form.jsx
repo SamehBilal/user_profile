@@ -42,21 +42,30 @@ function RegisterForm({toLoginPage, returnUrl, sessionId}) {
         const {email, password, firstname, lastname, agreeToTerms} = form
         if(email == '' || password == '' || firstname == '' || lastname == '' || !agreeToTerms){
           toast.error('كل المعلومات مطلوبة')
+          setIsLoading(false)
         }else{
           setIsLoading(true)
           
           await axios.post('/api/register', 
             {email, password, firstname, lastname} //check if valid
           ).then(async res=>{
-            if(res.data?.message) toast.error(res.data.message)
+            console.log('res0', res.data)
+            if(res.data?.message) {
+              toast.error(res.data.message)
+              setIsLoading(false)
+            }
             else{
+              console.log('res1', res.data)
               await axios.post(`${ApiBase}/register`, 
                 {email, password, firstname, lastname} //add user to db
               ).then(async data=> {
+                console.log('res3', res.data)
                 if(data.data.message){
                   console.log('data.data.message', data.data.message)
                   throw new Error(data.data.message)
+                  setIsLoading(false)
                 }else{
+                  console.log('res4', res.data)
                   location.href = `https://myaccount.arabhardware.com/login_callback?url_return=${returnUrl}&token=${data.data.authorisation.access_token}`
                     cookieDommains.forEach(item=>{
                       setCookie(
@@ -65,22 +74,23 @@ function RegisterForm({toLoginPage, returnUrl, sessionId}) {
                         {secure: true, sameSite: "None", domain: item.domain})
                     })
                     setToken(data.data.authorisation.access_token)
-                    toast.success('تم تسجيل الدخول بنجاح')
-                    setTimeout(() => {
-                      location.href = returnUrl
+                    toast.loading('جاري تسجيل دخولك')
                       setIsLoading(false)
-                    }, 7000);
                 }
               })
               .catch(e=>{
+                console.log('res5', res.data)
+                setIsLoading(false)
                 console.log('error', e?.response?.data?.error)
                 console.log('message', e?.response?.data?.message)
                 console.log('e.message', e?.message)
                 toast.error(e?.response?.data?.error||e?.response?.data?.message||e?.message||"حدث خطأ")
-                setIsLoading(false)
               })
             }
-          }).catch(e=>console.error(e))
+          }).catch(e=>{
+            console.error(e)
+            setIsLoading(false)
+          })
 
         // setIsLoading(false)
         }
