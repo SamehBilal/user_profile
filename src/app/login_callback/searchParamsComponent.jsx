@@ -17,7 +17,7 @@ export default function SearchParamsComponent({setReturnUrl,setToken, setSession
           .then(res=>{
             const sessionId = res?.data?.data?.session_id ?? null
             console.log('res.data.data', sessionId)
-            setSessionId(sessionId)
+            // setSessionId(sessionId) <=TODO: remove the comment
             // console.log('returnUrl0', returnUrl)
 
             // if it wans't there, or it wasn't apart of the .com, .net or .store then set it to .net
@@ -28,7 +28,7 @@ export default function SearchParamsComponent({setReturnUrl,setToken, setSession
             returnUrl = `${returnUrl}`
             // console.log('returnUrl1', returnUrl)
             localStorage.setItem("returnUrl", returnUrl)
-            localStorage.setItem("sessionId", sessionId)
+            // localStorage.setItem("session_id", sessionId)
 
             setReturnUrl(returnUrl)
             // console.log('returnUrl2', returnUrl)
@@ -52,9 +52,13 @@ export default function SearchParamsComponent({setReturnUrl,setToken, setSession
 
       setIsMounted(true)
       if(isMounted){
-        // const iframe = document.getElementById('ahw_store_iframe')
-        // const cookie = iframe.contentDocument.cookie;
-        // console.log('cookie', cookie)
+        // setTimeout(() => {
+        //   const iframe = document.getElementById('ahw_store_iframe')
+        //   const cookie = iframe.contentDocument.cookie;
+        //   console.log('cookie', cookie)
+        // }, 4000);
+        console.log('sessionId', localStorage.getItem('session_id')) // <= TODO: remove this
+        setSessionId(localStorage.getItem('session_id')) // <= TODO: remove this
         getSessionId()
       }
 
@@ -64,7 +68,7 @@ export default function SearchParamsComponent({setReturnUrl,setToken, setSession
   // OCSESSID
     return (
       <>
-      {/* <iframe src='https://ahw.store/' id='ahw_store_iframe'
+      {/* <iframe src='https://ahw.store/?route=extension/api/session' id='ahw_store_iframe'
           frameBorder="0" className='' /> */}
       </>
     )

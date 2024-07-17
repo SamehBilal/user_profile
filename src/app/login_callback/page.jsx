@@ -17,7 +17,6 @@ function Page() {
     const [returnUrl, setReturnUrl] = useState('https://arabhardware.net')
     const [token, setToken] = useState(null)
 
-    console.log('returnUrl', returnUrl)
     useEffect(()=>{
       localStorage.removeItem(returnUrl)
         setIsMounted(true)
@@ -34,8 +33,8 @@ function Page() {
 
     useEffect(()=>{
       const timer = setTimeout(() => {
-        console.log('to', `${returnUrl}${(sessionId && returnUrl.includes('?')) ?`&session_id=${sessionId}`:''}`)
-        location.href = `${returnUrl}${(sessionId && returnUrl.includes('?')) ?`&session_id=${sessionId}`:''}`
+        console.log('to', `${returnUrl}${(sessionId && returnUrl.includes('?')) ?`&`:'?'}session_id=${sessionId}`)
+        // location.href = `${returnUrl}${(sessionId && returnUrl.includes('?')) ?`&`:'?'}session_id=${sessionId}`
       }, 12000);
       return ()=>{
           clearTimeout(timer)
