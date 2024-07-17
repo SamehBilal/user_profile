@@ -40,6 +40,7 @@ module.exports = {
           'morning-slide': 'morning-slide 12.5s linear infinite',
           'fade': 'fade 900ms ease-in-out',
           'scale-up': 'scale-up 300ms ease-in-out',
+          'slide-up': 'slide-up 12s linear infinite',
       },
       keyframes: {
         'bounce-little': {
@@ -55,6 +56,13 @@ module.exports = {
         'fade': {
           '0%': {  opacity: 0 },
           '100%': {  opacity: 1 },
+        },
+        'slide-up': {
+          '0%, 26%': {  transform: 'translateY(0%)' },
+          '29%, 56%': {  transform: 'translateY(-200%)' },
+          '59%, 86%': {  transform: 'translateY(-400%)' },
+          '97%': {  transform: 'translateY(-400%)' },
+          '100%': {  transform: 'translateY(0%)' },
         },
         'scale-up': {
           '0%': {  opacity: 0, transform: 'translateX(-50%) scale(1,0)' },

@@ -1,6 +1,6 @@
 "use client"
 import {useState, useEffect, useRef} from 'react'
-import { callBack, storeLoginDomain, cookieDommains } from '@/config/api'
+import { callBack, storeLoginDomain, cookieDommains, storeSession } from '@/config/api'
 import { setCookie } from 'cookies-next'
 import SearchParamsComponent from './searchParamsComponent'
 import Image from 'next/image'
@@ -9,6 +9,7 @@ import WhiteLogo from '@/public/images/logos/white_logo.png'
 import SmileEmoji from '@/public/images/smile_emoji.png'
 import SentencesAnimation from './sentences_animation'
 import { senteces } from './sentences'
+import axios from 'axios'
 
 function Page() {
     const [isMounted, setIsMounted] = useState(false)
@@ -32,11 +33,22 @@ function Page() {
     }, [token])
 
     useEffect(()=>{
-      // console.log('changed', returnUrl)
       const timer = setTimeout(() => {
-        // console.log('returnUrl', returnUrl)
-        // console.log('to', `${returnUrl}${(sessionId && returnUrl.includes('ahw.store')) ?`&session_id=${sessionId}`:''}`)
-          location.href = `${returnUrl}${(sessionId && returnUrl.includes('ahw.store')) ?`&session_id=${sessionId}`:''}`
+            const getSessionId = async() => {
+              await axios.get(`${storeSession}`, {})
+              .then(res=>{
+                const sessionId = res?.data?.data?.session_id ?? null
+                localStorage.setItem('session_id', sessionId)
+                // console.log('to', `${returnUrl}${(sessionId && returnUrl.includes('ahw.store')) ?`&session_id=${sessionId}`:''}`)
+                  location.href = `${returnUrl}${(sessionId && returnUrl.includes('ahw.store')) ?`&session_id=${sessionId}`:''}`
+              }).catch(e=>{
+                const sessionId = 'blahblah'
+                localStorage.setItem('session_id', sessionId)
+                // console.log('to', `${returnUrl}${(sessionId && returnUrl.includes('ahw.store')) ?`&session_id=${sessionId}`:''}`)
+                  location.href = `${returnUrl}${(sessionId && returnUrl.includes('ahw.store')) ?`&session_id=${sessionId}`:''}`
+              })
+            }
+            getSessionId()
       }, 12000);
       return ()=>{
           clearTimeout(timer)
@@ -46,7 +58,7 @@ function Page() {
     // if(sessionId){console.log('sessionId', sessionId)}
   return (
     <div className='w-screen h-screen'>
-      <SearchParamsComponent setReturnUrl={setReturnUrl} setToken={setToken} setSessionId={setSessionId} />
+      <SearchParamsComponent setReturnUrl={setReturnUrl} setToken={setToken} />
         {token && 
         <div className='justify-between items-center max-h-[50vh] hidden'>
           {
