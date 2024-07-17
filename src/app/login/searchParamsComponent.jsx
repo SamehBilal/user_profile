@@ -27,7 +27,7 @@ export default function SearchParamsComponent({setReturnUrl, toRegisterPage, set
             !(returnUrl?.includes('arabhardware.com') || returnUrl?.includes('arabhardware.net') || returnUrl?.includes('ahw.store'))) {
             returnUrl = "https://arabhardware.net"
           }
-          returnUrl = `${returnUrl}${sessionId ?`?session_id=${sessionId}`:''}`
+          returnUrl = `${returnUrl}`
           localStorage.setItem("returnUrl", returnUrl)
 
           setReturnUrl(returnUrl)
