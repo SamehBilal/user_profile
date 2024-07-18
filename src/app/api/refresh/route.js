@@ -20,7 +20,7 @@ export async function GET(request, response) {
             console.log('token', token)
             const user = (cookieStore.get('user') && cookieStore.get('user').value)? (JSON.parse(cookieStore.get('user')?.value)) :null
             console.log('user', user)
-
+            
             // Return the token
             return NextResponse.json({ token, user }, { status: 200 });
         // } else {
