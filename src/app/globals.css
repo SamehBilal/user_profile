@@ -50,3 +50,21 @@ body .swiper-pagination-bullet-active{
   --tw-text-opacity: 1;
   color: rgb(241 19 32 / var(--tw-text-opacity)) /* #f11320 */;
 }
+
+
+.tabs-container {
+  position: relative;
+}
+
+.tabs-container .line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background-color: #0070f3; /* Your theme color */
+  transition: transform 0.3s ease;
+}
+
+.tabs-container .tab.active .line {
+  transform: scaleX(1); /* Expand the line to full width */
+}

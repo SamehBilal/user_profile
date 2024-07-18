@@ -16,7 +16,7 @@ export async function GET(request, response) {
         // cookies().set('token', 'shaza', { secure: true, sameSite: "None" })
         // if (allowedOrigins.includes(origin)) {
             const cookieStore = cookies()
-            const token = cookieStore.get('token')?.value || null
+            const token = cookieStore.get('jwt_token')?.value || null
             console.log('token', token)
             const user = (cookieStore.get('user') && cookieStore.get('user').value)? (JSON.parse(cookieStore.get('user')?.value)) :null
             console.log('user', user)
