@@ -3,7 +3,7 @@ import {useEffect, useState, useRef} from 'react'
 import { setCookie, getCookie, deleteCookie } from 'cookies-next'
 
 function Page() {
-    const token = localStorage?.getItem("jwt_token")
+    const token = getCookie('jwt_token')
     const [token1, setToken1] = useState('')
 
     useEffect(()=>{
