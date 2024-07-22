@@ -36,14 +36,15 @@ export default function Home() {
   deleteCookie('test2');
 
   const logoutFunction = async () => {
+    axios.post('/api/logout', {})
+    .then(res=>console.log('success'))
+    .catch(e=>console.log('e', e))
     setIsLoggingOut(true)
     deleteCookie( "user", {secure: true, sameSite: "None"})
     deleteCookie( "jwt_token", {secure: true, sameSite: "None"})
     deleteCookie( "jwt_token", {secure: true, sameSite: "None", domain: "arabhardware.com"})
     deleteCookie( "jwt_token", {secure: true, sameSite: "None", domain: ".arabhardware.com"})
     deleteCookie( "jwt_token", {secure: true, sameSite: "None", domain: ".arabhardware.net"})
-    deleteCookie( "test")
-    Cookies.remove('test1');
     localStorage.removeItem("jwt_token")
     await axios.post(`${ApiBase}/logout`,
       {}, {
