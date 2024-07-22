@@ -7,12 +7,9 @@ function Page() {
     const [token1, setToken1] = useState('')
 
     useEffect(()=>{
-      const iframe= document.getElementById('iframe4')
-      if(iframe){
-        console.log('iframe', iframe)
+      if(window){
         setTimeout(()=>{
-          const content = iframe.contentWindow
-          console.log('content', content)
+            window.frames[0].document.getElementById('token')
         }, [1000])
       }
     }, [token1])
