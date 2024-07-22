@@ -20,6 +20,8 @@
   --swiper-pagination-bullet-vertical-gap: 4px;
   --swiper-pagination-bottom: 24px;
   --swiper-pagination-bullet-active-border-radius: 0.5rem;
+  
+  --nextui-disabled-opacity: .75;
 }
 body { overflow-x: hidden; scroll-behavior: smooth;}
 *{ box-sizing: border-box; margin: 0; padding: 0; }

@@ -1,9 +1,12 @@
 /** @type {import('tailwindcss').Config} */
+const {nextui} = require("@nextui-org/react");
+
 module.exports = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
@@ -121,6 +124,22 @@ module.exports = {
       transform: ["responsive", "hover", "focus", "active"],
     }
   },
-  darkMode: 'class',
-  plugins: [],
+  darkMode: "class",
+  plugins: [
+    nextui({
+      themes: {
+        light: {
+          primary: "#f11320",
+          secondary: "#27b37b", 
+          tritory: "#3f9cbd",
+        },
+        dark: {
+          primary: "#F55661",
+          secondary: "#13F198", 
+          tritory: "#13B6F1",
+        },
+        // ... custom themes
+      },
+    }),
+  ],
 };

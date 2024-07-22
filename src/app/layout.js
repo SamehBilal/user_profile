@@ -4,6 +4,7 @@ import localFont from '@next/font/local'
 import ThemeProvider from "@/components/ThemeProvider";
 import FaviconIcon from '@/public/favicon.png'
 import Script from "next/script";
+import {NextUIProvider} from "@nextui-org/react";
 
 // const poppins = Poppins({ subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"] });
 
@@ -48,7 +49,9 @@ export default function RootLayout({ children }) {
       className={`${helv.variable} font-sans`}
       >
         <ThemeProvider>
-        {children}
+          <NextUIProvider>
+            {children}
+          </NextUIProvider>
         </ThemeProvider>
       </body>
     </html>
