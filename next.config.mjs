@@ -15,7 +15,7 @@ const nextConfig = {
                 ]
             },
             {
-                source: "/(.*)?",
+                source: "/refresh/cookie",
                 headers: [
                     { key: 'Content-Security-Policy',  value: "frame-ancestors 'self' https://sso-1.vercel.app;" },
                     { key: 'X-Frame-Options', value: 'allow-from *', },
