@@ -20,6 +20,7 @@ function Page() {
     useEffect(()=>{
       localStorage.removeItem(returnUrl)
         setIsMounted(true)
+        localStorage?.setItem("jwt_token", token)
         if(isMounted && token && token.length>5){
             cookieDommains.forEach(item=>{
               setCookie(

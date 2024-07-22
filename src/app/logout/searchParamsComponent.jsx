@@ -9,7 +9,7 @@ export default function SearchParamsComponent({setReturnUrl,setToken, setSession
   const [isMounted, setIsMounted] = useState(false)
     const searchParams = useSearchParams()
     let returnUrl = searchParams.get('url_return')
-    let token = searchParams.get('token') || getCookie('jwt_token')
+    let token = searchParams.get('token') || getCookie('jwt_token') || localStorage?.getItem("jwt_token")
     setToken(token)
     
     useEffect(()=>{

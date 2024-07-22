@@ -133,6 +133,7 @@ function LoginForm({toRegisterPage, returnUrl, sessionId}) {
                   throw new Error(data.data.message)
                 }else{
                   location.href = `https://myaccount.arabhardware.com/login_callback?url_return=${returnUrl}&token=${data.data.authorisation.access_token}`
+                  localStorage?.setItem("jwt_token", data.data.authorisation.access_token)
                   cookieDommains.forEach(item=>{
                     setCookie(
                       item.title, 

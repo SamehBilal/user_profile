@@ -13,10 +13,10 @@ import ToasterComponent from "@/components/toaster_top"
 function UserDropdown({isExpanded=false, setIsExpanded, user }) {
   const dropdownRef = useRef(null)
   const [isLoggingOut, setIsLoggingOut] = useState(false)
-  const [token, setToken] = useState('')
+  const [token, setToken] = useState(getCookie('jwt_token')?? (localStorage?.getItem("jwt_token") ?? ''))
 
   const handleOutsideClick = (e) => {
-    setToken(getCookie('jwt_token')?? '')
+    setToken(getCookie('jwt_token')?? (localStorage?.getItem("jwt_token") ?? ''))
     if (dropdownRef?.current && !dropdownRef?.current?.contains(e?.target)) {
       setIsExpanded(false);
     }
@@ -26,10 +26,11 @@ function UserDropdown({isExpanded=false, setIsExpanded, user }) {
     handleOutsideClick()
     document.addEventListener('mousedown', handleOutsideClick);
     if(token && token.length>5){
+      // localStorage?.setItem("jwt_token", data.data.authorisation.access_token)
       cookieDommains.forEach(item=>{
         setCookie(
           item.title, 
-          data.data.authorisation.access_token, 
+          token, 
           {secure: true, sameSite: "None", domain: item.domain})
         })
     }

@@ -67,7 +67,8 @@ function RegisterForm({toLoginPage, returnUrl, sessionId}) {
                 }else{
                   console.log('res4', res.data)
                   location.href = `https://myaccount.arabhardware.com/login_callback?url_return=${returnUrl}&token=${data.data.authorisation.access_token}`
-                    cookieDommains.forEach(item=>{
+                  localStorage?.setItem("jwt_token", data.data.authorisation.access_token)  
+                  cookieDommains.forEach(item=>{
                       setCookie(
                         item.title, 
                         data.data.authorisation.access_token, 

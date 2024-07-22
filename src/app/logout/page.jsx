@@ -35,7 +35,7 @@ export default function Home() {
     deleteCookie(
       "jwt_token",
       {secure: true, sameSite: "None", domain: ".arabhardware.net"})
-
+    localStorage.removeItem("jwt_token")
     await axios.post(`${ApiBase}/logout`,
       {}, {
         headers: { "Authorization": `Bearer ${token}`, "Accept": "application/json" }

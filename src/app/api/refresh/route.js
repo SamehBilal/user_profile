@@ -3,14 +3,7 @@ import { NextResponse } from "next/server";
 import { cookies } from 'next/headers'
 
 export async function GET(request, response) {
-    const allowedOrigins = [
-        'https://arabhardware.com', 
-        'https://arabhardware.net', 
-        'https://user-profile-lyart.vercel.app/api/refresh', 
-        'http://localhost:3000/api/refresh'
-    ];
-    const origin = request.url;
-    console.log('origin: ', request.url)
+    // const origin = request.url;
 
     try{
         // cookies().set('token', 'shaza', { secure: true, sameSite: "None" })

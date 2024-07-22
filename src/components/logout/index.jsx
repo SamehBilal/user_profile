@@ -10,7 +10,7 @@ function LogoutPage() {
     
     const logoutFunction = async () => {
         setIsLoggingOut(true)
-        const token = getCookie('jwt_token')
+        const token = getCookie('jwt_token') || localStorage?.getItem("jwt_token")
           deleteCookie(
             "user",
             {secure: true, sameSite: "None"})
@@ -26,6 +26,7 @@ function LogoutPage() {
           deleteCookie(
             "jwt_token",
             {secure: true, sameSite: "None", domain: ".arabhardware.net"})
+          localStorage.removeItem("jwt_token")
     
           await axios.post(`${ApiBase}/logout`,
             {}, {
