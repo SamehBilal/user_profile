@@ -40,11 +40,6 @@ export default function Home() {
     .then(res=>console.log('success'))
     .catch(e=>console.log('e', e))
     setIsLoggingOut(true)
-    deleteCookie( "user", {secure: true, sameSite: "None"})
-    deleteCookie( "jwt_token", {secure: true, sameSite: "None"})
-    setCookie( "jwt_token", {secure: true, sameSite: "None", domain: "arabhardware.com", maxAge: 0})
-    setCookie( "jwt_token", {secure: true, sameSite: "None", domain: ".arabhardware.com", maxAge: 0})
-    setCookie( "jwt_token", {secure: true, sameSite: "None", domain: ".arabhardware.net", maxAge: 0})
     localStorage.removeItem("jwt_token")
     await axios.post(`${ApiBase}/logout`,
       {}, {
@@ -58,7 +53,11 @@ export default function Home() {
     }
 
   useEffect(()=>{
+    deleteCookie( "user", {secure: true, sameSite: "None"})
+    deleteCookie( "jwt_token", {secure: true, sameSite: "None"})
     setCookie("jwt_token", "deleted", {secure: true, sameSite: "None", domain: ".arabhardware.com", maxAge: 0})
+    setCookie("jwt_token", "deleted", {secure: true, sameSite: "None", domain: ".arabhardware.net", maxAge: 0})
+    setCookie("jwt_token", "deleted", {secure: true, sameSite: "None", domain: "arabhardware.com", maxAge: 0})
     localStorage.removeItem(returnUrl)
     setIsMounted(true)
     console.log('token', token)
