@@ -42,9 +42,9 @@ export default function Home() {
     setIsLoggingOut(true)
     deleteCookie( "user", {secure: true, sameSite: "None"})
     deleteCookie( "jwt_token", {secure: true, sameSite: "None"})
-    deleteCookie( "jwt_token", {secure: true, sameSite: "None", domain: "arabhardware.com"})
-    deleteCookie( "jwt_token", {secure: true, sameSite: "None", domain: ".arabhardware.com"})
-    deleteCookie( "jwt_token", {secure: true, sameSite: "None", domain: ".arabhardware.net"})
+    setCookie( "jwt_token", {secure: true, sameSite: "None", domain: "arabhardware.com", maxAge: 0})
+    setCookie( "jwt_token", {secure: true, sameSite: "None", domain: ".arabhardware.com", maxAge: 0})
+    setCookie( "jwt_token", {secure: true, sameSite: "None", domain: ".arabhardware.net", maxAge: 0})
     localStorage.removeItem("jwt_token")
     await axios.post(`${ApiBase}/logout`,
       {}, {
