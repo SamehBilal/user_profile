@@ -33,9 +33,9 @@ export default function Home() {
     console.log('delete name', name)
     document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
   };
+  deleteCookie('test2');
 
   const logoutFunction = async () => {
-  deleteCookie('test2');
     setIsLoggingOut(true)
     deleteCookie( "user", {secure: true, sameSite: "None"})
     deleteCookie( "jwt_token", {secure: true, sameSite: "None"})

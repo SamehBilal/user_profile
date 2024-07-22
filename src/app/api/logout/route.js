@@ -11,7 +11,9 @@ export async function POST(request, response) {
         cookies().delete('jwt_token', {secure: true, sameSite: "None", domain: "arabhardware.com"});
         cookies().delete('jwt_token', {secure: true, sameSite: "None", domain: ".arabhardware.com"});
         cookies().delete('jwt_token', {secure: true, sameSite: "None", domain: ".arabhardware.net"});
-        cookies().delete('jwt_token');
+        cookies().delete('test');
+        cookies().delete('test1');
+        cookies().delete('test2');
             // Return the token
             return NextResponse.json(response, { status: 200 });
         // } else {
