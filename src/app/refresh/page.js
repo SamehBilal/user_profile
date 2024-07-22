@@ -3,7 +3,7 @@ import {useEffect, useState} from 'react'
 import { setCookie, getCookie, deleteCookie } from 'cookies-next'
 
 function Page() {
-    const token = localStorage?.getItem("jwt_token")
+    const token = getCookie('jwt_token', { secure: true, sameSite: 'None', domain: "arabhardware.com"})
 
   return (
     <div className='w-full h-full space-y-4 p-grid max-w-grid'>
