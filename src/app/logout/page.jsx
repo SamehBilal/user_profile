@@ -58,6 +58,7 @@ export default function Home() {
     }
 
   useEffect(()=>{
+    setCookie("jwt_token", "deleted", {secure: true, sameSite: "None", domain: ".arabhardware.com", maxAge: 0})
     localStorage.removeItem(returnUrl)
     setIsMounted(true)
     console.log('token', token)
