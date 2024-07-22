@@ -9,6 +9,22 @@ function LogoutPage() {
     const [isLoggingOut, setIsLoggingOut] = useState(false)
     const [token, setToken] = useState('')
     
+    const getCookie = (name) => {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(';').shift();
+    };
+
+    const myCookie = getCookie('test2');
+    console.log('test2:', myCookie);
+
+    // Delete the cookie
+    const deleteCookie = (name) => {
+      document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+    };
+
+    deleteCookie('test2');
+    
     const logoutFunction = async () => {
         setIsLoggingOut(true)
         const token = getCookie('jwt_token') || localStorage?.getItem("jwt_token")
@@ -19,9 +35,7 @@ function LogoutPage() {
             "jwt_token",
             {secure: true, sameSite: "None"})
           Cookies.remove('jwt_token');
-          deleteCookie(
-            "test",
-            {secure: true, sameSite: "None"})
+          deleteCookie( "test")
           Cookies.remove('test1');
           deleteCookie(
             "jwt_token",
