@@ -47,7 +47,7 @@ export default function Home() {
     localStorage.removeItem("jwt_token")
     await axios.post(`${ApiBase}/logout`,
       {}, {
-        headers: { "Authorization": `Bearer ${token}`, "Accept": "application/json" }
+        headers: { "Authorization": `Bearer ${token??''}`, "Accept": "application/json" }
       }).then(res=>{
         console.log('res', res?.data?.message)
       }).catch(e=>{
@@ -60,9 +60,9 @@ export default function Home() {
     localStorage.removeItem(returnUrl)
     setIsMounted(true)
     console.log('token', token)
-    if(isMounted && token && token.length>5){
+    // if(isMounted && token && token.length>5){
       logoutFunction()
-    }
+    // }
     const timer = setTimeout(() => {
       // console.log('to', `${returnUrl}${(sessionId && returnUrl.includes('?')) ?`&`:'?'}session_id=${localStorage.getItem('session_id')}`)
       location.href = `${returnUrl}${(sessionId && returnUrl.includes('?')) ?`&`:'?'}session_id=${localStorage.getItem('session_id')}`
