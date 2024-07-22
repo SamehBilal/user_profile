@@ -6,7 +6,7 @@ const nextConfig = {
             {
                 source: "/:path*",
                 headers: [
-                    { key: 'Content-Security-Policy',  value: "frame-ancestors 'self' *;" },
+                    { key: 'Content-Security-Policy',  value: "frame-ancestors 'self' *" },
                     { key: 'X-Frame-Options', value: 'allow-from *', },
                     { key: "Access-Control-Allow-Credentials", value: "true" },
                     { key: "Access-Control-Allow-Origin", value: "*" },
@@ -17,7 +17,7 @@ const nextConfig = {
             {
                 source: "/refresh/cookie",
                 headers: [
-                    { key: 'Content-Security-Policy',  value: "frame-ancestors 'self' https://sso-1.vercel.app;" },
+                    { key: 'Content-Security-Policy',  value: "frame-ancestors 'self' https://sso-1.vercel.app" },
                     { key: 'X-Frame-Options', value: 'allow-from *', },
                     { key: "Access-Control-Allow-Credentials", value: "true" },
                     { key: "Access-Control-Allow-Origin", value: "*" },
