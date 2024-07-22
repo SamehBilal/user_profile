@@ -1,6 +1,7 @@
 "use client"
 import { useEffect, useRef, useState } from "react"
 import { deleteCookie, getCookie, setCookie } from "cookies-next"
+import Cookies from 'js-cookie';
 import { storeLogoutDomain, cookieDommains, storeLoginDomain, logoutDomains, ApiBase } from "@/config/api"
 import axios from "axios"
 
@@ -17,6 +18,11 @@ function LogoutPage() {
           deleteCookie(
             "jwt_token",
             {secure: true, sameSite: "None"})
+          Cookies.remove('jwt_token');
+          deleteCookie(
+            "test",
+            {secure: true, sameSite: "None"})
+          Cookies.remove('test1');
           deleteCookie(
             "jwt_token",
             {secure: true, sameSite: "None", domain: "arabhardware.com"})
