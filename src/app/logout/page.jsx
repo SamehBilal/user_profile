@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { callBack, storeLogoutDomain, logoutDomains } from '@/config/api'
 import { deleteCookie, getCookie, setCookie } from "cookies-next"
+import Cookies from 'js-cookie';
 import SearchParamsComponent from './searchParamsComponent'
 import Image from 'next/image'
 import LoadingImg from '@/public/images/loading_login.png'
@@ -18,23 +19,31 @@ export default function Home() {
   const [token, setToken] = useState(null)
 
   
+  const getCookie = (name) => {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  };
+
+  const myCookie = getCookie('test2');
+  console.log('test2:', myCookie);
+
+  // Delete the cookie
+  const deleteCookie = (name) => {
+    console.log('delete name', name)
+    document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+  };
+
   const logoutFunction = async () => {
+  deleteCookie('test2');
     setIsLoggingOut(true)
-    deleteCookie(
-      "user",
-      {secure: true, sameSite: "None"})
-    deleteCookie(
-      "jwt_token",
-      {secure: true, sameSite: "None"})
-    deleteCookie(
-      "jwt_token",
-      {secure: true, sameSite: "None", domain: "arabhardware.com"})
-    deleteCookie(
-      "jwt_token",
-      {secure: true, sameSite: "None", domain: ".arabhardware.com"})
-    deleteCookie(
-      "jwt_token",
-      {secure: true, sameSite: "None", domain: ".arabhardware.net"})
+    deleteCookie( "user", {secure: true, sameSite: "None"})
+    deleteCookie( "jwt_token", {secure: true, sameSite: "None"})
+    deleteCookie( "jwt_token", {secure: true, sameSite: "None", domain: "arabhardware.com"})
+    deleteCookie( "jwt_token", {secure: true, sameSite: "None", domain: ".arabhardware.com"})
+    deleteCookie( "jwt_token", {secure: true, sameSite: "None", domain: ".arabhardware.net"})
+    deleteCookie( "test")
+    Cookies.remove('test1');
     localStorage.removeItem("jwt_token")
     await axios.post(`${ApiBase}/logout`,
       {}, {
