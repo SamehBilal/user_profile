@@ -81,7 +81,7 @@ return (
         frameBorder="0" className='hidden' ></iframe>}
       </div>}
 
-      <Image src={LoadingImg} alt='Loading Arabhardware pixilized sad' className='size-full object-cover object-top absolute -z-10'  />
+      <Image src={LoadingImg} alt='Loading Arabhardware pixilized sad' className='size-full object-cover object-top absolute'  />
 
       <div className="absolute left-1/2 -translate-x-1/2 max-w-grid p-grid py-8 flex flex-col justify-center items-center w-full gap-8">
       <Image src={WhiteLogo} alt='arabhardware' className='w-24 '/>
