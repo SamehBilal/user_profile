@@ -5,7 +5,7 @@ import CardsComponent from "./cardsComponent";
 
 const TabsComponent = ({ tabs }) => {
   return (
-    <div className="flex flex-wrap gap-4 ">
+    <div className="">
         <Tabs 
         variant="underlined" 
         aria-label="Arabhardware Companies" 
