@@ -6,9 +6,10 @@ export async function GET(request, response) {
     // const origin = request.url;
 
     try{
-        // cookies().set('token', 'shaza', { secure: true, sameSite: "None" })
+        // cookies().set('token', 'shaza', { secure: true, sameSite: 'None', domain: "arabhardware.com"})
         // if (allowedOrigins.includes(origin)) {
             const cookieStore = cookies()
+            console.log('req.cookies', request.cookies)
             const token = cookieStore.get('jwt_token')?.value || null
             console.log('token', token)
             const user = (cookieStore.get('user') && cookieStore.get('user').value)? (JSON.parse(cookieStore.get('user')?.value)) :null
