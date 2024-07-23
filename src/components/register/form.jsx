@@ -17,7 +17,7 @@ import ToasterComponent from '@/components/toaster_bottom';
 function RegisterForm({toLoginPage, returnUrl, sessionId}) {
   const router = useRouter()
   const tokenString = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FyYWJoYXJkd2FyZS5jb20vYXBpL3YxL2xvZ2luIiwiaWF0IjoxNzE5ODM3NDIwLCJleHAiOjE3MTk4NDEwMjAsIm5iZiI6MTcxOTgzNzQyMCwianRpIjoiNEI3UjVNVlBSaUZTN0NJZyIsInN1YiI6IjI4NzQ2IiwicHJ2IjoiOTEwZGQ4YWQwYjRmNDQ4MjBmZWVjNDQ4MjFmM2VhZmUwNGYzM2UwNSJ9.duQcIJZ929slGAxhhSYQmoYWL1ivC3S9YTGUEbHv_Rg"
-    const [form, setForm] = useState({email:'', password:'', firstname: '', lastname: '', agreeToTerms: false})
+    const [form, setForm] = useState({email:'', password:'', firstname: '', lastname: '', agreeToTerms: false, phone: ''})
     const [isLoading, setIsLoading] = useState(false)
     const [token, setToken] = useState(null)
     const [errorMsg, setErrorMsg] = useState("")
@@ -39,15 +39,15 @@ function RegisterForm({toLoginPage, returnUrl, sessionId}) {
 
     const submitForm = async(e) => {
         e.preventDefault()
-        const {email, password, firstname, lastname, agreeToTerms} = form
-        if(email == '' || password == '' || firstname == '' || lastname == '' || !agreeToTerms){
+        const {email, password, firstname, lastname, agreeToTerms, phone} = form
+        if(email == '' || password == '' || firstname == '' || lastname == '' || phone == '' || !agreeToTerms){
           toast.error('كل المعلومات مطلوبة')
           setIsLoading(false)
         }else{
           setIsLoading(true)
           
           await axios.post('/api/register', 
-            {email, password, firstname, lastname} //check if valid
+            {email, phone, password, firstname, lastname} //check if valid
           ).then(async res=>{
             console.log('res0', res.data)
             if(res.data?.message) {
@@ -57,7 +57,7 @@ function RegisterForm({toLoginPage, returnUrl, sessionId}) {
             else{
               console.log('res1', res.data)
               await axios.post(`${ApiBase}/register`, 
-                {email, password, firstname, lastname} //add user to db
+                {email, phone, password, firstname, lastname} //add user to db
               ).then(async data=> {
                 console.log('res3', res.data)
                 if(data.data.message){
@@ -115,8 +115,8 @@ function RegisterForm({toLoginPage, returnUrl, sessionId}) {
   return (<div className="w-full h-full bg-white rounded-l-lg px-14 py-8 space-y-8 relative mb-32">
     <ToasterComponent />
     
-    {token && 
-    <div className='flex justify-between items-center max-h-[50vh]'>
+    {token &&
+    <div className='flex justify-between items-center max-h-[50vh]'> {/* iframes */}
       {callBack.map((endPoint, i)=>{
       return <iframe key={i} 
       src={`${endPoint}?token=${token}`} 
@@ -146,6 +146,8 @@ function RegisterForm({toLoginPage, returnUrl, sessionId}) {
       </div>
       <FloatingInput id="email" type="email" value={form.email} onChange={handleChange} autoComplete='off webauthn'
       placeholder={ar.register.email} required={true} label={ar.register.email} />
+      <FloatingInput id="phone" type="text" value={form.phone} onChange={handleChange} autoComplete='off webauthn'
+      placeholder={ar.register.phone} required={true} label={ar.register.phone} />
       <FloatingInput id="password" type="password" value={form.password} onChange={handleChange} autocomplete="off webauthn"
       placeholder={ar.register.password} required={true} label={ar.register.password} 
       Icon={isPasswordShown? Eye: EyeOff} setIsPasswordShown={setIsPasswordShown} isPasswordShown={isPasswordShown} />

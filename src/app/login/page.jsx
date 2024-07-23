@@ -35,7 +35,7 @@ function Page() {
       {/* <Appbar /> */}
       <SearchParamsComponent setReturnUrl={setReturnUrl} toRegisterPage={toRegisterPage} setSessionId={setSessionId} />
       <Image src={backgrounds[activeSlide].img} alt={backgrounds[activeSlide].title}
-      className='w-screen lg:h-full h-[250%] blur-lg object-cover absolute -z-10 brightness-150' />
+      className='w-screen lg:h-full h-[250%] blur-lg object-cover absolute brightness-150' />
 
       <Swiper
         id='login-swiper'
