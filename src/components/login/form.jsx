@@ -40,6 +40,8 @@ function LoginForm({toRegisterPage, returnUrl, sessionId}) {
     const { executeRecaptcha } = useGoogleReCaptcha();
 
     useEffect(()=>{
+      setCookie('jwt_logout','deleted', {secure: true, sameSite: "None", domain: ".arabhardware.com", maxAge: 0})
+      setCookie('jwt_logout','deleted', {secure: true, sameSite: "None", domain: ".arabhardware.net", maxAge: 0})
       if(isForgetPswFormShown){
         setForm({login_email:'', login_password:''})
       }else{

@@ -1,17 +1,22 @@
 import {useEffect, useState, useMemo} from "react";
 import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button} from "@nextui-org/react";
-import { Images } from "lucide-react";
+// import { Images } from "lucide-react";
+import Image from "next/image";
 
 
 function DropdownMenuItems({items=[]}) {
-    const theItems = items.map(item=>item.ar)
-    const [selectedKeys, setSelectedKeys] = useState(theItems);
-    console.log('selectedKeys', typeof selectedKeys)
+    const theItems = items.map(item=>item.alpha2.toUpperCase())
+    const [selectedKeys, setSelectedKeys] = useState(new Set([theItems[51]]));
+    const [selectedIndex, setSelectedIndex] = useState(51);
 
-    const selectedValue = useMemo(
-        () => Array.from(selectedKeys).join(", ").replaceAll("_", " "),
-        [selectedKeys]
-      );
+    console.log('selectedIndex', selectedIndex)
+    const handleSelectionChange = (newSelectedKeys) => {
+      // Get the index of the newly selected item
+      const newSelectedKeysArr = Array.from(newSelectedKeys)
+      const newIndex = newSelectedKeysArr[0];
+      setSelectedIndex(newIndex);
+      setSelectedKeys(newSelectedKeysArr);
+    };
   
   return (
     <Dropdown>
@@ -20,7 +25,7 @@ function DropdownMenuItems({items=[]}) {
           variant="bordered" 
           className="capitalize"
         >
-          {selectedValue}
+          {theItems[selectedIndex]}
         </Button>
       </DropdownTrigger>
       <DropdownMenu 
@@ -29,12 +34,12 @@ function DropdownMenuItems({items=[]}) {
         disallowEmptySelection
         selectionMode="single"
         selectedKeys={selectedKeys}
-        onSelectionChange={setSelectedKeys}
+        onSelectionChange={handleSelectionChange}
         className="max-h-96 overflow-y-scroll"
       >
         {theItems.map((item, i)=>{
             return <DropdownItem key={i}
-            startContent={<Images className="text-xl text-default-500 pointer-events-none flex-shrink-0" />}>
+            startContent={<Image src={items[i].flag} alt={item} width={24} height={24} className="text-xl text-default-500 pointer-events-none flex-shrink-0" />}>
                 {item}
             </DropdownItem>
         })}
