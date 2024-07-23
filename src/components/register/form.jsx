@@ -13,6 +13,8 @@ import OrBy from '../login/or_by';
 import { Eye, EyeOff } from 'lucide-react';
 import toast from 'react-hot-toast';
 import ToasterComponent from '@/components/toaster_bottom';
+import Dropdown from '../ui/dropdown';
+import { countries } from './countries';
 
 function RegisterForm({toLoginPage, returnUrl, sessionId}) {
   const router = useRouter()
@@ -146,6 +148,7 @@ function RegisterForm({toLoginPage, returnUrl, sessionId}) {
       </div>
       <FloatingInput id="email" type="email" value={form.email} onChange={handleChange} autoComplete='off webauthn'
       placeholder={ar.register.email} required={true} label={ar.register.email} />
+      {/* <Dropdown items={countries} /> */}
       <FloatingInput id="phone" type="text" value={form.phone} onChange={handleChange} autoComplete='off webauthn'
       placeholder={ar.register.phone} required={true} label={ar.register.phone} />
       <FloatingInput id="password" type="password" value={form.password} onChange={handleChange} autocomplete="off webauthn"
