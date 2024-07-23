@@ -14,16 +14,17 @@ import { Eye, EyeOff } from 'lucide-react';
 import toast from 'react-hot-toast';
 import ToasterComponent from '@/components/toaster_bottom';
 import Dropdown from '../ui/dropdown';
-import { countries } from './countries';
+import { countries } from '../../utils/countries';
+import PhoneInput from '../ui/phone_input';
 
 function RegisterForm({toLoginPage, returnUrl, sessionId}) {
   const router = useRouter()
   const tokenString = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FyYWJoYXJkd2FyZS5jb20vYXBpL3YxL2xvZ2luIiwiaWF0IjoxNzE5ODM3NDIwLCJleHAiOjE3MTk4NDEwMjAsIm5iZiI6MTcxOTgzNzQyMCwianRpIjoiNEI3UjVNVlBSaUZTN0NJZyIsInN1YiI6IjI4NzQ2IiwicHJ2IjoiOTEwZGQ4YWQwYjRmNDQ4MjBmZWVjNDQ4MjFmM2VhZmUwNGYzM2UwNSJ9.duQcIJZ929slGAxhhSYQmoYWL1ivC3S9YTGUEbHv_Rg"
-    const [form, setForm] = useState({email:'', password:'', firstname: '', lastname: '', agreeToTerms: false, phone: ''})
+    const [form, setForm] = useState({email:'', password:'', firstname: '', lastname: '', agreeToTerms: false, phone: '', country: ''})
     const [isLoading, setIsLoading] = useState(false)
     const [token, setToken] = useState(null)
-    const [errorMsg, setErrorMsg] = useState("")
     const [isPasswordShown, setIsPasswordShown] = useState(false)
+    const [selectedIndex, setSelectedIndex] = useState(51);
 
     const handleChange = (e) => {
       setForm(prev=>({
@@ -41,7 +42,7 @@ function RegisterForm({toLoginPage, returnUrl, sessionId}) {
 
     const submitForm = async(e) => {
         e.preventDefault()
-        const {email, password, firstname, lastname, agreeToTerms, phone} = form
+        const {email, password, firstname, lastname, agreeToTerms, phone, country} = form
         if(email == '' || password == '' || firstname == '' || lastname == '' || phone == '' || !agreeToTerms){
           toast.error('كل المعلومات مطلوبة')
           setIsLoading(false)
@@ -49,7 +50,7 @@ function RegisterForm({toLoginPage, returnUrl, sessionId}) {
           setIsLoading(true)
           
           await axios.post('/api/register', 
-            {email, phone, password, firstname, lastname} //check if valid
+            {email, phone, password, firstname, lastname, country} //check if valid
           ).then(async res=>{
             console.log('res0', res.data)
             if(res.data?.message) {
@@ -59,7 +60,7 @@ function RegisterForm({toLoginPage, returnUrl, sessionId}) {
             else{
               console.log('res1', res.data)
               await axios.post(`${ApiBase}/register`, 
-                {email, phone, password, firstname, lastname} //add user to db
+                {email, phone, password, firstname, lastname, country} //add user to db
               ).then(async data=> {
                 console.log('res3', res.data)
                 if(data.data.message){
@@ -106,13 +107,12 @@ function RegisterForm({toLoginPage, returnUrl, sessionId}) {
     }
 
     useEffect(()=>{
-      if(getCookie("jwt_token") ){
-        // && getCookie("user") && JSON.parse(getCookie("user"))
-        // console.log('user', JSON.parse(getCookie("user")))
-        // console.log('jwt_token', getCookie("jwt_token"))
-        // router.push('/')
-      }
-    }, [])
+      setForm(prev=>({
+        ...prev,
+        country: countries[selectedIndex??51].alpha2
+      }))
+    }, [selectedIndex])
+    console.log('form', form)
 
   return (<div className="w-full h-full bg-white rounded-l-lg px-14 py-8 space-y-8 relative mb-32">
     <ToasterComponent />
@@ -148,9 +148,9 @@ function RegisterForm({toLoginPage, returnUrl, sessionId}) {
       </div>
       <FloatingInput id="email" type="email" value={form.email} onChange={handleChange} autoComplete='off webauthn'
       placeholder={ar.register.email} required={true} label={ar.register.email} />
-      {/* <Dropdown items={countries} /> */}
-      <FloatingInput id="phone" type="text" value={form.phone} onChange={handleChange} autoComplete='off webauthn'
-      placeholder={ar.register.phone} required={true} label={ar.register.phone} />
+      <PhoneInput id="phone" value={form.phone} onChange={handleChange} autoComplete='off webauthn'
+      placeholder={ar.register.phone} required={true} label={ar.register.phone}
+      selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex} />
       <FloatingInput id="password" type="password" value={form.password} onChange={handleChange} autocomplete="off webauthn"
       placeholder={ar.register.password} required={true} label={ar.register.password} 
       Icon={isPasswordShown? Eye: EyeOff} setIsPasswordShown={setIsPasswordShown} isPasswordShown={isPasswordShown} />

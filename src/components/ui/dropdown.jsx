@@ -4,12 +4,9 @@ import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button} from "@ne
 import Image from "next/image";
 
 
-function DropdownMenuItems({items=[]}) {
-    const theItems = items.map(item=>item.alpha2.toUpperCase())
-    const [selectedKeys, setSelectedKeys] = useState(new Set([theItems[51]]));
-    const [selectedIndex, setSelectedIndex] = useState(51);
+function DropdownMenuItems({items=[], theItems=[], initialIndex = 51, selectedIndex=51, setSelectedIndex}) {
+    const [selectedKeys, setSelectedKeys] = useState(new Set([theItems[initialIndex]]));
 
-    console.log('selectedIndex', selectedIndex)
     const handleSelectionChange = (newSelectedKeys) => {
       // Get the index of the newly selected item
       const newSelectedKeysArr = Array.from(newSelectedKeys)
@@ -23,9 +20,12 @@ function DropdownMenuItems({items=[]}) {
       <DropdownTrigger>
         <Button 
           variant="bordered" 
-          className="capitalize"
+          className="capitalize dark:text-black flex items-center justify-center h-12 rounded-none"
         >
-          {theItems[selectedIndex]}
+          <span>{theItems[selectedIndex]}</span>
+          <Image src={items[selectedIndex].flag} alt={theItems[selectedIndex]} width={24} height={24} 
+          className="text-xl text-default-500 pointer-events-none flex-shrink-0" />
+          
         </Button>
       </DropdownTrigger>
       <DropdownMenu 

@@ -3,26 +3,28 @@ import { NextResponse } from "next/server";
 import parsePhoneNumberFromString from 'libphonenumber-js'
 import { z } from 'zod';
 
+let country = 'SY'
+
 const schema = z.object({
   firstname: z.string(),
   lastname: z.string(),
   email: z.string().email(),
   phone: z.string()
-  // .transform((arg, ctx) => {
-  //   const phone = parsePhoneNumberFromString(arg, {
-  //     defaultCountry: 'EG',
-  //     extract: false,
-  //   });
-  //   if (phone && phone.isValid()) { // when it's good
-  //     console.log('phone', phone.number, phone.isValid(), typeof phone.number)
-  //     return phone.number;
-  //   }
-  //   ctx.addIssue({ // when it's not
-  //     code: z.ZodIssueCode.custom,
-  //     message: 'Invalid phone number',
-  //   });
-  //   return z.NEVER;
-  // })
+  .transform((arg, ctx) => {
+    const phone = parsePhoneNumberFromString(arg, {
+      defaultCountry: country??'SY',
+      extract: false,
+    });
+    if (phone && phone.isValid()) { // when it's good
+      console.log('phone', phone.number, phone.isValid(), typeof phone.number)
+      return phone.number;
+    }
+    ctx.addIssue({ // when it's not
+      code: z.ZodIssueCode.custom,
+      message: 'Invalid phone number',
+    });
+    return z.NEVER;
+  })
   ,
   password: z.string().min(8).regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/),
 });
@@ -30,6 +32,7 @@ const schema = z.object({
 export async function POST(req, res) {
   try {
     const body = await req.json();
+    country = body?.country?.toUpperCase()
     const parsed = schema.parse(body);
     // Handle registration logic
     return NextResponse.json({ data: "تم التسجيل بنجاح" }, { status: 200 });
