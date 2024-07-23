@@ -1,9 +1,10 @@
 import React from 'react'
 import Image from 'next/image'
+import Appbar from '@/components/appbar'
 
 function Page() {
   return (
-    <div className=" max-w-3xl my-12 mx-auto bg-white p-5 shadow-sm">
+    <div className=" max-w-3xl my-12 mx-auto bg-white dark:text-black p-5 shadow-sm">
         <header className="text-center">
             <h1 className=' text-2xl'>Payment Invoice</h1>
             <p className='my-1 text-sm'>No. KLLM 233-000023</p>
