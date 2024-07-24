@@ -36,6 +36,13 @@ body {
   @apply bg-darkGray text-white;
 }
 
+@media print {
+  * {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+  }
+}
+
 .simple_icons svg{
   fill: currentColor;
   stroke-width: 2;

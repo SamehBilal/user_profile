@@ -15,14 +15,15 @@ function Page() {
             ['لوريم ايبسوم', '$30', '1', '$30'],
             ['لوريم ايبسوم', '$40', '1', '$40'],
             ['لوريم ايبسوم', '$50', '1', '$50'],
-            ['لوريم ايبسوم', '$50', '1', '$50'],
         ]
     }
 
   return (
-    <div className=" max-w-3xl my-12 mx-auto bg-white text-black shadow-sm relative">
-        <Image src={InvoiceBg} alt='retro environment' className='size-full object-cover' />
-        <div className="absolute inset-0 z-10 p-10 space-y-6">
+    <div className=" max-w-3xl my-12 mx-auto bg-white text-black shadow-sm relative"
+    style={{
+        backgroundColor: 'white', backgroundImage: ` url(${InvoiceBg.src})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}}>
+        {/* <Image src={InvoiceBg} alt='retro environment' className='size-full object-cover' /> */}
+        <div className="p-10 space-y-6">
             <header className="text-center flex items-center justify-between">
                 <div className="space-y-1">
                     <h1 className=' text-2xl font-bold'>تفاصيل الدفع</h1>
@@ -51,7 +52,7 @@ function Page() {
                     </p>
                 </div>
             </section>
-            <table className="w-full border-separate">
+            <table className="w-full border-collapse">
                 <thead>
                     <tr className='[&>*]:border [&>*]:border-solid [&>*]:border-[#ddd] [&>*]:bg-[#f2f2f2] [&>*]:p-2 [&>*]:text-center'>
                         {data.headers.map((_, i)=>{
@@ -90,15 +91,15 @@ function Page() {
                 <div className="w-[60%]">
                     <h4>الشروط والاحكام</h4>
                     <p>
-                    طراف الأرضية والنرويج أي دول. أمّا إيطاليا بمعارضة و غير, ما الى أراضي اعتداء ويكيبيديا. السبب الأرضية اليابان أما ما, يرتبط وقوعها، تكتيكاً وفي مع. اعتداء وصافرات والكساد كل بحق. الا اكتوبر الطرفين من, أن حيث بفرض الأوربيين.
+                    طراف الأرضية والنرويج أي دول. أمّا إيطاليا بمعارضة و غير, ما الى أراضي اعتداء ويكيبيديا. السبب الأرضية اليابان أما ما, يرتبط وقوعها، تكتيكاً وفي مع. اعتداء وصافرات والكساد كل بحق.
                     </p>
                 </div>
                 <div className="w-[35%] text-center">
-                    <Image src={QR} alt="QR Code" className='w-20 my-2 mx-auto' />
+                    <Image src={QR} alt="QR Code" className='w-16 my-2 mx-auto' />
                     <p>رمز التتبع</p>
                 </div>
             </section>
-            <footer className="text-center space-y-1 text-[#333] pt-10">
+            <footer className="text-center space-y-1 text-[#333]">
                 <div className="flex items-center justify-start gap-2">
                     <MapPin className='bg-black rounded-lg p-1 size-6 text-white' strokeWidth={2} />
                     <p className=''>130th Street, Sky View</p>
