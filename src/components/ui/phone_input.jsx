@@ -29,7 +29,7 @@ function PhoneInput({
           </label>
           <div className="absolute left-0 h-full top-1/2 -translate-y-1/2 flex items-center justify-center">
             <DropdownMenuItems items={countries} theItems={countries.map(item=>item.alpha2.toUpperCase())}
-            selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex} />
+            selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex} selectedValue={countries[selectedIndex].code} />
           </div>
       </div>)
 }

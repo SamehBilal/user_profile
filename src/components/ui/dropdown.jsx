@@ -4,7 +4,7 @@ import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button} from "@ne
 import Image from "next/image";
 
 
-function DropdownMenuItems({items=[], theItems=[], initialIndex = 51, selectedIndex=51, setSelectedIndex}) {
+function DropdownMenuItems({items=[], theItems=[], initialIndex = 51, selectedIndex=51, setSelectedIndex, selectedValue}) {
     const [selectedKeys, setSelectedKeys] = useState(new Set([theItems[initialIndex]]));
 
     const handleSelectionChange = (newSelectedKeys) => {
@@ -22,7 +22,7 @@ function DropdownMenuItems({items=[], theItems=[], initialIndex = 51, selectedIn
           variant="bordered" 
           className="capitalize dark:text-black flex items-center justify-center h-12 rounded-none"
         >
-          <span>{theItems[selectedIndex]}</span>
+          <span>{selectedValue}</span>
           <Image src={items[selectedIndex].flag} alt={theItems[selectedIndex]} width={24} height={24} 
           className="text-xl text-default-500 pointer-events-none flex-shrink-0" />
           
