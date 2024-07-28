@@ -6,7 +6,7 @@ import QR from '@/public/images/qr.png'
 import Appbar from '@/components/appbar'
 import { MapPin, Phone, Mail } from 'lucide-react'
 
-const PriceWithCurrency = ({price, currency='egp'}) => {
+const PriceWithCurrency = ({price, currency='EGP'}) => {
     return (<span className='grid grid-cols-2 gap-2 w-24'>
     <span>{price}</span>
     <span>{currency}</span>
