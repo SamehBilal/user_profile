@@ -1,6 +1,6 @@
 "use client"
 import {useState, useEffect, useRef} from 'react'
-import { callBack, storeLoginDomain, cookieDommains } from '@/config/api'
+import { callBack, storeLoginDomain, cookieDommains, mainDomains } from '@/config/api'
 import { setCookie } from 'cookies-next'
 import SearchParamsComponent from './searchParamsComponent'
 import Image from 'next/image'
@@ -16,6 +16,7 @@ function Page() {
     const [sessionId, setSessionId] = useState(null)
     const [returnUrl, setReturnUrl] = useState('https://arabhardware.net')
     const [token, setToken] = useState(null)
+    const [afterPeriod, setAfterPeriod] = useState(false)
 
     useEffect(()=>{
       localStorage.removeItem(returnUrl)
@@ -33,11 +34,15 @@ function Page() {
     }, [token])
 
     useEffect(()=>{
+      const timer1 = setTimeout(() => {
+        setAfterPeriod(true);
+      }, 6000);
       const timer = setTimeout(() => {
         // console.log('to', `${returnUrl}${(sessionId && returnUrl.includes('?')) ?`&`:'?'}session_id=${sessionId}`)
         location.href = `${returnUrl}${(sessionId && returnUrl.includes('?')) ?`&`:'?'}session_id=${localStorage.getItem('session_id')}`
       }, 12000);
       return ()=>{
+          clearTimeout(timer1)
           clearTimeout(timer)
       }
     }, [returnUrl])
@@ -47,13 +52,20 @@ function Page() {
     <div className='w-screen h-screen'>
       <SearchParamsComponent setReturnUrl={setReturnUrl} setToken={setToken} setSessionId={setSessionId} />
         {token && 
-        <div className='justify-between items-center max-h-[50vh] hidden'>
-          {
-          callBack.map((endPoint, i)=>{
-          return <iframe id={`iframe-${i}`} key={i}
-          src={`${endPoint}?token=${token}`} 
-          frameBorder="0" className='hidden' ></iframe>
+        <div className='justify-between items-center max-h-[50vh] '>
+          {afterPeriod &&
+          mainDomains.map((endPoint, i)=>{
+          return <iframe id={`iframe-main-${i}`} key={i}
+          src={`${endPoint}`} 
+          frameBorder="0" className='' ></iframe>
           })
+          }
+          {!afterPeriod &&
+          callBack.map((endPoint, i)=>{
+            return <iframe id={`iframe-${i}`} key={i}
+            src={`${endPoint}?token=${token}`} 
+            frameBorder="0" className='' ></iframe>
+            })
           }
           {sessionId && <iframe id={`iframe-cart`}
           src={`${storeLoginDomain}&token=${token}&session_id=${localStorage?.getItem('session_id')??''}`} 
