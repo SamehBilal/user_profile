@@ -72,9 +72,6 @@ function LoginForm({toRegisterPage, returnUrl, sessionId}) {
       await axios.post(`${ApiBase}/forget-password`, 
         {email},
       ).then(async data=> {
-        console.log('data.success', data.success)
-        console.log('data.data', data.data)
-        console.log('data.data.success', data.data.success)
         if(data.data.success){
           toast.success(data.data.message)
         }else{
