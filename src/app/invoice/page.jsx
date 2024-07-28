@@ -17,9 +17,9 @@ function Page() {
     }
 
   return (
-    <div className=" max-w-3xl my-12 mx-auto bg-white text-black shadow-sm relative text-sm"
+    <div className=" max-w-3xl my-12 mx-auto bg-white text-black shadow-sm relative text-sm min-h-[850px]"
     style={{
-        backgroundColor: 'white', backgroundImage: ` url(${InvoiceBg.src})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}}>
+        backgroundColor: 'white', backgroundImage: ` url(${InvoiceBg.src})`, backgroundSize: 'cover', backgroundRepeat: 'repeat-y'}}>
         {/* <Image src={InvoiceBg} alt='retro environment' className='size-full object-cover' /> */}
         <div className="p-10 space-y-4">
             <header className="flex items-top justify-between">

@@ -30,7 +30,7 @@ function ResetForm({}) {
       }))
       // check for errors or success
       if(e.target.name == 'password1'){
-        await axios.post(`${ApiBase}/api/reset`, {password1: e.target.value})
+        await axios.post('/api/reset', {password1: e.target.value})
         .then(res=>{
           if(e.target.value == ''){ //if empty make the error and success false
             setFormSuccess(prev=>({...prev, password1: false}))
