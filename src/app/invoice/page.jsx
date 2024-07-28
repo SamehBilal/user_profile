@@ -8,29 +8,36 @@ import { MapPin, Phone, Mail } from 'lucide-react'
 
 function Page() {
     const data = {
-        headers: ['رقم', 'وصف المنتج', 'الكمية', 'سعر الوحدة باستثناء الضريبة', 'الضريبة%',  'المجموع باستثناء الضريبة'],
+        headers: ['رقم', 'وصف المنتج', 'الكمية', 'سعر الوحدة باستثناء الضريبة',  'المجموع باستثناء الضريبة'],
         rows: [
-            ['AHW-3D-HS-HLD-B', 'Headphone Desk Stand 3D Printed - Black', '1', '195.00', '14', '195.00'],
-            ['AHW-3D-PS-CNT-B', 'Under Desk Mount for PS5/PS4 Controller 3D Printed - Black', '2', '32.00', '14', '64.00'],
-            ['التوصيل', 'استلام من المتجر', '1', '0.00', '14', '0.00'],
+            ['AHW-3D-HS-HLD-B', 'Headphone Desk Stand 3D Printed - Black', '1', '195.00', '195.00'],
+            ['AHW-3D-PS-CNT-B', 'Under Desk Mount for PS5/PS4 Controller 3D Printed - Black', '2', '32.00', '64.00'],
+            ['التوصيل', 'استلام من المتجر', '1', '0.00', '0.00'],
         ]
     }
 
   return (
-    <div className=" max-w-3xl my-12 mx-auto bg-white text-black shadow-sm relative text-sm min-h-[850px]"
+    <div className=" max-w-3xl p-10 mx-auto bg-white text-black shadow-sm relative text-sm min-h-[850px]"
     style={{
         backgroundColor: 'white', backgroundImage: ` url(${InvoiceBg.src})`, backgroundSize: 'cover', backgroundRepeat: 'repeat-y'}}>
         {/* <Image src={InvoiceBg} alt='retro environment' className='size-full object-cover' /> */}
-        <div className="p-10 space-y-4">
-            <header className="flex items-top justify-between">
+        <p className='my-1 text-xs absolute bottom-4 right-10'>صفحة 1/1</p>
+        <div className="space-y-5">
+            <header className="flex items-center justify-between">
                 <div className="space-y-1">
-                    <h1 className='text-2xl font-bold'>تأكيد الطلب: SO-007104</h1>
+                    <h2 className='text-xl font-bold grid grid-cols-2 justify-between'>
+                        <span> رقم الطلب:</span>
+                        <span>SO-050055</span>
+                    </h2>
+                    <h2 className='text-xl font-bold grid grid-cols-2'>
+                        <span> تأكيد الطلب:</span>
+                        <span>SO-007104</span>
+                    </h2>
                     <p className='my-1 text-xs'>يوليو 17، 2024</p>
-                    <p className='my-1 text-xs'>صفحة 1/1</p>
                 </div>
                 <Image src={Logo} alt="Arabhardware" className='h-12 object-contain object-center w-fit' />
             </header>
-            <section className="flex justify-between items-start">
+            <section className="grid grid-cols-3 justify-between items-center">
                 <div className='w-fit'>
                     <p className=' text-zinc-800 font-bold text-xs flex items-center gap-4'>Ibrahim Hamdy
                     </p>
@@ -55,16 +62,20 @@ function Page() {
                         </p>
                     </div>
                 </div>
+                <div className="space-y-2 mx-auto">
+                    <p className="text-center">امسح للتتبع</p>
+                    <Image src={QR} alt="QR Code" className='size-16' />
+                </div>
             </section>
             <section className="flex justify-between items-start">
                 <div className="space-y-1">
                     <p className="text-zinc-800 font-bold text-xs">طريقة التوصيل</p>
                     <p>الاستلام من المتجر</p>
                 </div>
-                <div className="space-y-1">
+                {/* <div className="space-y-1">
                     <p className="text-zinc-800 font-bold text-xs">رقم العطاء</p>
                     <p>-</p>
-                </div>
+                </div> */}
                 <div className="space-y-1 w-44">
                     <p className="text-zinc-800 font-bold text-xs">رقم الملف الخارجي</p>
                     <p>DEMOSTORE-6496</p>
@@ -103,11 +114,13 @@ function Page() {
                     <span className='underline'>المجموع مع الضريبة: </span>
                     <span>295.26</span>
                 </p>
+                
+                <p className="text-xs pt-2">ضريبة القيمة المضافة 14%</p>
             </div>
             
             <footer className="w-full flex justify-between items-start pt-8">
-                <div className="space-y-4 w-[70%]">
-                    <div className="">
+                <div className="space-y-4">
+                    <div className=" w-[70%]">
                         <h4 className='text-xs font-bold'>الشروط والاحكام</h4>
                         <p>
                         شكراً لتسوقكم مع متجر عرب هاروير. نرجو ملاحظة أنه يمكنكم تبديل أو ترجيع البضاعة المباعة ان كانت في الحاله الاصليه ولم تُستخدم وفي مدة اقصاها لا تتجاوز 14 يوم من تاريخ الشراء. نسعى دائماً لرضاكم ونهدف إلى تقديم أفضل خدمة.
@@ -115,7 +128,7 @@ function Page() {
                     </div>
                     <div className=" text-zinc-800 space-y-4">
                         <div className="space-y-1">
-                            <div className="grid grid-cols-3 items-center">
+                            <div className="grid grid-cols-5 items-center">
                                 <div className="flex items-center justify-start gap-2">
                                     <Phone className='bg-black/50 rounded-lg p-1 size-6 text-white' strokeWidth={2} />
                                     <p className=''>0221203192</p>
@@ -128,8 +141,6 @@ function Page() {
                                     <Phone className='bg-black/50 rounded-lg p-1 size-6 text-white' strokeWidth={2} />
                                     <p className=''>0221203192</p>
                                 </div>
-                            </div>
-                            <div className="grid grid-cols-3 items-center">
                                 <div className="flex items-center justify-start gap-2">
                                     <Mail className='bg-black/50 rounded-lg p-1 size-6 text-white' strokeWidth={2} />
                                     <a href="mailto:info@ahw.store" className=''>info@ahw.store</a>
@@ -155,10 +166,6 @@ function Page() {
                             </div>
                         </div> */}
                     </div>
-                </div>
-                <div className="space-y-2 mx-auto">
-                    <Image src={QR} alt="QR Code" className='size-16' />
-                    <p className="text-center">امسح للتتبع</p>
                 </div>
             </footer>
         </div>
