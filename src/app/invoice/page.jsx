@@ -6,6 +6,13 @@ import QR from '@/public/images/qr.png'
 import Appbar from '@/components/appbar'
 import { MapPin, Phone, Mail } from 'lucide-react'
 
+const PriceWithCurrency = ({price, currency='egp'}) => {
+    return (<span className='grid grid-cols-2 gap-2 w-24'>
+    <span>{price}</span>
+    <span>{currency}</span>
+</span>)
+}
+
 function Page() {
     const data = {
         headers: ['رقم', 'وصف المنتج', 'الكمية', 'سعر الوحدة باستثناء الضريبة',  'المجموع باستثناء الضريبة'],
@@ -101,18 +108,18 @@ function Page() {
                     })}
                 </tbody>
             </table>
-            <div className="text-right space-y-1 w-52">
+            <div className="text-right space-y-1 w-64">
                 <p className="flex items-center justify-between">
                     <span>المجموع الجزئي: </span>
-                    <span>259.00</span>
+                    <PriceWithCurrency price="259.00" />
                 </p>
                 <p className="flex items-center justify-between">
                     <span>الضريبة 14%: </span>
-                    <span>36.26</span>
+                    <PriceWithCurrency price="36.26" />
                 </p>
                 <p className="flex items-center justify-between font-bold">
                     <span className='underline'>المجموع مع الضريبة: </span>
-                    <span>295.26</span>
+                    <PriceWithCurrency price="295.26" />
                 </p>
                 
                 <p className="text-xs pt-2">ضريبة القيمة المضافة 14%</p>
