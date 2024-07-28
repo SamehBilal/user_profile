@@ -39,17 +39,9 @@ function LoginForm({toRegisterPage, returnUrl, sessionId}) {
 
     const { executeRecaptcha } = useGoogleReCaptcha();
 
-    useEffect(()=>{
-      const timer = setTimeout(() => {
-        setCookie('jwt_logout','deleted', {secure: true, sameSite: "None", domain: ".arabhardware.com", maxAge: 0})
-        setCookie('jwt_logout','deleted', {secure: true, sameSite: "None", domain: ".arabhardware.net", maxAge: 0})
-        deleteCookie('jwt_logout', {secure: true, sameSite: "None", domain: ".arabhardware.net"})
-      }, 4000);
-
-      return ()=>{
-        clearTimeout(timer)
-      }
-    }, [])
+    setCookie('jwt_logout','deleted', {secure: true, sameSite: "None", domain: ".arabhardware.com", maxAge: 0})
+    setCookie('jwt_logout','deleted', {secure: true, sameSite: "None", domain: ".arabhardware.net", maxAge: 0})
+    deleteCookie('jwt_logout', {secure: true, sameSite: "None", domain: ".arabhardware.net"})
 
     useEffect(()=>{
       if(isForgetPswFormShown){
