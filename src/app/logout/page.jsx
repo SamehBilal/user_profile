@@ -69,7 +69,7 @@ export default function Home() {
     }, 4000);
     const timer = setTimeout(() => {
       // console.log('to', `${returnUrl}${(sessionId && returnUrl.includes('?')) ?`&`:'?'}session_id=${localStorage.getItem('session_id')}`)
-      // location.href = `${returnUrl}${(sessionId && returnUrl.includes('?')) ?`&`:'?'}session_id=${localStorage.getItem('session_id')}`
+      location.href = `${returnUrl}${(sessionId && returnUrl.includes('?')) ?`&`:'?'}session_id=${localStorage.getItem('session_id')}`
     }, 12000);
     return ()=>{
         clearTimeout(timer)
