@@ -1,6 +1,6 @@
 "use client"
 import { useState, useEffect, useRef } from 'react'
-import { callBack, storeLogoutDomain, logoutDomains } from '@/config/api'
+import { callBack, storeLogoutDomain, logoutDomains, ApiBase, mainDomains } from '@/config/api'
 import { deleteCookie, getCookie, setCookie } from "cookies-next"
 import Cookies from 'js-cookie';
 import SearchParamsComponent from './searchParamsComponent'
@@ -17,8 +17,8 @@ export default function Home() {
   const [sessionId, setSessionId] = useState(null)
   const [returnUrl, setReturnUrl] = useState('https://arabhardware.net')
   const [token, setToken] = useState(null)
+  const [afterPeriod, setAfterPeriod] = useState(false)
 
-  
   const getCookie = (name) => {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
@@ -39,7 +39,6 @@ export default function Home() {
     axios.post('/api/logout', {})
     .then(res=>console.log('success'))
     .catch(e=>console.log('e', e))
-    setIsLoggingOut(true)
     localStorage.removeItem("jwt_token")
     await axios.post(`${ApiBase}/logout`,
       {}, {
@@ -64,12 +63,17 @@ export default function Home() {
     // if(isMounted && token && token.length>5){
       logoutFunction()
     // }
+
+    const timer1 = setTimeout(() => {
+      setAfterPeriod(true);
+    }, 4000);
     const timer = setTimeout(() => {
       // console.log('to', `${returnUrl}${(sessionId && returnUrl.includes('?')) ?`&`:'?'}session_id=${localStorage.getItem('session_id')}`)
-      location.href = `${returnUrl}${(sessionId && returnUrl.includes('?')) ?`&`:'?'}session_id=${localStorage.getItem('session_id')}`
+      // location.href = `${returnUrl}${(sessionId && returnUrl.includes('?')) ?`&`:'?'}session_id=${localStorage.getItem('session_id')}`
     }, 12000);
     return ()=>{
         clearTimeout(timer)
+        clearTimeout(timer1)
     }
   }, [returnUrl])
 
@@ -77,9 +81,15 @@ export default function Home() {
 return (
   <div className='w-screen h-screen'>
     <SearchParamsComponent setReturnUrl={setReturnUrl} setToken={setToken} setSessionId={setSessionId} />
-      {token && 
-      <div className='justify-between items-center max-h-[50vh] hidden'>
-        {
+      {<div className='justify-between items-center max-h-[50vh] hidden'>
+        {afterPeriod &&
+        mainDomains.map((endPoint, i)=>{
+        return <iframe id={`iframe-main-${i}`} key={i}
+        src={`${endPoint}`} 
+        frameBorder="0" className='hidden' ></iframe>
+        })
+        }
+        {!afterPeriod &&
         logoutDomains.map((endPoint, i)=>{
         return <iframe id={`iframe-${i}`} key={i}
         src={`${endPoint}`} 

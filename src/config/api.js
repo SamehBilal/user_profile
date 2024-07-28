@@ -5,6 +5,7 @@ export const storeLoginDomain = "https://ahw.store/index.php?route=extension/api
 export const storeLogoutDomain = "https://ahw.store/index.php?route=extension/api/auth/logout"
 export const storeSession = "https://ahw.store/?route=extension/api/session"
 
+export const mainDomains = ["https://arabhardware.net", "https://arabhardware.com/home"]
 export const logoutDomains = ["https://arabhardware.net/auth/arabhardware/callback/logout", 
 	"https://arabhardware.com/auth/arabhardware/callback/logout"]
 
