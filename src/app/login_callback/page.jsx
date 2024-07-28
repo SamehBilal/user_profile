@@ -52,19 +52,19 @@ function Page() {
     <div className='w-screen h-screen'>
       <SearchParamsComponent setReturnUrl={setReturnUrl} setToken={setToken} setSessionId={setSessionId} />
         {token && 
-        <div className='justify-between items-center max-h-[50vh] '>
+        <div className='justify-between items-center max-h-[50vh] hidden'>
           {afterPeriod &&
           mainDomains.map((endPoint, i)=>{
           return <iframe id={`iframe-main-${i}`} key={i}
           src={`${endPoint}`} 
-          frameBorder="0" className='' ></iframe>
+          frameBorder="0" className='hidden' ></iframe>
           })
           }
           {!afterPeriod &&
           callBack.map((endPoint, i)=>{
             return <iframe id={`iframe-${i}`} key={i}
             src={`${endPoint}?token=${token}`} 
-            frameBorder="0" className='' ></iframe>
+            frameBorder="0" className='hidden' ></iframe>
             })
           }
           {sessionId && <iframe id={`iframe-cart`}
