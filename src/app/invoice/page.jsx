@@ -62,7 +62,7 @@ function Page() {
                     <p>الاستلام من المتجر</p>
                 </div>
                 <div className="space-y-1">
-                    <p className="text-zinc-800 font-bold text-xs">رقم العبور</p>
+                    <p className="text-zinc-800 font-bold text-xs">رقم العطاء</p>
                     <p>-</p>
                 </div>
                 <div className="space-y-1 w-44">
