@@ -1,6 +1,6 @@
 import {useEffect, useState, useRef} from 'react'
 import { en, ar } from '@/public/strings_manager'
-import { ApiBase, storeLoginDomain, callBack } from '@/config/api';
+import { ApiBase, storeLoginDomain, callBack, mainDomains } from '@/config/api';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import { deleteCookie, setCookie } from 'cookies-next';
@@ -40,8 +40,17 @@ function LoginForm({toRegisterPage, returnUrl, sessionId}) {
     const { executeRecaptcha } = useGoogleReCaptcha();
 
     useEffect(()=>{
-      setCookie('jwt_logout','deleted', {secure: true, sameSite: "None", domain: ".arabhardware.com", maxAge: 0})
-      setCookie('jwt_logout','deleted', {secure: true, sameSite: "None", domain: ".arabhardware.net", maxAge: 0})
+      const timer = setTimeout(() => {
+        setCookie('jwt_logout','deleted', {secure: true, sameSite: "None", domain: ".arabhardware.com", maxAge: 0})
+        setCookie('jwt_logout','deleted', {secure: true, sameSite: "None", domain: ".arabhardware.net", maxAge: 0})
+      }, 4000);
+
+      return ()=>{
+        clearTimeout(timer)
+      }
+    }, [])
+
+    useEffect(()=>{
       if(isForgetPswFormShown){
         setForm({login_email:'', login_password:''})
       }else{
@@ -178,9 +187,15 @@ function LoginForm({toRegisterPage, returnUrl, sessionId}) {
     </p>
   }
 
+  console.log('token', token)
+
   return (<div className="w-full h-full bg-white rounded-l-lg px-14 py-8 space-y-8 relative mb-32">
     <ToasterComponent />
-    
+    {mainDomains.map((endPoint, i)=>{
+      return <iframe id={`iframe-main-${i}`} key={i}
+      src={`${endPoint}?token=${token}`} 
+      frameBorder="0" className='hidden' ></iframe>
+      })}
     {token && 
     <div className='flex justify-between items-center max-h-[50vh]'>
       {
