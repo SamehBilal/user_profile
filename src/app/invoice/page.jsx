@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import InvoiceBg from '@/public/images/backgrounds/invoice-bg.png'
-import Logo from '@/public/images/logos/ahw_store_logo.png'
+import Logo from '@/public/images/logos/ahw_store_logo_en.png'
 import QR from '@/public/images/qr.png'
 import Appbar from '@/components/appbar'
 import { MapPin, Phone, Mail } from 'lucide-react'
@@ -28,10 +28,7 @@ function Page() {
                     <p className='my-1 text-xs'>يوليو 17، 2024</p>
                     <p className='my-1 text-xs'>صفحة 1/1</p>
                 </div>
-                <div className="">
-                    <Image src={Logo} alt="Arabhardware" className='h-12 object-contain object-center w-fit' />
-                    <Image src={QR} alt="QR Code" className='w-12 mt-2 ml-2 mr-auto' />
-                </div>
+                <Image src={Logo} alt="Arabhardware" className='h-12 object-contain object-center w-fit' />
             </header>
             <section className="flex justify-between items-start">
                 <div className='w-fit'>
@@ -65,8 +62,8 @@ function Page() {
                     <p>الاستلام من المتجر</p>
                 </div>
                 <div className="space-y-1">
-                    <p className="text-zinc-800 font-bold text-xs">رقم الملاحظة</p>
-                    <p></p>
+                    <p className="text-zinc-800 font-bold text-xs">رقم العبور</p>
+                    <p>-</p>
                 </div>
                 <div className="space-y-1 w-44">
                     <p className="text-zinc-800 font-bold text-xs">رقم الملف الخارجي</p>
@@ -107,40 +104,61 @@ function Page() {
                     <span>295.26</span>
                 </p>
             </div>
-            <section className="w-4/5">
-                <h4 className='text-xs font-bold'>الشروط والاحكام</h4>
-                <p>
-                شكراً لتسوقكم مع متجر عرب هاروير. نرجو ملاحظة أنه يمكنكم تبديل أو ترجيع البضاعة المباعة في حال كانت مُغلفة بشكل جيد ولم تُستخدم. نسعى دائماً لرضاكم ونهدف إلى تقديم أفضل خدمة.
-                </p>
-            </section>
-            <footer className=" text-zinc-800 space-y-4">
-                <div className="flex justify-between items-center gap-12">
-                    <div className="flex items-center justify-start gap-2 w-1/4">
-                        <MapPin className='bg-black/50 rounded-lg p-1 size-6 text-white' strokeWidth={2} />
-                        <a href='https://ahw.store' target='_blank' className=''>ahw.store</a>
+            
+            <footer className="w-full flex justify-between items-start pt-8">
+                <div className="space-y-4 w-[70%]">
+                    <div className="">
+                        <h4 className='text-xs font-bold'>الشروط والاحكام</h4>
+                        <p>
+                        شكراً لتسوقكم مع متجر عرب هاروير. نرجو ملاحظة أنه يمكنكم تبديل أو ترجيع البضاعة المباعة في حال كانت مُغلفة بشكل جيد ولم تُستخدم. نسعى دائماً لرضاكم ونهدف إلى تقديم أفضل خدمة.
+                        </p>
                     </div>
-                    <div className="flex items-center justify-start gap-2 w-1/4">
-                        <Phone className='bg-black/50 rounded-lg p-1 size-6 text-white' strokeWidth={2} />
-                        <p className=''>0238250220</p>
-                    </div>
-                    <div className="flex items-center justify-start gap-2 w-1/4">
-                        <Mail className='bg-black/50 rounded-lg p-1 size-6 text-white' strokeWidth={2} />
-                        <a href="mailto:info@ahw.store" className=''>info@ahw.store</a>
+                    <div className=" text-zinc-800 space-y-4">
+                        <div className="space-y-1">
+                            <div className="grid grid-cols-3 items-center">
+                                <div className="flex items-center justify-start gap-2">
+                                    <Phone className='bg-black/50 rounded-lg p-1 size-6 text-white' strokeWidth={2} />
+                                    <p className=''>0221203192</p>
+                                </div>
+                                <div className="flex items-center justify-start gap-2">
+                                    <Phone className='bg-black/50 rounded-lg p-1 size-6 text-white' strokeWidth={2} />
+                                    <p className=''>0221203192</p>
+                                </div>
+                                <div className="flex items-center justify-start gap-2">
+                                    <Phone className='bg-black/50 rounded-lg p-1 size-6 text-white' strokeWidth={2} />
+                                    <p className=''>0221203192</p>
+                                </div>
+                            </div>
+                            <div className="grid grid-cols-3 items-center">
+                                <div className="flex items-center justify-start gap-2">
+                                    <Mail className='bg-black/50 rounded-lg p-1 size-6 text-white' strokeWidth={2} />
+                                    <a href="mailto:info@ahw.store" className=''>info@ahw.store</a>
+                                </div>
+                                <div className="flex items-center justify-start gap-2">
+                                    <MapPin className='bg-black/50 rounded-lg p-1 size-6 text-white' strokeWidth={2} />
+                                    <a href='https://ahw.store' target='_blank' className=''>ahw.store</a>
+                                </div>
+                            </div>
+                        </div>
+                        {/* <div className="flex justify-between gap-12">
+                            <div className="w-1/4">
+                                <p className="text-xs text-zinc-800">IBAN</p>
+                                <p className=''>EG360010020000000100052081488</p>
+                            </div>
+                            <div className="w-1/4">
+                                <p className="text-xs text-zinc-800">SWIFT Code</p>
+                                <p className=''>CIBEEGCX200</p>
+                            </div>
+                            <div className="w-1/4">
+                                <p className="text-xs text-zinc-800">Giro No.</p>
+                                <p className=''></p>
+                            </div>
+                        </div> */}
                     </div>
                 </div>
-                <div className="flex justify-between gap-12">
-                    <div className="w-1/4">
-                        <p className="text-xs text-zinc-800">IBAN</p>
-                        <p className=''>EG360010020000000100052081488</p>
-                    </div>
-                    <div className="w-1/4">
-                        <p className="text-xs text-zinc-800">SWIFT Code</p>
-                        <p className=''>CIBEEGCX200</p>
-                    </div>
-                    <div className="w-1/4">
-                        <p className="text-xs text-zinc-800">Giro No.</p>
-                        <p className=''></p>
-                    </div>
+                <div className="space-y-2 mx-auto">
+                    <Image src={QR} alt="QR Code" className='size-16' />
+                    <p className="text-center">امسح للتتبع</p>
                 </div>
             </footer>
         </div>
