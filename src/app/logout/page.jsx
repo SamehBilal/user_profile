@@ -62,7 +62,7 @@ export default function Home() {
 
     const timer1 = setTimeout(() => {
       setAfterPeriod(true);
-    }, 4000);
+    }, 12000);
     const timer = setTimeout(() => {
       // console.log('to', `${returnUrl}${(sessionId && returnUrl.includes('?')) ?`&`:'?'}session_id=${localStorage.getItem('session_id')}`)
       location.href = `${returnUrl}${(sessionId && returnUrl.includes('?')) ?`&`:'?'}session_id=${localStorage.getItem('session_id')}`

@@ -36,7 +36,7 @@ function Page() {
     useEffect(()=>{
       const timer1 = setTimeout(() => {
         setAfterPeriod(true);
-      }, 6000);
+      }, 12000);
       const timer = setTimeout(() => {
         // console.log('to', `${returnUrl}${(sessionId && returnUrl.includes('?')) ?`&`:'?'}session_id=${sessionId}`)
         location.href = `${returnUrl}${(sessionId && returnUrl.includes('?')) ?`&`:'?'}session_id=${localStorage.getItem('session_id')}`
