@@ -2,7 +2,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { callBack, storeLogoutDomain, logoutDomains, ApiBase, mainDomains } from '@/config/api'
 import { deleteCookie, getCookie, setCookie } from "cookies-next"
-import Cookies from 'js-cookie';
 import SearchParamsComponent from './searchParamsComponent'
 import Image from 'next/image'
 import LoadingImg from '@/public/images/loading_login.png'
@@ -51,8 +50,8 @@ export default function Home() {
     deleteThisCookie( "user")
     deleteThisCookie( "jwt_token")
     setCookie("jwt_token", "deleted", {secure: true, sameSite: "None", domain: ".arabhardware.com", maxAge: 0})
-    setCookie("jwt_token", "deleted", {secure: true, sameSite: "None", domain: ".arabhardware.net", maxAge: 0})
-    setCookie("jwt_token", "deleted", {secure: true, sameSite: "None", domain: "arabhardware.com", maxAge: 0})
+    // setCookie("jwt_token", "deleted", {secure: true, sameSite: "None", domain: ".arabhardware.net", maxAge: 0})
+    // setCookie("jwt_token", "deleted", {secure: true, sameSite: "None", domain: "arabhardware.com", maxAge: 0})
     localStorage.removeItem(returnUrl)
     setIsMounted(true)
     console.log('token', token)
@@ -78,7 +77,7 @@ return (
   <div className='w-screen h-screen'>
     <SearchParamsComponent setReturnUrl={setReturnUrl} setToken={setToken} setSessionId={setSessionId} />
       {<div className='justify-between items-center max-h-[50vh] hidden'>
-        {afterPeriod &&
+        {/* {afterPeriod &&
         mainDomains.map((endPoint, i)=>{
         return <iframe id={`iframe-main-${i}`} key={i}
         src={`${endPoint}`} 
@@ -91,7 +90,7 @@ return (
         src={`${endPoint}`} 
         frameBorder="0" className='hidden' ></iframe>
         })
-        }
+        } */}
         {sessionId && <iframe id={`iframe-cart`}
         src={`${storeLogoutDomain}&token=${token}&session_id=${localStorage?.getItem('session_id')??''}`} 
         frameBorder="0" className='hidden' ></iframe>}

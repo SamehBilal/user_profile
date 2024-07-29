@@ -11,7 +11,7 @@ export const logoutDomains = ["https://arabhardware.net/auth/arabhardware/callba
 
 export const cookieDommains = [
 	{title: "jwt_token", domain: "localhost", bearer: false},
-	{title: "jwt_token", domain: ".arabhardware.net", bearer: false}, 
+	// {title: "jwt_token", domain: ".arabhardware.net", bearer: false}, 
 	{title: "jwt_token", domain: ".arabhardware.com", bearer: false}, 
 	{title: "jwt_token", domain: ".ahw.store", bearer: false},
 ]
