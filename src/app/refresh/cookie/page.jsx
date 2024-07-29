@@ -12,9 +12,8 @@ function Page() {
         parent.postMessage(`jwt_token:${token}`, "*");
       }
       window.addEventListener('message', event => {
-        console.log('event.origin', event.origin)
         if (event.origin === 'https://myaccount.arabhardware.com') {
-            console.log(event.data);
+            console.log('event:' ,event.data);
         } else {
             return;
         }

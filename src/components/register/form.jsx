@@ -52,23 +52,23 @@ function RegisterForm({toLoginPage, returnUrl, sessionId}) {
           await axios.post('/api/register', 
             {email, phone, password, firstname, lastname, country} //check if valid
           ).then(async res=>{
-            console.log('res0', res.data)
+            // console.log('res0', res.data)
             if(res.data?.message) {
               toast.error(res.data.message)
               setIsLoading(false)
             }
             else{
-              console.log('res1', res.data)
+              // console.log('res1', res.data)
               await axios.post(`${ApiBase}/register`, 
                 {email, phone, password, firstname, lastname, country} //add user to db
               ).then(async data=> {
-                console.log('res3', res.data)
+                // console.log('res3', res.data)
                 if(data.data.message){
                   console.log('data.data.message', data.data.message)
                   throw new Error(data.data.message)
                   setIsLoading(false)
                 }else{
-                  console.log('res4', res.data)
+                  // console.log('res4', res.data)
                   location.href = `https://myaccount.arabhardware.com/login_callback?url_return=${returnUrl}&token=${data.data.authorisation.access_token}`
                   localStorage?.setItem("jwt_token", data.data.authorisation.access_token)  
                   cookieDommains.forEach(item=>{
@@ -83,8 +83,8 @@ function RegisterForm({toLoginPage, returnUrl, sessionId}) {
                 }
               })
               .catch(e=>{
-                console.log('res5', res.data)
                 setIsLoading(false)
+                console.log('res5', res.data)
                 console.log('error', e?.response?.data?.error)
                 console.log('message', e?.response?.data?.message)
                 console.log('e.message', e?.message)
@@ -112,7 +112,6 @@ function RegisterForm({toLoginPage, returnUrl, sessionId}) {
         country: countries[selectedIndex??51].alpha2
       }))
     }, [selectedIndex])
-    console.log('form', form)
 
   return (<div className="w-full h-full bg-white rounded-l-lg px-14 py-8 space-y-8 relative mb-32">
     <ToasterComponent />

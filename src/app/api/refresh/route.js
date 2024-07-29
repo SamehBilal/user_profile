@@ -20,16 +20,16 @@ export async function GET(request, response) {
 
 
             const cookieStore = cookies()
-            console.log('req.cookies', request.cookies)
+            // console.log('req.cookies', request.cookies)
             let token = cookieStore.get('jwt_token')?.value?? ''
             if(token && token.length<10){
                 token = ''
                 cookieStore.delete('jwt_token', {secure: true, sameSite: "None", domain: ".arabhardware.com"})
                 cookieStore.delete('jwt_token');
             }
-            console.log('token', token)
+            // console.log('token', token)
             const user = (cookieStore.get('user') && cookieStore.get('user').value)? (JSON.parse(cookieStore.get('user')?.value)) :""
-            console.log('user', user)
+            // console.log('user', user)
             
             response.data = {token, user}
             // Return the token

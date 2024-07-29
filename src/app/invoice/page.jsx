@@ -24,19 +24,19 @@ function Page() {
     }
 
   return (
-    <div className=" max-w-3xl p-10 mx-auto bg-white text-black shadow-sm relative text-sm min-h-[850px]"
+    <div className=" max-w-3xl w-full p-8 mx-auto bg-white text-black shadow-sm relative text-xxs min-h-[850px]"
     style={{
         backgroundColor: 'white', backgroundImage: ` url(${InvoiceBg.src})`, backgroundSize: 'cover', backgroundRepeat: 'repeat-y'}}>
         {/* <Image src={InvoiceBg} alt='retro environment' className='size-full object-cover' /> */}
-        <p className='my-1 text-xs absolute bottom-4 right-10'>صفحة 1/1</p>
-        <div className="space-y-5">
+        {/* <p className='my-1 text-xxs absolute bottom-4 right-10'>صفحة 1/1</p> */}
+        <div className="space-y-2">
             <header className="flex items-center justify-between">
                 <div className="space-y-1">
-                    <h2 className='text-xl font-bold grid grid-cols-2 justify-between'>
+                    <h2 className='text-lg font-bold grid grid-cols-2 justify-between'>
                         <span> رقم الطلب:</span>
                         <span>SO-050055</span>
                     </h2>
-                    <h2 className='text-xl font-bold grid grid-cols-2'>
+                    <h2 className='text-lg font-bold grid grid-cols-2'>
                         <span> تأكيد الطلب:</span>
                         <span>SO-007104</span>
                     </h2>
@@ -69,9 +69,9 @@ function Page() {
                         </p>
                     </div>
                 </div>
-                <div className="space-y-2 mx-auto">
+                <div className="space-y-1 mx-auto">
                     <p className="text-center">امسح للتتبع</p>
-                    <Image src={QR} alt="QR Code" className='size-16' />
+                    <Image src={QR} alt="QR Code" className='size-12' />
                 </div>
             </section>
             <section className="flex justify-between items-start">
@@ -127,33 +127,35 @@ function Page() {
             
             <footer className="w-full flex justify-between items-start pt-8">
                 <div className="space-y-4">
-                    <div className=" w-[70%]">
+                    <div className=" w-[75%]">
                         <h4 className='text-xs font-bold'>الشروط والاحكام</h4>
                         <p>
-                        شكراً لتسوقكم مع متجر عرب هاروير. نرجو ملاحظة أنه يمكنكم تبديل أو ترجيع البضاعة المباعة ان كانت في الحاله الاصليه ولم تُستخدم وفي مدة اقصاها لا تتجاوز 14 يوم من تاريخ الشراء. نسعى دائماً لرضاكم ونهدف إلى تقديم أفضل خدمة.
+                            في حالة وجود عيب صناعة في المنتج يمكنكم طلب الإستبدال او الإسترجاع في خلال 14 يوم من تاريخ الإستلام
+                            -في حالة ظهور مشكلة في المنتج بعد فترة الـ14 يوم يمكنك التواصل معنا وسوف نكون الطرف الوسيط مع الوكـيل.
+                            شكرا لاختياركم متجر عرب هاردوير
                         </p>
                     </div>
                     <div className=" text-zinc-800 space-y-4">
                         <div className="space-y-1">
                             <div className="grid grid-cols-5 items-center">
                                 <div className="flex items-center justify-start gap-2">
-                                    <Phone className='bg-black/50 rounded-lg p-1 size-6 text-white' strokeWidth={2} />
+                                    <Phone className='bg-black/50 rounded-lg p-0.5 size-4 text-white' strokeWidth={2} />
                                     <p className=''>0221203192</p>
                                 </div>
                                 <div className="flex items-center justify-start gap-2">
-                                    <Phone className='bg-black/50 rounded-lg p-1 size-6 text-white' strokeWidth={2} />
+                                    <Phone className='bg-black/50 rounded-lg p-0.5 size-4 text-white' strokeWidth={2} />
                                     <p className=''>0221203192</p>
                                 </div>
                                 <div className="flex items-center justify-start gap-2">
-                                    <Phone className='bg-black/50 rounded-lg p-1 size-6 text-white' strokeWidth={2} />
+                                    <Phone className='bg-black/50 rounded-lg p-0.5 size-4 text-white' strokeWidth={2} />
                                     <p className=''>0221203192</p>
                                 </div>
                                 <div className="flex items-center justify-start gap-2">
-                                    <Mail className='bg-black/50 rounded-lg p-1 size-6 text-white' strokeWidth={2} />
+                                    <Mail className='bg-black/50 rounded-lg p-0.5 size-4 text-white' strokeWidth={2} />
                                     <a href="mailto:info@ahw.store" className=''>info@ahw.store</a>
                                 </div>
                                 <div className="flex items-center justify-start gap-2">
-                                    <MapPin className='bg-black/50 rounded-lg p-1 size-6 text-white' strokeWidth={2} />
+                                    <MapPin className='bg-black/50 rounded-lg p-0.5 size-4 text-white' strokeWidth={2} />
                                     <a href='https://ahw.store' target='_blank' className=''>ahw.store</a>
                                 </div>
                             </div>

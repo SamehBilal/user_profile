@@ -25,15 +25,11 @@ export default function Home() {
     if (parts.length === 2) return parts.pop().split(';').shift();
   };
 
-  const myCookie = getCookie('test2');
-  console.log('test2:', myCookie);
-
   // Delete the cookie
-  const deleteCookie = (name) => {
+  const deleteThisCookie = (name) => {
     console.log('delete name', name)
     document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
   };
-  deleteCookie('test2');
 
   const logoutFunction = async () => {
     axios.post('/api/logout', {})
@@ -52,8 +48,8 @@ export default function Home() {
     }
 
   useEffect(()=>{
-    deleteCookie( "user", {secure: true, sameSite: "None"})
-    deleteCookie( "jwt_token", {secure: true, sameSite: "None"})
+    deleteThisCookie( "user")
+    deleteThisCookie( "jwt_token")
     setCookie("jwt_token", "deleted", {secure: true, sameSite: "None", domain: ".arabhardware.com", maxAge: 0})
     setCookie("jwt_token", "deleted", {secure: true, sameSite: "None", domain: ".arabhardware.net", maxAge: 0})
     setCookie("jwt_token", "deleted", {secure: true, sameSite: "None", domain: "arabhardware.com", maxAge: 0})

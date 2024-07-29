@@ -16,7 +16,7 @@ const schema = z.object({
       extract: false,
     });
     if (phone && phone.isValid()) { // when it's good
-      console.log('phone', phone.number, phone.isValid(), typeof phone.number)
+      // console.log('phone', phone.number, phone.isValid(), typeof phone.number)
       return phone.number;
     }
     ctx.addIssue({ // when it's not

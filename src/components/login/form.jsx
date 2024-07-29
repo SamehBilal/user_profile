@@ -39,9 +39,29 @@ function LoginForm({toRegisterPage, returnUrl, sessionId}) {
 
     const { executeRecaptcha } = useGoogleReCaptcha();
 
-    setCookie('jwt_logout','deleted', {secure: true, sameSite: "None", domain: ".arabhardware.com", maxAge: 0})
-    setCookie('jwt_logout','deleted', {secure: true, sameSite: "None", domain: ".arabhardware.net", maxAge: 0})
-    deleteCookie('jwt_logout', {secure: true, sameSite: "None", domain: ".arabhardware.net"})
+    
+    // Delete the cookie
+    const deleteThisCookie = (name, domain) => {
+      console.log('delete name', name, domain??'')
+      document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; ${domain? `domain=${domain};`: ''}`;
+    };
+
+    useEffect(()=>{
+      const deleteCookies = () => {
+        deleteThisCookie( "jwt_logout", '.arabhardware.net')
+        setCookie("jwt_token", "deleted", {secure: true, sameSite: "None", domain: ".arabhardware.com", maxAge: 0})
+        setCookie("jwt_token", "deleted", {secure: true, sameSite: "None", domain: ".arabhardware.net", maxAge: 0})
+        setCookie("jwt_token", "deleted", {secure: true, sameSite: "None", domain: "arabhardware.com", maxAge: 0})
+        axios.post('/api/logout', {})
+        .then(res=>console.log('success'))
+        .catch(e=>console.log('e', e))
+      }
+      const timer = setTimeout(()=>deleteCookies(), 4000)
+
+      return ()=>{
+        clearTimeout(timer)
+      }
+    }, [])
 
     useEffect(()=>{
       if(isForgetPswFormShown){
@@ -179,8 +199,6 @@ function LoginForm({toRegisterPage, returnUrl, sessionId}) {
       {ar.login.subTitle1} <span className='text-primary cursor-pointer' onClick={toRegisterPage}>{ar.login.subTitle2}</span> {ar.login.subTitle3}
     </p>
   }
-
-  console.log('token', token)
 
   return (<div className="w-full h-full bg-white rounded-l-lg px-14 py-8 space-y-8 relative mb-32">
     <ToasterComponent />
