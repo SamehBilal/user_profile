@@ -15,7 +15,7 @@ const PriceWithCurrency = ({price, currency='EGP'}) => {
 
 function Page() {
     const data = {
-        headers: ['رقم', 'وصف المنتج', 'الكمية', 'سعر الوحدة',  'المجموع'],
+        headers: ['رقم', 'وصف المنتج', 'الكمية', 'سعر الوحدة باستثناء الضريبة',  'المجموع مع الضريبة'],
         rows: [
             ['AHW-3D-HS-HLD-B', 'Headphone Desk Stand 3D Printed - Black', '1', '195.00', '195.00'],
             ['AHW-3D-PS-CNT-B', 'Under Desk Mount for PS5/PS4 Controller 3D Printed - Black', '2', '32.00', '64.00'],
@@ -103,7 +103,7 @@ function Page() {
                         className='[&>*]:border [&>*]:border-solid [&>*]:border-[#ddd] [&>*]:p-2 [&>*]:text-center'>
                             {row.map((_, i)=>{
                                 return <td key={i} className={`${(i==0 || i==1)&&'text-xs'}`}>
-                                    {`${_}${(i==3||i==4)?' + 14%':''}`}
+                                    {`${(i==4)?(parseFloat(_)+(parseFloat(_)*14/100)).toFixed(2):_}`}
                                 </td>
                             })}
                         </tr>
