@@ -28,7 +28,7 @@ function Page() {
     style={{
         backgroundColor: 'white', backgroundImage: ` url(${InvoiceBg.src})`, backgroundSize: 'cover', backgroundRepeat: 'repeat-y'}}>
         {/* <Image src={InvoiceBg} alt='retro environment' className='size-full object-cover' /> */}
-        {/* <p className='my-1 text-xxs absolute bottom-4 right-10'>صفحة 1/1</p> */}
+        <p className='my-1 text-xxs absolute bottom-2 right-10'>صفحة 1/1</p>
         <div className="space-y-2">
             <header className="flex items-center justify-between">
                 <div className="space-y-1">
@@ -160,20 +160,6 @@ function Page() {
                                 </div>
                             </div>
                         </div>
-                        {/* <div className="flex justify-between gap-12">
-                            <div className="w-1/4">
-                                <p className="text-xs text-zinc-800">IBAN</p>
-                                <p className=''>EG360010020000000100052081488</p>
-                            </div>
-                            <div className="w-1/4">
-                                <p className="text-xs text-zinc-800">SWIFT Code</p>
-                                <p className=''>CIBEEGCX200</p>
-                            </div>
-                            <div className="w-1/4">
-                                <p className="text-xs text-zinc-800">Giro No.</p>
-                                <p className=''></p>
-                            </div>
-                        </div> */}
                     </div>
                 </div>
             </footer>
