@@ -4,7 +4,7 @@ import { countries } from '@/utils/countries'
 
 function PhoneInput({
     id= "", className = "", label = "", placeholder = "", required = false, value = "", 
-    isSuccess=false, isError=false, autoComplete = 'off', autoFocus = false, onChange = ()=>{},
+    isSuccess=false, isError=false, autoComplete = 'off webauthn', autoFocus = false, onChange = ()=>{},
     selectedIndex=51, setSelectedIndex=51
 }) {
     return (<div className="mt-2 w-full relative border border-solid border-zinc-300 hover:bg-zinc-200 transition focus-within:border-black focus-within:ring ring-black">

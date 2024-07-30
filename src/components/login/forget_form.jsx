@@ -14,7 +14,7 @@ function ForgetForm({
         </p>
 
       <FloatingInput id="forget_email" type="email" value={form.forget_email} onChange={handleChange} autoFocus={true}
-      placeholder={ar.login.email} required={true} label={ar.login.email} />
+      placeholder={ar.login.email} required={true} label={ar.login.email} autoComplete='off webauthn' />
 
       <p className="text-primary cursor-pointer self-start mb-1" 
       onClick={()=>{isLoading? ()=>{}:setIsForgetPswFormShown(prev=>!prev)}}

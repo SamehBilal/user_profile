@@ -2,7 +2,7 @@ import {useState} from 'react'
 
 function FloatingInput({
     id= "", className = "", type = "text", label = "", placeholder = "", required = false, value = "", 
-    isSuccess=false, isError=false, autoComplete = 'off', autoFocus = false,
+    isSuccess=false, isError=false, autoComplete = 'off webauthn', autoFocus = false,
     disabled = false, onChange = ()=>{}, multiple = false, Icon=null, setIsPasswordShown, isPasswordShown
 }) {
     const isPassword = type === "password"

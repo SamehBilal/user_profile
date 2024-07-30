@@ -12,10 +12,10 @@ function MainForm({
     onSubmit={(e)=>submitForm}>
 
       <FloatingInput id="login_email" type="email" value={form.login_email} onChange={handleChange} autoFocus={true}
-      placeholder={ar.login.email} required={true} label={ar.login.email} />
+      placeholder={ar.login.email} required={true} label={ar.login.email} autoComplete='off webauthn' />
       <FloatingInput id="login_password" type="password" value={form.login_password} onChange={handleChange}
       placeholder={ar.login.password} required={true} label={ar.login.password} 
-      Icon={isPasswordShown? Eye: EyeOff} setIsPasswordShown={setIsPasswordShown} isPasswordShown={isPasswordShown} />
+      Icon={isPasswordShown? Eye: EyeOff} setIsPasswordShown={setIsPasswordShown} isPasswordShown={isPasswordShown} autoComplete='off webauthn' />
 
       <p className="text-primary cursor-pointer self-start mb-1" 
       onClick={()=>{isLoading? ()=>{}:setIsForgetPswFormShown(prev=>!prev)}}>
