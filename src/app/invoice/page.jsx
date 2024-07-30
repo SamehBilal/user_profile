@@ -34,7 +34,7 @@ function Page() {
                 <div className="space-y-1">
                     <h2 className='text-lg font-bold grid grid-cols-2 justify-between'>
                         <span> رقم الطلب:</span>
-                        <span>SO-050055</span>
+                        <span>0055</span>
                     </h2>
                     <h2 className='text-lg font-bold grid grid-cols-2'>
                         <span> تأكيد الطلب:</span>
@@ -63,7 +63,7 @@ function Page() {
                     <div className="space-y-1">
                         <p className=''>6 اكتوبر، 98 المنطقة السياحية</p>
                         <p className='flex gap-2'>
-                            <span>الجيزة 11432  </span>
+                            <span>الجيزة 12566  </span>
                             <span>-</span>
                             <span>مصر</span>
                         </p>
@@ -146,19 +146,19 @@ function Page() {
                                 </div>
                                 <div className="flex items-center justify-start gap-2">
                                     <Phone className='bg-black/50 rounded-lg p-0.5 size-4 text-white' strokeWidth={2} />
-                                    <p className=''>0221203192</p>
+                                    <p className=''>0221600472</p>
                                 </div>
                                 <div className="flex items-center justify-start gap-2">
                                     <Phone className='bg-black/50 rounded-lg p-0.5 size-4 text-white' strokeWidth={2} />
-                                    <p className=''>0221203192</p>
+                                    <p className=''>01274999018</p>
                                 </div>
                                 <div className="flex items-center justify-start gap-2">
                                     <Mail className='bg-black/50 rounded-lg p-0.5 size-4 text-white' strokeWidth={2} />
-                                    <a href="mailto:info@ahw.store" className=''>info@ahw.store</a>
+                                    <p className=''>info@ahw.store</p>
                                 </div>
                                 <div className="flex items-center justify-start gap-2">
                                     <MapPin className='bg-black/50 rounded-lg p-0.5 size-4 text-white' strokeWidth={2} />
-                                    <a href='https://ahw.store' target='_blank' className=''>ahw.store</a>
+                                    <p className=''>ahw.store</p>
                                 </div>
                             </div>
                         </div>
