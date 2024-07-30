@@ -3,7 +3,7 @@ import { en, ar } from '@/public/strings_manager'
 import { ApiBase, storeLoginDomain, callBack, mainDomains } from '@/config/api';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
-import { deleteCookie, setCookie } from 'cookies-next';
+import { getCookie, deleteCookie, setCookie } from 'cookies-next';
 import Image from 'next/image';
 import TextLogo from '@/public/images/logo_icon.png'
 import OrBy from './or_by';
@@ -25,7 +25,6 @@ export default function Home({toRegisterPage, returnUrl, sessionId}) {
 
 function LoginForm({toRegisterPage, returnUrl, sessionId}) {
   const router = useRouter()
-  const tokenString = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FyYWJoYXJkd2FyZS5jb20vYXBpL3YxL2xvZ2luIiwiaWF0IjoxNzE5ODM3NDIwLCJleHAiOjE3MTk4NDEwMjAsIm5iZiI6MTcxOTgzNzQyMCwianRpIjoiNEI3UjVNVlBSaUZTN0NJZyIsInN1YiI6IjI4NzQ2IiwicHJ2IjoiOTEwZGQ4YWQwYjRmNDQ4MjBmZWVjNDQ4MjFmM2VhZmUwNGYzM2UwNSJ9.duQcIJZ929slGAxhhSYQmoYWL1ivC3S9YTGUEbHv_Rg"
     const [form, setForm] = useState({login_email:'', login_password:''})
     const [forgetForm, setForgetForm] = useState({forget_email:''})
     const [isLoading, setIsLoading] = useState(false)
@@ -40,25 +39,29 @@ function LoginForm({toRegisterPage, returnUrl, sessionId}) {
     const { executeRecaptcha } = useGoogleReCaptcha();
 
     
-    // Delete the cookie
-    const deleteThisCookie = (name, domain) => {
-      console.log('delete name', name, domain??'')
-      document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; ${domain? `domain=${domain};`: ''}`;
-    };
+    // // Delete the cookie
+    // const deleteThisCookie = (name, domain) => {
+    //   console.log('delete name', name, domain??'')
+    //   document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; ${domain? `domain=${domain};`: ''}`;
+    // };
 
     useEffect(()=>{
-      const deleteCookies = () => {
-        setCookie("jwt_token", "deleted", {secure: true, sameSite: "None", domain: ".arabhardware.com", maxAge: 0})
-        // setCookie("jwt_token", "deleted", {secure: true, sameSite: "None", domain: ".arabhardware.net", maxAge: 0})
-        setCookie("jwt_token", "deleted", {secure: true, sameSite: "None", domain: "arabhardware.com", maxAge: 0})
-        axios.post('/api/logout', {})
-        .then(res=>console.log('success'))
-        .catch(e=>console.log('e', e))
+      if(getCookie('jwt_token') && getCookie('jwt_token').length>10){
+        alert('تم تسجيل الدخول بالفعل')
+        setToken(getCookie('jwt_token'))
       }
-      const timer = setTimeout(()=>deleteCookies(), 4000)
+      // const deleteCookies = () => {
+      //   setCookie("jwt_token", "deleted", {secure: true, sameSite: "None", domain: ".arabhardware.com", maxAge: 0})
+      //   // setCookie("jwt_token", "deleted", {secure: true, sameSite: "None", domain: ".arabhardware.net", maxAge: 0})
+      //   setCookie("jwt_token", "deleted", {secure: true, sameSite: "None", domain: "arabhardware.com", maxAge: 0})
+      //   axios.post('/api/logout', {})
+      //   .then(res=>console.log('success'))
+      //   .catch(e=>console.log('e', e))
+      // }
+      // const timer = setTimeout(()=>deleteCookies(), 4000)
 
       return ()=>{
-        clearTimeout(timer)
+        // clearTimeout(timer)
       }
     }, [])
 
@@ -220,39 +223,45 @@ function LoginForm({toRegisterPage, returnUrl, sessionId}) {
       frameBorder="0" className='' ></iframe>}
     </div>} */}
 {/* https://myaccount.arabhardware.com/login_callback?url_return=https://arabhardware.net?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FyYWJoYXJkd2FyZS5jb20vYXV0aC9nb29nbGUvY2FsbGJhY2siLCJpYXQiOjE3MjExMjM3OTgsImV4cCI6MTcyMzcxNTc5OCwibmJmIjoxNzIxMTIzNzk4LCJqdGkiOiJ5RlRMek5MUWdUeTkxRm1iIiwic3ViIjoiMjg5NzkiLCJwcnYiOiI5MTBkZDhhZDBiNGY0NDgyMGZlZWM0NDgyMWYzZWFmZTA0ZjMzZTA1In0.Wf-uaSVE_lWw7AIH9Xo-kameHow3vgUx7-6WsfgO370 */}
-    <div className="w-full space-y-4">
-      <div className="w-full flex justify-center items-center">
-        <Image src={TextLogo} alt='arabhardware' className='w-20' />
-      </div>
-      <div className="w-full space-y-2">
-        <h2 className='text-2xl text-center text-zinc-500'>{ar.login.title}</h2>
-      </div>
+    {token
+    ?<div className='w-full flex items-center justify-center'>
+      <p className='text-3xl text-primary font-bold mt-20'>تم تسجيل دخولك بالفعل</p>
     </div>
-    <MainForm 
-      setIsForgetPswFormShown={setIsForgetPswFormShown}
-      isForgetPswFormShown={isForgetPswFormShown}
-      setIsPasswordShown={setIsPasswordShown}
-      isPasswordShown={isPasswordShown}
-      form={form}
-      submitForm={handleSubmitForm}
-      handleChange={handleChange}
-      isLoading={isLoading}
-      ar={ar}
-    />
-    <ForgetForm
-      setIsForgetPswFormShown={setIsForgetPswFormShown}
-      isForgetPswFormShown={isForgetPswFormShown}
-      form={forgetForm}
-      submitForm={submitForgetForm}
-      handleChange={handleForgetFormChange}
-      isLoading={isLoading}
-      ar={ar}
-    />
+    :<>
+      <div className="w-full space-y-4">
+        <div className="w-full flex justify-center items-center">
+          <Image src={TextLogo} alt='arabhardware' className='w-20' />
+        </div>
+        <div className="w-full space-y-2">
+          <h2 className='text-2xl text-center text-zinc-500'>{ar.login.title}</h2>
+        </div>
+      </div>
+      <MainForm 
+        setIsForgetPswFormShown={setIsForgetPswFormShown}
+        isForgetPswFormShown={isForgetPswFormShown}
+        setIsPasswordShown={setIsPasswordShown}
+        isPasswordShown={isPasswordShown}
+        form={form}
+        submitForm={handleSubmitForm}
+        handleChange={handleChange}
+        isLoading={isLoading}
+        ar={ar}
+      />
+      <ForgetForm
+        setIsForgetPswFormShown={setIsForgetPswFormShown}
+        isForgetPswFormShown={isForgetPswFormShown}
+        form={forgetForm}
+        submitForm={submitForgetForm}
+        handleChange={handleForgetFormChange}
+        isLoading={isLoading}
+        ar={ar}
+      />
 
-    <OrBy 
-      text={ar.login.loginFrom} 
-      DontHaveAnAccount={DontHaveAnAccount}
-      isForgetPswFormShown={isForgetPswFormShown}
-    />
+      <OrBy 
+        text={ar.login.loginFrom} 
+        DontHaveAnAccount={DontHaveAnAccount}
+        isForgetPswFormShown={isForgetPswFormShown}
+      />
+    </>}
   </div>)
 }
