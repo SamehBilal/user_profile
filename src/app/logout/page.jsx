@@ -51,7 +51,7 @@ export default function Home() {
     deleteThisCookie( "user")
     deleteThisCookie( "jwt_token")
     setCookie("jwt_token", "deleted", {secure: true, sameSite: "None", domain: ".arabhardware.com", maxAge: 0})
-    setCookie("jwt_token", "deleted", {secure: true, sameSite: "None", domain: ".arabhardware.net", maxAge: 0})
+    // setCookie("jwt_token", "deleted", {secure: true, sameSite: "None", domain: ".arabhardware.net", maxAge: 0})
     setCookie("jwt_token", "deleted", {secure: true, sameSite: "None", domain: "arabhardware.com", maxAge: 0})
     localStorage.removeItem(returnUrl)
     setIsMounted(true)
@@ -60,16 +60,16 @@ export default function Home() {
       logoutFunction()
     // }
 
-    const timer1 = setTimeout(() => {
-      setAfterPeriod(true);
-    }, 12000);
+    // const timer1 = setTimeout(() => {
+    //   setAfterPeriod(true);
+    // }, 12000);
     const timer = setTimeout(() => {
       // console.log('to', `${returnUrl}${(sessionId && returnUrl.includes('?')) ?`&`:'?'}session_id=${localStorage.getItem('session_id')}`)
       location.href = `${returnUrl}${(sessionId && returnUrl.includes('?')) ?`&`:'?'}session_id=${localStorage.getItem('session_id')}`
     }, 12000);
     return ()=>{
         clearTimeout(timer)
-        clearTimeout(timer1)
+        // clearTimeout(timer1)
     }
   }, [returnUrl])
 
@@ -78,7 +78,7 @@ return (
   <div className='w-screen h-screen'>
     <SearchParamsComponent setReturnUrl={setReturnUrl} setToken={setToken} setSessionId={setSessionId} />
       {<div className='justify-between items-center max-h-[50vh] hidden'>
-        {afterPeriod &&
+        {/* {afterPeriod &&
         mainDomains.map((endPoint, i)=>{
         return <iframe id={`iframe-main-${i}`} key={i}
         src={`${endPoint}`} 
@@ -91,7 +91,7 @@ return (
         src={`${endPoint}`} 
         frameBorder="0" className='hidden' ></iframe>
         })
-        }
+        } */}
         {sessionId && <iframe id={`iframe-cart`}
         src={`${storeLogoutDomain}&token=${token}&session_id=${localStorage?.getItem('session_id')??''}`} 
         frameBorder="0" className='hidden' ></iframe>}

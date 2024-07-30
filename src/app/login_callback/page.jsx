@@ -34,15 +34,15 @@ function Page() {
     }, [token])
 
     useEffect(()=>{
-      const timer1 = setTimeout(() => {
-        setAfterPeriod(true);
-      }, 12000);
+      // const timer1 = setTimeout(() => {
+      //   setAfterPeriod(true);
+      // }, 12000);
       const timer = setTimeout(() => {
         // console.log('to', `${returnUrl}${(sessionId && returnUrl.includes('?')) ?`&`:'?'}session_id=${sessionId}`)
         location.href = `${returnUrl}${(sessionId && returnUrl.includes('?')) ?`&`:'?'}session_id=${localStorage.getItem('session_id')}`
       }, 12000);
       return ()=>{
-          clearTimeout(timer1)
+          // clearTimeout(timer1)
           clearTimeout(timer)
       }
     }, [returnUrl])
@@ -53,7 +53,7 @@ function Page() {
       <SearchParamsComponent setReturnUrl={setReturnUrl} setToken={setToken} setSessionId={setSessionId} />
         {token && 
         <div className='justify-between items-center max-h-[50vh] hidden'>
-          {afterPeriod &&
+          {/* {afterPeriod &&
           mainDomains.map((endPoint, i)=>{
           return <iframe id={`iframe-main-${i}`} key={i}
           src={`${endPoint}`} 
@@ -66,7 +66,7 @@ function Page() {
             src={`${endPoint}?token=${token}`} 
             frameBorder="0" className='hidden' ></iframe>
             })
-          }
+          } */}
           {sessionId && <iframe id={`iframe-cart`}
           src={`${storeLoginDomain}&token=${token}&session_id=${localStorage?.getItem('session_id')??''}`} 
           frameBorder="0" className='hidden' ></iframe>}
