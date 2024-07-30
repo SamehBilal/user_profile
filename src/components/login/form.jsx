@@ -31,6 +31,12 @@ function LoginForm({toRegisterPage, returnUrl, sessionId}) {
     const [token, setToken] = useState(null)
     const [isPasswordShown, setIsPasswordShown] = useState(false)
     const [isForgetPswFormShown, setIsForgetPswFormShown] = useState(false)
+
+    // delete the cookies of logout
+    setCookie("jwt_logout", "deleted", {secure: true, sameSite: "None", domain: ".arabhardware.com", maxAge: 0})
+    deleteCookie("jwt_logout", {secure: true, sameSite: "None", domain: ".arabhardware.com"})
+    setCookie("jwt_logout", "deleted", {secure: true, sameSite: "None", domain: ".arabhardware.net", maxAge: 0})
+    deleteCookie("jwt_logout", {secure: true, sameSite: "None", domain: ".arabhardware.net"})
     
     // const recaptaSecretKey = process?.env?.RECAPTCHA_SECRET_KEY;
     const recaptaSecretKey = "6Ld1uQsqAAAAAMxfabq4tdWDCGYbEZD0ZDdusTP3";
