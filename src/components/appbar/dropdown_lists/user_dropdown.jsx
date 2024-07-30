@@ -54,9 +54,9 @@ function UserDropdown({isExpanded=false, setIsExpanded, user }) {
       deleteCookie(
         "jwt_token",
         {secure: true, sameSite: "None", domain: ".arabhardware.com"})
-      deleteCookie(
-        "jwt_token",
-        {secure: true, sameSite: "None", domain: ".arabhardware.net"})
+      // deleteCookie(
+      //   "jwt_token",
+      //   {secure: true, sameSite: "None", domain: ".arabhardware.net"})
 
       await axios.post(`${ApiBase}/logout`,
         {}, {

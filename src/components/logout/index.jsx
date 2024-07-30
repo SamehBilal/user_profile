@@ -44,9 +44,9 @@ function LogoutPage() {
           deleteCookie(
             "jwt_token",
             {secure: true, sameSite: "None", domain: ".arabhardware.com"})
-          deleteCookie(
-            "jwt_token",
-            {secure: true, sameSite: "None", domain: ".arabhardware.net"})
+          // deleteCookie(
+          //   "jwt_token",
+          //   {secure: true, sameSite: "None", domain: ".arabhardware.net"})
           localStorage.removeItem("jwt_token")
     
           await axios.post(`${ApiBase}/logout`,

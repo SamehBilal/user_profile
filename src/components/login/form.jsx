@@ -48,9 +48,8 @@ function LoginForm({toRegisterPage, returnUrl, sessionId}) {
 
     useEffect(()=>{
       const deleteCookies = () => {
-        deleteThisCookie( "jwt_logout", '.arabhardware.net')
         setCookie("jwt_token", "deleted", {secure: true, sameSite: "None", domain: ".arabhardware.com", maxAge: 0})
-        setCookie("jwt_token", "deleted", {secure: true, sameSite: "None", domain: ".arabhardware.net", maxAge: 0})
+        // setCookie("jwt_token", "deleted", {secure: true, sameSite: "None", domain: ".arabhardware.net", maxAge: 0})
         setCookie("jwt_token", "deleted", {secure: true, sameSite: "None", domain: "arabhardware.com", maxAge: 0})
         axios.post('/api/logout', {})
         .then(res=>console.log('success'))
@@ -202,12 +201,12 @@ function LoginForm({toRegisterPage, returnUrl, sessionId}) {
 
   return (<div className="w-full h-full bg-white rounded-l-lg px-14 py-8 space-y-8 relative mb-32">
     <ToasterComponent />
-    {mainDomains.map((endPoint, i)=>{
+    {/* {mainDomains.map((endPoint, i)=>{
       return <iframe id={`iframe-main-${i}`} key={i}
       src={`${endPoint}?token=${token}`} 
       frameBorder="0" className='hidden' ></iframe>
-      })}
-    {token && 
+      })} */}
+    {/* {token && 
     <div className='flex justify-between items-center max-h-[50vh]'>
       {
       callBack.map((endPoint, i)=>{
@@ -219,7 +218,7 @@ function LoginForm({toRegisterPage, returnUrl, sessionId}) {
       {sessionId && <iframe id={`iframe-cart`}
       src={`${storeLoginDomain}&token=${token}&sessionId=${sessionId}`} 
       frameBorder="0" className='' ></iframe>}
-    </div>}
+    </div>} */}
 {/* https://myaccount.arabhardware.com/login_callback?url_return=https://arabhardware.net?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FyYWJoYXJkd2FyZS5jb20vYXV0aC9nb29nbGUvY2FsbGJhY2siLCJpYXQiOjE3MjExMjM3OTgsImV4cCI6MTcyMzcxNTc5OCwibmJmIjoxNzIxMTIzNzk4LCJqdGkiOiJ5RlRMek5MUWdUeTkxRm1iIiwic3ViIjoiMjg5NzkiLCJwcnYiOiI5MTBkZDhhZDBiNGY0NDgyMGZlZWM0NDgyMWYzZWFmZTA0ZjMzZTA1In0.Wf-uaSVE_lWw7AIH9Xo-kameHow3vgUx7-6WsfgO370 */}
     <div className="w-full space-y-4">
       <div className="w-full flex justify-center items-center">
