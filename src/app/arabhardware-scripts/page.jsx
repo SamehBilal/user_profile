@@ -1,8 +1,8 @@
 "use client"
-import {useEffect, useState} from 'react'
+// import {useEffect, useState} from 'react'
 
-function page() {
-    useEffect(()=>{
+function Page() {
+    // useEffect(()=>{
         // let isLocalStorageLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
         // let iCount = 0;
 
@@ -210,7 +210,7 @@ function page() {
         //     }
         //     return ""; // Return empty string if the cookie was not found
         // } */
-    }, [])
+    // }, [])
   return (
     <div>
         <iframe id="tokenIframe" style="display:none;" src="https://myaccount.arabhardware.com/refresh/cookie" 
@@ -220,4 +220,4 @@ function page() {
   )
 }
 
-export default page
+export default Page
