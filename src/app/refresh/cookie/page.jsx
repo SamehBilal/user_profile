@@ -22,7 +22,7 @@ function Page() {
   
     useEffect(()=>{
       if(window){
-        window.setInterval(checkCookie, 15000); // run every 10s
+        window.setInterval(checkCookie, 12000); // run every 10s
         }
         window.addEventListener('message', event => {
           if (event.origin === 'https://myaccount.arabhardware.com') {
