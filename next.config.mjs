@@ -1,6 +1,13 @@
+import withBundleAnalyzer from '@next/bundle-analyzer';
+
+const bundleAnalyzerConfig = {
+  enabled: process.env.ANALYZE === 'true',
+};
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
+    // enabled: process.env.ANALYZE === 'true',
+    // reactStrictMode: true,
     async headers() {
         return [
             {
@@ -39,4 +46,8 @@ const nextConfig = {
     },
 };
 
-export default nextConfig;
+export default nextConfig
+// export default withBundleAnalyzer(nextConfig);
+
+// add this to scripts in package.json
+// "analyze": "cross-env ANALYZE=true next build",
