@@ -4,19 +4,27 @@ import { setCookie, getCookie, deleteCookie } from 'cookies-next'
 
 function Page() {
     const [token, setToken] = useState(getCookie('jwt_token'))
+    const [isFirstTime, setISFirstTime] = useState(true)
 
     var checkCookie = function() {
       const jwtToken = getCookie('jwt_token')
+
+      const postMessage = function(){
+        const iframe = document.getElementById('iframe4')
+        iframe.contentWindow.postMessage(`jwt_token:${jwtToken}`, "*");
+        parent.postMessage(`jwt_token:${jwtToken}`, "*");
+      }
+
       if (jwtToken != token) {
         console.log('prev: ', token)
         console.log( 'current: ', jwtToken)
         setToken(jwtToken)
-
-        const iframe = document.getElementById('iframe4')
-        iframe.contentWindow.postMessage(`jwt_token:${token}`, "*");
-        parent.postMessage(`jwt_token:${token}`, "*");
+        postMessage()
+        setISFirstTime(true)
       } else {
         console.log('JWT token not updated');
+        if(isFirstTime) {postMessage()}
+        setISFirstTime(false)
       }
     };
   
