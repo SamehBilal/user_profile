@@ -22,7 +22,8 @@ function Page() {
   
     useEffect(()=>{
       if(window){
-        window.setInterval(checkCookie, 12000); // run every 10s
+        checkCookie()
+        window.setInterval(checkCookie, 12000); // run every 12s
         }
         window.addEventListener('message', event => {
           if (event.origin === 'https://myaccount.arabhardware.com') {
@@ -38,7 +39,7 @@ function Page() {
         {token && <p className=' break-all text-left' id='token'>{token}</p>}
         {/* <iframe id="iframe4" name="iframe4" src={`https://myaccount.arabhardware.com/refresh/cookie`}
         sandbox="allow-same-origin allow-scripts"
-        className="hidden"></iframe> */}
+        className=""></iframe> */}
     </div>
   )
 }
