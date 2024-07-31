@@ -10,8 +10,8 @@ function Page() {
       const jwtToken = getCookie('jwt_token')
 
       const postMessage = function(){
-        const iframe = document.getElementById('iframe4')
-        iframe.contentWindow.postMessage(`jwt_token:${jwtToken}`, "*");
+        // const iframe = document.getElementById('iframe4')
+        // iframe.contentWindow.postMessage(`jwt_token:${jwtToken}`, "*");
         parent.postMessage(`jwt_token:${jwtToken}`, "*");
       }
 
