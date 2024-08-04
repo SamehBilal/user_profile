@@ -12,6 +12,7 @@ function Page() {
       const postMessage = function(){
         // const iframe = document.getElementById('iframe4')
         // iframe.contentWindow.postMessage(`jwt_token:${jwtToken}`, "*");
+        setISFirstTime(false)
         parent.postMessage(`jwt_token:${jwtToken}`, "*");
       }
 
