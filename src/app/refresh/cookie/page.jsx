@@ -12,7 +12,6 @@ function Page() {
       const postMessage = function(){
         // const iframe = document.getElementById('iframe4')
         // iframe.contentWindow.postMessage(`jwt_token:${jwtToken}`, "*");
-        setISFirstTime(false)
         parent.postMessage(`jwt_token:${jwtToken}`, "*");
       }
 
@@ -21,13 +20,11 @@ function Page() {
         console.log( 'current: ', jwtToken)
         setToken(jwtToken)
         postMessage()
-        setISFirstTime(true)
       } else {
         console.log('first load? ', isFirstTime)
         if(isFirstTime) {
           console.log('JWT token not updated');
           postMessage()
-          setISFirstTime(false)
         }else{
           console.log('first load? ', isFirstTime)
         }
@@ -39,15 +36,16 @@ function Page() {
          // TODO: uncomment on production
         checkCookie()
         window.setInterval(checkCookie, 12000); // run every 12s
+        setISFirstTime(false)
         // end of uncomment on production
         }
-        window.addEventListener('message', event => {
-          if (event.origin === 'https://myaccount.arabhardware.com') {
-              console.log('event:' ,event.data);
-          } else {
-              return;
-          }
-       });
+      //   window.addEventListener('message', event => {
+      //     if (event.origin === 'https://myaccount.arabhardware.com') {
+      //         console.log('event:' ,event.data);
+      //     } else {
+      //         return;
+      //     }
+      //  });
     }, [])
 
   return (
