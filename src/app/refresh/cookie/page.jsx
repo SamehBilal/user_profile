@@ -3,10 +3,9 @@ import {useEffect, useState, useRef} from 'react'
 import { setCookie, getCookie, deleteCookie } from 'cookies-next'
 
 function Page() {
-    const [token, setToken] = useState(getCookie('jwt_token'))
-    const [isFirstTime, setISFirstTime] = useState(true)
+    const [token, setToken] = useState(getCookie('jwt_token') ?? '')
 
-    var checkCookie = function() {
+    var checkCookie = function(isFirstLoad=false) {
       const jwtToken = getCookie('jwt_token')
 
       const postMessage = function(){
@@ -21,22 +20,19 @@ function Page() {
         setToken(jwtToken)
         postMessage()
       } else {
-        console.log('first load? ', isFirstTime)
-        if(isFirstTime) {
+        if(isFirstLoad) {
           console.log('JWT token not updated');
           postMessage()
-        }else{
-          console.log('first load? ', isFirstTime)
         }
+        console.log('already sent')
       }
     };
   
     useEffect(()=>{
       if(window){
          // TODO: uncomment on production
-        checkCookie()
+         checkCookie(true)
         window.setInterval(checkCookie, 12000); // run every 12s
-        setISFirstTime(false)
         // end of uncomment on production
         }
       //   window.addEventListener('message', event => {
