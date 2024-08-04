@@ -22,16 +22,22 @@ function Page() {
         postMessage()
         setISFirstTime(true)
       } else {
-        console.log('JWT token not updated');
-        if(isFirstTime) {postMessage()}
+        if(isFirstTime) {
+          console.log('JWT token not updated');
+          postMessage()
+        }else{
+          console.log('first load? ', isFirstTime)
+        }
         setISFirstTime(false)
       }
     };
   
     useEffect(()=>{
       if(window){
+         // TODO: uncomment on production
         checkCookie()
         window.setInterval(checkCookie, 12000); // run every 12s
+        // end of uncomment on production
         }
         window.addEventListener('message', event => {
           if (event.origin === 'https://myaccount.arabhardware.com') {
@@ -45,6 +51,7 @@ function Page() {
   return (
     <div className='w-full h-full space-y-4 p-grid max-w-grid'>
         {token && <p className=' break-all text-left' id='token'>{token}</p>}
+        {/* TODO: comment on production */}
         {/* <iframe id="iframe4" name="iframe4" src={`https://myaccount.arabhardware.com/refresh/cookie`}
         sandbox="allow-same-origin allow-scripts"
         className=""></iframe> */}
