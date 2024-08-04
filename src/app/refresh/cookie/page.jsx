@@ -3,10 +3,10 @@ import {useEffect, useState, useRef} from 'react'
 import { setCookie, getCookie, deleteCookie } from 'cookies-next'
 
 function Page() {
-    const [token, setToken] = useState(getCookie('jwt_token') ?? '')
+    const [token, setToken] = useState(getCookie('jwt_token'))
 
     var checkCookie = function(isFirstLoad=false) {
-      const jwtToken = getCookie('jwt_token') ?? ''
+      const jwtToken = getCookie('jwt_token')
 
       const postMessage = function(){
         // const iframe = document.getElementById('iframe4')
