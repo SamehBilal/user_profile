@@ -22,13 +22,14 @@ function Page() {
         postMessage()
         setISFirstTime(true)
       } else {
+        console.log('first load? ', isFirstTime)
         if(isFirstTime) {
           console.log('JWT token not updated');
           postMessage()
+          setISFirstTime(false)
         }else{
           console.log('first load? ', isFirstTime)
         }
-        setISFirstTime(false)
       }
     };
   
