@@ -32,7 +32,7 @@ function Page() {
       if(window){
          // TODO: uncomment on production
          checkCookie(true)
-        window.setInterval(checkCookie, 12000); // run every 12s
+        window.setInterval(checkCookie, 30000); // run every 30s
         // end of uncomment on production
         }
       //   window.addEventListener('message', event => {
