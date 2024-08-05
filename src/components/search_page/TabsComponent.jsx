@@ -2,8 +2,16 @@
 import {Tabs, Tab, Chip} from "@nextui-org/react";
 import { Images } from "lucide-react";
 import CardsComponent from "./cardsComponent";
+import { useState, useMemo } from "react";
+import Image from "next/image";
 
-const TabsComponent = ({ tabs }) => {
+const TabsComponent = ({ data = [], setBgImg=()=>{console.log('define setBgImg ')}  }) => {
+  const handleTabChange = (newTab) => {
+    const newTabIndex = data.map((_)=>_.id)?.findIndex(element => element === newTab)
+    if(data[newTabIndex]?.backgroundImg)
+    setBgImg(data[newTabIndex]?.backgroundImg)
+  };
+  
   return (
     <div className="">
         <Tabs 
@@ -14,16 +22,18 @@ const TabsComponent = ({ tabs }) => {
           tabList: "gap-6 w-full relative p-0",
           cursor: "w-2/5 bg-primary",
           tab: "max-w-fit px-0 h-8",
-          tabContent: "group-data-[selected=true]:text-primary group-data-[hover-unselected]:text-black text-black"
+          tabContent: "group-data-[selected=true]:text-primary group-data-[hover-unselected]:text-black text-black dark:group-data-[hover-unselected]:text-white dark:text-white"
         }}
-        items={tabs}>
+        onSelectionChange={handleTabChange}
+        onChange={()=>console.log('hello')}
+        items={data}>
         {(item) => (
           <Tab key={item.id} title={
             <div className="flex items-center space-x-2">
               <span>{item.label}</span>
             </div>
           }>
-            <CardsComponent cards={item.cards} />
+            <CardsComponent cards={item.cards} id={item.id} />
           </Tab>
         )}
         </Tabs>
