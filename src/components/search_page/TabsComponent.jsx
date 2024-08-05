@@ -22,7 +22,7 @@ const TabsComponent = ({ data = [], setBgImg=()=>{console.log('define setBgImg '
           tabList: "gap-6 w-full relative p-0",
           cursor: "w-2/5 bg-primary",
           tab: "max-w-fit px-0 h-8",
-          tabContent: "group-data-[selected=true]:text-primary group-data-[hover-unselected]:text-black text-black dark:group-data-[hover-unselected]:text-white dark:text-white"
+          tabContent: "group-data-[selected=true]:text-primary dark:group-data-[hover-unselected]:text-white text-white"
         }}
         onSelectionChange={handleTabChange}
         onChange={()=>console.log('hello')}
