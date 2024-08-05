@@ -8,14 +8,14 @@ function VediosCard({
 }) {
   
   return (
-    <Card className={`${index==0?'col-span-6':'col-span-2'} h-[300px] group border-2 border-primary border-solid`}>
+    <Card className={`${index==0?'col-span-6 my-4':'col-span-2'} h-[300px] group border-2 border-primary border-solid`}>
       <CardHeader className="absolute z-10 top-1 flex-col !items-start group-hover:translate-y-4 group-hover:drop-shadow-lg transition p-4">
         <p className="text-large text-white drop-shadow-2xl line-clamp-2 uppercase font-bold">{title}</p>
       </CardHeader>
       <Image
         removeWrapper
         alt="Card background"
-        className="z-0 w-full h-full object-cover hover:scale-110 hover:brightness-50 saturate-50 transition"
+        className="z-0 w-full h-full object-cover hover:scale-110 group-hover:brightness-50 group-hover:saturate-100 transition"
         src={imgUrl}
       />
       <Play className='absolute size-10 -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 text-primary border border-primary border-solid bg-white/25 rounded-large cursor-pointer group-hover:scale-125 transition' />
