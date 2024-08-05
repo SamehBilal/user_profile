@@ -13,7 +13,7 @@ import NavbarBottomMenu from './navbar_bottom_menu'
 import PagesLinks from './pages_links'
 import { getCookie } from 'cookies-next';
 
-function Appbar({shadow = null}) {
+function Appbar({shadow = null, bgTransparent=true}) {
   const router = useRouter()
   const [gridDropdownPopoverShow, setGridDropdownPopoverShow] = React.useState(false);
   const [userDropdownPopoverShow, setUserDropdownPopoverShow] = React.useState(false);
@@ -33,7 +33,10 @@ function Appbar({shadow = null}) {
   }, [])
 
   return (
-    <nav className={`text-black dark:text-white ${shadow? '':' shadow-md dark:shadow-zinc-300/20'} w-screen absolute top-0 right-0 left-0`}>
+    <nav className={`text-black dark:text-white 
+    ${shadow? '':' shadow-md dark:shadow-zinc-300/20'} 
+    ${bgTransparent? '': 'bg-white dark:bg-black'}
+    w-screen absolute top-0 right-0 left-0`}>
       <div className="p-grid max-w-grid flex justify-between items-center mx-auto px-8 py-2 ">
         <div className="flex items-center justify-center gap-4">
           <Image src={Logo} alt='ArabHardware' className='size-12 lg:mr-8' />

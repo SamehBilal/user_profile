@@ -17,7 +17,7 @@ export default function Psge({}) {
           filter: 'saturate(0.5) brightness(0.5) blur(5px)',
         }}
       />
-      <AppBar shadow='transparent' />
+      <AppBar shadow='transparent' bgTransparent={false} />
       <SearchPage data={searchData} setBgImg={setBgImg} />
     </main>
   );
