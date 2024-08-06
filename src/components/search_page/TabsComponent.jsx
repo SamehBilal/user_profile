@@ -23,7 +23,7 @@ const TabsComponent = ({ data = [], setBgImg=()=>{console.log('define setBgImg '
   
   return (
     <div className="w-full grid grid-cols-5 mx-auto">
-      <div className="col-span-3">
+      <div className="col-span-5 xl:col-span-4">
         <Tabs 
         variant="underlined" 
         aria-label="Arabhardware Companies" 
@@ -48,7 +48,7 @@ const TabsComponent = ({ data = [], setBgImg=()=>{console.log('define setBgImg '
         )}
         </Tabs>
       </div>
-      <div className="col-span-2">
+      <div className="xl:col-span-1 hidden xl:block">
         <RightSectoin />
       </div>
     </div>

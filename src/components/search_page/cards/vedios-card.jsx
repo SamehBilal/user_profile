@@ -14,7 +14,7 @@ function VediosCard({
       </CardHeader>
       <Image
         removeWrapper
-        alt="Card background"
+        alt="Vedio Thumbnail"
         className="z-0 w-full h-full object-cover hover:scale-110 group-hover:brightness-50 group-hover:saturate-100 transition"
         src={imgUrl}
       />

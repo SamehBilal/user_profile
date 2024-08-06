@@ -5,7 +5,6 @@ import Light1 from '@/public/images/backgrounds/light/texture1.jpg'
 import Light2 from '@/public/images/backgrounds/light/texture2.jpg'
 import Light3 from '@/public/images/backgrounds/light/texture3.jpg'
 
-
 const blogsCards = [
     {
         type: 'blogs', 
@@ -171,3 +170,19 @@ export const searchData = [
         cards: reviewsCards
     },
 ]
+
+export const trendingData = {
+    title: "الاكثر رواجاً",
+    subjects: [
+        "دونالد ترمب",
+        "غزة الآن",
+        "الحرب الروسية الأوكرانية",
+        "فئران فرنسا",
+        "محتجي بريطانيا",
+        "روبرت ف كيندي",
+        "ايمان خليفة",
+        "العشاء الأخير",
+        "ايران",
+        "تشيرنوبل"
+    ]
+}
