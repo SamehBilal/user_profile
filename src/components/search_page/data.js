@@ -5,6 +5,13 @@ import Light1 from '@/public/images/backgrounds/light/texture1.jpg'
 import Light2 from '@/public/images/backgrounds/light/texture2.jpg'
 import Light3 from '@/public/images/backgrounds/light/texture3.jpg'
 
+import Avatar1 from '@/public/images/backgrounds/avatar/pic1.jpg'
+import Avatar2 from '@/public/images/backgrounds/avatar/pic2.jpg'
+import Avatar3 from '@/public/images/backgrounds/avatar/pic3.jpg'
+import Avatar4 from '@/public/images/backgrounds/avatar/pic4.jpg'
+import Avatar5 from '@/public/images/backgrounds/avatar/pic5.jpg'
+import Avatar6 from '@/public/images/backgrounds/avatar/pic6.jpg'
+
 const blogsCards = [
     {
         type: 'blogs', 
@@ -201,3 +208,12 @@ export const tagsData = {
         "تشيرنوبل"
     ]
 }
+
+export const statusData = [
+    {img: Avatar1, url: '#'},
+    {img: Avatar2, url: '#'},
+    {img: Avatar3, url: '#'},
+    {img: Avatar4, url: '#'},
+    {img: Avatar5, url: '#'},
+    {img: Avatar6, url: '#'},
+]

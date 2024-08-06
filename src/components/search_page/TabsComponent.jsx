@@ -4,8 +4,9 @@ import CardsComponent from "./cardsComponent";
 import { useState, useEffect } from "react";
 import { useTheme } from 'next-themes';
 import RightSectoin from "./right-sections/right-section";
+import StatusBar from "./status-bar";
 
-const TabsComponent = ({ data = [], setBgImg=()=>{console.log('define setBgImg ')}  }) => {
+const TabsComponent = ({ data = [], setBgImg=()=>{console.log('define setBgImg ')}, statusData=[]  }) => {
   const [activeTabIndex, setActiveTabIndex] = useState(0)
   const { theme, setTheme } = useTheme(); // 'light' : 'dark'
 
@@ -35,7 +36,6 @@ const TabsComponent = ({ data = [], setBgImg=()=>{console.log('define setBgImg '
           tabContent: "group-data-[selected=true]:text-primary group-data-[hover-unselected]:text-black text-black dark:group-data-[hover-unselected]:text-white dark:text-white "
         }}
         onSelectionChange={handleTabChange}
-        onChange={()=>console.log('hello')}
         items={data}>
           
         {(item) => (
@@ -45,7 +45,7 @@ const TabsComponent = ({ data = [], setBgImg=()=>{console.log('define setBgImg '
             </div>
           }>
           <div className="col-span-5 xl:col-span-4 w-full h-20 relative">
-            <div className="absolute top-1/2 -translate-y-1/2 h-10 bg-orange-600"></div>
+            <StatusBar statusData={statusData} />
           </div>
             <CardsComponent cards={item.cards} id={item.id} />
           </Tab>

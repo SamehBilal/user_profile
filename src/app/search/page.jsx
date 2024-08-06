@@ -1,7 +1,7 @@
 "use client"
 import AppBar from "@/components/appbar";
 import SearchPage from "@/components/search_page";
-import { searchData } from "@/components/search_page/data";
+import { searchData, statusData } from "@/components/search_page/data";
 import { useState } from "react";
 
 export default function Psge({}) {
@@ -20,7 +20,7 @@ export default function Psge({}) {
         }}
       />
       <AppBar shadow='transparent' bgTransparent={false} />
-      <SearchPage data={searchData} setBgImg={setBgImg} />
+      <SearchPage data={searchData} setBgImg={setBgImg} statusData={statusData} />
     </main>
   );
 }
