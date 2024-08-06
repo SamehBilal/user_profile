@@ -31,9 +31,8 @@ export async function GET(request, response) {
             const user = (cookieStore.get('user') && cookieStore.get('user').value)? (JSON.parse(cookieStore.get('user')?.value)) :""
             // console.log('user', user)
             
-            response.data = {token, user}
             // Return the token
-            return NextResponse.json(response, { status: 200 });
+            return NextResponse.json(token, { status: 200 });
         // } else {
             // return NextResponse.json({ message: 'Unauthorized request' }, { status: 401 }); // Unauthorized origin
         // }
