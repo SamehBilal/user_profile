@@ -23,10 +23,6 @@ export async function GET(request, response) {
             cookieStore.delete('jwt_token', {secure: true, sameSite: "None", domain: ".arabhardware.com"})
             cookieStore.delete('jwt_token');
         }
-        let i = 0
-        setInterval(() => {
-            response.postMessage({i, token}, "*");
-        }, 5000);
         
         return NextResponse.json(token, { status: 200 });
     }catch (error) {
