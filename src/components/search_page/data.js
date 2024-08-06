@@ -1,4 +1,10 @@
-import SearchBg from '@/public/images/backgrounds/search-bg.jpg'
+import Dark1 from '@/public/images/backgrounds/dark/texture1.jpg'
+import Dark2 from '@/public/images/backgrounds/dark/texture2.jpg'
+import Dark3 from '@/public/images/backgrounds/dark/texture3.jpg'
+import Light1 from '@/public/images/backgrounds/light/texture1.jpg'
+import Light2 from '@/public/images/backgrounds/light/texture2.jpg'
+import Light3 from '@/public/images/backgrounds/light/texture3.jpg'
+
 
 const blogsCards = [
     {
@@ -136,27 +142,32 @@ const reviewsCards = [
 export const searchData = [
     {
         id: "all", label: "الجميع", color: "", 
-        backgroundImg: "https://images7.alphacoders.com/316/316707.jpg", 
+        bgImg: {'dark': Dark1, 'light': Light1},
+        backgroundImgDark: Dark1, backgroundImg: Light1, 
         cards: blogsCards.concat(productsCards, vediosCards, reviewsCards)
     },
     {
         id: "blogs", label: "المقالات", color: "", 
-        backgroundImg: "https://th.bing.com/th/id/OIP.ybZ-56ADsD2Dxyz4mD6lEAHaE8?rs=1&pid=ImgDetMain", 
+        backgroundImgDark: Dark2, backgroundImg: Light2, 
+        bgImg: {'dark': Dark2, 'light': Light2},
         cards: blogsCards
     },
     {
         id: "products", label: "المتجر", color: "", 
-        backgroundImg: "https://th.bing.com/th/id/OIP.nvws07pcNoNkJPUNN0QWCAHaE8?rs=1&pid=ImgDetMain", 
+        backgroundImgDark: Dark3, backgroundImg: Light3, 
+        bgImg: {'dark': Dark3, 'light': Light3},
         cards: productsCards
     },
     {
         id: "vedios", label: "الفيديوهات", color: "", 
-        backgroundImg: "https://jooinn.com/images/grunge-background-texture.jpg", 
+        backgroundImgDark: Dark1, backgroundImg: Light1, 
+        bgImg: {'dark': Dark1, 'light': Light1},
         cards: vediosCards
     },
     {
         id: "reviews", label: "المراجعات", color: "", 
-        backgroundImg: "https://thumbs.dreamstime.com/b/snake-skin-pattern-texture-repeating-monochrome-texture-animal-prints-background-snake-skin-pattern-texture-repeating-monochrome-166911812.jpg", 
+        backgroundImgDark: Dark2, backgroundImg: Light2, 
+        bgImg: {'dark': Dark2, 'light': Light2},
         cards: reviewsCards
     },
 ]

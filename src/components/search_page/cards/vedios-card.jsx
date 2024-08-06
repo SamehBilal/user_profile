@@ -10,7 +10,7 @@ function VediosCard({
   return (
     <Card className={`${index==0?'col-span-6 my-4':'col-span-2'} h-[300px] group border-2 border-primary border-solid`}>
       <CardHeader className="absolute z-10 top-1 flex-col !items-start group-hover:translate-y-4 group-hover:drop-shadow-lg transition p-4">
-        <p className="text-large text-white drop-shadow-2xl line-clamp-2 uppercase font-bold">{title}</p>
+        <p className="text-large text-white drop-shadow-2xl line-clamp-2 uppercase font-bold bg-black/50 px-2 pb-1 rounded-large">{title}</p>
       </CardHeader>
       <Image
         removeWrapper

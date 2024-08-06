@@ -5,8 +5,8 @@ function ProductsCard({title='', subTitle='', imgUrl='https://nextui.org/images/
   return (
     <Card className=" col-span-1 h-[300px] group">
       <CardHeader className="absolute z-10 top-1 flex-col !items-start group-hover:translate-y-4 group-hover:drop-shadow-lg transition">
-        <p className="text-tiny text-white/60 uppercase font-bold">{title}</p>
-        <h4 className="text-white font-medium text-large">{subTitle}</h4>
+        <p className="text-tiny text-black dark:text-white drop-shadow-lg bg-white/50 dark:bg-black/50 px-2 rounded-large uppercase font-bold line-clamp-5">{title}</p>
+        <h4 className="font-medium text-large">{subTitle}</h4>
       </CardHeader>
       <Image
         removeWrapper

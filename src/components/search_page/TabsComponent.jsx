@@ -1,19 +1,29 @@
 "use client"
-import {Tabs, Tab, Chip} from "@nextui-org/react";
-import { Images } from "lucide-react";
+import {Tabs, Tab} from "@nextui-org/react";
 import CardsComponent from "./cardsComponent";
-import { useState, useMemo } from "react";
-import Image from "next/image";
+import { useState, useEffect } from "react";
+import { useTheme } from 'next-themes';
+import RightSectoin from "./right-section";
 
 const TabsComponent = ({ data = [], setBgImg=()=>{console.log('define setBgImg ')}  }) => {
+  const [activeTabIndex, setActiveTabIndex] = useState(0)
+  const { theme, setTheme } = useTheme(); // 'light' : 'dark'
+
   const handleTabChange = (newTab) => {
     const newTabIndex = data.map((_)=>_.id)?.findIndex(element => element === newTab)
-    if(data[newTabIndex]?.backgroundImg)
-    setBgImg(data[newTabIndex]?.backgroundImg)
+    setActiveTabIndex(newTabIndex ?? 0)
+    if(data[newTabIndex]?.backgroundImg){
+      setBgImg(data[newTabIndex ?? 0]?.bgImg[theme])
+    }
   };
+
+  useEffect(()=>{
+    setBgImg(data[activeTabIndex]?.bgImg[theme])
+  }, [theme])
   
   return (
-    <div className="">
+    <div className="w-full grid grid-cols-5 mx-auto">
+      <div className="col-span-3">
         <Tabs 
         variant="underlined" 
         aria-label="Arabhardware Companies" 
@@ -22,7 +32,7 @@ const TabsComponent = ({ data = [], setBgImg=()=>{console.log('define setBgImg '
           tabList: "gap-6 w-full relative p-0",
           cursor: "w-2/5 bg-primary",
           tab: "max-w-fit px-0 h-8",
-          tabContent: "group-data-[selected=true]:text-primary dark:group-data-[hover-unselected]:text-white text-white"
+          tabContent: "group-data-[selected=true]:text-primary group-data-[hover-unselected]:text-black text-black dark:group-data-[hover-unselected]:text-white dark:text-white "
         }}
         onSelectionChange={handleTabChange}
         onChange={()=>console.log('hello')}
@@ -37,6 +47,10 @@ const TabsComponent = ({ data = [], setBgImg=()=>{console.log('define setBgImg '
           </Tab>
         )}
         </Tabs>
+      </div>
+      <div className="col-span-2">
+        <RightSectoin />
+      </div>
     </div>
   );
 };

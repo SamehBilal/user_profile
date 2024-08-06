@@ -13,8 +13,10 @@ export default function Psge({}) {
       <div
         className="absolute inset-0 size-full"
         style={{
-          backgroundImage: `url(${bgImg})`,
-          filter: 'saturate(0.5) brightness(0.5) blur(5px)',
+          backgroundImage: `url(${bgImg?.src || bgImg})`,
+          backgroundSize: 'cover',
+          backgroundRepeat: 'repeat-y',
+          filter: 'saturate(0.5) brightness(0.85) blur(5px)',
         }}
       />
       <AppBar shadow='transparent' bgTransparent={false} />

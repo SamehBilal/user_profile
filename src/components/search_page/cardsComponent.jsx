@@ -24,7 +24,7 @@ export default function CardsComponent({cards=[], id='blogs'}) {
 
   const getIndex = (type, i) => {
     const theIndex = i - cardTypeIndex[type]
-    console.log(id, i, cardTypeIndex[type], 'the index= ', theIndex)
+    // console.log(id, i, cardTypeIndex[type], 'the index= ', theIndex)
     return theIndex
   }
   
