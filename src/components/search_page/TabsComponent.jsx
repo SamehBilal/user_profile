@@ -37,12 +37,16 @@ const TabsComponent = ({ data = [], setBgImg=()=>{console.log('define setBgImg '
         onSelectionChange={handleTabChange}
         onChange={()=>console.log('hello')}
         items={data}>
+          
         {(item) => (
           <Tab key={item.id} title={
             <div className="flex items-center space-x-2">
               <span>{item.label}</span>
             </div>
           }>
+          <div className="col-span-5 xl:col-span-4 w-full h-20 relative">
+            <div className="absolute top-1/2 -translate-y-1/2 h-10 bg-orange-600"></div>
+          </div>
             <CardsComponent cards={item.cards} id={item.id} />
           </Tab>
         )}

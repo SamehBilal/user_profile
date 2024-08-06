@@ -4,6 +4,12 @@ import { useState, useEffect } from "react";
 
 export default function CardsComponent({cards=[], id='blogs'}) {
   const [cardTypeIndex, setCardTypeIndex] = useState({blogs: 0, products: 1, vedios: 2, reviews: 3})
+  const titles = {
+    blogs:  "أحدث المقالات", 
+    products: "أحدث المنتجات", 
+    vedios: "أحدث الفيديوهات", 
+    reviews: "أحدث المراجعات"
+  }
 
   // let additionalClasses = ''
   // if(id=='blogs' || id=='reviews' || id=='vedios' || id=='products' || id=='all') additionalClasses='grid-cols-6'
@@ -31,9 +37,16 @@ export default function CardsComponent({cards=[], id='blogs'}) {
   return (
     <div className={`max-w-grid grid grid-cols-6 gap-4 px-8 items-center justify-between`}>
       {cards.map((card, i)=>{
-        return <SingleCard key={i} index={id!='all'?i:getIndex(card.type, i)} 
+        return <>
+        {i==cardTypeIndex[card.type] && <div className="col-span-6 h-14 relative">
+          <p className="absolute inset-0 font-bold text-3xl top-2/3 -translate-y-1/2">
+            {titles[card.type]}
+          </p>
+        </div>}
+        <SingleCard key={i} index={id!='all'?i:getIndex(card.type, i)} 
         type={card.type} title={card.title} subTitle={card.subTitle} imgUrl={card.imgUrl}
         desc={card.desc} price={card.price} inStock={card.inStock} url={card.url} youtubeId={card.youtubeId} />
+        </>
       })}
     </div>
   );

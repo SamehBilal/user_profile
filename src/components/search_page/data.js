@@ -140,31 +140,31 @@ const reviewsCards = [
 
 export const searchData = [
     {
-        id: "all", label: "الجميع", color: "", 
+        id: "all", label: "الجميع", color: "",
         bgImg: {'dark': Dark1, 'light': Light1},
         backgroundImgDark: Dark1, backgroundImg: Light1, 
         cards: blogsCards.concat(productsCards, vediosCards, reviewsCards)
     },
     {
-        id: "blogs", label: "المقالات", color: "", 
+        id: "blogs", label: "المقالات", color: "",
         backgroundImgDark: Dark2, backgroundImg: Light2, 
         bgImg: {'dark': Dark2, 'light': Light2},
         cards: blogsCards
     },
     {
-        id: "products", label: "المتجر", color: "", 
+        id: "products", label: "المتجر", color: "",
         backgroundImgDark: Dark3, backgroundImg: Light3, 
         bgImg: {'dark': Dark3, 'light': Light3},
         cards: productsCards
     },
     {
-        id: "vedios", label: "الفيديوهات", color: "", 
+        id: "vedios", label: "الفيديوهات", color: "",
         backgroundImgDark: Dark1, backgroundImg: Light1, 
         bgImg: {'dark': Dark1, 'light': Light1},
         cards: vediosCards
     },
     {
-        id: "reviews", label: "المراجعات", color: "", 
+        id: "reviews", label: "المراجعات", color: "",
         backgroundImgDark: Dark2, backgroundImg: Light2, 
         bgImg: {'dark': Dark2, 'light': Light2},
         cards: reviewsCards
