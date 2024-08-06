@@ -3,7 +3,7 @@ import {Tabs, Tab} from "@nextui-org/react";
 import CardsComponent from "./cardsComponent";
 import { useState, useEffect } from "react";
 import { useTheme } from 'next-themes';
-import RightSectoin from "./right-section";
+import RightSectoin from "./right-sections/right-section";
 
 const TabsComponent = ({ data = [], setBgImg=()=>{console.log('define setBgImg ')}  }) => {
   const [activeTabIndex, setActiveTabIndex] = useState(0)

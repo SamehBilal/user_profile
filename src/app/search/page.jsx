@@ -16,7 +16,7 @@ export default function Psge({}) {
           backgroundImage: `url(${bgImg?.src || bgImg})`,
           backgroundSize: 'cover',
           backgroundRepeat: 'repeat-y',
-          filter: 'saturate(0.5) brightness(0.85) blur(5px)',
+          // filter: 'saturate(0.5) brightness(0.85) blur(5px)',
         }}
       />
       <AppBar shadow='transparent' bgTransparent={false} />

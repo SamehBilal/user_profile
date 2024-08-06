@@ -7,15 +7,15 @@ import ReviewsCard from './cards/reviews-card';
 
 function SingleCard({
     type='blogs', index=0, title='', subTitle='', imgUrl='https://nextui.org/images/card-example-3.jpeg',
-    url='#', youtubeId='#',
-  desc='', subDesc='', action='', iconUrl='https://nextui.org/images/breathing-app-icon.jpeg'
+    url='#', youtubeId='#', price=0, inStock=true,
+    desc='', subDesc='', action='', iconUrl='https://nextui.org/images/breathing-app-icon.jpeg'
   }) {
   return (
     <>
     {/* blogs */}
     {type=='blogs' && <BlogsCard index={index} title={title} subTitle={subTitle} imgUrl={imgUrl} desc={desc} />}
     {/* products */}
-    {type=='products' && <ProductsCard index={index} title={title} subTitle={subTitle} imgUrl={imgUrl} />}
+    {type=='products' && <ProductsCard index={index} title={title} subTitle={subTitle} imgUrl={imgUrl} price={price} inStock={inStock} />}
     {/* vedios */}
     {type=='vedios' && <VediosCard index={index} title={title} subTitle={subTitle} imgUrl={imgUrl}
      url={url} youtubeId={youtubeId} />}

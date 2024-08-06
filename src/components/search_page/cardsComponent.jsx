@@ -5,9 +5,9 @@ import { useState, useEffect } from "react";
 export default function CardsComponent({cards=[], id='blogs'}) {
   const [cardTypeIndex, setCardTypeIndex] = useState({blogs: 0, products: 1, vedios: 2, reviews: 3})
 
-  let additionalClasses = ''
-  if(id=='blogs' || id=='reviews' || id=='vedios' || id=='all') additionalClasses='grid-cols-6'
-  else additionalClasses='grid-cols-1'
+  // let additionalClasses = ''
+  // if(id=='blogs' || id=='reviews' || id=='vedios' || id=='products' || id=='all') additionalClasses='grid-cols-6'
+  // else additionalClasses='grid-cols-1'
 
   useEffect(()=>{
     const getEachCardTypeIndex = () => {
@@ -29,7 +29,7 @@ export default function CardsComponent({cards=[], id='blogs'}) {
   }
   
   return (
-    <div className={`max-w-grid gap-2 grid ${additionalClasses} gap-4 px-8 items-center justify-between`}>
+    <div className={`max-w-grid grid grid-cols-6 gap-4 px-8 items-center justify-between`}>
       {cards.map((card, i)=>{
         return <SingleCard key={i} index={id!='all'?i:getIndex(card.type, i)} 
         type={card.type} title={card.title} subTitle={card.subTitle} imgUrl={card.imgUrl}

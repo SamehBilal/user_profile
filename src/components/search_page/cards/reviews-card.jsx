@@ -16,7 +16,7 @@ function ReviewsCard({
         src={imgUrl}
       />
       <CardHeader className='flex-1 flex-col items-start justify-between h-full'>
-          <h4  className="text-primary uppercase font-bold line-clamp-1">
+          <h4  className="uppercase font-bold line-clamp-1">
               {title}
           </h4>
           <p className="font-medium text-small line-clamp-2">
