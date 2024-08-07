@@ -44,7 +44,7 @@ function Appbar({shadow = null, bgTransparent=true}) {
           typeValue={searchTypeDropdownValue} setTypeValue={setSearchTypeDropdownValue} />
         </div>
         <PagesLinks setIsExpanded={setMoreDropdownPopoverShow} isExpanded={moreDropdownPopoverShow} />
-        <div className="flex flex-col justify-center items-between">
+        <div className="flex flex-col justify-center items-between max-lg:hidden">
           <NavbarTopMenu setTheme={setTheme} theme={theme} 
           setMoreDropdownPopoverShow={setMoreDropdownPopoverShow} 
           setUserDropdownPopoverShow={setUserDropdownPopoverShow} />

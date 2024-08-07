@@ -66,7 +66,7 @@ export default function CardsComponent({cards=[], id='blogs'}) {
           </p>
         </div>}
 
-        {(id!='all' || getIndex(card.type, i)<=maxLengthPreviewAll[card.type]) && //في الصفحة الرئيسية، رندر بس اللعدد المحدد
+        {(id!='all' || getIndex(card.type, i)<maxLengthPreviewAll[card.type]) && //في الصفحة الرئيسية، رندر بس اللعدد المحدد
         <SingleCard key={i} index={id!='all'?i:getIndex(card.type, i)} 
         type={card.type} title={card.title} subTitle={card.subTitle} imgUrl={card.imgUrl}
         desc={card.desc} price={card.price} inStock={card.inStock} url={card.url} youtubeId={card.youtubeId} />}

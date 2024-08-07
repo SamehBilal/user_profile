@@ -80,6 +80,55 @@ const productsCards = [
         inStock: true,
         imgUrl: "https://ahw.store/image/cache/catalog/Catalog/Products/Monitors/LEN-MNT-G25-20/Lenovo%20G25-20%2024.5%20inch%20TN-3-550x550w.jpg"
     },
+    {
+        type: 'products', 
+        title: "Lenovo G25-20 24.5 Inch FHD TN 165Hz 0.5ms Gaming Monitor - Black", 
+        price: "9169",
+        inStock: true,
+        imgUrl: "https://ahw.store/image/cache/catalog/Catalog/Products/Monitors/LEN-MNT-G25-20/Lenovo%20G25-20%2024.5%20inch%20TN-3-550x550w.jpg"
+    },
+    {
+        type: 'products', 
+        title: "Lenovo G25-20 24.5 Inch FHD TN 165Hz 0.5ms Gaming Monitor - Black", 
+        price: "9169",
+        inStock: true,
+        imgUrl: "https://ahw.store/image/cache/catalog/Catalog/Products/Monitors/LEN-MNT-G25-20/Lenovo%20G25-20%2024.5%20inch%20TN-3-550x550w.jpg"
+    },
+    {
+        type: 'products', 
+        title: "Lenovo G25-20 24.5 Inch FHD TN 165Hz 0.5ms Gaming Monitor - Black", 
+        price: "9169",
+        inStock: true,
+        imgUrl: "https://ahw.store/image/cache/catalog/Catalog/Products/Monitors/LEN-MNT-G25-20/Lenovo%20G25-20%2024.5%20inch%20TN-3-550x550w.jpg"
+    },
+    {
+        type: 'products', 
+        title: "Lenovo G25-20 24.5 Inch FHD TN 165Hz 0.5ms Gaming Monitor - Black", 
+        price: "9169",
+        inStock: true,
+        imgUrl: "https://ahw.store/image/cache/catalog/Catalog/Products/Monitors/LEN-MNT-G25-20/Lenovo%20G25-20%2024.5%20inch%20TN-3-550x550w.jpg"
+    },
+    {
+        type: 'products', 
+        title: "Lenovo G25-20 24.5 Inch FHD TN 165Hz 0.5ms Gaming Monitor - Black", 
+        price: "9169",
+        inStock: true,
+        imgUrl: "https://ahw.store/image/cache/catalog/Catalog/Products/Monitors/LEN-MNT-G25-20/Lenovo%20G25-20%2024.5%20inch%20TN-3-550x550w.jpg"
+    },
+    {
+        type: 'products', 
+        title: "Lenovo G25-20 24.5 Inch FHD TN 165Hz 0.5ms Gaming Monitor - Black", 
+        price: "9169",
+        inStock: true,
+        imgUrl: "https://ahw.store/image/cache/catalog/Catalog/Products/Monitors/LEN-MNT-G25-20/Lenovo%20G25-20%2024.5%20inch%20TN-3-550x550w.jpg"
+    },
+    {
+        type: 'products', 
+        title: "Lenovo G25-20 24.5 Inch FHD TN 165Hz 0.5ms Gaming Monitor - Black", 
+        price: "9169",
+        inStock: true,
+        imgUrl: "https://ahw.store/image/cache/catalog/Catalog/Products/Monitors/LEN-MNT-G25-20/Lenovo%20G25-20%2024.5%20inch%20TN-3-550x550w.jpg"
+    },
 ]
 const vediosCards = [
     {
