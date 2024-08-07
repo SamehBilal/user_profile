@@ -3,7 +3,7 @@ import {Card, CardHeader, CardBody, CardFooter, Image, Button} from "@nextui-org
 
 function ProductsCard({title='', imgUrl='https://nextui.org/images/card-example-3.jpeg', price, inStock}) {
   return (
-    <Card className="col-span-1 group">
+    <Card className="lg:col-span-1 md:col-span-2 col-span-3 group">
       <div className="bg-white h-1/2 w-full p-4">
         <Image
           removeWrapper

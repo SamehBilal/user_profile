@@ -132,14 +132,18 @@ module.exports = {
     nextui({
       themes: {
         light: {
-          primary: "#f11320",
-          secondary: "#27b37b", 
-          tritory: "#3f9cbd",
+          colors: {
+            prime: "#f11320",
+            secondary: "#27b37b", 
+            tritory: "#3f9cbd",
+          },
         },
         dark: {
-          primary: "#F55661",
-          secondary: "#13F198", 
-          tritory: "#13B6F1",
+          colors: {
+            prime: "#F55661",
+            secondary: "#13F198", 
+            tritory: "#13B6F1",
+          },
         },
         // ... custom themes
       },

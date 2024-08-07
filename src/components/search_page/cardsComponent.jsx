@@ -21,13 +21,15 @@ export default function CardsComponent({cards=[], id='blogs'}) {
   const links = {
     blogs: "https://arabhardware.net/articles",
     products: "https://ahw.store",
-    veidos: "https://www.youtube.com/@Arabhardware",
+    vedios: "https://www.youtube.com/@Arabhardware",
     reviews: "https://arabhardware.net/reviews"
   }
-
-  // let additionalClasses = ''
-  // if(id=='blogs' || id=='reviews' || id=='vedios' || id=='products' || id=='all') additionalClasses='grid-cols-6'
-  // else additionalClasses='grid-cols-1'
+  const maxLengthPreviewAll = {
+    blogs: 5,
+    products: 6,
+    vedios: 4,
+    reviews: 5
+  }
 
   useEffect(()=>{
     const getEachCardTypeIndex = () => {
@@ -63,9 +65,12 @@ export default function CardsComponent({cards=[], id='blogs'}) {
             {titles[card.type]}
           </p>
         </div>}
+
+        {(id!='all' || getIndex(card.type, i)<=maxLengthPreviewAll[card.type]) && //في الصفحة الرئيسية، رندر بس اللعدد المحدد
         <SingleCard key={i} index={id!='all'?i:getIndex(card.type, i)} 
         type={card.type} title={card.title} subTitle={card.subTitle} imgUrl={card.imgUrl}
-        desc={card.desc} price={card.price} inStock={card.inStock} url={card.url} youtubeId={card.youtubeId} />
+        desc={card.desc} price={card.price} inStock={card.inStock} url={card.url} youtubeId={card.youtubeId} />}
+
         {i==cardTypeLastIndex[card.type]&& 
         <div className="col-span-6 h-8 relative w-full">
             <Link

@@ -25,12 +25,12 @@ const TabsComponent = ({ data = [], setBgImg=()=>{console.log('define setBgImg '
         <Tabs 
         variant="underlined" 
         aria-label="Arabhardware Companies" 
-        color="primary"
+        color="prime"
         classNames={{
-          tabList: "gap-6 w-full relative p-0",
-          cursor: "w-2/5 bg-primary",
+          tabList: "gap-6 w-full relative p-0 flex-wrap gap-y-1",
+          cursor: "w-2/5 bg-prime",
           tab: "max-w-fit px-0 h-8",
-          tabContent: "group-data-[selected=true]:text-primary group-data-[hover-unselected]:text-black text-black dark:group-data-[hover-unselected]:text-white dark:text-white "
+          tabContent: "group-data-[selected=true]:text-prime drop-shadow-xl group-data-[hover-unselected]:text-black text-black dark:group-data-[hover-unselected]:text-white dark:text-white"
         }}
         onSelectionChange={handleTabChange}
         items={data}>
@@ -41,7 +41,7 @@ const TabsComponent = ({ data = [], setBgImg=()=>{console.log('define setBgImg '
               <span>{item.label}</span>
             </div>
           }>
-          <div className="col-span-5 xl:col-span-4 w-full h-20 relative">
+          <div className="col-span-5 xl:col-span-4 w-full h-14 relative">
             <StatusBar statusData={statusData} />
           </div>
             <CardsComponent cards={item.cards} id={item.id} />

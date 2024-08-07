@@ -6,12 +6,12 @@ function ReviewsCard({
   index, title='', imgUrl='https://nextui.org/images/card-example-3.jpeg', desc='',
 }) {
   return (
-    <Card className={`${index==0?'col-span-6 h-[150px] my-4':'col-span-3 h-[125px]'} bg-black/15 
+    <Card className={`${index==0?'col-span-6 md:h-[200px] h-[100px] md:my-4 mt-4':'md:col-span-3 col-span-6 h-[100px]'} bg-black/15 
      group flex-row items-center justify-between gap-4 hover:bg-white/90 dark:hover:bg-black/90 transition`}>
       <Image
         removeWrapper
         alt="Card background"
-        className={`z-0 w-1/5 ${index==0?'w-2/5':'w-1/5'} 
+        className={`z-0 w-1/5 ${index==0?'md:w-2/5 w-1/5':'w-1/5'} 
         h-full object-cover group-hover:brightness-125 dark:group-hover:brightness-75 group-hover:scale-105 transition rounded-l-none`}
         src={imgUrl}
       />

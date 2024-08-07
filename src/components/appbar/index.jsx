@@ -2,7 +2,7 @@
 import React from 'react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
-import Logo from '@/public/images/logo.png'
+import Logo from '@/public/images/logo_icon.png'
 import { useTheme } from 'next-themes';
 import GridDropdown from './dropdown_lists/grid_dropdown'
 import UserDropdown from './dropdown_lists/user_dropdown';
