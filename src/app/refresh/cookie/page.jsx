@@ -3,10 +3,10 @@ import {useEffect, useState, useRef} from 'react'
 import { setCookie, getCookie, deleteCookie } from 'cookies-next'
 
 function Page() {
-    const [token, setToken] = useState(localStorage?.getItem('jwt_token') ?? 'null')
+    const [token, setToken] = useState(localStorage?.getItem('jwt_token') ?? 'undefined')
 
     var checkCookie = function(isFirstLoad=false) {
-      const jwtToken = localStorage?.getItem('jwt_token') ?? 'null'
+      const jwtToken = localStorage?.getItem('jwt_token') ?? 'undefined'
 
       const postMessage = function(){
         parent.postMessage(`jwt_token:${jwtToken}`, "*");
