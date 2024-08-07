@@ -13,14 +13,11 @@ const TabsComponent = ({ data = [], setBgImg=()=>{console.log('define setBgImg '
   const handleTabChange = (newTab) => {
     const newTabIndex = data.map((_)=>_.id)?.findIndex(element => element === newTab)
     setActiveTabIndex(newTabIndex ?? 0)
-    if(data[newTabIndex]?.backgroundImg){
-      setBgImg(data[newTabIndex ?? 0]?.bgImg[theme])
-    }
   };
 
   useEffect(()=>{
-    setBgImg(data[activeTabIndex]?.bgImg[theme])
-  }, [theme])
+    setBgImg(data[activeTabIndex]?.cards[0]?.imgUrl || data[activeTabIndex]?.bgImg[theme])
+  }, [activeTabIndex])
   
   return (
     <div className="w-full grid grid-cols-5 mx-auto">

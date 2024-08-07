@@ -10,15 +10,15 @@ export default function Psge({}) {
   return (
     <main className="py-12 w-full min-h-screen relative">
       
-      <div
-        className="absolute inset-0 size-full"
+      <div className="absolute inset-0 w-full h-[70vh] bg-cover bg-no-repeat"
         style={{
           backgroundImage: `url(${bgImg?.src || bgImg})`,
-          backgroundSize: 'cover',
-          backgroundRepeat: 'repeat-y',
-          // filter: 'saturate(0.5) brightness(0.85) blur(5px)',
+          filter: 'blur(80px)',
         }}
-      />
+      >
+        <div className="size-full absolute bg-gradient-to-b from-white/5 to-white dark:from-black/5 dark:to-black" />
+      </div>
+
       <AppBar shadow='transparent' bgTransparent={false} />
       <SearchPage data={searchData} setBgImg={setBgImg} statusData={statusData} />
     </main>
