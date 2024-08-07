@@ -18,11 +18,12 @@ function Page() {
         setToken(jwtToken)
         postMessage()
       } else {
+        postMessage()
         if(isFirstLoad) {
           console.log('JWT token not updated');
-          postMessage()
+        }else{
+          console.log('already sent')
         }
-        console.log('already sent')
       }
     };
   
