@@ -9,7 +9,6 @@ export default function SearchParamsComponent({setReturnUrl,setToken, setSession
     const searchParams = useSearchParams()
     let returnUrl = searchParams.get('url_return')
     let token = searchParams.get('token')
-    // console.log('token', token)
     
     useEffect(()=>{
       async function getSessionId () {
@@ -36,7 +35,7 @@ export default function SearchParamsComponent({setReturnUrl,setToken, setSession
           }).catch(e=>{
             console.log('e', e)
             
-            // // for testing only
+            ///////////////////////////////////////// for testing only /////////////////////////////////////////
             // if(!returnUrl || 
             //   !(returnUrl?.includes('arabhardware.com') || returnUrl?.includes('arabhardware.net') || returnUrl?.includes('ahw.store'))) {
             //   returnUrl = "https://arabhardware.net"

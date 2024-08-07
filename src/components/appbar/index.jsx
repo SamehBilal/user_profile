@@ -43,7 +43,8 @@ function Appbar({shadow = null, bgTransparent=true}) {
           <SearchSection isExpanded={searchTypeDropdownPopoverShow} setIsExpanded={setSearchTypeDropdownPopoverShow}
           typeValue={searchTypeDropdownValue} setTypeValue={setSearchTypeDropdownValue} />
         </div>
-        <PagesLinks setIsExpanded={setMoreDropdownPopoverShow} isExpanded={moreDropdownPopoverShow} />
+        
+        <PagesLinks setIsExpanded={setMoreDropdownPopoverShow} isExpanded={moreDropdownPopoverShow} />{/* max-lg:hidden */}
         <div className="flex flex-col justify-center items-between max-lg:hidden">
           <NavbarTopMenu setTheme={setTheme} theme={theme} 
           setMoreDropdownPopoverShow={setMoreDropdownPopoverShow} 
@@ -54,6 +55,7 @@ function Appbar({shadow = null, bgTransparent=true}) {
           <GridDropdown isExpanded={gridDropdownPopoverShow} setIsExpanded={setGridDropdownPopoverShow} />
           <UserDropdown isExpanded={userDropdownPopoverShow} setIsExpanded={setUserDropdownPopoverShow} />
         </div>
+        
       </div>
 </nav>
   )
