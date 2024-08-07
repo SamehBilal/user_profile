@@ -29,7 +29,7 @@ function LatestBlogs() {
   
   return (
     <Swiper
-      id='latest-swiper'
+      id='latest-blogs-swiper'
       ref={sliderRef}
       parallax={true}
       speed='500'

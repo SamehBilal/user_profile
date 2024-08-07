@@ -1,20 +1,51 @@
 import React from 'react'
 import Image from 'next/image'
+import {useState, useEffect, useRef} from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react'
+// Import Swiper styles
+import "swiper/swiper-bundle.css";
+import "swiper/css/pagination";
 
 function StatusBar({statusData}) {
+  const sliderRef = useRef() 
+  
+  // useEffect(()=>{
+  //   const timer = setTimeout(()=>{
+  //     sliderRef.current.swiper.slideNext(500);
+  //   }, 10000) //next slide in 10 seconds
+  //   return () => clearTimeout(timer)
+  // }, [sliderRef?.current?.swiper?.realIndex])
+
+  const handlePrev = () => {
+    if (!sliderRef.current) return;
+    sliderRef.current.swiper.slidePrev(500);
+  }
+  const handleNext = () => {
+    if (!sliderRef.current) return;
+    sliderRef.current.swiper.slideNext(500);
+  }
+
   return (
-    <ul className="absolute inset-0 flex justify-start items-center gap-4">
-        {statusData.map((_, i)=>{
-        return <li class="mx-auto size-14 flex items-center justify-center rounded-full overflow-hidden bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 cursor-pointer">
+    
+    <Swiper
+      id='status-swiper'
+      ref={sliderRef}
+      parallax={true}
+      speed='500'
+      pagination={false}
+      grabCursor={true}
+      slidesPerView={'auto'}
+      spaceBetween={40}
+      className='absolute inset-0 w-full z-10'>
+            {statusData.map((_, i)=>{
+        return <SwiperSlide key={i} 
+        className="!size-14 !flex items-center justify-center rounded-full overflow-hidden bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 cursor-pointer">
             <div className="size-12 flex items-center justify-center">
                 <Image src={_.img} alt="new status" className="size-full object-cover rounded-full" />
             </div>
-        </li>
-        // return <li className="size-14 border-2 border-solid border-black dark:border-white rounded-full overflow-hidden">
-        //     <Image src={_.img} alt="new status" className="size-full object-cover" />
-        // </li>
+        </SwiperSlide>
         })}
-    </ul>
+    </Swiper>
   )
 }
 
