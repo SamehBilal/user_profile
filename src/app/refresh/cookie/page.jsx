@@ -3,12 +3,14 @@ import {useEffect, useState, useRef} from 'react'
 import { setCookie, getCookie, deleteCookie } from 'cookies-next'
 
 function Page() {
-    const [token, setToken] = useState(localStorage?.getItem('jwt_token') ?? 'null')
+    const [token, setToken] = useState(getCookie('jwt_token'))
 
     var checkCookie = function(isFirstLoad=false) {
-      const jwtToken = localStorage?.getItem('jwt_token') ?? 'null'
+      const jwtToken = getCookie('jwt_token')
 
       const postMessage = function(){
+        // const iframe = document.getElementById('iframe4')
+        // iframe.contentWindow.postMessage(`jwt_token:${jwtToken}`, "*");
         parent.postMessage(`jwt_token:${jwtToken}`, "*");
       }
 
@@ -28,17 +30,27 @@ function Page() {
   
     useEffect(()=>{
       if(window){
-        checkCookie(true)
-        window.addEventListener('storage', checkCookie);
-      }
-      return () => {
-        window.removeEventListener('storage', checkCookie);
-      };
+         // TODO: uncomment on production
+         checkCookie(true)
+        window.setInterval(checkCookie, 30000); // run every 30s
+        // end of uncomment on production
+        }
+      //   window.addEventListener('message', event => {
+      //     if (event.origin === 'https://myaccount.arabhardware.com') {
+      //         console.log('event:' ,event.data);
+      //     } else {
+      //         return;
+      //     }
+      //  });
     }, [])
 
   return (
     <div className='w-full h-full space-y-4 p-grid max-w-grid'>
         {token && <p className=' break-all text-left' id='token'>{token}</p>}
+        {/* TODO: comment on production */}
+        {/* <iframe id="iframe4" name="iframe4" src={`https://myaccount.arabhardware.com/refresh/cookie`}
+        sandbox="allow-same-origin allow-scripts"
+        className=""></iframe> */}
     </div>
   )
 }
