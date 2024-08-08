@@ -6,9 +6,10 @@ import { useTheme } from 'next-themes';
 import RightSectoin from "./right-sections/right-section";
 import StatusBar from "./status-bar";
 
-const TabsComponent = ({ data = [], setBgImg=()=>{console.log('define setBgImg ')}, statusData=[]  }) => {
+const TabsComponent = ({ data = [], setBgImg=()=>{console.log('define setBgImg ')}, statusData=[], searchValue }) => {
   const [activeTabIndex, setActiveTabIndex] = useState(0)
   const { theme, setTheme } = useTheme(); // 'light' : 'dark'
+  // console.log('searchValue', searchValue)
 
   const handleTabChange = (newTab) => {
     const newTabIndex = data.map((_)=>_.id)?.findIndex(element => element === newTab)
@@ -21,7 +22,17 @@ const TabsComponent = ({ data = [], setBgImg=()=>{console.log('define setBgImg '
   
   return (
     <div className="w-full grid grid-cols-5 mx-auto">
-      <div className="col-span-5 xl:col-span-4">
+      <div className="col-span-5 xl:col-span-4 relative">
+        
+        <div className="h-10 relative w-full">
+          {/* <p className="font-bold text-tiny">نتائج البحث عن:</p> */}
+          <p className="absolute inset-0 z-10 text-large text-ellipsis md:line-clamp-1 space-x-2">
+            <span className="font-bold">نتائج البحث عن : </span>
+            {searchValue.trim()=='' && <span>لينوفو</span>}
+            <span>{searchValue}</span>
+            
+          </p>
+        </div>
         <Tabs 
         variant="underlined" 
         aria-label="Arabhardware Companies" 

@@ -7,6 +7,7 @@ import { useState } from "react";
 
 export default function Psge({}) {
   const [bgImg, setBgImg] = useState(searchData[0].backgroundImg)
+  const [searchValue, setSearchValue] = useState('')
   
   return (
     <main className="pt-12 w-full min-h-screen relative overflow-hidden">
@@ -20,8 +21,8 @@ export default function Psge({}) {
         <div className="size-full absolute bg-gradient-to-b from-white/5 to-white dark:from-black/5 dark:to-black" />
       </div>
  
-      <AppBar shadow='transparent' bgTransparent={false} />
-      <SearchPage data={searchData} setBgImg={setBgImg} statusData={statusData} />
+      <AppBar shadow='transparent' bgTransparent={false} searchValue={searchValue} setSearchValue={setSearchValue} />
+      <SearchPage data={searchData} setBgImg={setBgImg} statusData={statusData} searchValue={searchValue} />
       <Footer />
     </main>
   );

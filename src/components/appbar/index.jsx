@@ -13,13 +13,12 @@ import NavbarBottomMenu from './navbar_bottom_menu'
 import PagesLinks from './pages_links'
 import { getCookie } from 'cookies-next';
 
-function Appbar({shadow = null, bgTransparent=true}) {
+function Appbar({shadow = null, bgTransparent=true, searchValue='', setSearchValue=()=>{}}) {
   const router = useRouter()
   const [gridDropdownPopoverShow, setGridDropdownPopoverShow] = React.useState(false);
   const [userDropdownPopoverShow, setUserDropdownPopoverShow] = React.useState(false);
   const [moreDropdownPopoverShow, setMoreDropdownPopoverShow] = React.useState(false)
   const [searchTypeDropdownPopoverShow, setSearchTypeDropdownPopoverShow] = React.useState(false)
-  const [searchValue, setSearchValue] = React.useState('')
 
   const [searchTypeDropdownValue, setSearchTypeDropdownValue] = React.useState(0)
   const [user, setUser] = React.useState(null)
