@@ -13,7 +13,7 @@ export async function GET(request, response) {
             request: {
                 headers: requestHeaders,
             },
-            })
+        })
 
 
         const cookieStore = cookies()
