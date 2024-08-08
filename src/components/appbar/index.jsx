@@ -35,7 +35,7 @@ function Appbar({shadow = null, bgTransparent=true}) {
   return (
     <nav className={`text-black dark:text-white 
     ${shadow? '':' shadow-md dark:shadow-zinc-300/20'} 
-    ${bgTransparent? '': 'bg-white dark:bg-black'}
+    ${bgTransparent? '': 'bg-white/70 dark:bg-black/70'}
     w-screen absolute top-0 right-0 left-0`}>
       <div className="p-grid max-w-grid flex justify-between items-center mx-auto px-8 py-2 ">
         <div className="flex items-center justify-center gap-4">
