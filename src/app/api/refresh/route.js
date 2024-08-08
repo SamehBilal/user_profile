@@ -11,11 +11,12 @@ export async function GET(request, response) {
     const origin = request.headers.get('Origin');
     const requestHeaders = new Headers(request.headers)
 
-    if (allowedOrigins.includes(origin)) {
-        requestHeaders.set("Access-Control-Allow-Origin", '*');
-    } else {
-        requestHeaders.set("Access-Control-Allow-Origin", '*'); // here add null for example
-    }
+    // if (allowedOrigins.includes(origin)) {
+    //     requestHeaders.set("Access-Control-Allow-Origin", origin);
+    // } else {
+    //     requestHeaders.set("Access-Control-Allow-Origin", origin); // here add null for example
+    // }
+    requestHeaders.set("Access-Control-Allow-Origin", '*');
     requestHeaders.set("Content-Security-Policy", "frame-ancestors 'self' *"); 
     requestHeaders.set("Age", "3333");
     requestHeaders.set("Cache-Control", "max-age=3333");
