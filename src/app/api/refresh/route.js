@@ -12,9 +12,9 @@ export async function GET(request, response) {
     const requestHeaders = new Headers(request.headers)
 
     if (allowedOrigins.includes(origin)) {
-        requestHeaders.set("Access-Control-Allow-Origin", origin);
+        requestHeaders.set("Access-Control-Allow-Origin", '*');
     } else {
-        requestHeaders.set("Access-Control-Allow-Origin", origin); // 
+        requestHeaders.set("Access-Control-Allow-Origin", '*'); // here add null for example
     }
     requestHeaders.set("Content-Security-Policy", "frame-ancestors 'self' *"); 
     requestHeaders.set("Age", "3333");
