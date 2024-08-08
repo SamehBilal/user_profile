@@ -17,14 +17,14 @@ export async function GET(request, response) {
 
     const requestHeaders = new Headers(request.headers)
 
-    requestHeaders.set("Access-Control-Allow-Origin", '*');
-    requestHeaders.set("Content-Security-Policy", "frame-ancestors 'self' *"); 
-    requestHeaders.set("Age", "3333");
-    requestHeaders.set("Cache-Control", "max-age=3333");
-    requestHeaders.set("X-Frame-Options", "ALLOW-FROM *");
-    requestHeaders.set("Access-Control-Allow-Credentials", "false");
-    requestHeaders.set("Access-Control-Allow-Methods", "GET,DELETE,PATCH,POST,PUT");
-    requestHeaders.set("Access-Control-Allow-Headers", "Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date");
+    requestHeaders.set('Access-Control-Allow-Origin', '*');
+    requestHeaders.set('Content-Security-Policy', "frame-ancestors 'self' *");
+    requestHeaders.set('Age', '3333');
+    requestHeaders.set('Cache-Control', 'max-age=3333');
+    requestHeaders.set('X-Frame-Options', 'ALLOW-FROM *');
+    requestHeaders.set('Access-Control-Allow-Credentials', 'true');
+    requestHeaders.set('Access-Control-Allow-Methods', 'GET,DELETE,PATCH,POST,PUT');
+    requestHeaders.set('Access-Control-Allow-Headers', 'Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-CSRF-Token, X-Requested-With, X-Api-Version');
 
 
 
