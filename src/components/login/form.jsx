@@ -173,10 +173,16 @@ function LoginForm({toRegisterPage, returnUrl, sessionId}) {
         setTimeout(()=>{
           location.href = `https://myaccount.arabhardware.com/login_callback?url_return=${returnUrl}&token=${data.data.authorisation.access_token}`
           localStorage?.setItem("jwt_token", data.data.authorisation.access_token)
+          cookieDommains.forEach(item=>{
+            setCookie(
+              item.title, 
+              data.data.authorisation.access_token, 
+              {secure: true, sameSite: "None", domain: item.domain})
+            })
           setToken(data.data.authorisation.access_token)
           toast.loading("جاري تسجيل الدخول")
             console.log('returning to url: ', returnUrl)
-        }, 1000)
+        }, 2000)
                   // setTimeout(() => {
                   //   location.href = returnUrl
                   //   setIsLoading(false)
