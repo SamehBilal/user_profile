@@ -10,6 +10,7 @@ export async function GET(request, response) {
         requestHeaders.set("Access-Control-Allow-Origin", "*")
         requestHeaders.set("Content-Security-Policy", "frame-ancestors 'self' *")
         requestHeaders.set('Age', '3000')
+        requestHeaders.set('cache-control', '3000')
         requestHeaders.set('X-Frame-Options', 'allow-from *')
         requestHeaders.set('Access-Control-Allow-Credentials', 'true')
         requestHeaders.set('Access-Control-Allow-Methods', 'GET,DELETE,PATCH,POST,PUT')
