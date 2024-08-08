@@ -22,6 +22,9 @@ function Page() {
       localStorage.removeItem(returnUrl)
         setIsMounted(true)
         localStorage?.setItem("jwt_token", token)
+        setCookie('jwt_token', token)
+        setCookie('jwt_token', token, {secure: true, sameSite: "none", domain: "user-profile-lyart.vercel.app"})
+        setCookie('jwt_token', token, {secure: true, sameSite: "none", domain: ".user-profile-lyart.vercel.app"})
         if(isMounted && token && token.length>5){
             cookieDommains.forEach(item=>{
               setCookie(
