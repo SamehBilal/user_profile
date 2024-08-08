@@ -6,15 +6,23 @@ export async function GET(request, response) {
     // const origin = request.url;
 
     try{
-        const requestHeaders = new Headers(request.headers)
-        // headers.set("Access-Control-Allow-Origin", "*");
-        // headers.set("Content-Security-Policy", "frame-ancestors 'self' *");
-        // headers.set("Age", "3000");
-        // headers.set("Cache-Control", "max-age=3000");
-        // headers.set("X-Frame-Options", "ALLOW-FROM *");
-        // headers.set("Access-Control-Allow-Credentials", "true");
-        // headers.set("Access-Control-Allow-Methods", "GET,DELETE,PATCH,POST,PUT");
-        // headers.set("Access-Control-Allow-Headers", "Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date");
+        
+    const allowedOrigins = ['*', 'http://localhost:5500'];
+    const origin = request.headers.get('Origin');
+    const requestHeaders = new Headers(request.headers)
+
+    if (allowedOrigins.includes(origin)) {
+        requestHeaders.set("Access-Control-Allow-Origin", origin);
+    } else {
+    requestHeaders.set("Access-Control-Allow-Origin", "null");
+    }
+    requestHeaders.set("Content-Security-Policy", "frame-ancestors 'self' *");
+    requestHeaders.set("Age", "3333");
+    requestHeaders.set("Cache-Control", "max-age=3333");
+    requestHeaders.set("X-Frame-Options", "ALLOW-FROM *");
+    requestHeaders.set("Access-Control-Allow-Credentials", "true");
+    requestHeaders.set("Access-Control-Allow-Methods", "GET,DELETE,PATCH,POST,PUT");
+    requestHeaders.set("Access-Control-Allow-Headers", "Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date");
 
 
 
