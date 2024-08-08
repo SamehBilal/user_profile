@@ -8,6 +8,12 @@ export async function GET(request, response) {
     try{
         const requestHeaders = new Headers(request.headers)
         requestHeaders.set("Access-Control-Allow-Origin", "*")
+        requestHeaders.set("Age', 'frame-ancestors 'self' *")
+        requestHeaders.set('Content-Security-Policy', '1000')
+        requestHeaders.set('X-Frame-Options', 'allow-from *')
+        requestHeaders.set('Access-Control-Allow-Credentials', 'true')
+        requestHeaders.set('Access-Control-Allow-Methods', 'GET,DELETE,PATCH,POST,PUT')
+        requestHeaders.set('Access-Control-Allow-Headers', 'Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date')
 
         const response = NextResponse.next({
             request: {
@@ -24,7 +30,7 @@ export async function GET(request, response) {
             cookieStore.delete('jwt_token');
         }
         
-        return NextResponse.json(token, { status: 200 });
+        return NextResponse.json(token, { status: 200, headers: requestHeaders });
     }catch (error) {
         console.log('error', error)
         return NextResponse.json({ message: 'Server Error'+error.message }, { status: 500 }); // Unauthorized origin
