@@ -1,7 +1,7 @@
 {
     "headers": [
       {
-        "source": "/:path*",
+        "source": "/api/(.*)",
         "headers": [
           {
             "key": "Access-Control-Allow-Origin",
@@ -33,7 +33,7 @@
           },
           {
             "key": "Access-Control-Allow-Headers",
-            "value": "Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date"
+            "value": "Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
           }
         ]
       }
