@@ -27,22 +27,22 @@ function Appbar({shadow = null, bgTransparent=true}) {
 
   function darken({scrollAmount=300}) {
     if(theme=='dark'){
-      if(window.pageYOffset  > scrollAmount && !bgTransparent) setBgOpacity("rgba(0, 0, 0, 1)")
+      if(window.pageYOffset  > scrollAmount && !bgTransparent) setBgOpacity("rgba(0, 0, 0, .8)")
       else if(window.pageYOffset  > scrollAmount && bgTransparent) setBgOpacity("rgba(0, 0, 0, 0)")
       else setBgOpacity("rgb(0 0 0 / 0.5)")
     }else{
-      if(window.pageYOffset  > scrollAmount && !bgTransparent) setBgOpacity("rgba(255, 255, 255, 1)")
+      if(window.pageYOffset  > scrollAmount && !bgTransparent) setBgOpacity("rgba(255, 255, 255, .8)")
       else if(window.pageYOffset  > scrollAmount && bgTransparent) setBgOpacity("rgba(255, 255, 255, 0)")
       else setBgOpacity("rgb(255 255 255 / 0.5)")
     }
   }
   
   React.useEffect(()=>{
-    let scrollAmount = 300
+    let scrollAmount = 100
     if(window && window.innerHeight<window.innerWidth) {
       window.addEventListener("scroll", darken)
     }else if(window){
-      scrollAmount=150
+      scrollAmount=50
     }
     darken({scrollAmount})
     window.addEventListener("scroll", ()=>darken({scrollAmount}))
