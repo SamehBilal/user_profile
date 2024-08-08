@@ -19,24 +19,42 @@ function Appbar({shadow = null, bgTransparent=true}) {
   const [userDropdownPopoverShow, setUserDropdownPopoverShow] = React.useState(false);
   const [moreDropdownPopoverShow, setMoreDropdownPopoverShow] = React.useState(false)
   const [searchTypeDropdownPopoverShow, setSearchTypeDropdownPopoverShow] = React.useState(false)
+  const [bgOpacity, setBgOpacity] = React.useState('rgb(255 255 255 / 0.5)')
 
   const [searchTypeDropdownValue, setSearchTypeDropdownValue] = React.useState(0)
   const [user, setUser] = React.useState(null)
   const { theme, setTheme } = useTheme();
+
+  function darken({scrollAmount=300}) {
+    if(theme=='dark'){
+      if(window.pageYOffset  > scrollAmount && !bgTransparent) setBgOpacity("rgba(0, 0, 0, 1)")
+      else if(window.pageYOffset  > scrollAmount && bgTransparent) setBgOpacity("rgba(0, 0, 0, 0)")
+      else setBgOpacity("rgb(0 0 0 / 0.5)")
+    }else{
+      if(window.pageYOffset  > scrollAmount && !bgTransparent) setBgOpacity("rgba(255, 255, 255, 1)")
+      else if(window.pageYOffset  > scrollAmount && bgTransparent) setBgOpacity("rgba(255, 255, 255, 0)")
+      else setBgOpacity("rgb(255 255 255 / 0.5)")
+    }
+  }
   
   React.useEffect(()=>{
-    if(!getCookie("jwt_token") || getCookie("jwt_token")=="null"){
-      // router.push('/login')
-    }else{
-      // setUser(getCookie("user"))
+    let scrollAmount = 300
+    if(window && window.innerHeight<window.innerWidth) {
+      window.addEventListener("scroll", darken)
+    }else if(window){
+      scrollAmount=150
     }
-  }, [])
+    darken({scrollAmount})
+    window.addEventListener("scroll", ()=>darken({scrollAmount}))
+
+    return()=>{window.removeEventListener("scroll", ()=>darken({scrollAmount}))}
+  }, [theme])
 
   return (
     <nav className={`text-black dark:text-white 
     ${shadow? '':' shadow-md dark:shadow-zinc-300/20'} 
-    ${bgTransparent? '': 'bg-white/50 dark:bg-black/50'}
-    w-screen absolute top-0 right-0 left-0`}>
+    w-screen fixed top-0 right-0 left-0 z-50`}
+    style={{backgroundColor: bgOpacity}}>
       <div className="p-grid max-w-grid flex justify-between items-center mx-auto px-8 py-2 ">
         <div className="flex items-center justify-center gap-4">
           <Image src={Logo} alt='ArabHardware' className='size-12 lg:mr-8' />
