@@ -17,15 +17,15 @@ function BoldText ({text}) {
 
 function Footer() {
   return (
-    <footer className='w-screen h-[450px] flex flex-col items-start justify-center bg-black relative text-zinc-400'>
+    <footer className='w-screen py-10 lg:py-16 flex flex-col items-start justify-center bg-black relative text-zinc-400'>
         <div className="p-grid max-w-grid w-full grid grid-cols-12 gap-4 items-center justify-center">
-            <div className="space-y-2 col-span-4 lg:col-span-5 ml-4">
+            <div className="space-y-2 col-span-12 lg:col-span-5 ml-4">
                 <Image src={LogoImg} alt='arabhardware logo' className='size-24' />
                 <BoldText text="عرب هاردوير" />
                 <p>واحد من أكبر المجتمعات التقنية فى الشرق الأوسط تتحدث عن أحدث التقنيات فى مجال الهاردوير والألعاب والهواتف</p>
             </div>
 
-            <div className="space-y-2 col-span-4 lg:col-span-4">
+            <div className="space-y-2 col-span-12 lg:col-span-4">
                 <BoldText text='القائمة' />
                 <div className="grid grid-cols-2 grid-rows-4 gap-4 items-center justify-center">
                     <p>عن عرب هاردوير</p>
@@ -37,7 +37,7 @@ function Footer() {
                 </div>
             </div>
 
-            <div className="space-y-4 col-span-4 lg:col-span-3">
+            <div className="space-y-4 col-span-12 lg:col-span-3">
                 <div className="space-y-2">
                     <BoldText text='قريباً تطبيقات الموبايل' />
                     <div className="flex items-center gap-4">
