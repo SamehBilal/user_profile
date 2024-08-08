@@ -36,7 +36,7 @@ export async function GET(request, response) {
             cookieStore.delete('jwt_token');
         }
         
-        return NextResponse.json(token, { status: 200, headers: requestHeaders });
+        return NextResponse.json({token, message: 'Success'}, { status: 200, headers: requestHeaders });
     }catch (error) {
         console.log('error', error)
         return NextResponse.json({ message: 'Server Error'+error.message }, { status: 500 }); // Unauthorized origin
