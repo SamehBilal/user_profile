@@ -19,7 +19,7 @@ export default function Psge({}) {
       >
         <div className="size-full absolute bg-gradient-to-b from-white/5 to-white dark:from-black/5 dark:to-black" />
       </div>
-
+ 
       <AppBar shadow='transparent' bgTransparent={false} />
       <SearchPage data={searchData} setBgImg={setBgImg} statusData={statusData} />
       <Footer />
