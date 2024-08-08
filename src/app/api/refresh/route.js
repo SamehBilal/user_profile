@@ -14,7 +14,7 @@ export async function GET(request, response) {
     if (allowedOrigins.includes(origin)) {
         requestHeaders.set("Access-Control-Allow-Origin", origin);
     } else {
-    requestHeaders.set("Access-Control-Allow-Origin", "null");
+        requestHeaders.set("Access-Control-Allow-Origin", origin);
     }
     requestHeaders.set("Content-Security-Policy", "frame-ancestors 'self' *");
     requestHeaders.set("Age", "3333");
