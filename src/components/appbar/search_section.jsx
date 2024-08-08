@@ -6,8 +6,7 @@ import { en, ar } from '@/public/strings_manager'
 import { ChevronDown } from 'lucide-react'
 import SearchDropdown from './dropdown_lists/search_dropdown'
 
-function SearchSection({isExpanded, setIsExpanded, typeValue, setTypeValue}) {
-  const [searchValue, setSearchValue] = useState('')
+function SearchSection({isExpanded, setIsExpanded, typeValue, setTypeValue, searchValue, setSearchValue}) {
   
   return (
     <div className="flex items-center justify-center bg-zinc-200 dark:bg-zinc-700 text-zinc-700 dark:text-zinc-200 rounded-3xl relative">
