@@ -7,16 +7,16 @@ export async function GET(request, response) {
 
     try{
         
-    const allowedOrigins = ['*', 'http://localhost:5500'];
+    const allowedOrigins = ['*', 'http://localhost:5500']; //add only what we need
     const origin = request.headers.get('Origin');
     const requestHeaders = new Headers(request.headers)
 
     if (allowedOrigins.includes(origin)) {
         requestHeaders.set("Access-Control-Allow-Origin", origin);
     } else {
-        requestHeaders.set("Access-Control-Allow-Origin", origin);
+        requestHeaders.set("Access-Control-Allow-Origin", origin); // 
     }
-    requestHeaders.set("Content-Security-Policy", "frame-ancestors 'self' *");
+    requestHeaders.set("Content-Security-Policy", "frame-ancestors 'self' *"); 
     requestHeaders.set("Age", "3333");
     requestHeaders.set("Cache-Control", "max-age=3333");
     requestHeaders.set("X-Frame-Options", "ALLOW-FROM *");
