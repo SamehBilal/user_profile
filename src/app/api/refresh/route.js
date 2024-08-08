@@ -8,7 +8,13 @@ export async function GET(request, response) {
     try{
         const requestHeaders = new Headers(request.headers)
         requestHeaders.set("Access-Control-Allow-Origin", "*")
-
+        requestHeaders.set("Content-Security-Policy", "frame-ancestors 'self' *")
+        requestHeaders.set('Age', '3000')
+        requestHeaders.set('X-Frame-Options', 'allow-from *')
+        requestHeaders.set('Access-Control-Allow-Credentials', 'true')
+        requestHeaders.set('Access-Control-Allow-Methods', 'GET,DELETE,PATCH,POST,PUT')
+        requestHeaders.set('Access-Control-Allow-Headers', 'Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date')
+    
         const response = NextResponse.next({
             request: {
                 headers: requestHeaders,
