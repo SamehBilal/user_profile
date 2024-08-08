@@ -164,17 +164,19 @@ function LoginForm({toRegisterPage, returnUrl, sessionId}) {
                   console.log('data.data.message', data.data.message)
                   throw new Error(data.data.message)
                 }else{
-                  location.href = `https://myaccount.arabhardware.com/login_callback?url_return=${returnUrl}&token=${data.data.authorisation.access_token}`
-                  localStorage?.setItem("jwt_token", data.data.authorisation.access_token)
-                  cookieDommains.forEach(item=>{
-                    setCookie(
-                      item.title, 
-                      data.data.authorisation.access_token, 
-                      {secure: true, sameSite: "None", domain: item.domain})
-                    })
-                  setToken(data.data.authorisation.access_token)
-                  toast.loading("جاري تسجيل الدخول")
-                    console.log('returning to url: ', returnUrl)
+                  
+        setCookie('jwt_token', token)
+        setCookie('jwt_token', token, {secure: true, sameSite: "none", domain: "user-profile-lyart.vercel.app"})
+        setCookie('jwt_token', token, {secure: true, sameSite: "none", domain: ".user-profile-lyart.vercel.app"})
+        setCookie('jwt_token', token, {secure: true, sameSite: "none", domain: ".user-profile-lyart.vercel.app"})
+        console.log('user profile', getCookie('jwt_token', {secure: true, sameSite: "none", domain: ".user-profile-lyart.vercel.app"}))
+        setTimeout(()=>{
+          location.href = `https://myaccount.arabhardware.com/login_callback?url_return=${returnUrl}&token=${data.data.authorisation.access_token}`
+          localStorage?.setItem("jwt_token", data.data.authorisation.access_token)
+          setToken(data.data.authorisation.access_token)
+          toast.loading("جاري تسجيل الدخول")
+            console.log('returning to url: ', returnUrl)
+        }, 1000)
                   // setTimeout(() => {
                   //   location.href = returnUrl
                   //   setIsLoading(false)
