@@ -1,7 +1,7 @@
 "use client"
 import {useState, useEffect, useRef} from 'react'
 import { callBack, storeLoginDomain, cookieDommains, mainDomains } from '@/config/api'
-import { setCookie } from 'cookies-next'
+import { getCookie, setCookie } from 'cookies-next'
 import SearchParamsComponent from './searchParamsComponent'
 import Image from 'next/image'
 import LoadingImg from '@/public/images/loading_login.png'
@@ -25,6 +25,8 @@ function Page() {
         setCookie('jwt_token', token)
         setCookie('jwt_token', token, {secure: true, sameSite: "none", domain: "user-profile-lyart.vercel.app"})
         setCookie('jwt_token', token, {secure: true, sameSite: "none", domain: ".user-profile-lyart.vercel.app"})
+        setCookie('jwt_token', token, {secure: true, sameSite: "none", domain: ".user-profile-lyart.vercel.app"})
+        console.log('user profile', getCookie('jwt_token', {secure: true, sameSite: "none", domain: ".user-profile-lyart.vercel.app"}))
         if(isMounted && token && token.length>5){
             cookieDommains.forEach(item=>{
               setCookie(
