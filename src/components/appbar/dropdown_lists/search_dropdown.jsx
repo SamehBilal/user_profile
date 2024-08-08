@@ -2,6 +2,7 @@ import {useRef, useEffect} from 'react'
 import Logo from '@/public/images/logo.png'
 import Image from 'next/image'
 import { en, ar } from '@/public/strings_manager'
+import Link from 'next/link'
 
 function SearchDropdown({isExpanded=false, setIsExpanded, setValue }) {
   // console.log('isExpanded', isExpanded)
@@ -26,14 +27,15 @@ function SearchDropdown({isExpanded=false, setIsExpanded, setValue }) {
       ${isExpanded?'':'hidden'}`}
     ref={dropdownRef}>
       {ar.navbar.searchAbout.items.map((item, i)=>{
-        return <div key={i} className='flex items-start justify-center gap-4 p-2 hover:bg-zinc-300 text-sm w-full cursor-pointer'
+        return <Link key={i} href={item.link}
+        className='flex items-start justify-center gap-4 p-2 hover:bg-zinc-300 text-sm w-full cursor-pointer'
         onClick={()=>{setValue(item.title); setIsExpanded(false)}}>
           <item.icon />
           <div className="space-y-2 w-full">
             <p className="font-bold">{item.title}</p>
             <p className="text-zinc-700 w-full">{item.desc}</p>
           </div>
-        </div>
+        </Link>
       })}
     </div>
   )

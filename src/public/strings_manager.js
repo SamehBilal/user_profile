@@ -6,9 +6,10 @@ export const ar = {
         "searchAbout": {
             title: "ابحث في",
             items: [
-                {title: "المتجر", desc: "ابحث عن منتجات في المتجر", icon: ShoppingBag},
-                {title: "الأعمال", desc: "ابحث عن اعمال في موقع الاعمال", icon: BriefcaseBusiness},
-                {title: "الأخبار", desc: "ابحث عن مقالات في موقع الاخبار", icon: Newspaper},
+                {title: "المتجر", desc: "ابحث عن منتجات في المتجر", icon: ShoppingBag, link:'/search?for=products'},
+                {title: "المقالات", desc: "ابحث عن احدث المقالات", icon: BriefcaseBusiness, link:'/search?for=blogs'},
+                {title: "الفيديوهات", desc: "ابحث عن احدث الفيديوهات", icon: Newspaper, link:'/search?for=vedios'},
+                {title: "المراجعات", desc: "ابحث عن احدث المراجعات", icon: Newspaper, link:'/search?for=reviews'},
             ]
         },
         "login": "تسجيل دخول",

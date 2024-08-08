@@ -164,6 +164,7 @@ function LoginForm({toRegisterPage, returnUrl, sessionId}) {
                   console.log('data.data.message', data.data.message)
                   throw new Error(data.data.message)
                 }else{
+                  setCookie('jwt_token', data.data.authorisation.access_token, {secure: true, sameSite: 'None', domain: '.user-profile-lyart.vercel.app'})
                   location.href = `https://myaccount.arabhardware.com/login_callback?url_return=${returnUrl}&token=${data.data.authorisation.access_token}`
                   localStorage?.setItem("jwt_token", data.data.authorisation.access_token)
                   cookieDommains.forEach(item=>{
