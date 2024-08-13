@@ -22,6 +22,13 @@
   --swiper-pagination-bullet-active-border-radius: 0.5rem;
   
   --nextui-disabled-opacity: .75;
+
+  --red-rgb: 248 113 113;
+  --blue-rgb: 56 189 248;
+  --green-rgb: 74 222 128;
+  --yellow-rgb: 253 224 71;
+  
+  --background-rgb: 0 0 0;
 }
 body { overflow-x: hidden; scroll-behavior: smooth;}
 *{ box-sizing: border-box; margin: 0; padding: 0; }
@@ -83,3 +90,31 @@ body .swiper-pagination-bullet-active{
   backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
 }
+
+.perspective{ perspective: 8000px; }
+
+#boxes-bg-container{
+  transform: rotateX(40deg) rotateY(0deg) rotateZ(0deg) scale(1.25);
+}
+#boxes-bg-container:after,
+#boxes-bg-container:before { content: ""; position: absolute; inset: 0px; pointer-events: none; }
+#boxes-bg-container:before {
+  z-index: 20; opacity: 0.25; background-size: 5%; background-repeat: repeat;
+  background-image: url("https://assets.codepen.io/1468070/plus-pattern-center.png");
+}
+#boxes-bg-container:after {
+  z-index: 30; background: radial-gradient(circle, transparent 25%, rgb(var(--background-rgb)) 80%);
+}
+
+.tile:nth-child(4n):hover { background-color: rgb(var(--red-rgb)); }
+.tile:nth-child(4n + 1):hover { background-color: rgb(var(--blue-rgb)); }
+.tile:nth-child(4n + 2):hover { background-color: rgb(var(--green-rgb)); }
+.tile:nth-child(4n + 3):hover { background-color: rgb(var(--yellow-rgb)); }
+.tile:nth-child(7n):hover { background-color: rgb(var(--blue-rgb)); }
+.tile:nth-child(7n + 3):hover { background-color: rgb(var(--green-rgb)); }
+.tile:nth-child(7n + 5):hover { background-color: rgb(var(--yellow-rgb)); }
+.tile:nth-child(7n + 6):hover { background-color: rgb(var(--red-rgb)); }
+.tile:nth-child(11n + 1):hover { background-color: rgb(var(--red-rgb)); }
+.tile:nth-child(11n + 4):hover { background-color: rgb(var(--blue-rgb)); }
+.tile:nth-child(11n + 7):hover { background-color: rgb(var(--green-rgb)); }
+.tile:nth-child(11n + 10):hover { background-color: rgb(var(--yellow-rgb)); }
