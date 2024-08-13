@@ -35,7 +35,7 @@ function Page() {
 
     useEffect(()=>{
       const timer = setTimeout(() => {
-        location.href = `${returnUrl}${(sessionId && returnUrl.includes('?')) ?`&`:'?'}session_id=${localStorage.getItem('session_id')}`
+        location.href = `${returnUrl}${(sessionId && returnUrl.includes('?')) ?`&`:'?'}session_id=${localStorage.getItem('session_id')}&jwt_token=${token}`
       }, 12000);
       return ()=>{
           // clearTimeout(timer1)
