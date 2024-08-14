@@ -4,10 +4,15 @@ import Footer from "@/components/footer";
 import SearchPage from "@/components/search_page";
 import { searchData, statusData } from "@/components/search_page/data";
 import { useState } from "react";
+import MediaPlayer from "./media-player";
+
 
 export default function Psge({}) {
   const [bgImg, setBgImg] = useState(searchData[0].backgroundImg)
   const [searchValue, setSearchValue] = useState('')
+  const [isPopupOpen, setIsPopupOpen] = useState(false)
+  const [isExpanded, setIsExpanded] = useState(false)
+  const [actionDropdownValue, setActionDropdownValue] = useState(0)
   
   return (
     <main className="pt-12 w-full min-h-screen relative overflow-hidden">
@@ -22,7 +27,9 @@ export default function Psge({}) {
       </div>
  
       <AppBar shadow='transparent' bgTransparent={false} searchValue={searchValue} setSearchValue={setSearchValue} />
-      <SearchPage data={searchData} setBgImg={setBgImg} statusData={statusData} searchValue={searchValue} />
+      <SearchPage data={searchData} setBgImg={setBgImg} statusData={statusData} searchValue={searchValue} openStatus={setIsPopupOpen} />
+      <MediaPlayer isPopupOpen={isPopupOpen} setIsPopupOpen={setIsPopupOpen} isExpanded={isExpanded} 
+      setIsExpanded={setIsExpanded} actionDropdownValue={actionDropdownValue} setActionDropdownValue={setActionDropdownValue} />
       <Footer />
     </main>
   );

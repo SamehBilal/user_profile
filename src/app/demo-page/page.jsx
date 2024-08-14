@@ -1,68 +1,21 @@
 "use client"
 import BoxesBg from '@/components/ui/boxes-bg'
-import { useState, useEffect } from 'react'
-import Image from 'next/image'
+import { useState } from 'react'
 import Logo from '@/public/images/logo_icon.png'
-import Person from '@/public/images/person.jpg'
-import { EllipsisIcon, Share2Icon } from 'lucide-react'
-import ActionDropdown from './dropdown'
+import { EllipsisIcon } from 'lucide-react'
 import Comments from './comments'
-import Appbar from '@/components/appbar'
-import Link from 'next/link'
 import StatusCard from './status-card'
+import AhwHeader from './ahw-header'
+import { moreVid, videoId, actoins, commentsList } from './data'
 
 
 function DemoPage() {
     const [isPopupOpen, setIsPopupOpen] = useState(false)
     const [isExpanded, setIsExpanded] = useState(false)
     const [actionDropdownValue, setActionDropdownValue] = useState(0)
-
-    const demoVid = {
-        "href": "https://www.youtube.com/shorts/cEFMdyhsIWg",
-        "title": "ميني بي سي جواه RTX 4070!! 😲😲أصغر من الـ Mini-ITX 🔴"
-      }
-    const videoId = demoVid.href?.split('/').pop() || "qlQR3E0Da6E";
-
-    const actoins = [
-      {link: '#', title: 'Share', icon: Share2Icon},
-      {link: '#', title: 'Share', icon: Share2Icon},
-      {link: '#', title: 'Share', icon: Share2Icon},
-      {link: '#', title: 'Share', icon: Share2Icon},
-    ]
-
-    const commentsList = [
-      {username: "أحمد", image: "https://picsum.photos/200?random=1", comment: "عمل رائع!"},
-      {username: "فاطمة", image: "https://picsum.photos/200?random=2", comment: "أداء ممتاز!"},
-      {username: "محمد", image: "https://picsum.photos/200?random=3", comment: "مذهل!"},
-      {username: "علي", image: "https://picsum.photos/200?random=4", comment: "استمر في العمل الجيد!"},
-      {username: "سارة", image: "https://picsum.photos/200?random=5", comment: "رائع!"},
-      {username: "يوسف", image: "https://picsum.photos/200?random=6", comment: "مبهر!"},
-      {username: "مريم", image: "https://picsum.photos/200?random=7", comment: "ممتاز!"},
-      {username: "عمر", image: "https://picsum.photos/200?random=8", comment: "مذهل!"},
-      {username: "ليلى", image: "https://picsum.photos/200?random=9", comment: "رائع!"},
-      {username: "خالد", image: "https://picsum.photos/200?random=10", comment: "عمل رائع!"},
-      {username: "نور", image: "https://picsum.photos/200?random=11", comment: "جهد رائع!"},
-      {username: "ريم", image: "https://picsum.photos/200?random=12", comment: "عمل جيد!"},
-      {username: "زياد", image: "https://picsum.photos/200?random=13", comment: "جيد جدا!"},
-      {username: "هند", image: "https://picsum.photos/200?random=14", comment: "رائع!"},
-      {username: "ماجد", image: "https://picsum.photos/200?random=15", comment: "رائع!"},
-      {username: "نادية", image: "https://picsum.photos/200?random=16", comment: "رائع!"},
-      {username: "سامي", image: "https://picsum.photos/200?random=17", comment: "رائع!"},
-      {username: "منى", image: "https://picsum.photos/200?random=18", comment: "رائع!"},
-      {username: "طارق", image: "https://picsum.photos/200?random=19", comment: "رائع!"},
-      {username: "هدى", image: "https://picsum.photos/200?random=20", comment: "رائع!"}
-    ];
-
-    const moreVid = [
-      { image: "https://picsum.photos/200?random=21", href:"#", title: "عنوان عشوائي 1" },
-      { image: "https://picsum.photos/200?random=22", href:"#", title: "عنوان عشوائي 2" },
-      { image: "https://picsum.photos/200?random=25", href:"#", title: "عنوان عشوائي 3" },
-      { image: "https://picsum.photos/200?random=24", href:"#", title: "عنوان عشوائي 4" }
-    ]
     
   return (
     <div className='w-screen h-screen flex items-center justify-center text-black'>
-      {/* <Appbar /> */}
         <button className='p-10 w-1/2 text-white bg-red-700 font-bold text-4xl uppercase'
         onClick={()=>setIsPopupOpen(prev=>!prev)}>open</button>
         
@@ -78,21 +31,12 @@ function DemoPage() {
                 </div>
                 <div className="h-[90vh] relative">
                   {/* arabhardware header */}
-                  <div className="w-full h-20 flex items-center justify-start pr-10 gap-4 bg-white">
-                    <Image src={Logo} alt='arabhardware logo' className='size-14 rounded-full' />
-                    <div className="space-y-1 w-3/4 text-small">
-                      <h4 className='font-bold'>عرب هاردوير</h4>
-                      <p>محتوى اصلي</p>
-                    </div>
-                    <div id='action-dropdown-btn' className="cursor-pointer p-2 relative" onClick={()=>{}}>
-                      <EllipsisIcon className='' onClick={()=>setIsExpanded(prev=>!prev)}/>
-                    </div>
-                      <ActionDropdown isExpanded={isExpanded} setIsExpanded={setIsExpanded} setValue={setActionDropdownValue} items={actoins} />
-                  </div>
+                  <AhwHeader title='عرب هاردوير' desc='محتوى اصلي' Icon={EllipsisIcon} Logo={Logo}
+                  isExpanded={isExpanded} setIsExpanded={setIsExpanded} setValue={setActionDropdownValue} items={actoins} />
                   <Comments commentsList={commentsList} />
                   <div className="w-full h-20  flex items-center justify-start pr-10 gap-4 bg-white relative">
                     {moreVid.map((_, i)=>{
-                      return <StatusCard key={i} image={_.image} i={i} title={_.title} />
+                      return <StatusCard key={i} image={_.image} i={i} title={_.title} link={_.href} />
                     })}
                   </div>
                 </div>
