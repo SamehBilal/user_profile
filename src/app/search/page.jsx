@@ -13,6 +13,8 @@ export default function Psge({}) {
   const [isPopupOpen, setIsPopupOpen] = useState(false)
   const [isExpanded, setIsExpanded] = useState(false)
   const [actionDropdownValue, setActionDropdownValue] = useState(0)
+  const [activeTabIndex, setActiveTabIndex] = useState(0)
+  const [searchTypeDropdownValue, setSearchTypeDropdownValue] = useState(0)
   
   return (
     <main className="pt-12 w-full min-h-screen relative overflow-hidden">
@@ -26,8 +28,11 @@ export default function Psge({}) {
         <div className="size-full absolute bg-gradient-to-b from-white/5 to-white dark:from-black/5 dark:to-black" />
       </div>
  
-      <AppBar shadow='transparent' bgTransparent={false} searchValue={searchValue} setSearchValue={setSearchValue} />
-      <SearchPage data={searchData} setBgImg={setBgImg} statusData={statusData} searchValue={searchValue} openStatus={setIsPopupOpen} />
+      <AppBar shadow='transparent' bgTransparent={false} searchValue={searchValue} setSearchValue={setSearchValue}
+      activeTabIndex={activeTabIndex} setActiveTabIndex={setActiveTabIndex}
+      searchTypeDropdownValue={searchTypeDropdownValue} setSearchTypeDropdownValue={setSearchTypeDropdownValue} />
+      <SearchPage data={searchData} setBgImg={setBgImg} statusData={statusData} searchDropdownValue={searchTypeDropdownValue}
+      searchValue={searchValue} openStatus={setIsPopupOpen} activeTabIndex={activeTabIndex} setActiveTabIndex={setActiveTabIndex} />
       <MediaPlayer isPopupOpen={isPopupOpen} setIsPopupOpen={setIsPopupOpen} isExpanded={isExpanded} 
       setIsExpanded={setIsExpanded} actionDropdownValue={actionDropdownValue} setActionDropdownValue={setActionDropdownValue} />
       <Footer />

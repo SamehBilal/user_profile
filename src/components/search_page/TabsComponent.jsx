@@ -6,19 +6,30 @@ import { useTheme } from 'next-themes';
 import RightSectoin from "./right-sections/right-section";
 import StatusBar from "./status-bar";
 
-const TabsComponent = ({ data = [], setBgImg=()=>{console.log('define setBgImg ')}, statusData=[], searchValue, openStatus }) => {
-  const [activeTabIndex, setActiveTabIndex] = useState(0)
+const TabsComponent = ({ data = [], setBgImg=()=>{console.log('define setBgImg ')}, 
+statusData=[], searchValue, openStatus, activeTabIndex, setActiveTabIndex, searchDropdownValue }) => {
   const { theme, setTheme } = useTheme(); // 'light' : 'dark'
+  const [activeTab, setActiveTab] = useState('all')
   // console.log('searchValue', searchValue)
 
   const handleTabChange = (newTab) => {
     const newTabIndex = data.map((_)=>_.id)?.findIndex(element => element === newTab)
     setActiveTabIndex(newTabIndex ?? 0)
+    setActiveTab(newTab)
   };
 
   useEffect(()=>{
     setBgImg(data[activeTabIndex]?.cards[0]?.imgUrl || data[activeTabIndex]?.bgImg[theme])
   }, [activeTabIndex])
+
+  useEffect(()=>{
+    if(searchDropdownValue){ 
+      console.log('searchDropdownValue', searchDropdownValue)
+      const newTabIndex = data.map((_)=>_.label)?.findIndex(element => element === searchDropdownValue)
+      console.log('data[newTabIndex].id', data[newTabIndex].id)
+      handleTabChange(data[newTabIndex].id)
+    }
+  }, [searchDropdownValue])
   
   return (
     <div className="w-full grid grid-cols-5 mx-auto">
@@ -44,6 +55,7 @@ const TabsComponent = ({ data = [], setBgImg=()=>{console.log('define setBgImg '
           tabContent: "group-data-[selected=true]:text-prime drop-shadow-xl group-data-[hover-unselected]:text-black text-black dark:group-data-[hover-unselected]:text-white dark:text-white"
         }}
         onSelectionChange={handleTabChange}
+        selectedKey={activeTab}
         items={data}>
           
         {(item) => (

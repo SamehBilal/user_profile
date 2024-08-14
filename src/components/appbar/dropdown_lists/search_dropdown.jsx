@@ -16,12 +16,14 @@ function SearchDropdown({isExpanded=false, setIsExpanded, setValue }) {
       setIsExpanded(false);
     }
   };
+  
   useEffect(() => {
     document.addEventListener('mousedown', handleOutsideClick);
     return () => {
       document.removeEventListener('mousedown', handleOutsideClick);
     };
   }, []);
+
   return (
     <div className={`flex flex-col justify-center items-center gap-2 absolute right-1/2 translate-x-1/2 py-2 w-max top-12 bg-zinc-200 text-zinc-900 rounded-lg z-20 
       ${isExpanded?'':'hidden'}`}

@@ -13,17 +13,16 @@ import NavbarBottomMenu from './navbar_bottom_menu'
 import PagesLinks from './pages_links'
 import { getCookie } from 'cookies-next';
 
-function Appbar({shadow = null, bgTransparent=true, searchValue='', setSearchValue=()=>{}}) {
+function Appbar({shadow = null, bgTransparent=true, searchValue='', setSearchValue=()=>{}, searchTypeDropdownValue=0, setSearchTypeDropdownValue=()=>{}}) {
   const router = useRouter()
   const [gridDropdownPopoverShow, setGridDropdownPopoverShow] = React.useState(false);
   const [userDropdownPopoverShow, setUserDropdownPopoverShow] = React.useState(false);
   const [moreDropdownPopoverShow, setMoreDropdownPopoverShow] = React.useState(false)
   const [searchTypeDropdownPopoverShow, setSearchTypeDropdownPopoverShow] = React.useState(false)
 
-  const [searchTypeDropdownValue, setSearchTypeDropdownValue] = React.useState(0)
   const [user, setUser] = React.useState(null)
   const { theme, setTheme } = useTheme();
-  
+
   return (
     <nav className={`text-black dark:text-white appbar-bg-blurry
     ${shadow? '':' shadow-md dark:shadow-zinc-300/20'} 

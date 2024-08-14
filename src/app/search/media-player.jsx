@@ -25,6 +25,7 @@ function MediaPlayer({isPopupOpen, setIsPopupOpen, isExpanded, setIsExpanded, ac
                     frameBorder="0"></iframe>
                 </div>
                 <div className="h-[90vh] relative">
+                    <div className="absolute inset-0 bg-gradient-to-br from-black via-violet-950 via-10% to-black blur-md"></div>
                     {/* arabhardware header */}
                     <AhwHeader title='عرب هاردوير' desc='محتوى اصلي' Icon={EllipsisIcon} Logo={Logo}
                     isExpanded={isExpanded} setIsExpanded={setIsExpanded} setValue={setActionDropdownValue} items={actoins} />
