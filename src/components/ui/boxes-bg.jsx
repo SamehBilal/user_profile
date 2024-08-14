@@ -1,8 +1,8 @@
 "use client"
 import {useEffect} from 'react'
+import CloseBackBtn from './close-back-btn';
 
 function BoxesBg({ setIsPopupOpen, children }) {
-
     useEffect(()=>{
         const container = document.querySelector("#boxes-bg-container"),  
         tile = document.querySelector(".tile");
@@ -11,13 +11,11 @@ function BoxesBg({ setIsPopupOpen, children }) {
     }, [])
     
   return (
-    <div className='w-screen h-screen flex items-center justify-center overflow-hidden perspective absolute bg-black'>
-        <button onClick={()=>setIsPopupOpen(false)}
-        className='absolute z-50 top-10 right-10 size-16 flex items-center justify-center text-xl border border-solid border-white text-white rounded-full'>
-            <span>X</span>
-        </button>
+    <div className='w-screen h-screen flex items-center justify-center overflow-hidden perspective absolute '>
+      <div className="absolute inset-0 bg-gradient-to-b from-violet-900 via-indigo-950 via-50% to-black blur-[20px]"></div>
+        <CloseBackBtn setIsPopupOpen={setIsPopupOpen} />
         <div id="boxes-bg-container" className='w-[140rem] aspect-square grid-rows-[repeat(40,1fr)] grid-cols-[repeat(40,1fr)] xl:grid hidden'>
-            <div className="tile border border-solid border-white/25 transition duration-[1500ms] hover:duration-0"></div>
+            <div className="tile transition duration-[1500ms] hover:duration-0"></div>
         </div>
         {children}
     </div>
