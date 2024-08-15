@@ -31,7 +31,7 @@ statusData=[], searchValue, openStatus, activeTabIndex, setActiveTabIndex, searc
       handleTabChange(data[newTabIndex]?.id || 'all')
     }
   }, [searchDropdownValue])
-  console.log('searchValue', searchValue)
+  
   return (
     <div className="w-full grid grid-cols-5 mx-auto">
       <div className="col-span-5 xl:col-span-4 relative">
