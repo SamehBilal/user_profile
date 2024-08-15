@@ -10,8 +10,8 @@ function RelatedVid({moreVid = []}) {
       </p>
       <div className='pt-10 h-[calc(50vh-5rem)] overflow-y-scroll'>
         {moreVid.map((_, i)=>{
-          return <div className="w-full h-20 flex items-center justify-start pr-10 gap-4 relative">
-            <StatusCard key={i} image={_.image} i={i} title={_.title} link={_.href} />
+          return <div key={i} className="w-full h-20 flex items-center justify-start pr-10 gap-4 relative">
+            <StatusCard image={_.image} i={i} title={_.title} link={_.href} />
           </div>
         })}
       </div>
