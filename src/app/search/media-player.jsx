@@ -38,7 +38,7 @@ function MediaPlayer({isPopupOpen, setIsPopupOpen, isExpanded, setIsExpanded, ac
                     <div className="absolute w-full h-14 bottom-0 rounded-full bg-white text-black overflow-hidden flex items-center justify-between gap-2">
                         <Image src={Logo} alt='user profile image' className='size-14 rounded-full border border-solid border-white' />
                         <input type="text" 
-                        className=' flex-1 text-xl h-14 p-4 border-none outline-none focus:border-none' />
+                        className=' flex-1 text-xl h-14 p-4 border-none outline-none focus:border-none bg-transparent' />
                         <button type="submit" className='border border-solid border-white text-white bg-black font-bold h-14 px-4 rounded-full'>
                             <SendHorizonal className='rotate-180' />
                         </button>

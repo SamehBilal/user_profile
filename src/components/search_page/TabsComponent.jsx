@@ -31,7 +31,7 @@ statusData=[], searchValue, openStatus, activeTabIndex, setActiveTabIndex, searc
       handleTabChange(data[newTabIndex]?.id || 'all')
     }
   }, [searchDropdownValue])
-  
+
   return (
     <div className="w-full grid grid-cols-5 mx-auto">
       <div className="col-span-5 xl:col-span-4 relative">
@@ -42,7 +42,6 @@ statusData=[], searchValue, openStatus, activeTabIndex, setActiveTabIndex, searc
             <span className="font-bold">نتائج البحث عن : </span>
             {searchValue?.trim()=='' && <span>لينوفو</span>}
             <span>{searchValue}</span>
-            
           </p>
         </div>
         <Tabs 
