@@ -31,7 +31,7 @@ statusData=[], searchValue, openStatus, activeTabIndex, setActiveTabIndex, searc
       handleTabChange(data[newTabIndex]?.id || 'all')
     }
   }, [searchDropdownValue])
-  
+  console.log('searchValue', searchValue)
   return (
     <div className="w-full grid grid-cols-5 mx-auto">
       <div className="col-span-5 xl:col-span-4 relative">
@@ -40,7 +40,7 @@ statusData=[], searchValue, openStatus, activeTabIndex, setActiveTabIndex, searc
           {/* <p className="font-bold text-tiny">نتائج البحث عن:</p> */}
           <p className="absolute inset-0 z-10 text-large text-ellipsis md:line-clamp-1 space-x-2">
             <span className="font-bold">نتائج البحث عن : </span>
-            {searchValue.trim()=='' && <span>لينوفو</span>}
+            {searchValue?.trim()=='' && <span>لينوفو</span>}
             <span>{searchValue}</span>
             
           </p>
