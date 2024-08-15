@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useMemo } from 'react'
 import Image from 'next/image'
 import { Divider } from '@nextui-org/react'
 import LogoImg from '@/public/images/logo_icon.png'
@@ -16,6 +16,7 @@ function BoldText ({text}) {
 }
 
 function Footer() {
+    const currentYear = useMemo(() => new Date().getFullYear(), []);
   return (
     <footer className='w-screen py-10 lg:py-16 flex flex-col items-start justify-center bg-black relative text-zinc-400'>
         <div className="p-grid max-w-grid w-full grid grid-cols-12 gap-4 items-center justify-center">
@@ -60,7 +61,9 @@ function Footer() {
         </div>
         <Divider className="my-4" />
         <div className="p-grid max-w-grid w-full">
-            <p className="">جميع الحقوق محفوظة لعرب هاردوير © 2022</p>
+            <p className="">جميع الحقوق محفوظة لعرب هاردوير © 
+            <span>{currentYear}</span>
+            </p>
         </div>
     </footer>
   )
