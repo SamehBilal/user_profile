@@ -11,8 +11,8 @@ function BoxesBg({ setIsPopupOpen, children }) {
     }, [])
     
   return (
-    <div className='w-screen h-screen flex items-center justify-center overflow-hidden perspective absolute '>
-      <div className="absolute inset-0 bg-gradient-to-b from-violet-900 via-indigo-950 via-10% to-black rounded-full blur-[40px] scale-125"></div>
+    <div className='w-screen h-screen flex items-center justify-center overflow-hidden perspective absolute bg-black'>
+      <div className="absolute inset-0 bg-gradient-to-bl from-violet-950 to-transparent rounded-full scale-125"></div>
       {/* <div className="absolute inset-0 bg-gradient-to-b from-violet-900 via-indigo-950 via-10% to-black blur-[20px]"></div> */}
         <CloseBackBtn setIsPopupOpen={setIsPopupOpen} />
         <div id="boxes-bg-container" className='w-[140rem] aspect-square grid-rows-[repeat(40,1fr)] grid-cols-[repeat(40,1fr)] xl:grid hidden'>
