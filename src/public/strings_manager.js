@@ -1,4 +1,4 @@
-import { ShoppingBag, BriefcaseBusiness, Newspaper } from "lucide-react"
+import { ShoppingBag, BriefcaseBusiness, Newspaper, SquarePlay, SquareGanttChart } from "lucide-react"
 export const ar = {
     navbar: {
         "greeting": "صباح الفل",
@@ -7,9 +7,9 @@ export const ar = {
             title: "ابحث في",
             items: [
                 {title: "المتجر", desc: "ابحث عن منتجات في المتجر", icon: ShoppingBag, link:'/search?for=products'},
-                {title: "المقالات", desc: "ابحث عن احدث المقالات", icon: BriefcaseBusiness, link:'/search?for=blogs'},
-                {title: "الفيديوهات", desc: "ابحث عن احدث الفيديوهات", icon: Newspaper, link:'/search?for=vedios'},
-                {title: "المراجعات", desc: "ابحث عن احدث المراجعات", icon: Newspaper, link:'/search?for=reviews'},
+                {title: "المقالات", desc: "ابحث عن احدث المقالات", icon: Newspaper, link:'/search?for=blogs'},
+                {title: "الفيديوهات", desc: "ابحث عن احدث الفيديوهات", icon: SquarePlay, link:'/search?for=vedios'},
+                {title: "المراجعات", desc: "ابحث عن احدث المراجعات", icon: SquareGanttChart, link:'/search?for=reviews'},
             ]
         },
         "login": "تسجيل دخول",
