@@ -40,5 +40,9 @@ export const moreVid = [
   { image: "https://picsum.photos/200?random=21", href:"#", title: "عنوان عشوائي 1" },
   { image: "https://picsum.photos/200?random=22", href:"#", title: "عنوان عشوائي 2" },
   { image: "https://picsum.photos/200?random=25", href:"#", title: "عنوان عشوائي 3" },
-  { image: "https://picsum.photos/200?random=24", href:"#", title: "عنوان عشوائي 4" }
+  { image: "https://picsum.photos/200?random=24", href:"#", title: "عنوان عشوائي 4" },
+  { image: "https://picsum.photos/200?random=25", href:"#", title: "عنوان عشوائي 5" },
+  { image: "https://picsum.photos/200?random=26", href:"#", title: "عنوان عشوائي 6" },
+  { image: "https://picsum.photos/200?random=27", href:"#", title: "عنوان عشوائي 7" },
+  { image: "https://picsum.photos/200?random=28", href:"#", title: "عنوان عشوائي 8" }
 ]

@@ -6,10 +6,10 @@ export const ar = {
         "searchAbout": {
             title: "ابحث في",
             items: [
-                {title: "المتجر", desc: "ابحث عن منتجات في المتجر", icon: ShoppingBag, link:'/search?for=products'},
-                {title: "المقالات", desc: "ابحث عن احدث المقالات", icon: Newspaper, link:'/search?for=blogs'},
-                {title: "الفيديوهات", desc: "ابحث عن احدث الفيديوهات", icon: SquarePlay, link:'/search?for=vedios'},
-                {title: "المراجعات", desc: "ابحث عن احدث المراجعات", icon: SquareGanttChart, link:'/search?for=reviews'},
+                {title: "المتجر", desc: "ابحث عن منتجات في المتجر", icon: ShoppingBag, link:'/search?for=المتجر'},
+                {title: "المقالات", desc: "ابحث عن احدث المقالات", icon: Newspaper, link:'/search?for=المقالات'},
+                {title: "الفيديوهات", desc: "ابحث عن احدث الفيديوهات", icon: SquarePlay, link:'/search?for=الفيديوهات'},
+                {title: "المراجعات", desc: "ابحث عن احدث المراجعات", icon: SquareGanttChart, link:'/search?for=المراجعات'},
             ]
         },
         "login": "تسجيل دخول",

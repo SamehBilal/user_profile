@@ -24,10 +24,11 @@ statusData=[], searchValue, openStatus, activeTabIndex, setActiveTabIndex, searc
 
   useEffect(()=>{
     if(searchDropdownValue){ 
-      console.log('searchDropdownValue', searchDropdownValue)
-      const newTabIndex = data.map((_)=>_.label)?.findIndex(element => element === searchDropdownValue)
-      console.log('data[newTabIndex].id', data[newTabIndex].id)
-      handleTabChange(data[newTabIndex].id)
+      let newTabIndex = data.map((_)=>_.label)?.findIndex(element => element === searchDropdownValue)
+      // console.log('searchDropdownValue', searchDropdownValue)
+      // console.log('newTabIndex', newTabIndex)
+      // console.log('data[newTabIndex]?.id', data[newTabIndex]?.id)
+      handleTabChange(data[newTabIndex]?.id || 'all')
     }
   }, [searchDropdownValue])
   

@@ -4,7 +4,7 @@ import ActionDropdown from './dropdown'
 
 function AhwHeader({Logo, title, desc, Icon, isExpanded, setIsExpanded, setValue, items}) {
   return (
-    <div className="w-full h-20 flex items-center justify-start px-10 gap-4 bg-white relative">
+    <div className="w-full h-20 flex items-center justify-start px-10 gap-4 relative">
         <Image src={Logo} alt='arabhardware logo' className='size-14 rounded-full' />
         <div className="space-y-1 w-3/4 text-small">
             <h4 className='font-bold'>{title}</h4>
