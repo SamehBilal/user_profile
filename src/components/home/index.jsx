@@ -7,18 +7,24 @@ function CommingSoon() {
     // const router = useRouter()
   
     useEffect(()=>{
-      // Set the date we're counting down to (adjust the date and time)
       const countDownDate = new Date("Sep 30, 2024 00:00:00").getTime();
+
+      window.addEventListener('message', function(event) {
+        // List of allowed origins
+        const allowedOrigins = ['http://localhost:5500', 'https://arabhardware.net'];
     
-      // Update the countdown every 1 second
+        if (!allowedOrigins.includes(event.origin)) { 
+          return; // Ignore messages from unknown origins
+        }
+        if (event.data === 'getJWTToken') {
+            const token = localStorage.getItem('jwt_token');
+            event.source.postMessage({ jwt_token: token }, event.origin);
+        }
+    });
+    
       const x = setInterval(function () {
-        // Get the current date and time
         const now = new Date().getTime();
-    
-        // Calculate the time remaining
-        const distance = countDownDate - now;
-    
-        // Calculate days, hours, minutes, and seconds
+        const distance = countDownDate - now; // Calculate the time remaining
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
@@ -30,8 +36,7 @@ function CommingSoon() {
         document.getElementById("minutes").innerHTML = minutes;
         document.getElementById("seconds").innerHTML = seconds;
     
-        // If the countdown is over, display a message
-        if (distance < 0) {
+        if (distance < 0) { // If the countdown is over, display a message
           clearInterval(x);
           document.getElementById("countdown").innerHTML = "EXPIRED";
         }

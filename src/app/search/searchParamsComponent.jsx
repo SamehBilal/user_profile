@@ -16,7 +16,7 @@ export default function SearchParamsComponent({setSearchTypeDropdownValue, setSe
       }
 
       let forWhat = searchParams.get('for') || ''
-      let search = searchParams.get('search') || ''
+      let search = searchParams.get('s') || ''
       setSearchTypeDropdownValue(forWhat)
       setSearchValue(search)
     }, [])
