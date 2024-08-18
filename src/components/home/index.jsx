@@ -12,7 +12,7 @@ function CommingSoon() {
       window.addEventListener('message', function(event) {
         // List of allowed origins
         const allowedOrigins = ['http://localhost:5500', 'https://arabhardware.net'];
-    
+        console.log('allowedOrigins', allowedOrigins)
         if (!allowedOrigins.includes(event.origin)) { 
           return; // Ignore messages from unknown origins
         }
