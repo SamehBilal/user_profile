@@ -1,10 +1,16 @@
 import { Share2Icon } from "lucide-react";
 
-export const demoVid = {
+export const shortDemoVid = {
     "href": "https://www.youtube.com/shorts/cEFMdyhsIWg",
     "title": "ميني بي سي جواه RTX 4070!! 😲😲أصغر من الـ Mini-ITX 🔴"
   }
-export const videoId = demoVid.href?.split('/').pop() || "qlQR3E0Da6E";
+  
+export const demoVid = {
+    "href": "https://www.youtube.com/watch?v=l_1sVxt6ric",
+    "title": "أنسى التجميعات .. المستقبل وصل 😉😉 أصغر بي سي جيمينج هتشوفه | ROG NUC 970"
+  }
+export const videoId = demoVid.href?.split('/watch?v=').pop() || "qlQR3E0Da6E";
+export const shortVideoId = shortDemoVid.href?.split('/').pop() || "qlQR3E0Da6E";
 
 export const actoins = [
   {link: '#', title: 'Share', icon: Share2Icon},

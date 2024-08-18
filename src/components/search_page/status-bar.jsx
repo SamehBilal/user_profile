@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import "swiper/swiper-bundle.css";
 import "swiper/css/pagination";
 
-function StatusBar({statusData, openStatus}) {
+function StatusBar({statusData, openStatus, setVidDis}) {
   const sliderRef = useRef() 
   
   // useEffect(()=>{
@@ -25,6 +25,11 @@ function StatusBar({statusData, openStatus}) {
     sliderRef.current.swiper.slideNext(500);
   }
 
+  const handleOpenStatus = () => {
+    openStatus(prev=>!prev)
+    setVidDis('short')
+  }
+
   return (
     
     <Swiper
@@ -39,7 +44,7 @@ function StatusBar({statusData, openStatus}) {
       className='absolute inset-0 w-full z-10'>
             {statusData.map((_, i)=>{
         return <SwiperSlide key={i} 
-        onClick={()=>openStatus(prev=>!prev)}
+        onClick={handleOpenStatus}
         className="!size-14 !flex items-center justify-center rounded-full overflow-hidden bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 cursor-pointer">
             <div className="size-12 flex items-center justify-center">
                 <Image src={_.img} alt="new status" className="size-full object-cover rounded-full" />

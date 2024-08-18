@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Link } from "@nextui-org/react";
 
 
-const CardComponent = ({i=0, id, card, cardTypeLastIndex, cardTypeIndex}) => {
+const CardComponent = ({i=0, id, card, cardTypeLastIndex, cardTypeIndex, openStatus, setVidDis}) => {
   const titles = {
     blogs:  "أحدث المقالات", 
     products: "أحدث المنتجات", 
@@ -44,7 +44,7 @@ const CardComponent = ({i=0, id, card, cardTypeLastIndex, cardTypeIndex}) => {
   </div>}
 
   {(id!='all' || getIndex(card.type, i)<maxLengthPreviewAll[card.type]) && //في الصفحة الرئيسية، رندر بس اللعدد المحدد
-  <SingleCard key={i} index={id!='all'?i:getIndex(card.type, i)} 
+  <SingleCard key={i} index={id!='all'?i:getIndex(card.type, i)} openStatus={openStatus} setVidDis={setVidDis}
   type={card.type} title={card.title} subTitle={card.subTitle} imgUrl={card.imgUrl}
   desc={card.desc} price={card.price} inStock={card.inStock} url={card.url} youtubeId={card.youtubeId} />}
 
@@ -62,7 +62,7 @@ const CardComponent = ({i=0, id, card, cardTypeLastIndex, cardTypeIndex}) => {
   </>
 }
 
-export default function CardsComponent({cards=[], id='blogs'}) {
+export default function CardsComponent({cards=[], id='blogs', openStatus, setVidDis}) {
   const [cardTypeIndex, setCardTypeIndex] = useState({blogs: 0, products: 1, vedios: 2, reviews: 3})
   const [cardTypeLastIndex, setCardTypeLastIndex] = useState({blogs: 0, products: 1, vedios: 2, reviews: 3})
 
@@ -89,7 +89,7 @@ export default function CardsComponent({cards=[], id='blogs'}) {
     <div className={`max-w-grid grid grid-cols-6 gap-4 items-center justify-between`}>
       {cards.map((card, i)=>{
         return <CardComponent key={i} i={i} card={card} cardTypeLastIndex={cardTypeLastIndex}
-        cardTypeIndex={cardTypeIndex} id={id} />
+        cardTypeIndex={cardTypeIndex} id={id} openStatus={openStatus} setVidDis={setVidDis} />
       })}
     </div>
   );

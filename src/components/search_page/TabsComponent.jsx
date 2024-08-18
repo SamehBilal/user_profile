@@ -6,7 +6,7 @@ import { useTheme } from 'next-themes';
 import RightSectoin from "./right-sections/right-section";
 import StatusBar from "./status-bar";
 
-const TabsComponent = ({ data = [], setBgImg=()=>{console.log('define setBgImg ')}, 
+const TabsComponent = ({ data = [], setBgImg=()=>{console.log('define setBgImg ')}, setVidDis, 
 statusData=[], searchValue, openStatus, activeTabIndex, setActiveTabIndex, searchDropdownValue }) => {
   const { theme, setTheme } = useTheme(); // 'light' : 'dark'
   const [activeTab, setActiveTab] = useState('all')
@@ -65,9 +65,9 @@ statusData=[], searchValue, openStatus, activeTabIndex, setActiveTabIndex, searc
             </div>
           }>
           <div className="col-span-5 xl:col-span-4 w-full h-14 relative">
-            <StatusBar statusData={statusData} openStatus={openStatus} />
+            <StatusBar statusData={statusData} openStatus={openStatus} setVidDis={setVidDis} />
           </div>
-            <CardsComponent cards={item.cards} id={item.id} />
+            <CardsComponent cards={item.cards} id={item.id} openStatus={openStatus} setVidDis={setVidDis} />
           </Tab>
         )}
         </Tabs>
