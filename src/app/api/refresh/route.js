@@ -20,7 +20,7 @@ export async function GET(request, response) {
     requestHeaders.set('Access-Control-Allow-Origin', '*');
     requestHeaders.set('Content-Security-Policy', "frame-ancestors 'self' *");
     requestHeaders.set('Age', '3333');
-    requestHeaders.set('Cache-Control', 'max-age=3333');
+    requestHeaders.set('Cache-Control', 'public, max-age=120, stale-while-revalidate=60');
     requestHeaders.set('X-Frame-Options', 'ALLOW-FROM *');
     requestHeaders.set('Access-Control-Allow-Credentials', 'true');
     requestHeaders.set('Access-Control-Allow-Methods', 'GET,DELETE,PATCH,POST,PUT');

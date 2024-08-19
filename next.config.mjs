@@ -1,8 +1,8 @@
-import withBundleAnalyzer from '@next/bundle-analyzer';
+// import withBundleAnalyzer from '@next/bundle-analyzer';
 
-const bundleAnalyzerConfig = {
-  enabled: process.env.ANALYZE === 'true',
-};
+// const bundleAnalyzerConfig = {
+//   enabled: process.env.ANALYZE === 'true',
+// };
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
@@ -12,6 +12,10 @@ const nextConfig = {
         return [{
             source: '/api/(.*)',
             headers: [
+              {
+                "key": "Cache-Control",
+                "value": "public, max-age=120, stale-while-revalidate=60"
+              },
               {
                 key: 'Access-Control-Allow-Origin',
                 value: '*'
@@ -23,10 +27,6 @@ const nextConfig = {
               {
                 key: 'Age',
                 value: '3333'
-              },
-              {
-                key: 'Cache-Control',
-                value: 'max-age=3333'
               },
               {
                 key: 'X-Frame-Options',
@@ -62,6 +62,10 @@ const nextConfig = {
                 pathname: '/**',
             },
         ],
+    },
+    webpack: (config) => {
+      config.resolve.extensions = ['.js', '.jsx', '.ts', '.tsx'];
+      return config;
     },
 };
 

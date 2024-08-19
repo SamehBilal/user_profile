@@ -17,7 +17,7 @@
           },
           {
             "key": "Cache-Control",
-            "value": "max-age=3333"
+            "value": "public, max-age=120, stale-while-revalidate=60"
           },
           {
             "key": "X-Frame-Options",
