@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { useTheme } from 'next-themes';
 import RightSectoin from "./right-sections/right-section";
 import StatusBar from "./status-bar";
+import { Loader2Icon } from "lucide-react";
 
 const TabsComponent = ({ data=null, setBgImg=()=>{console.log('define setBgImg ')}, setVidDis, trendingData, tagsData, setCurrentVid,
 statusData=[], searchValue, openStatus, activeTabIndex, setActiveTabIndex, searchDropdownValue }) => {
@@ -44,6 +45,7 @@ statusData=[], searchValue, openStatus, activeTabIndex, setActiveTabIndex, searc
             <span>{searchValue}</span>
           </p>
         </div>
+        {!data && <Loader2Icon className="size-20 text-primary" />}
         {data && <Tabs 
         variant="underlined" 
         aria-label="Arabhardware Companies" 

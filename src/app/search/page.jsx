@@ -88,7 +88,7 @@ export default function Psge({}) {
         url: card?.url
       }
     })|| []
-    console.log('videos: ', processed)
+    // console.log('videos: ', processed)
     return processed
   }
   const processReviews = (cards) => {
@@ -125,7 +125,7 @@ export default function Psge({}) {
       await axios.get(`${ApiBaseNet}/search?s=${searchValue}&perPage=8`)
       .then(res=>{
         const results = res.data?.results
-        console.log('results', results)
+        // console.log('results', results)
         setFechedData(results)
         const newSearchRes = processData({results})
         setNewSearchData(newSearchRes)
@@ -186,14 +186,13 @@ export default function Psge({}) {
   useEffect(()=>{
     setIsMounted(true)
     
-    if(isMounted && searchValue && searchValue?.length > 1 && searchTypeDropdownValue?.length>1){
-      console.log('fetchingData...')
+    if(isMounted && searchValue && searchValue?.length > 1){
+      // console.log('fetchingData...')
       getfetchedData()
       checkLocation()
       getTrendingData()
     }
   }, [isMounted])
-  console.log('newSearchData', newSearchData)
 
   return (
     <main className="pt-12 w-full min-h-screen relative overflow-hidden">
