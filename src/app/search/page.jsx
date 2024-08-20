@@ -187,11 +187,13 @@ export default function Psge({}) {
     setIsMounted(true)
     
     if(isMounted && searchValue && searchValue?.length > 1 && searchTypeDropdownValue?.length>1){
+      console.log('fetchingData...')
       getfetchedData()
       checkLocation()
       getTrendingData()
     }
   }, [isMounted])
+  console.log('newSearchData', newSearchData)
 
   return (
     <main className="pt-12 w-full min-h-screen relative overflow-hidden">
