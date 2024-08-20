@@ -6,11 +6,10 @@ import { useTheme } from 'next-themes';
 import RightSectoin from "./right-sections/right-section";
 import StatusBar from "./status-bar";
 
-const TabsComponent = ({ data = [], setBgImg=()=>{console.log('define setBgImg ')}, setVidDis, 
+const TabsComponent = ({ data=null, setBgImg=()=>{console.log('define setBgImg ')}, setVidDis, trendingData, tagsData, setCurrentVid,
 statusData=[], searchValue, openStatus, activeTabIndex, setActiveTabIndex, searchDropdownValue }) => {
   const { theme, setTheme } = useTheme(); // 'light' : 'dark'
   const [activeTab, setActiveTab] = useState('all')
-  // console.log('searchValue', searchValue)
 
   const handleTabChange = (newTab) => {
     const newTabIndex = data.map((_)=>_.id)?.findIndex(element => element === newTab)
@@ -19,18 +18,19 @@ statusData=[], searchValue, openStatus, activeTabIndex, setActiveTabIndex, searc
   };
 
   useEffect(()=>{
+    if(data)
     setBgImg(data[activeTabIndex]?.cards[0]?.imgUrl || data[activeTabIndex]?.bgImg[theme])
-  }, [activeTabIndex])
+  }, [activeTabIndex, data])
 
   useEffect(()=>{
-    if(searchDropdownValue){ 
+    if(searchDropdownValue && data){ 
       let newTabIndex = data.map((_)=>_.label)?.findIndex(element => element === searchDropdownValue)
       // console.log('searchDropdownValue', searchDropdownValue)
       // console.log('newTabIndex', newTabIndex)
       // console.log('data[newTabIndex]?.id', data[newTabIndex]?.id)
       handleTabChange(data[newTabIndex]?.id || 'all')
     }
-  }, [searchDropdownValue])
+  }, [searchDropdownValue, data])
 
   return (
     <div className="w-full grid grid-cols-5 mx-auto">
@@ -44,7 +44,7 @@ statusData=[], searchValue, openStatus, activeTabIndex, setActiveTabIndex, searc
             <span>{searchValue}</span>
           </p>
         </div>
-        <Tabs 
+        {data && <Tabs 
         variant="underlined" 
         aria-label="Arabhardware Companies" 
         color="prime"
@@ -56,8 +56,7 @@ statusData=[], searchValue, openStatus, activeTabIndex, setActiveTabIndex, searc
         }}
         onSelectionChange={handleTabChange}
         selectedKey={activeTab}
-        items={data}>
-          
+        items={data||[]}>
         {(item) => (
           <Tab key={item.id} title={
             <div className="flex items-center space-x-2">
@@ -65,15 +64,15 @@ statusData=[], searchValue, openStatus, activeTabIndex, setActiveTabIndex, searc
             </div>
           }>
           <div className="col-span-5 xl:col-span-4 w-full h-14 relative">
-            <StatusBar statusData={statusData} openStatus={openStatus} setVidDis={setVidDis} />
+            <StatusBar statusData={statusData} openStatus={openStatus} setVidDis={setVidDis} setCurrentVid={setCurrentVid} />
           </div>
-            <CardsComponent cards={item.cards} id={item.id} openStatus={openStatus} setVidDis={setVidDis} />
+            <CardsComponent cards={item.cards} id={item.id} openStatus={openStatus} setVidDis={setVidDis} setCurrentVid={setCurrentVid} />
           </Tab>
         )}
-        </Tabs>
+        </Tabs>}
       </div>
       <div className="xl:col-span-1 hidden xl:block">
-        <RightSectoin />
+        <RightSectoin trendingData={trendingData} tagsData={tagsData} />
       </div>
     </div>
   );

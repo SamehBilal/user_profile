@@ -130,30 +130,30 @@ const productsCards = [
         imgUrl: "https://ahw.store/image/cache/catalog/Catalog/Products/Monitors/LEN-MNT-G25-20/Lenovo%20G25-20%2024.5%20inch%20TN-3-550x550w.jpg"
     },
 ]
-const vediosCards = [
+const videosCards = [
     {
-        type: 'vedios', 
+        type: 'videos', 
         title: "عشان اللاب توب بتاعك يفضل جديد والبطارية متبوظش! 🔴 إعدادات لازم تعملها فورًا مع اللابتوب بتاعك", 
         url: "https://www.youtube.com/watch?v=XBqmzxYBt3M",
         youtubeId: "XBqmzxYBt3M",
         imgUrl: `https://img.youtube.com/vi/XBqmzxYBt3M/maxresdefault.jpg`,
     },
     {
-        type: 'vedios', 
+        type: 'videos', 
         title: "عشان اللاب توب بتاعك يفضل جديد والبطارية متبوظش! 🔴 إعدادات لازم تعملها فورًا مع اللابتوب بتاعك", 
         url: "https://www.youtube.com/watch?v=XBqmzxYBt3M",
         youtubeId: "XBqmzxYBt3M",
         imgUrl: `https://img.youtube.com/vi/XBqmzxYBt3M/maxresdefault.jpg`,
     },
     {
-        type: 'vedios', 
+        type: 'videos', 
         title: "عشان اللاب توب بتاعك يفضل جديد والبطارية متبوظش! 🔴 إعدادات لازم تعملها فورًا مع اللابتوب بتاعك", 
         url: "https://www.youtube.com/watch?v=XBqmzxYBt3M",
         youtubeId: "XBqmzxYBt3M",
         imgUrl: `https://img.youtube.com/vi/XBqmzxYBt3M/maxresdefault.jpg`,
     },
     {
-        type: 'vedios', 
+        type: 'videos', 
         title: "عشان اللاب توب بتاعك يفضل جديد والبطارية متبوظش! 🔴 إعدادات لازم تعملها فورًا مع اللابتوب بتاعك", 
         url: "https://www.youtube.com/watch?v=XBqmzxYBt3M",
         youtubeId: "XBqmzxYBt3M",
@@ -199,7 +199,7 @@ export const searchData = [
         id: "all", label: "الجميع", color: "",
         bgImg: {'dark': Dark1, 'light': Light1},
         backgroundImgDark: Dark1, backgroundImg: Light1, 
-        cards: blogsCards.concat(productsCards, vediosCards, reviewsCards)
+        cards: blogsCards.concat(productsCards, videosCards, reviewsCards)
     },
     {
         id: "blogs", label: "المقالات", color: "",
@@ -214,10 +214,10 @@ export const searchData = [
         cards: productsCards
     },
     {
-        id: "vedios", label: "الفيديوهات", color: "",
+        id: "videos", label: "الفيديوهات", color: "",
         backgroundImgDark: Dark1, backgroundImg: Light1, 
         bgImg: {'dark': Dark1, 'light': Light1},
-        cards: vediosCards
+        cards: videosCards
     },
     {
         id: "reviews", label: "المراجعات", color: "",
@@ -234,12 +234,6 @@ export const trendingData = {
         "غزة الآن",
         "الحرب الروسية الأوكرانية",
         "فئران فرنسا",
-        "محتجي بريطانيا",
-        "روبرت ف كيندي",
-        "ايمان خليفة",
-        "العشاء الأخير",
-        "ايران",
-        "تشيرنوبل"
     ]
 }
 export const tagsData = {

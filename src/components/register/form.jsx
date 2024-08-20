@@ -113,7 +113,7 @@ function RegisterForm({toLoginPage, returnUrl, sessionId}) {
       }))
     }, [selectedIndex])
 
-  return (<div className="w-full h-full bg-white rounded-l-lg px-14 py-8 space-y-8 relative mb-32">
+  return (<div className="w-full h-full bg-white lg:rounded-l-lg rounded-b-lg lg:px-14 px-4 py-8 space-y-8 relative mb-32">
     <ToasterComponent />
     
     {token &&

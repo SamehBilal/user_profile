@@ -46,7 +46,7 @@ function Page() {
         pagination={false}
         allowTouchMove= {false}
         modules={[EffectFlip]}
-        className='w-4/5 max-w-grid !flex items-center justify-center'>
+        className='w-4/5 max-w-grid !flex items-center justify-center max-lg:my-6'>
           <SwiperSlide 
             className={`swiper-no-swiping !flex items-center justify-center flex-col gap-[-15px] !w-full !h-auto rounded-lg`}>
               <LoginPage toRegisterPage={toRegisterPage} setActiveSlide={setActiveSlide} activeInfo={backgrounds[activeSlide]} 

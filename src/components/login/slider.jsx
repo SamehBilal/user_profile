@@ -55,10 +55,10 @@ function Slider({setActiveSlide, backgrounds, activeInfo}) {
       slidesPerView={1}
       spaceBetween={0}
       allowTouchMove= {false}
-      className='w-full rounded-r-lg'>
+      className='w-full lg:rounded-r-lg rounded-t-lg max-xl:h-96'>
         {backgrounds.map((_, i)=>{
           return  <SwiperSlide key={i}
-          className='!flex items-end justify-between flex-col !w-full rounded-r-lg' >
+          className='!flex items-end justify-between flex-col !w-full lg:rounded-r-lg rounded-t-lg' >
             <SlidesItem activeInfo={backgrounds[i]} />
           </SwiperSlide> 
         })}

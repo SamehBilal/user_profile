@@ -10,17 +10,17 @@ import StatusCard from '@/components/search_page/status-popup/status-card'
 import AhwHeader from '@/components/search_page/status-popup/ahw-header'
 import { moreVid, videoId, shortVideoId, actoins, commentsList } from '@/components/search_page/status-popup/data'
 
-function MediaPlayer({isPopupOpen, setIsPopupOpen, isExpanded, setIsExpanded, actionDropdownValue, setActionDropdownValue, vidDis, setVidDis}) {
+function MediaPlayer({isPopupOpen, setIsPopupOpen, isExpanded, setIsExpanded, actionDropdownValue, setActionDropdownValue, vidDis, currentVid}) {
 
-    console.log('videoId, shortVideoId', videoId, shortVideoId)
+    // console.log('videoId, shortVideoId', videoId, shortVideoId)
   return (
     <>
         
-    {isPopupOpen && <div className="fixed z-[200] -top-[5%] left-0 w-screen h-[110vh] flex items-center justify-center text-white">
+    {isPopupOpen && currentVid && <div className="fixed z-[200] -top-[5%] left-0 w-screen h-[110vh] flex items-center justify-center text-white">
         <BoxesBg setIsPopupOpen={setIsPopupOpen} >
             {vidDis=='full' && <div className="absolute z-40 xl:w-[70%] max-w-grid w-[96%] h-[90vh] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 grid grid-cols-2 rounded-[30px] overflow-hidden">
                 <div className="h-[90vh] relative">
-                    <iframe  src={`https://www.youtube.com/embed/${shortVideoId}?rel=0&autoplay=1&mute=0`} 
+                    <iframe  src={`https://www.youtube.com/embed/${currentVid.youtubeId}?rel=0&autoplay=1&mute=0`} 
                     width={1000} height={1500}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen autoPlay
@@ -30,12 +30,12 @@ function MediaPlayer({isPopupOpen, setIsPopupOpen, isExpanded, setIsExpanded, ac
                 <div className="h-[90vh] relative flex flex-col justify-between">
                     <div className="absolute inset-0 backdrop-blur-[150px]"></div>
                     {/* arabhardware header */}
-                    <AhwHeader title='عرب هاردوير' desc='محتوى اصلي' Icon={EllipsisIcon} Logo={Logo}
+                    <AhwHeader title='عرب هاردوير' desc={currentVid.title ?? 'محتوى اصلي'} Icon={EllipsisIcon} Logo={Logo}
                     isExpanded={isExpanded} setIsExpanded={setIsExpanded} setValue={setActionDropdownValue} items={actoins} />
-                    <RelatedVid moreVid={moreVid} />
+                    <RelatedVid moreVid={currentVid.moreVideos ?? moreVid} />
                     
                     
-                    <Comments commentsList={commentsList} />
+                    <Comments commentsList={currentVid.comments ?? commentsList} />
                     <div className="w-full h-14 rounded-full bg-white text-black overflow-hidden flex items-center justify-between gap-2 relative">
                         <Image src={Logo} alt='user profile image' className='size-14 rounded-full border border-solid border-white' />
                         <input type="text" 
@@ -48,14 +48,14 @@ function MediaPlayer({isPopupOpen, setIsPopupOpen, isExpanded, setIsExpanded, ac
                     
                 </div>
             </div>}
-            {vidDis=='short' && <div className="absolute z-40 xl:w-[600px] max-w-grid w-[96%] h-[90vh] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 grid grid-cols-1 rounded-[30px] overflow-hidden">
+            {vidDis=='small' && <div className="absolute z-40 xl:w-[600px] max-w-grid w-[96%] h-[90vh] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 grid grid-cols-1 rounded-[30px] overflow-hidden">
                 <div className="h-[90vh] relative flex flex-col justify-between shadow-2xl">
                     <div className="absolute inset-0 backdrop-blur-[150px]"></div>
                     {/* arabhardware header */}
-                    <AhwHeader title='عرب هاردوير' desc='محتوى اصلي' Icon={EllipsisIcon} Logo={Logo}
+                    <AhwHeader title='عرب هاردوير' desc={currentVid.title ?? 'محتوى اصلي'} Icon={EllipsisIcon} Logo={Logo}
                     isExpanded={isExpanded} setIsExpanded={setIsExpanded} setValue={setActionDropdownValue} items={actoins} />
                     <div className="h-[calc(90vh-6rem)] p-4 relative">
-                        <iframe  src={`https://www.youtube.com/embed/${videoId}?rel=0&autoplay=1&mute=0`} 
+                        <iframe  src={`https://www.youtube.com/embed/${currentVid.youtubeId}?rel=0&autoplay=1&mute=0`} 
                         width={1000} height={1500}
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen autoPlay

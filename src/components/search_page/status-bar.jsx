@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import "swiper/swiper-bundle.css";
 import "swiper/css/pagination";
 
-function StatusBar({statusData, openStatus, setVidDis}) {
+function StatusBar({statusData, openStatus, setVidDis, setCurrentVid, youtubeId, title}) {
   const sliderRef = useRef() 
   
   // useEffect(()=>{
@@ -25,9 +25,11 @@ function StatusBar({statusData, openStatus, setVidDis}) {
     sliderRef.current.swiper.slideNext(500);
   }
 
-  const handleOpenStatus = () => {
+  const handleOpenStatus = (i=0) => {
     openStatus(prev=>!prev)
-    setVidDis('short')
+    setVidDis('small')
+    console.log({youtubeId: statusData[i].youtubeId, title: statusData[i].title})
+    setCurrentVid({youtubeId: statusData[i].youtubeId, title: statusData[i].title})
   }
 
   return (
@@ -44,10 +46,10 @@ function StatusBar({statusData, openStatus, setVidDis}) {
       className='absolute inset-0 w-full z-10'>
             {statusData.map((_, i)=>{
         return <SwiperSlide key={i} 
-        onClick={handleOpenStatus}
+        onClick={()=>handleOpenStatus(i)}
         className="!size-14 !flex items-center justify-center rounded-full overflow-hidden bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 cursor-pointer">
             <div className="size-12 flex items-center justify-center">
-                <Image src={_.img} alt="new status" className="size-full object-cover rounded-full" />
+                <Image src={_.imgUrl} alt={_.title} width={100} height={100} className="size-full object-cover rounded-full" />
             </div>
         </SwiperSlide>
         })}

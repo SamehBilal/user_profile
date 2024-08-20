@@ -4,13 +4,16 @@ import { YoutubeIcon } from 'lucide-react';
 import Link from 'next/link';
 import Youtube from '@/components/ui/icons/youtube';
 
-function VediosCard({
-  index, title='', subTitle='', imgUrl='https://nextui.org/images/card-example-3.jpeg', url, youtubeId, openStatus, setVidDis
+function VideosCard({
+  index, title='', youtubeId, moreVideos=[], comments=[], imgUrl='https://nextui.org/images/card-example-3.jpeg', 
+  openStatus, setVidDis, setCurrentVid
 }) {
+  // console.log('video card', index, title, moreVideos)
   
   const handleOpenStatus = () => {
     openStatus(true)
     setVidDis('full')
+    setCurrentVid({youtubeId, title, moreVideos, comments})
   }
   
   return (
@@ -22,7 +25,7 @@ function VediosCard({
       </CardHeader>
       <Image
         removeWrapper
-        alt="Vedio Thumbnail"
+        alt={title || 'youtube video thumbnail'}
         className="z-0 w-full h-full object-cover hover:scale-110 group-hover:brightness-50 group-hover:saturate-100 transition"
         src={imgUrl}
       />
@@ -32,4 +35,4 @@ function VediosCard({
   )
 }
 
-export default VediosCard
+export default VideosCard
