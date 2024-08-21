@@ -45,8 +45,19 @@ module.exports = {
           'scale-up': 'scale-up 300ms ease-in-out',
           'slide-up': 'slide-up 12s linear infinite',
           'wiggle': 'wiggle 1s ease-in-out infinite',
+          'background-transition': 'background-transition 20s ease-in-out infinite',
+          'hue-change': 'hue-change 20s ease-in-out infinite',
       },
       keyframes: {
+        'background-transition': {
+          '0%, 100%': { transform: 'rotate(-360deg) scale(2.5, 3.5)' },
+          '50%': { transform: 'rotate(360deg) scale(2.5, 3.5)' },
+        },
+        'hue-change': {
+          '0%, 100%': { filter: 'hue-rotate(0deg)' },
+          '25%, 75%': { filter: 'hue-rotate(180deg)' },
+          '50%': { filter: 'hue-rotate(360deg)' },
+        },
         'wiggle': {
           '0%, 100%': { transform: 'rotate(-12deg)' },
           '50%': { transform: 'rotate(12deg)' },

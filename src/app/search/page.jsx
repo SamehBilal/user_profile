@@ -25,7 +25,7 @@ export default function Psge({}) {
 
   const [fetchedData, setFechedData] = useState(null)
   const [newSearchData, setNewSearchData] = useState(null)
-  const [temprature, setTemprature] = useState(null)
+  const [weather, setWeather] = useState(null)
   const [terndingData, setTrendingData] = useState(null)
 
   function getYouTubeVideoInfo(url) {
@@ -120,9 +120,10 @@ export default function Psge({}) {
 
       return newRes
   }
+  console.log('weather', weather)
 
   const getfetchedData = async () => {
-      await axios.get(`${ApiBaseNet}/search?s=${searchValue}&perPage=8`)
+      await axios.post(`${ApiBaseNet}/search`, {s:searchValue, for: '', PerPage: ''})
       .then(res=>{
         const results = res.data?.results
         // console.log('results', results)
@@ -137,18 +138,30 @@ export default function Psge({}) {
   }
   const getTempData = async ({ latitude, longitude }) => {
     // console.log('getTempData', { latitude, longitude })
-      await axios.get(`${ApiBaseNet}/weather?lat=${latitude}&long=${longitude}`)
+      await axios.post(`${ApiBaseNet}/weather`, {lat: latitude, long: longitude})
       .then(res=>{
         const results = res.data
-        setTemprature(results?.current?.temperature)
+        setWeather({
+          current: {
+            temp: results?.current?.temperature, 
+            wind: results?.current?.wind_speed?.toFixed(2)
+          },
+          day: results?.day?.map((d, i)=>{
+            const date = new Date(d?.time)
+            return {
+              time: date.getHours(),
+              temp: d?.temperature, 
+              wind: d?.wind_speed?.toFixed(2)}
+          })
+        })
       }).catch(e=>{
         console.error(e)
         toast.error(e.message)
-        setTemprature('0')
+        setWeather({current: {temp: 0, wind_speed: 0}})
       })
   }
   const getTrendingData = async () => {
-      await axios.get(`${ApiBaseNet}/trends`)
+      await axios.post(`${ApiBaseNet}/trends`)
       .then(res=>{
         const results = res.data
         setTrendingData(Array.isArray(results) ? results : [])
@@ -199,20 +212,21 @@ export default function Psge({}) {
       <SearchParamsComponent setSearchTypeDropdownValue={setSearchTypeDropdownValue} setSearchValue={setSearchValue} />
       <ToasterComponent />
       
-      <div className="absolute inset-0 w-full h-[70vh] bg-cover bg-no-repeat"
-        style={{
-          backgroundImage: `url(${bgImg?.src || bgImg})`,
-          filter: 'blur(80px)',
-        }}
-      >
-        <div className="size-full absolute bg-gradient-to-b from-white/5 to-white dark:from-black/5 dark:to-black" />
+      <div className="absolute inset-0 w-full h-[70vh] animate-hue-change">
+          <div className="size-full bg-cover bg-no-repeat animate-background-transition"
+          style={{
+            backgroundImage: `url(${bgImg?.src || bgImg})`,
+            filter: 'blur(80px)',
+          }} ></div>
+        </div>
+      <div className="absolute inset-0 size-full bg-gradient-to-b from-white/5 to-white via-white via-[70vh] dark:via-black dark:from-black/5 dark:to-black">
       </div>
  
       <AppBar shadow='transparent' bgTransparent={false} searchValue={searchValue} setSearchValue={setSearchValue}
       activeTabIndex={activeTabIndex} setActiveTabIndex={setActiveTabIndex}
       searchTypeDropdownValue={searchTypeDropdownValue} setSearchTypeDropdownValue={setSearchTypeDropdownValue} />
       <SearchPage data={newSearchData} setBgImg={setBgImg} searchDropdownValue={searchTypeDropdownValue} setVidDis={setVidDis}
-      statusData={newSearchData? newSearchData[3]?.cards?.filter(card=>card.ty=='shorts'): []} setCurrentVid={setCurrentVid}
+      statusData={newSearchData? newSearchData[3]?.cards?.filter(card=>card.ty=='shorts'): []} setCurrentVid={setCurrentVid} weather={weather}
       searchValue={searchValue} openStatus={setIsPopupOpen} activeTabIndex={activeTabIndex} setActiveTabIndex={setActiveTabIndex}
       trendingData={terndingData} tagsData={fetchedData?.tags} /> 
       <MediaPlayer isPopupOpen={isPopupOpen} setIsPopupOpen={setIsPopupOpen} isExpanded={isExpanded} vidDis={vidDis} 

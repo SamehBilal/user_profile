@@ -8,7 +8,7 @@ import StatusBar from "./status-bar";
 import { Loader2Icon } from "lucide-react";
 
 const TabsComponent = ({ data=null, setBgImg=()=>{console.log('define setBgImg ')}, setVidDis, trendingData, tagsData, setCurrentVid,
-statusData=[], searchValue, openStatus, activeTabIndex, setActiveTabIndex, searchDropdownValue }) => {
+statusData=[], searchValue, openStatus, activeTabIndex, setActiveTabIndex, searchDropdownValue, weather }) => {
   const { theme, setTheme } = useTheme(); // 'light' : 'dark'
   const [activeTab, setActiveTab] = useState('all')
 
@@ -41,11 +41,11 @@ statusData=[], searchValue, openStatus, activeTabIndex, setActiveTabIndex, searc
           {/* <p className="font-bold text-tiny">نتائج البحث عن:</p> */}
           <p className="absolute inset-0 z-10 text-large text-ellipsis md:line-clamp-1 space-x-2">
             <span className="font-bold">نتائج البحث عن : </span>
-            {searchValue?.trim()=='' && <span>لينوفو</span>}
+            {searchValue?.trim()=='' && <span></span>}
             <span>{searchValue}</span>
           </p>
         </div>
-        {!data && <Loader2Icon className="size-20 text-primary" />}
+        {!data && <Loader2Icon className="size-20 text-primary animate-spin" />}
         {data && <Tabs 
         variant="underlined" 
         aria-label="Arabhardware Companies" 
@@ -74,7 +74,7 @@ statusData=[], searchValue, openStatus, activeTabIndex, setActiveTabIndex, searc
         </Tabs>}
       </div>
       <div className="xl:col-span-1 hidden xl:block">
-        <RightSectoin trendingData={trendingData} tagsData={tagsData} />
+        <RightSectoin trendingData={trendingData} tagsData={tagsData} weather={weather} />
       </div>
     </div>
   );

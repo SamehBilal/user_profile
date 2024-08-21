@@ -5,17 +5,15 @@ import { Search, X } from 'lucide-react'
 import { en, ar } from '@/public/strings_manager'
 import { ChevronDown } from 'lucide-react'
 import SearchDropdown from './dropdown_lists/search_dropdown'
-import { useRouter } from 'next/navigation'
 
 function SearchSection({isExpanded, setIsExpanded, typeValue, setTypeValue, searchValue, setSearchValue}) {
-  const router = useRouter()
-  const [searchCachValue, setSearchCachValue] = useState('')
+  const [searchCachValue, setSearchCachValue] = useState(null)
 
   const handleSearchBtnClick = (e) => {
     e.preventDefault()
     if(searchCachValue?.length > 1){
       setSearchValue(searchCachValue)
-      router.push(`/search?for=${typeValue}&s=${searchCachValue}`)
+      location.href = `/search?for=${typeValue}&s=${searchCachValue}`
     }
   }
   
@@ -29,7 +27,7 @@ function SearchSection({isExpanded, setIsExpanded, typeValue, setTypeValue, sear
       <div className="rounded-3xl flex items-center justify-between">
         <input id='search_value' name='search_value'
         className="border-0 outline-0 pr-0 pb-1 ml-4 bg-transparent text-sm placeholder:text-zinc-700 focus:border-0 focus-within:border-0 focus-visible:border-0 dark:text-white dark:placeholder:text-white placeholder:font-light" 
-        type="text" value={searchCachValue} onChange={(e)=>setSearchCachValue(e.target.value)}
+        type="text" value={searchCachValue==null? searchValue: searchCachValue} onChange={(e)=>setSearchCachValue(e.target.value)}
         placeholder={ar.navbar.searchPlaceholder}/>
         <button type='button' disabled={searchValue==''} onClick={()=>setSearchCachValue('')}
           className=' disabled:opacity-0'>
