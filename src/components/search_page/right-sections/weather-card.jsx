@@ -24,7 +24,7 @@ function WeatherCard({weather}) {
             </div>
             <div className="flex justify-between text-tiny">
                 {weather?.day?.slice(0, 5)?.map((_, i)=>{
-                    return <div className="flex flex-col items-center">
+                    return <div key={i} className="flex flex-col items-center">
                     <span className='font-semibold text-small'>
                         {_.temp}°C
                     </span>
