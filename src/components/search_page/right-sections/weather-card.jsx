@@ -10,7 +10,7 @@ function WeatherCard({weather}) {
           <span className="rounded-large bg-prime text-transparent select-none">cc</span>
           <span>{title}</span>
         </h4> */}
-        {weather && <div className='space-y-12'>
+        {weather && <div className='space-y-6'>
             <div className="flex justify-between items-center">
                 <p className="flex flex-col">
                     <span className='text-3xl font-bold'>
@@ -38,7 +38,7 @@ function WeatherCard({weather}) {
                 
             </div>
             
-            {weather.current.wind}
+            {/* {weather.current.wind} */}
         </div>}
       </div>
   )
