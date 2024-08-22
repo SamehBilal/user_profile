@@ -1,5 +1,6 @@
 "use client"
 import ListCard from "./list-card"
+import TradingCard from "./trading-card"
 import WeatherCard from "./weather-card"
 
 function RightSectoin({trendingData, tagsData, weather}) {
@@ -9,6 +10,7 @@ function RightSectoin({trendingData, tagsData, weather}) {
       <ListCard title="الاكثر رواجاً" subjects={trendingData} />
       <ListCard title="الأوسمة" subjects={tagsData} />
       <WeatherCard weather={weather} />
+      <TradingCard />
     </div>
   )
 }
