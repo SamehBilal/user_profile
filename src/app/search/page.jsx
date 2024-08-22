@@ -56,13 +56,16 @@ export default function Psge({}) {
         title: card?.title,
         desc: card?.excerpt,
         imgUrl: card?.thumbnail,
+        publishAt: card?.published_at,
         url: card?.slug
       }
-    }).filter(card=>card.ty!='reviews'&&card.ty!='videos') || []
-    // console.log('posts: ', processed)
+    }).sort((a, b) => new Date(b.publishAt) - new Date(a.publishAt))
+    .filter(card=>card.ty!='reviews'&&card.ty!='videos') || []
+    console.log('posts: ', processed)
     return processed
   }
   const processStore = (cards) => {
+    console.log('store cards', cards)
     const processed = cards?.map((card, index)=>{ // keeping the same sturcutre and number of elements
       return{
         type: 'products', 
@@ -77,6 +80,7 @@ export default function Psge({}) {
     return processed
   }
   const processvideos = (cards) => {
+    console.log('video cards', cards)
     const processed = cards?.map((card, index)=>{ // keeping the same sturcutre and number of elements
       const videoInfo = getYouTubeVideoInfo(card?.url)
       return{
@@ -101,7 +105,8 @@ export default function Psge({}) {
         imgUrl: card?.thumbnail,
         url: card?.slug
       }
-    }).filter(card=>card.ty=='reviews')|| []
+    }).sort((a, b) => new Date(b.publishAt) - new Date(a.publishAt))
+    .filter(card=>card.ty=='reviews')|| []
     // console.log('reviews: ', processed)
     return processed
   }
@@ -120,7 +125,6 @@ export default function Psge({}) {
 
       return newRes
   }
-  console.log('weather', weather)
 
   const getfetchedData = async () => {
       await axios.post(`${ApiBaseNet}/search`, {s:searchValue, for: '', PerPage: ''})

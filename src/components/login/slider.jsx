@@ -37,7 +37,7 @@ function Slider({setActiveSlide, backgrounds, activeInfo}) {
       pagination={{
         clickable: true,
         renderBullet: function (index, className) {
-          return '<span class="' + className + '">' + '</span>';
+          return '<span className="' + className + '">' + '</span>';
         },
       }}
       onSlideChange={(swiper) => {
