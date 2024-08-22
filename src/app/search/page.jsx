@@ -212,17 +212,17 @@ export default function Psge({}) {
   }, [isMounted])
 
   return (
-    <main className="pt-12 w-full min-h-screen relative overflow-hidden">
+    <main className="w-full min-h-screen overflow-hidden relative">
       <SearchParamsComponent setSearchTypeDropdownValue={setSearchTypeDropdownValue} setSearchValue={setSearchValue} />
       <ToasterComponent />
       
       <div className="absolute inset-0 w-full h-[70vh] animate-hue-change">
-          <div className="size-full bg-cover bg-no-repeat animate-background-transition"
-          style={{
-            backgroundImage: `url(${bgImg?.src || bgImg})`,
-            filter: 'blur(80px)',
-          }} ></div>
-        </div>
+        <div className="size-full bg-cover bg-no-repeat animate-background-transition"
+        style={{
+          backgroundImage: `url(${bgImg?.src || bgImg})`,
+          filter: 'blur(80px)',
+        }} ></div>
+      </div>
       <div className="absolute inset-0 size-full bg-gradient-to-b from-white/5 to-white via-white via-[70vh] dark:via-black dark:from-black/5 dark:to-black">
       </div>
  
