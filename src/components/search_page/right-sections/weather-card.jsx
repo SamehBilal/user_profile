@@ -1,43 +1,28 @@
 import React from 'react'
-import { Loader2Icon, SunIcon } from 'lucide-react'
+import WeatherDaysSlider from './weather-days-slider'
 
 function WeatherCard({weather}) {
     // console.log('weather', weather)
   
   return (
     // linear-gradient(135deg, #72EDF2 10%, #5151E5 100%);
-    <div className="bg-white/35 dark:bg-black/15 shadow-medium hover:bg-white/90 dark:hover:bg-black/90 transition w-full rounded-large p-2 space-y-2">
-        {/* <h4 className="text-darkGray dark:text-primaryLight drop-shadow-xl dark:drop-shadow-none font-bold flex gap-4 items-center mr-2">
-          <span className="rounded-large bg-prime text-transparent select-none">cc</span>
-          <span>{title}</span>
-        </h4> */}
-        {weather && <div className='space-y-6'>
-            <div className="flex justify-between items-center">
+    <div className="shadow-medium transition w-full h-52 rounded-large p-2 space-y-2 relative overflow-hidden group text-white">
+        <div className="absolute -top-48 left-1/2 -translate-x-1/2 rounded-full w-72 h-72 blur-3xl mix-blend bg-sky-700"></div>
+        <div className="absolute top-52 -left-24 -translate-y-1/2 rounded-full w-52 h-52 blur-3xl mix-blend bg-sky-500"></div>
+        <div className="absolute inset-0 bg-gradient-to-tl from-[#4fa5a8]/70 to-[#343490]/70 from-10% scale-110 transition-[background-image] duration-1000 ease-in-out group-hover:from-[#5151E5]/50 group-hover:to-[#72EDF2]/50"></div>
+        {weather && <div className='space-y-6 absolute inset-0 p-2'>
+            <div className="flex justify-between px-4 items-center">
                 <p className="flex flex-col">
                     <span className='text-3xl font-bold'>
                         {weather.current.temp}°C
                     </span>
-                    <span className="font-semibold text-gray-500">
+                    <span className="font-semibold text-gray-300">
                         Cairo, Egypt
                     </span>
                 </p>
-                <SunIcon className='text-yellow-400 size-16' />
+                <div className="bg-gradient-to-br from-yellow-500 to-orange-500 size-12 rounded-full"></div>
             </div>
-            <div className="flex justify-between text-tiny">
-                {weather?.day?.slice(0, 5)?.map((_, i)=>{
-                    return <div key={i} className="flex flex-col items-center">
-                    <span className='font-semibold text-small'>
-                        {_.temp}°C
-                    </span>
-                    <SunIcon className='text-gray-500 size-8' />
-                    <span className="font-semibold mt-1 text-sm">
-                        {_.time}:00
-                    </span>
-                    <span className="font-semibold text-gray-400">AM</span>
-                </div>
-                })}
-                
-            </div>
+            <WeatherDaysSlider weather={weather} />
             
             {/* {weather.current.wind} */}
         </div>}
