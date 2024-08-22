@@ -87,7 +87,7 @@ function TrandingCard() {
   },[isMounted, theme]);
 
   return (
-    <div className="h-96 w-full bg-white/35 dark:bg-black/15 shadow-medium hover:bg-white/90 dark:hover:bg-black/90 transition rounded-large ">
+    <div className="h-96 w-full bg-white/35 dark:bg-black/15 shadow-medium hover:bg-white/90 dark:hover:bg-black/90 transition rounded-large overflow-hidden">
         <div className="tradingview-widget-container" ref={container}>
             <div className="tradingview-widget-container__widget"></div>
         </div>

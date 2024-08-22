@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth Check</title>
+    <script>
+        window.onload = function () {
+            // Get the token from localStorage
+            var token = localStorage.getItem('jwt_token');
+
+            // Get the return URL from the current URL if provided
+            const urlParams = new URLSearchParams(window.location.search);
+            const return_url = urlParams.get('return_url');
+
+            // Check if return_url is provided
+            if (return_url) {
+                // Check if token exists
+                if (token) {
+                    // Redirect directly to the return URL with the token appended as a query parameter
+                    window.location.href = return_url + '?jwt_token=' + encodeURIComponent(token);
+                } else {
+                    // Redirect directly to the return URL without the token
+                    window.location.href = return_url;
+                }
+            } else {
+                // Display an error message if no return_url is provided
+                document.body.innerHTML = '<h3>Error: No return URL specified. Please provide a return_url parameter.</h3>';
+                console.error("No return URL specified.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h3>Checking for Token...</h3>
+</body>
+</html>
