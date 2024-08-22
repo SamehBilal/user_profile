@@ -118,3 +118,8 @@ body .swiper-pagination-bullet-active{
 .tile:nth-child(11n + 4):hover { background-color: rgb(var(--blue-rgb)); }
 .tile:nth-child(11n + 7):hover { background-color: rgb(var(--green-rgb)); }
 .tile:nth-child(11n + 10):hover { background-color: rgb(var(--yellow-rgb)); }
+
+
+nav > header {
+  @apply !max-w-grid !p-grid
+}

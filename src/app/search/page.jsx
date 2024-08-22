@@ -127,7 +127,7 @@ export default function Psge({}) {
   }
 
   const getfetchedData = async () => {
-      await axios.post(`${ApiBaseNet}/search`, {s:searchValue, for: '', PerPage: ''})
+      await axios.post(`${ApiBaseNet}/search`, {s:searchValue??'', for: '', PerPage: ''})
       .then(res=>{
         const results = res.data?.results
         // console.log('results', results)
@@ -135,7 +135,7 @@ export default function Psge({}) {
         const newSearchRes = processData({results})
         setNewSearchData(newSearchRes)
       }).catch(e=>{
-        console.error(e)
+        console.error(e.message)
         setFechedData([])
         toast.error(e.message)
       })
@@ -203,7 +203,7 @@ export default function Psge({}) {
   useEffect(()=>{
     setIsMounted(true)
     
-    if(isMounted && searchValue && searchValue?.length > 1){
+    if(isMounted){
       // console.log('fetchingData...')
       getfetchedData()
       checkLocation()

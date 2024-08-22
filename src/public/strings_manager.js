@@ -1,10 +1,12 @@
 import { ShoppingBag, BriefcaseBusiness, Newspaper, SquarePlay, SquareGanttChart } from "lucide-react"
+
 export const ar = {
     navbar: {
         "greeting": "صباح الفل",
         "searchPlaceholder": "عن ماذا تبحث اليوم",
         "searchAbout": {
-            title: "ابحث في",
+            title: "",
+            smallTitle: "",
             items: [
                 {title: "المتجر", desc: "ابحث عن منتجات في المتجر", icon: ShoppingBag, link:'/search?for=المتجر'},
                 {title: "المقالات", desc: "ابحث عن احدث المقالات", icon: Newspaper, link:'/search?for=المقالات'},
