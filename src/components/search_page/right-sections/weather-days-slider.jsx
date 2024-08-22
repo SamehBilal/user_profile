@@ -8,7 +8,7 @@ import "swiper/swiper-bundle.css";
 import 'swiper/css/effect-fade';
 import 'swiper/css/pagination';
 import 'swiper/css';
-import { ChevronLeft, SunIcon } from 'lucide-react'
+import { ChevronLeft, MoonIcon, SunIcon } from 'lucide-react'
 
 function WeatherDaysSlider({weather}) {
     const sliderRef = useRef()
@@ -39,7 +39,10 @@ function WeatherDaysSlider({weather}) {
                 <span className='font-semibold text-small'>
                     {_.temp}°
                 </span>
-                <SunIcon className='text-gray-300 size-8' />
+                {_.time>5 && _.time<19
+                ?<SunIcon className='text-gray-300 size-8' />
+                :<MoonIcon className='text-gray-300 size-8' />}
+                
                 <span className="font-semibold mt-1 text-sm">
                     {_.time}:00
                 </span>
