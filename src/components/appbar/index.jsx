@@ -94,33 +94,6 @@ function Appbar({shadow = null, bgTransparent=true, searchValue='', setSearchVal
 
       </NavbarMenu>
     </Navbar>
-    {/*
-    <nav className={`text-black dark:text-white appbar-bg-blurry
-    ${shadow? '':' shadow-md dark:shadow-zinc-300/20'} 
-    ${bgTransparent?'':'bg-white/50 dark:bg-black/50'}
-    w-screen fixed top-0 right-0 left-0 z-50`}>
-      <div className="p-grid max-w-grid flex justify-between items-center mx-auto px-8 py-2 ">
-        <div className="flex items-center justify-center gap-4">
-          <Image src={Logo} alt='ArabHardware' className='size-12 lg:mr-8' />
-          <SearchSection isExpanded={searchTypeDropdownPopoverShow} setIsExpanded={setSearchTypeDropdownPopoverShow}
-          typeValue={searchTypeDropdownValue} setTypeValue={setSearchTypeDropdownValue} searchValue={searchValue} setSearchValue={setSearchValue} />
-        </div>
-        
-        <PagesLinks setIsExpanded={setMoreDropdownPopoverShow} isExpanded={moreDropdownPopoverShow} />
-        <div className="flex flex-col justify-center items-between max-lg:hidden">
-          <NavbarTopMenu setTheme={setTheme} theme={theme} 
-          setMoreDropdownPopoverShow={setMoreDropdownPopoverShow} 
-          setUserDropdownPopoverShow={setUserDropdownPopoverShow} />
-
-          <MoreDropdown isExpanded={moreDropdownPopoverShow} setIsExpanded={setMoreDropdownPopoverShow} />
-          <GridDropdown isExpanded={gridDropdownPopoverShow} setIsExpanded={setGridDropdownPopoverShow} />
-          <UserDropdown isExpanded={userDropdownPopoverShow} setIsExpanded={setUserDropdownPopoverShow} />
-        </div>
-
-        
-      </div>
-</nav>
-        */}
     </>
   )
 }

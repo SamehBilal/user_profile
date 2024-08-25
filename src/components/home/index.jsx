@@ -1,83 +1,87 @@
 "use client"
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import Logo from '@/public/images/logo.png'
+import { ApiBaseNet } from "@/config/api";
+import toast from 'react-hot-toast';
+import ToasterComponent from "@/components/toaster_top"
+import axios from "axios";
+import { UserIcon } from "lucide-react";
+import { useTheme } from "next-themes";
+
+import OfficeBg from '@/public/images/backgrounds/office.jpg'
+import Logo from '@/public/images/logo_icon.png'
+import SearchSec from "./search";
+import ListCard from "../search_page/right-sections/list-card";
 
 function CommingSoon() {
-    // const router = useRouter()
-  
-    useEffect(()=>{
-      const countDownDate = new Date("Sep 30, 2024 00:00:00").getTime();
+  const { theme, setTheme } = useTheme();
+  const [isMounted, setIsMounted] = useState(false)
+  const [searchValue, setSearchValue] = useState('')
+  const [themeToggle, setThemeToggle] = useState(theme=='dark');
+  const [fetchedData, setFechedData] = useState(null)
+  const [terndingData, setTrendingData] = useState(null)
 
-      window.addEventListener('message', function(event) {
-        // List of allowed origins
-        const allowedOrigins = ['http://localhost:5500', 'https://arabhardware.net', 'https://d042-41-187-66-132.ngrok-free.app'];
-        console.log('allowedOrigins', allowedOrigins)
-        if (!allowedOrigins.includes(event.origin)) { 
-          console.log('not an origin')
-          return; // Ignore messages from unknown origins
-        }
-        if (event.data === 'getJWTToken') {
-            console.log('getJWTToken...')
-            const token = localStorage.getItem('jwt_token');
-            event.source.postMessage({ jwt_token: token }, event.origin);
-        }
+  const handleToggle = () => {
+    setThemeToggle((prev) => {
+      setTheme(prev?'light':'dark')
+      return !prev
     });
+  };
+
+
+  const getTrendingData = async () => {
+    await axios.post(`${ApiBaseNet}/trends`)
+    .then(res=>{
+      const results = res.data
+      setTrendingData(Array.isArray(results) ? results : [''])
+    }).catch(e=>{
+      console.error(e)
+      toast.error(e.message)
+      setTrendingData([])
+    })
+  }
+  useEffect(()=>{
+    setIsMounted(true)
     
-      const x = setInterval(function () {
-        const now = new Date().getTime();
-        const distance = countDownDate - now; // Calculate the time remaining
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    if(isMounted){
+      getTrendingData()
+    }
+  }, [isMounted])
     
-        // Display the countdown in the HTML
-        document.getElementById("days").innerHTML = days;
-        document.getElementById("hours").innerHTML = hours;
-        document.getElementById("minutes").innerHTML = minutes;
-        document.getElementById("seconds").innerHTML = seconds;
-    
-        if (distance < 0) { // If the countdown is over, display a message
-          clearInterval(x);
-          document.getElementById("countdown").innerHTML = "EXPIRED";
-        }
-      }, 1000);
-    }, [])
-    
-    return (
-  <div className="h-screen w-full flex flex-col justify-center items-center bg-gray-900 dark:bg-gradient-to-r from-red-400 to-rose-300">
-    <div className="absolute animate-bounce z-10 w-full h-[50%] flex justify-center items-end bg-gray-900 dark:bg-gradient-to-r from-red-400 to-rose-300">
-      <h1 className="sm:text-9xl text-7xl font-extrabold animate-[wiggle_1s_ease-in-out_infinite] text-primary font-mono">
-        هنشوفك</h1>
-    </div>
-    <div className="absolute w-full h-[50%] flex items-end justify-center bg-gray-900 dark:bg-gradient-to-r from-red-400 to-rose-300">
-      <h1 className="sm:text-7xl text-5xl animate-[wiggle_1s_ease-in-out_infinite] text-center text-white dark:text-gray-600 font-extrabold">
-        عن قريب</h1>
-    </div>
-  
-    <div id="countdown"
-      className="absolute top-20 flex items-center justify-center text-gray-200 dark:text-white sm:text-5xl text-3xl gap-4">
-        <div className="">
-          <span id="days" ></span>
-          <span className="text-primaryLight font-semibold pr-2">يوم</span>
+    return (<div className="w-screen h-screen overflow-hidden flex items-center justify-center bg-cover bg-no-repeat dark:bg-blend-saturation relative text-white"
+    style={{backgroundImage: `url(${OfficeBg?.src || OfficeBg})`}}>
+      <ToasterComponent />
+
+      <a href="https://arabhardware.net" className="absolute top-10 right-[5%]">
+        <Image src={Logo} alt="arabhardware" className="size-12" />
+      </a>
+      <a href="#" className="absolute top-10 left-[5%]">
+        <UserIcon className="size-12 text-white" />
+      </a>
+      <div className="w-4/5 h-4/5 max-w-grid flex items-center justify-center flex-col backdrop-blur-xl bg-white/20 dark:bg-transparent gap-[12%]">
+        <div className="flex items-center justify-center flex-col max-w-2xl w-full m-4 gap-4">
+          <p className="text-5xl text-white/50 font-bold">
+            <span className="text-white">صباح الخير! </span>
+            <span className="text-primaryLight">من عرب هاردوير</span>
+          </p>
+          <p className="text-lg">
+          قريباً ستتمكنون من استخدام صفحة "حسابي" لتحسين تجربتكم على منصات عرب هاردوير
+          </p>
+          <SearchSec searchValue={searchValue} setSearchValue={setSearchValue} />
         </div>
-        <div className="">
-          <span id="hours"></span>
-          <span className="text-secondary font-semibold pr-2">ساعة</span>
-        </div>
-        <div className="">
-          <span id="minutes"></span>
-          <span className="text-tritory font-semibold pr-2">دقيقة</span>
-        </div>
-        <div className="">
-          <span id="seconds"></span>
-          <span className="text-yellow-500 font-semibold pr-2">ثانية</span>
-        </div>
-    </div>
-    <Image src={Logo} alt="arabhardware" className="absolute w-24 top-[5%] right-[10%] z-10" />
-  </div>
-    );
+        <ListCard title="الاكثر رواجاً" subjects={terndingData} maxWidth="250px" sameOnDark={true} />
+      </div>
+      <button
+        className={`absolute bottom-[4%] left-1/2 -translate-x-1/2 w-20 h-6 transition-transform bg-primary`}
+        onClick={handleToggle}
+      >
+        <div
+          className={`absolute w-8 h-8 transform transition-transform -top-1
+          ${themeToggle ? 'bg-black' : 'bg-white'} ${themeToggle ? '-translate-x-12' : 'translate-x-0'}`}
+        />
+      </button>
+
+    </div>);
 }
 
 export default CommingSoon

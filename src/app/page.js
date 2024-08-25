@@ -1,11 +1,11 @@
 
 // import { useRouter } from 'next/navigation';
-import CommingSoon from "@/components/home";
+import Welcome from "@/components/home";
 
 export default function Home() {
   return(
     <>
-    <CommingSoon />
+    <Welcome />
     </>
   )
 }

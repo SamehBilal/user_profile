@@ -47,12 +47,29 @@ module.exports = {
           'wiggle': 'wiggle 1s ease-in-out infinite',
           'background-transition': 'background-transition 60s ease-in-out infinite',
           'hue-change': 'hue-change 30s ease-in-out infinite',
+          'dropdwon-appearance-in': 'dropdwon-appearance-in 250ms ease-out normal both'
       },
       keyframes: {
         'background-transition': {
           '0%, 50%, 100%': { transform: 'rotate(0deg) scale(1, 1)' },
           '25%': { transform: 'rotate(45deg) scale(2, 2)' },
           '75%': { transform: 'rotate(-45deg) scale(2, 2)' }
+        },
+        'dropdwon-appearance-in': {
+          '0%': {
+              opacity: 0,
+              transform: 'translate(50%, 10%) scale(0.85)',
+          },
+          '60%': {
+              opacity: 0.75,
+              'backface-visibility': 'hidden',
+              'webkit-font-smoothing': 'antialiased',
+              transform: 'translate(50%, 10%) scale(1.15)',
+          },
+          '100%': {
+              opacity: 1,
+              transform: 'translate(50%, 10%) scale(1)',
+          }
         },
         'hue-change': {
           '0%, 50%, 100%': { filter: 'hue-rotate(0deg)' },

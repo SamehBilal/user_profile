@@ -1,23 +1,30 @@
 import React from 'react'
 import { Loader2Icon } from 'lucide-react'
 
-function ListCard({title='', subjects=[]}) {
+function ListCard({title='', subjects=[], maxWidth, sameOnDark=false}) {
   
   return (
-    <div className="bg-white/35 dark:bg-black/15 shadow-medium hover:bg-white/90 dark:hover:bg-black/90 transition w-full rounded-large p-2 space-y-2">
-        <h4 className="text-darkGray dark:text-primaryLight drop-shadow-xl dark:drop-shadow-none font-bold flex gap-4 items-center mr-2">
-          <span className="rounded-large bg-prime text-transparent select-none">cc</span>
+    <div className={`${sameOnDark?'bg-black/15 hover:bg-black/90':'bg-white/35 hover:bg-white/90 dark:bg-black/15 dark:hover:bg-black/90'} 
+    shadow-medium transition w-full rounded-large p-2 space-y-2`}
+    style={maxWidth?{maxWidth}:{}}>
+        <h4 className={`${sameOnDark?'text-primaryLight':'text-darkGray dark:text-primaryLight '} 
+        drop-shadow-xl dark:drop-shadow-none font-bold flex gap-4 items-center mr-2`}>
+          <span className={`rounded-large ${sameOnDark?'bg-primaryLight':'bg-prime'} text-transparent select-none`}>cc</span>
           <span>{title}</span>
         </h4>
         <ol className="grid grid-cols-2 gap-y-1 gap-x-2 w-fit mr-2 text-tiny">
-          {!Array.isArray(subjects) && <li className="flex items-center text-darkGray dark:text-primaryLight">
+          {!Array.isArray(subjects) && <li className={`${sameOnDark?'text-primaryLight':'text-darkGray dark:text-primaryLight'} 
+          flex items-center `}>
               <Loader2Icon className='animate-spin' />
             </li>}
           {Array.isArray(subjects) && subjects.length > 0 && subjects.map((_, i)=>{
             return <li key={i}>
               <a href={_?.slug || _?.url} target="_blank" rel="noopener noreferrer" 
               className="flex items-center cursor-pointer">
-                <span className="text-darkGray dark:text-primaryLight drop-shadow-xl dark:drop-shadow-none text-small">{`${i+1}. `}</span>
+                <span className={`${sameOnDark?'text-primaryLight':'text-darkGray dark:text-primaryLight '} 
+                drop-shadow-xl dark:drop-shadow-none text-small`}>
+                  {`${i+1}. `}
+                </span>
                 <span className="line-clamp-2 ">
                   {_?.name || _?.title}
                 </span>
