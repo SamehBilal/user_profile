@@ -65,7 +65,7 @@ function CommingSoon() {
             <span className="text-primaryLight">من عرب هاردوير</span>
           </p>
           <p className="text-lg">
-          قريباً ستتمكنون من استخدام صفحة "حسابي" لتحسين تجربتكم على منصات عرب هاردوير
+          قريباً ستتمكنون من استخدام صفحة &quot;حسابي&quot; لتحسين تجربتكم على منصات عرب هاردوير
           </p>
           <SearchSec searchValue={searchValue} setSearchValue={setSearchValue} />
         </div>
