@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 import {Divider} from "@nextui-org/react";
 
-function SearchDropdown({isExpanded=false, setIsExpanded, setValue, flexRow=false }) {
+function SearchDropdown({isExpanded=false, setIsExpanded, setValue, flexRow=false, noRedirect=false }) {
   // console.log('isExpanded', isExpanded)
   const dropdownRef = useRef(null)
 
@@ -32,7 +32,7 @@ function SearchDropdown({isExpanded=false, setIsExpanded, setValue, flexRow=fals
     ref={dropdownRef}>
       {ar.navbar.searchAbout.items.map((item, i)=>{
         return <div key={i} className={`flex items-start justify-center gap-4 p-2 text-sm w-full cursor-pointer`}>
-          <Link href={item.link}
+          <Link href={noRedirect? '#':item.link}
             className={`flex ${flexRow?'flex-col':''} items-start justify-center gap-4 p-2 hover:bg-zinc-300`}
             onClick={()=>{setValue(item.title); setIsExpanded(false)}}>
               {!flexRow && <item.icon />}

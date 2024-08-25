@@ -9,6 +9,8 @@ function SearchSec({searchValue, setSearchValue}) {
 
     const handleOnSubmit = (e) => {
         e.preventDefault();
+        console.log(`/search?for=${typeValue}&s=${searchValue}`)
+        location.href = `/search?for=${typeValue}&s=${searchValue}`
     }
 
   return (
@@ -19,15 +21,15 @@ function SearchSec({searchValue, setSearchValue}) {
             <SearchIcon />
         </button>
         <div className="h-full flex-1">
-            <textarea type="text" id='home-search' onChange={(e)=>setSearchValue(e.target.value)} value={searchValue}
-            placeholder='كيف يمكننا مساعدتكم اليوم؟' rows={1}
-            className='px-4 py-2 placeholder:text-gray-600 border-0 outline-0 focus:outline-0 focus:border-0 w-full bg-transparent h-full resize-none' ></textarea>
+            <input type="text" id='home-search' onChange={(e)=>setSearchValue(e.target.value)} value={searchValue}
+            placeholder='كيف يمكننا مساعدتكم اليوم؟'
+            className='px-4 py-2 placeholder:text-gray-600 border-0 outline-0 focus:outline-0 focus:border-0 w-full bg-transparent h-full resize-none' />
         </div>
         <button id='search_dropdown_btn' type='button' onClick={()=>setIsExpanded(prev=>!prev)} className='pr-4 pl-6' >
             <ChevronDownIcon
             className={`text-primary ${isExpanded?'rotate-180':''} transition-all`} />
         </button>
-        <SearchDropdown isExpanded={isExpanded} setIsExpanded={setIsExpanded} setValue={setTypeValue} flexRow={true} />
+        <SearchDropdown isExpanded={isExpanded} setIsExpanded={setIsExpanded} setValue={setTypeValue} flexRow={true} noRedirect={true} />
     </form>
   )
 }
