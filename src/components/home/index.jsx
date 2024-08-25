@@ -23,7 +23,7 @@ function Welcome() {
   function getGreetingMessage() {
     const now = new Date();
     const hour = now.getHours();
-  console.log('hour', hour)
+    // console.log('hour', hour)
     if (hour < 13 && hour >= 4) {
       return 'صباح الخير! ';
     } else if (hour < 4 || hour >= 13) {
