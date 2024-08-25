@@ -18,7 +18,6 @@ function CommingSoon() {
   const [isMounted, setIsMounted] = useState(false)
   const [searchValue, setSearchValue] = useState('')
   const [themeToggle, setThemeToggle] = useState(theme=='dark');
-  const [fetchedData, setFechedData] = useState(null)
   const [terndingData, setTrendingData] = useState(null)
 
   const handleToggle = () => {
@@ -27,7 +26,6 @@ function CommingSoon() {
       return !prev
     });
   };
-
 
   const getTrendingData = async () => {
     await axios.post(`${ApiBaseNet}/trends`)
@@ -40,6 +38,7 @@ function CommingSoon() {
       setTrendingData([])
     })
   }
+  
   useEffect(()=>{
     setIsMounted(true)
     
