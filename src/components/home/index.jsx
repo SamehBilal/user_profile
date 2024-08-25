@@ -13,12 +13,25 @@ import Logo from '@/public/images/logo_icon.png'
 import SearchSec from "./search";
 import ListCard from "../search_page/right-sections/list-card";
 
-function CommingSoon() {
+function Welcome() {
   const { theme, setTheme } = useTheme();
   const [isMounted, setIsMounted] = useState(false)
   const [searchValue, setSearchValue] = useState('')
   const [themeToggle, setThemeToggle] = useState(theme=='dark');
   const [terndingData, setTrendingData] = useState(null)
+
+  function getGreetingMessage() {
+    const now = new Date();
+    const hour = now.getHours();
+  console.log('hour', hour)
+    if (hour < 13 && hour >= 4) {
+      return 'صباح الخير! ';
+    } else if (hour < 4 || hour >= 13) {
+      return 'مساء الخير! ';
+    } else {
+      return 'يسعد اوقاتك! ';
+    }
+  }
 
   const handleToggle = () => {
     setThemeToggle((prev) => {
@@ -60,7 +73,7 @@ function CommingSoon() {
       <div className="w-4/5 h-4/5 max-w-grid flex items-center justify-center flex-col backdrop-blur-xl bg-white/20 dark:bg-transparent gap-[12%]">
         <div className="flex items-center justify-center flex-col max-w-2xl w-full m-4 gap-4">
           <p className="text-5xl text-white/50 font-bold">
-            <span className="text-white">صباح الخير! </span>
+            <span className="text-white">{getGreetingMessage()}</span>
             <span className="text-primaryLight">من عرب هاردوير</span>
           </p>
           <p className="text-lg">
@@ -83,4 +96,4 @@ function CommingSoon() {
     </div>);
 }
 
-export default CommingSoon
+export default Welcome
