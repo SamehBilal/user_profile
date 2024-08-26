@@ -48,11 +48,11 @@ function Footer() {
             </div>
 
             {/* red card */}
-            <div className="p-4 w-full rounded-lg my-8 h-56 max-w-[1212px] bg-cover bg-right-top bg-no-repeat flex items-center justify-center relative"
+            <div className="p-4 w-full rounded-lg my-8 h-44 max-w-[1212px] bg-cover bg-right-top bg-no-repeat flex items-center justify-center relative"
             style={{
                 backgroundImage: `linear-gradient(90deg, rgba(0, 0, 0, 0.63) 0%, rgba(132, 132, 132, 0.126) 100%), url(${FooterBg.src})`,
             }}>
-                <div className="flex items-center justify-around text-white w-full">
+                <div className="flex items-center justify-between p-grid text-white w-full">
                     <div className="flex items-center justify-center gap-4">
                         <p>وثيقة الخصوصية</p>
                         <Divider orientation='vertical' className='bg-white w-0.5 h-6' />
@@ -61,9 +61,9 @@ function Footer() {
                         <p>خريطة الموقع</p>
                     </div>
 
-                    <div className="flex items-center justify-center gap-4 text-white">
+                    <div className="flex items-center justify-center xl:gap-8 gap-4 text-white">
                         {icons.map((_, i)=>{
-                            return <Image key={i} src={_} alt='social icon' className='size-6' />
+                            return <Image key={i} src={_} alt='social icon' className='xl:size-10 size-6' />
                         })}
                     </div>
                 </div>
