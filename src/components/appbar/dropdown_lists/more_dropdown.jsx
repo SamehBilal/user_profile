@@ -33,7 +33,7 @@ const MoreDropdown = ({isExpanded, setIsExpanded}) => {
     ${isExpanded?'animate-appearance-in':'hidden'}`} ref={dropdownRef}>
       <div className="grid grid-cols-2 grid-rows-2">
         {moreData.map((logo, index)=>{
-          return <div className="flex items-center justify-center cursor-pointer hover:bg-zinc-400 rounded-lg p-2">
+          return <div key={index} className="flex items-center justify-center cursor-pointer hover:bg-zinc-400 rounded-lg p-2">
           <Image src={logo} alt='ArabHardware' className='size-12 object-contain' />
           </div>
         })}
