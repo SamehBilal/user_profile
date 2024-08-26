@@ -64,19 +64,19 @@ function Welcome() {
     style={{backgroundImage: `url(${OfficeBg?.src || OfficeBg})`}}>
       <ToasterComponent />
 
-      <a href="https://arabhardware.net" className="absolute top-10 right-[5%]">
+      <a href="https://arabhardware.net" className="absolute top-[5%] right-[5%]">
         <Image src={Logo} alt="arabhardware" className="size-12" />
       </a>
-      <a href="#" className="absolute top-10 left-[5%]">
+      <a href="#" className="absolute top-[5%] left-[5%]">
         <UserIcon className="size-12 text-white" />
       </a>
-      <div className="w-4/5 h-4/5 max-w-grid flex items-center justify-center flex-col backdrop-blur-xl bg-white/20 dark:bg-transparent gap-[12%]">
+      <div className="xl:w-3/4 w-4/5 h-3/4 max-w-grid flex items-center justify-center flex-col backdrop-blur-xl bg-white/20 dark:bg-transparent gap-[12%]">
         <div className="flex items-center justify-center flex-col max-w-2xl w-full m-4 gap-4">
           <p className="text-5xl text-white/50 font-bold">
             <span className="text-white">{getGreetingMessage()}</span>
             <span className="text-primaryLight">من عرب هاردوير</span>
           </p>
-          <p className="text-lg">
+          <p className="text-lg mt-4">
           قريباً ستتمكنون من استخدام صفحة &quot;حسابي&quot; لتحسين تجربتكم على منصات عرب هاردوير
           </p>
           <SearchSec searchValue={searchValue} setSearchValue={setSearchValue} />

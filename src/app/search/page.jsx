@@ -130,7 +130,7 @@ export default function Psge({}) {
       await axios.post(`${ApiBaseNet}/search`, {s:searchValue??'', for: '', PerPage: ''})
       .then(res=>{
         const results = res.data?.results
-        // console.log('results', results)
+        console.log('results', results)
         setFechedData(results)
         const newSearchRes = processData({results})
         setNewSearchData(newSearchRes)
