@@ -1,69 +1,80 @@
-import React, { useEffect, useMemo } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import Image from 'next/image'
+import OfficeBg from '@/public/images/backgrounds/office.jpg'
+import Logo from '@/public/images/logos/footer-logo.png'
+import FooterBg from '@/public/images/footer/footer-bg.png'
+import { footerData } from './data'
 import { Divider } from '@nextui-org/react'
-import LogoImg from '@/public/images/logo_icon.png'
-import GooglePlay from '../ui/icons/google-play'
-import AppStore from '../ui/icons/app-store'
-import Facebook from '../ui/icons/facebook'
-import Youtube from '../ui/icons/youtube'
-import Instagram from '../ui/icons/instagram'
-import LinkedIn from '../ui/icons/linkedin'
-import Tiktok from '../ui/icons/tiktok'
-import X from '../ui/icons/x'
 
-function BoldText ({text}) {
-    return <p className="font-bold text-white text-large">{text}</p>
-}
+import xIcon from '@/public/images/icons/x.svg'
+import facebookIcon from '@/public/images/icons/facebook.svg'
+import instagramIcon from '@/public/images/icons/instagram.svg'
+import linkedinIcon from '@/public/images/icons/linkedin.svg'
+import tiktokIcon from '@/public/images/icons/tiktok.svg'
+import youtubeIcon from '@/public/images/icons/youtube.svg'
+import LeftSlider from './left-slider'
+
 
 function Footer() {
     const currentYear = useMemo(() => new Date().getFullYear(), []);
+    const [currentActive, setCurrentActive] = useState(null)
+
+    const icons = [
+        youtubeIcon, xIcon,tiktokIcon, linkedinIcon, instagramIcon, facebookIcon, 
+    ]
+
   return (
-    <footer className='w-screen py-10 lg:py-16 flex flex-col items-start justify-center bg-black relative text-zinc-400'>
-        <div className="p-grid max-w-grid w-full grid grid-cols-12 gap-4 items-center justify-center">
-            <div className="space-y-2 col-span-12 lg:col-span-5 ml-4">
-                <Image src={LogoImg} alt='arabhardware logo' className='size-24' />
-                <BoldText text="عرب هاردوير" />
-                <p>واحد من أكبر المجتمعات التقنية فى الشرق الأوسط تتحدث عن أحدث التقنيات فى مجال الهاردوير والألعاب والهواتف</p>
-            </div>
+    <footer className='w-screen py-10 lg:py-16 h-svh bg-black relative text-zinc-400'
+    style={{backgroundImage: `url(${OfficeBg.src})`}}>
+        <div className="bg-gradient-to-b dark:from-black from-white from-10% dark:to-[#031d26]/10 to-black/10 absolute inset-0 backdrop-blur-sm" />
 
-            <div className="space-y-2 col-span-12 lg:col-span-4">
-                <BoldText text='القائمة' />
-                <div className="grid grid-cols-2 grid-rows-4 gap-4 items-center justify-center">
-                    <p>عن عرب هاردوير</p>
-                    <p>اتصل بنا</p>
-                    <p>الرياضة الالكترونية</p>
-                    <p>فريق التحرير</p>
-                    <p>وثيقة الخصوصية</p>
-                    <p>خريطة الموقع</p>
-                </div>
-            </div>
-
-            <div className="space-y-4 col-span-12 lg:col-span-3">
-                <div className="space-y-2">
-                    <BoldText text='قريباً تطبيقات الموبايل' />
-                    <div className="flex items-center gap-4">
-                        <GooglePlay />
-                        <AppStore />
+        <div className="absolute inset-0 flex flex-col items-center justify-between max-w-grid p-grid">
+            <div className="flex items-end justify-between w-full my-8 flex-1 max-w-[1252px]">
+                
+                <div className="flex justify-between items-start flex-col w-full gap-4 mb-10">
+                    <Image src={Logo} alt='arabhardware logo' className='size-24 object-contain dark:filter dark:invert' />
+                    <div className="flex items-center justify-between text-black dark:text-white gap-8 text-lg">
+                        {footerData?.map((_, i)=>{
+                            return <p key={i} className='' onClick={()=>setCurrentActive(i)}>
+                                {_.title}
+                            </p>
+                        })}
                     </div>
                 </div>
-                <div className="space-y-2">
-                    <BoldText text='تابعونا على' />
-                    <div className="flex items-center gap-2 flex-wrap">
-                        <Facebook size={30} />
-                        <X size={30} />
-                        <Youtube size={30} />
-                        <Instagram size={30} />
-                        <Tiktok size={30} />
-                        <LinkedIn size={30} />
-                    </div>
+                <Divider orientation='vertical' className='bg-black dark:bg-white h-52'/>
+                <div className="w-full h-full">
+                    <LeftSlider data={footerData[currentActive]?.sections} />
                 </div>
             </div>
-        </div>
-        <Divider className="my-4" />
-        <div className="p-grid max-w-grid w-full">
-            <p className="">جميع الحقوق محفوظة لعرب هاردوير © 
-            <span>{currentYear}</span>
-            </p>
+
+            {/* red card */}
+            <div className="p-4 w-full rounded-lg my-8 h-56 max-w-[1212px] bg-cover bg-right-top bg-no-repeat flex items-center justify-center relative"
+            style={{
+                backgroundImage: `linear-gradient(90deg, rgba(0, 0, 0, 0.63) 0%, rgba(132, 132, 132, 0.126) 100%), url(${FooterBg.src})`,
+            }}>
+                <div className="flex items-center justify-around text-white w-full">
+                    <div className="flex items-center justify-center gap-4">
+                        <p>وثيقة الخصوصية</p>
+                        <Divider orientation='vertical' className='bg-white w-0.5 h-6' />
+                        <p>فريق التحرير</p>
+                        <Divider orientation='vertical' className='bg-white w-0.5 h-6' />
+                        <p>خريطة الموقع</p>
+                    </div>
+
+                    <div className="flex items-center justify-center gap-4 text-white">
+                        {icons.map((_, i)=>{
+                            return <Image key={i} src={_} alt='social icon' className='size-6' />
+                        })}
+                    </div>
+                </div>
+
+                
+                <div className=" absolute w-fit left-1/2 -translate-x-1/2 bottom-4 text-white">
+                    <p className="">جميع الحقوق محفوظة لعرب هاردوير © 
+                    <span>{currentYear}</span>
+                    </p>
+                </div>
+            </div>
         </div>
     </footer>
   )

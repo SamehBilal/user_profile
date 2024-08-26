@@ -1,10 +1,16 @@
 // components/MoreDropdown.js
 
 import { useRef, useEffect } from 'react';
-import { moreData } from './data';
+import Image from 'next/image';
+import AhwNet from '@/public/images/logos/ahw_logo.svg'
+import AhwBusiness from '@/public/images/logos/ahw_business.png'
+import AhwStore from '@/public/images/logos/ahw_store.png'
+import AhwGaming from '@/public/images/logos/ahw_gaming.png'
 
 const MoreDropdown = ({isExpanded, setIsExpanded}) => {
   const dropdownRef = useRef(null)
+
+  const moreData = [AhwNet, AhwGaming, AhwBusiness, AhwStore]
 
   const handleOutsideClick = (e) => {
     const moreBtn = document.getElementById('more_dropdown_trigger')
@@ -14,6 +20,7 @@ const MoreDropdown = ({isExpanded, setIsExpanded}) => {
       setIsExpanded(false);
     }
   };
+
   useEffect(() => {
     document.addEventListener('mousedown', handleOutsideClick);
     return () => {
@@ -22,28 +29,12 @@ const MoreDropdown = ({isExpanded, setIsExpanded}) => {
   }, []);
 
   return (
-    <div className={`absolute top-20 w-[calc(1000px+10%)] max-w-grid bg-white text-black z-20 left-1/2 -translate-x-1/2 origin-top rounded-lg p-4 shadow-lg
-    ${isExpanded?'animate-scale-up':'hidden'}`} ref={dropdownRef}>
-      <div className="w-full flex items-start justify-around">
-        {moreData.map((head, index)=>{
-          return <div key={index} >
-          {head.title? 
-          <div className="space-y-8" key={index}>
-          <h4 className='font-bold'>{head.title}</h4>
-          <ul className='space-y-2'>
-            {head.list.map((el, i)=>{
-              return <p key={i} className="">
-                {el.title}
-              </p>
-            })}
-          </ul>
-        </div>
-        :<div className='space-y-2'>
-          {head.map((Comp, i)=>{
-            return <Comp key={i} />
-          })}
-        </div>
-        }
+    <div className={`absolute top-20 w-fit bg-white text-black z-20 left-1/4 origin-top rounded-lg shadow-lg
+    ${isExpanded?'animate-appearance-in':'hidden'}`} ref={dropdownRef}>
+      <div className="grid grid-cols-2 grid-rows-2">
+        {moreData.map((logo, index)=>{
+          return <div className="flex items-center justify-center cursor-pointer hover:bg-zinc-400 rounded-lg p-2">
+          <Image src={logo} alt='ArabHardware' className='size-12 object-contain' />
           </div>
         })}
       </div>

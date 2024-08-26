@@ -1,29 +1,29 @@
 
 import Logo from '@/public/images/logo.png'
 import AhwLogo from '@/public/images/logos/ahw_logo.svg'
-import AhwBusinessLogo from '@/public/images/logos/ahw_business_logo.svg'
-import AhwStoreLogo from '@/public/images/logos/ahw_store_logo.png'
-import AhwGamingLogo from '@/public/images/logos/ahw_gaming_logo.svg'
+import AhwBusinessLogo from '@/public/images/logos/ahw_business.png'
+import AhwStoreLogo from '@/public/images/logos/ahw_store.png'
+import AhwGamingLogo from '@/public/images/logos/ahw_gaming.png'
 import Image from 'next/image'
 
 const AhwNet = () => {
-    return <div className="flex items-center justify-center cursor-pointer hover:bg-zinc-400 rounded-t-lg p-4">
-    <Image src={AhwLogo} alt='ArabHardware net' className=' size-12' />
+    return <div className="flex items-center justify-center cursor-pointer hover:bg-zinc-400 rounded-lg p-2">
+    <Image src={AhwLogo} alt='ArabHardware net' className='size-12 object-contain' />
     </div>
 }
 const AhwGaming = () => {
-    return <div className="flex items-center justify-center cursor-pointer hover:bg-zinc-400 p-4">
-    <Image src={AhwGamingLogo} alt='ArabHardware net' className=' w-20 h-fit ' />
+    return <div className="flex items-center justify-center cursor-pointer hover:bg-zinc-400 rounded-lg p-2">
+    <Image src={AhwGamingLogo} alt='ArabHardware net' className=' size-12 object-contain' />
     </div>
 }
 const AhwBusiness = () => {
-    return <div className="flex items-center justify-center cursor-pointer hover:bg-zinc-400  p-4">
-    <Image src={AhwBusinessLogo} alt='ArabHardware business' className=' w-20 h-fit object-contain' />
+    return <div className="flex items-center justify-center cursor-pointer hover:bg-zinc-400  rounded-lg p-2">
+    <Image src={AhwBusinessLogo} alt='ArabHardware business' className='size-12 object-contain' />
     </div>
 }
 const AhwStore = () => {
-    return <div className="flex items-center justify-center cursor-pointer hover:bg-zinc-400 p-4">
-    <Image src={AhwStoreLogo} alt='ArabHardware store' className=' h-12 object-contain w-fit rounded-b-lg' />
+    return <div className="flex items-center justify-center cursor-pointer hover:bg-zinc-400 rounded-lg p-2">
+    <Image src={AhwStoreLogo} alt='ArabHardware store' className=' size-12 object-contain' />
     </div>
 }
 export const moreData = [
