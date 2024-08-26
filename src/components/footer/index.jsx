@@ -17,7 +17,7 @@ import LeftSlider from './left-slider'
 
 function Footer() {
     const currentYear = useMemo(() => new Date().getFullYear(), []);
-    const [currentActive, setCurrentActive] = useState(null)
+    const [currentActive, setCurrentActive] = useState(0)
 
     const icons = [
         youtubeIcon, xIcon,tiktokIcon, linkedinIcon, instagramIcon, facebookIcon, 
