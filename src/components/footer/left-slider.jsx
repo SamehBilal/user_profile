@@ -23,7 +23,7 @@ function LeftSlider({data=[]}) {
         <div className="h-full w-full flex flex-col items-start justify-end text-tiny">
             {data.map((_, i)=>{
             return  <div key={i} 
-            className={`!h-10 w-full text-white relative`}>
+            className={`!h-10 w-full text-white dark:text-black relative`}>
                 <span className={`absolute h-full top-0 right-0 transition-all duration-[3s] ease-in bg-gradient-to-l to-white dark:to-black from-[#F95560] 
                     ${i==current||0? 'w-full': 'w-0.5'}`}></span>
                 <span className='absolute inset-0 flex items-center justify-start px-4'>{_.title}</span>
