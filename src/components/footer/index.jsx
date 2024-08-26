@@ -35,7 +35,7 @@ function Footer() {
                     <Image src={Logo} alt='arabhardware logo' className='size-24 object-contain dark:filter dark:invert' />
                     <div className="flex items-center justify-between text-black dark:text-white gap-8 text-lg">
                         {footerData?.map((_, i)=>{
-                            return <p key={i} className='' onClick={()=>setCurrentActive(i)}>
+                            return <p key={i} className=' cursor-pointer' onClick={()=>setCurrentActive(i)}>
                                 {_.title}
                             </p>
                         })}

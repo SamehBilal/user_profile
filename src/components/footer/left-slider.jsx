@@ -11,20 +11,20 @@ function LeftSlider({data=[]}) {
     useEffect(()=>{
         const timer = setInterval(()=>{
         setCurrent(prev=>{
-            if(prev+1<data.length-1) return prev+1
+            if(prev+1<data.length) return prev+1
             else return 0
         })
         }, 6000) 
         return () => clearInterval(timer)
-    }, [])
+    }, [data])
 
   return (
     <div className='w-full h-full grid grid-cols-3 items-end'>
-        <div className="h-full w-full flex flex-col items-start justify-end text-tiny gap-2">
+        <div className="h-full w-full flex flex-col items-start justify-end text-tiny gap-4">
             {data.map((_, i)=>{
             return  <div key={i} 
-            className={`!h-8 w-full text-black dark:text-white relative`}>
-                <span className={`absolute h-full top-0 right-0 transition-all duration-[3s] ease-in bg-gradient-to-l to-white dark:to-black from-[#F95560] 
+            className={`!h-6 w-full text-black dark:text-white relative cursor-pointer`} onClick={()=>setCurrent(i)}>
+                <span className={`absolute h-full top-0 right-0 transition-all duration-[1.5s] ease-soft-spring bg-gradient-to-l to-transparent from-[#F95560] 
                     ${i==current||0? 'w-full': 'w-0.5'}`}></span>
                 <span className='absolute inset-0 flex items-center justify-start px-4'>{_.title}</span>
             </div> 
