@@ -20,8 +20,13 @@ function Footer() {
     const currentYear = useMemo(() => new Date().getFullYear(), []);
     const [currentActive, setCurrentActive] = useState(0)
 
-    const icons = [
-        youtubeIcon, xIcon,tiktokIcon, linkedinIcon, instagramIcon, facebookIcon, 
+    const socialIcons = [
+        {icon: youtubeIcon, title: "youtube", href:"https://www.youtube.com/@Arabhardware"}, 
+        {icon: xIcon, title: "x", href:"https://x.com/arabhardware"}, 
+        {icon: tiktokIcon, title: "tiktok", href:"https://www.tiktok.com/@arabhardware"}, 
+        {icon: linkedinIcon, title: "linkedin", href:"https://www.linkedin.com/company/arabhardware.net"}, 
+        {icon: instagramIcon, title: "instagram", href:"https://www.instagram.com/arabhardware/"}, 
+        {icon: facebookIcon, title: "facebook", href:"https://www.facebook.com/arabhardware/"}, 
     ]
 
   return (
@@ -63,8 +68,10 @@ function Footer() {
                     </div>
 
                     <div className="flex items-center justify-center xl:gap-8 gap-4 text-white">
-                        {icons.map((_, i)=>{
-                            return <Image key={i} src={_} alt='social icon' className='xl:size-10 size-6' />
+                        {socialIcons.map((_, i)=>{
+                            return <a key={i} href={_.href} target="_blank" rel="noopener noreferrer">
+                                <Image src={_.icon} alt={_.title} className='xl:size-10 size-6' />
+                            </a>
                         })}
                     </div>
                 </div>
