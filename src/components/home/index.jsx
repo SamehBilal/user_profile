@@ -70,7 +70,7 @@ function Welcome() {
       <a href="#" className="absolute top-[5%] left-[5%]">
         <UserIcon className="size-12 text-white" />
       </a>
-      <div className="xl:w-3/4 w-4/5 h-3/4 max-w-grid flex items-center justify-center flex-col backdrop-blur-xl bg-white/20 dark:bg-transparent gap-[12%]">
+      <div className="xl:w-3/4 w-4/5 h-3/4 max-w-grid flex items-center justify-center flex-col backdrop-blur-[8px] bg-white/20 dark:bg-transparent gap-[12%]">
         <div className="flex items-center justify-center flex-col max-w-2xl w-full m-4 gap-4">
           <p className="text-5xl text-white/50 font-bold">
             <span className="text-white">{getGreetingMessage()}</span>
