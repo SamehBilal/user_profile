@@ -20,7 +20,7 @@ function LeftSlider({data=[]}) {
 
   return (
     <div className='w-full h-full grid grid-cols-3 items-end'>
-        <div className="h-full w-full flex flex-col items-start justify-end text-tiny gap-4">
+        <div className="h-full w-full flex flex-col items-start justify-end gap-4">
             {data.map((_, i)=>{
             return  <div key={i} 
             className={`!h-6 w-full text-black dark:text-white relative cursor-pointer`} onClick={()=>setCurrent(i)}>
