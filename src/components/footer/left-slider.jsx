@@ -30,7 +30,7 @@ function LeftSlider({data=[]}) {
             </div> 
             })}
         </div>
-        <div className="rounded-large footer-card overflow-hidden h-72 bg-white/50 backdrop:blur-lg col-span-2 text-black">
+        <div className="rounded-large footer-card overflow-hidden h-72 bg-white/50 backdrop:blur-lg col-span-2 text-black opacity-0">
             <Image src={data[current].img} alt={data[current].title} className='w-full h-2/3' />
             <div className="flex items-center justify-center h-1/3">
                 <div className="relatve w-fit h-fit overflow-visible relative">

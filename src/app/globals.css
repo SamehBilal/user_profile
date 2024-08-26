@@ -126,5 +126,46 @@ nav > header {
 
 .footer-card{
   box-shadow: 0px 0px 30px 0px #F9556040, 0px 0px 16px 4px #0000000D, 0px 4px 4px 0px #00000040;
+}
+.welcome-message{
+  animation: welcome-message 4s 2s both cubic-bezier(0.155, 1.105, 0.295, 1.12);
+}
+.welcome-message-from{
+  animation: welcome-message-from 4s 2s both cubic-bezier(0.155, 1.105, 0.295, 1.12);
+}
 
+@keyframes welcome-message {
+  0% {
+    opacity: 50%;
+    transform: translate(-150px, 0);
+  }
+  10%{
+    opacity: 50%;
+    transform: translateX(-150px, 10px);
+  }
+  15%{
+    opacity: 50%;
+    transform: translate(-150px, -20px);
+  }
+  20%{
+    opacity: 100%;
+    transform: translate(-150px, 0px);
+  }
+  50%{
+    transform: translate(-150px, 0px);
+  }
+  70% {
+    transform: translate(0, 0);
+  }
+}
+@keyframes welcome-message-from {
+  0% {
+    opacity: 0%;
+  }
+  50%{
+    opacity: 0%;
+  }
+  55%{
+    opacity: 100%;
+  }
 }

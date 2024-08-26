@@ -1,3 +1,4 @@
+"use client"
 import React, { useEffect, useMemo, useState } from 'react'
 import Image from 'next/image'
 import OfficeBg from '@/public/images/backgrounds/office.jpg'
