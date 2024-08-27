@@ -17,6 +17,7 @@ export default function SearchParamsComponent({setSearchTypeDropdownValue, setSe
 
       let forWhat = searchParams.get('for') || ''
       let search = searchParams.get('s') || ''
+      if(!searchParams.get('s')) location.href = '/'
       setSearchTypeDropdownValue(forWhat)
       setSearchValue(search)
     }, [])

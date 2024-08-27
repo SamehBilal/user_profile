@@ -81,7 +81,7 @@ function Welcome() {
           </p>
           <SearchSec searchValue={searchValue} setSearchValue={setSearchValue} />
         </div>
-        <ListCard title="الاكثر رواجاً" subjects={terndingData} maxWidth="250px" sameOnDark={true} />
+        <ListCard title="الاكثر رواجاً" subjects={terndingData} maxWidth="350px" sameOnDark={true} />
       </div>
       <button
         className={`absolute bottom-[4%] left-1/2 -translate-x-1/2 w-20 h-6 transition-transform bg-primary`}
