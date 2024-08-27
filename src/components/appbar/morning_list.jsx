@@ -11,12 +11,13 @@ function MorningList() {
   return (
     <div className="block text-sm text-left leading-tight">
         <span className="inline-flex flex-col h-[calc(theme(fontSize.sm)*theme(lineHeight.tight))] md:h-[calc(theme(fontSize.base)*theme(lineHeight.tight))] overflow-hidden">
-            <ul className="block animate-morning-slide text-left leading-tight [&_li]:block">
+            {/* <ul className="block animate-morning-slide text-left leading-tight [&_li]:block">
               {list.map((_, i)=>{
                 return <li key={i}>{_.ar}</li>
               })}
               <li aria-hidden={true}>{list[list.length-1].ar}</li>
-            </ul>
+            </ul> */}
+            صباح الفل
         </span>
     </div>
   )

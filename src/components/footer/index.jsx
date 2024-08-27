@@ -6,6 +6,7 @@ import Logo from '@/public/images/logos/footer-logo.png'
 import FooterBg from '@/public/images/footer/footer-bg.png'
 import { footerData } from './data'
 import { Divider } from '@nextui-org/react'
+import { useTheme } from 'next-themes'
 
 import xIcon from '@/public/images/icons/x.svg'
 import facebookIcon from '@/public/images/icons/facebook.svg'
@@ -19,6 +20,7 @@ import LeftSlider from './left-slider'
 function Footer() {
     const currentYear = useMemo(() => new Date().getFullYear(), []);
     const [currentActive, setCurrentActive] = useState(0)
+    const {theme, setTheme} = useTheme();
 
     const socialIcons = [
         {icon: youtubeIcon, title: "youtube", href:"https://www.youtube.com/@Arabhardware"}, 
@@ -41,8 +43,12 @@ function Footer() {
                     <Image src={Logo} alt='arabhardware logo' className='size-24 object-contain dark:filter dark:invert' />
                     <div className="flex items-center justify-between text-black dark:text-white gap-8 text-lg">
                         {footerData?.map((_, i)=>{
-                            return <p key={i} className=' cursor-pointer' onClick={()=>setCurrentActive(i)}>
-                                {_.title}
+                            return <p key={i} onClick={()=>setCurrentActive(i)}
+                            className='relative cursor-pointer overflow-visible' >
+                                <span>{_.title}</span>
+                                <span className={`absolute h-1 w-2/5 min-w-6 left-1/2 -translate-x-1/2 top-[calc(100%+8px)] bg-primaryLight overflow-visible ${currentActive==i?'':'hidden'}`}>
+                                    <span className={`absolute size-2 bg-white dark:bg-black -top-0.5 -right-1 dark:right-auto dark:-left-1 z-10 transition-all`}></span>
+                                </span>
                             </p>
                         })}
                     </div>

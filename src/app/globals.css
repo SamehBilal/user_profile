@@ -29,6 +29,8 @@
   --yellow-rgb: 253 224 71;
   
   --background-rgb: 0 0 0;
+
+  --timing: 3000ms
 }
 body { overflow-x: hidden; scroll-behavior: smooth;}
 *{ box-sizing: border-box; margin: 0; padding: 0; border: 0; outline: 0; }
@@ -167,5 +169,27 @@ nav > header {
   }
   55%{
     opacity: 100%;
+  }
+}
+
+.rotating-text {
+  animation: slideUp var(--timing) infinite;
+}
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  25% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  75% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-50px);
   }
 }

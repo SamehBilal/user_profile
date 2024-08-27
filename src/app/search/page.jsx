@@ -27,6 +27,7 @@ export default function Psge({}) {
   const [newSearchData, setNewSearchData] = useState(null)
   const [weather, setWeather] = useState(null)
   const [terndingData, setTrendingData] = useState(null)
+  const [dailyNews, setDailyNews] = useState(null)
 
   function getYouTubeVideoInfo(url) {
     const regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#\&\?]*).*/;
@@ -175,6 +176,19 @@ export default function Psge({}) {
         setTrendingData([])
       })
   }
+  const getDailyNews = async () => {
+    console.log('get daily news')
+      await axios.post(`${ApiBaseNet}/daily-news`)
+      .then(res=>{
+        const results = res.data
+        console.log('daily news result', results)
+        setDailyNews(Array.isArray(results) ? results : [])
+      }).catch(e=>{
+        console.error(e)
+        toast.error(e.message)
+        setDailyNews([])
+      })
+  }
 
   const checkLocation = () => {
     if ('geolocation' in navigator) {
@@ -208,6 +222,7 @@ export default function Psge({}) {
       getfetchedData()
       checkLocation()
       getTrendingData()
+      getDailyNews()
     }
   }, [isMounted])
 
@@ -232,7 +247,7 @@ export default function Psge({}) {
       <SearchPage data={newSearchData} setBgImg={setBgImg} searchDropdownValue={searchTypeDropdownValue} setVidDis={setVidDis}
       statusData={newSearchData? newSearchData[3]?.cards?.filter(card=>card.ty=='shorts'): []} setCurrentVid={setCurrentVid} weather={weather}
       searchValue={searchValue} openStatus={setIsPopupOpen} activeTabIndex={activeTabIndex} setActiveTabIndex={setActiveTabIndex}
-      trendingData={terndingData} tagsData={fetchedData?.tags} /> 
+      trendingData={terndingData} tagsData={fetchedData?.tags} dailyNews={dailyNews} /> 
       <MediaPlayer isPopupOpen={isPopupOpen} setIsPopupOpen={setIsPopupOpen} isExpanded={isExpanded} vidDis={vidDis} 
       setVidDis={setVidDis} setCurrentVid={setCurrentVid} currentVid={currentVid}
       setIsExpanded={setIsExpanded} actionDropdownValue={actionDropdownValue} setActionDropdownValue={setActionDropdownValue} />

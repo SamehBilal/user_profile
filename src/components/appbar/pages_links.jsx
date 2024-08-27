@@ -10,7 +10,9 @@ function PagesLinks({
         {pagesLinksList.map((_, i)=>{
             return <li key={i} className={`cursor-pointer transition 
             ${i==0?'font-bold':'hover:text-primary dark:hover:text-primaryLight'}`}>
+              <a href={_.href} target="_blank" rel="noopener noreferrer">
                 <span id={`more_dropdown_${i}`}>{_.title}</span>
+              </a>
             </li>
         })}
     </ul>

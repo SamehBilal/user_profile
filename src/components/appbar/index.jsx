@@ -24,10 +24,10 @@ function Appbar({shadow = null, bgTransparent=true, searchValue='', setSearchVal
 
   const { theme, setTheme } = useTheme();
   const pagesLinksList = [
-      {title: "اخبار"},
-      {title: "المتجر"},
-      {title: "مقالات"},
-      {title: "رياضات إلكترونية"}
+      {title: "اخبار", href: "https://arabhardware.net/news"},
+      {title: "المتجر", href: "https://ahw.store"},
+      {title: "مقالات", href: "https://arabhardware.net/articles"},
+      {title: "رياضات إلكترونية", href: "https://arabhardware.net/tag/esports"}
   ]
 
   return (
@@ -84,7 +84,7 @@ function Appbar({shadow = null, bgTransparent=true, searchValue='', setSearchVal
                 index === 2 ? "primary" : index === pagesLinksList.length - 1 ? "danger" : "foreground"
               }
               className="w-full"
-              href="#"
+              href={item.href}
               size="lg"
             >
               {item.title}
