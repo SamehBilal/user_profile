@@ -191,7 +191,7 @@ export default function Psge({}) {
       })
   }
   const getRates = async ({c='EGP'}) => {
-    console.log('currencyValue', c)
+    // console.log('currencyValue', c)
       await axios.post(`${ApiBaseNet}/exchange-rates`, {c}
       ).then(res=>{
         const results = res.data
@@ -242,8 +242,7 @@ export default function Psge({}) {
   }, [isMounted])
 
   useEffect(()=>{
-    if(isMounted){ 
-      console.log('currencyValue', currencyValue)
+    if(isMounted){
       getRates({c:currencyValue})
     }
   }, [currencyValue])

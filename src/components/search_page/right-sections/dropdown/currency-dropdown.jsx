@@ -5,7 +5,7 @@ import Link from 'next/link'
 import {Divider} from "@nextui-org/react";
 
 function CurrencyDropdown({isExpanded=false, setIsExpanded, setValue, list=[], value }) {
-  console.log('isExpanded', isExpanded)
+  // console.log('isExpanded', isExpanded)
   const dropdownRef = useRef(null)
 
   const handleOutsideClick = (e) => {
