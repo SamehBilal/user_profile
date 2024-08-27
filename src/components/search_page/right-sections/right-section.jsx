@@ -8,7 +8,7 @@ function RightSectoin({trendingData, tagsData, weather, dailyNews}) {
 
   return (
     <div className='max-w-grid p-6 h-full absolute top-32 w-1/5 space-y-10'>
-      <CarouselCard titles={dailyNews} />
+      <CarouselCard titles={dailyNews} timing={5000} />
       <ListCard title="الاكثر رواجاً" subjects={trendingData} />
       <ListCard title="الأوسمة" subjects={tagsData} />
       <WeatherCard weather={weather} />

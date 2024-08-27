@@ -15,18 +15,20 @@ const CarouselCard = ({
   const [currentImage, setCurrentImage] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImage((prevIndex) => {
-        if(prevIndex >= images.length-1) return 0
-        else return prevIndex+1
-      });
-    }, timing);
-    return () => clearInterval(interval);
-  }, []);
+    if(titles){
+      const interval = setInterval(() => {
+        setCurrentImage((prevIndex) => {
+          if(prevIndex >= images.length-1) return 0
+          else return prevIndex+1
+        });
+      }, timing);
+    }
+    return () => {};
+  }, [titles]);
 
   return (
     <>
-    {titles && <div className="h-52 w-full max-w-80 overflow-hidden rounded-large relative border-b border-solid shadow-2xl">
+    {titles && <div className="h-52 w-full max-w-80 overflow-hidden rounded-large relative border-b border-solid shadow-2xl text-tiny">
         <Image
           src={images[currentImage]}
           alt="Dynamic Image"
@@ -35,7 +37,7 @@ const CarouselCard = ({
           height={853}
           priority
         />
-        <div className="relative h-1/3 w-full overflow-hidden">
+        <div className="relative h-1/3 w-full overflow-hidden bg-white/50 dark:bg-black/50 drop-shadow-md">
             <p style={{'--timing': `${timing}ms`}} className="rotating-text absolute bottom-6 left-0 w-full px-4 line-clamp-1">
                 {titles && titles[currentImage]}
             </p>
