@@ -8,7 +8,8 @@ import StatusBar from "./status-bar";
 import { Loader2Icon } from "lucide-react";
 
 const TabsComponent = ({ data=null, setBgImg=()=>{console.log('define setBgImg ')}, setVidDis, trendingData, tagsData, setCurrentVid,
-statusData=[], searchValue, openStatus, activeTabIndex, setActiveTabIndex, searchDropdownValue, weather, dailyNews }) => {
+statusData=[], searchValue, openStatus, activeTabIndex, setActiveTabIndex, searchDropdownValue, weather, dailyNews, rates,
+currencyValue, setCurrencyValue, }) => {
   const { theme, setTheme } = useTheme(); // 'light' : 'dark'
   const [activeTab, setActiveTab] = useState('all')
 
@@ -74,7 +75,8 @@ statusData=[], searchValue, openStatus, activeTabIndex, setActiveTabIndex, searc
         </Tabs>}
       </div>
       <div className="xl:col-span-1 hidden xl:block">
-        <RightSectoin trendingData={trendingData} tagsData={tagsData} weather={weather} dailyNews={dailyNews} />
+        <RightSectoin trendingData={trendingData} tagsData={tagsData} weather={weather} dailyNews={dailyNews} 
+        rates={rates} currencyValue={currencyValue} setCurrencyValue={setCurrencyValue} />
       </div>
     </div>
   );

@@ -11,7 +11,6 @@ function TrandingCard() {
   useEffect(() => {
     setIsMounted(true)
     if(isMounted){
-        console.log('isMounted', isMounted)
         const script = document.createElement("script");
         script.src = "https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js";
         script.type = "text/javascript";

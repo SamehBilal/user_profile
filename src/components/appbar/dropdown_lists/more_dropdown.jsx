@@ -1,5 +1,4 @@
-// components/MoreDropdown.js
-
+"use client"
 import { useRef, useEffect } from 'react';
 import Image from 'next/image';
 import AhwNet from '@/public/images/logos/ahw_logo.svg'

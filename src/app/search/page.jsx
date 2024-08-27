@@ -21,6 +21,7 @@ export default function Psge({}) {
   const [searchTypeDropdownValue, setSearchTypeDropdownValue] = useState(0)
   const [vidDis, setVidDis] = useState('full') //full / small
   const [currentVid, setCurrentVid] = useState(null)
+  const [currencyValue, setCurrencyValue] = useState('EGP')
   const [isMounted, setIsMounted] = useState(false)
 
   const [fetchedData, setFechedData] = useState(null)
@@ -28,6 +29,7 @@ export default function Psge({}) {
   const [weather, setWeather] = useState(null)
   const [terndingData, setTrendingData] = useState(null)
   const [dailyNews, setDailyNews] = useState(null)
+  const [rates, setRates] = useState(null)
 
   function getYouTubeVideoInfo(url) {
     const regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#\&\?]*).*/;
@@ -177,16 +179,28 @@ export default function Psge({}) {
       })
   }
   const getDailyNews = async () => {
-    console.log('get daily news')
       await axios.post(`${ApiBaseNet}/daily-news`)
       .then(res=>{
         const results = res.data
-        console.log('daily news result', results)
-        setDailyNews(Array.isArray(results) ? results : [])
+        // console.log('daily news result', results)
+        setDailyNews(results)
       }).catch(e=>{
         console.error(e)
         toast.error(e.message)
         setDailyNews([])
+      })
+  }
+  const getRates = async ({c='EGP'}) => {
+    console.log('currencyValue', c)
+      await axios.post(`${ApiBaseNet}/exchange-rates`, {c}
+      ).then(res=>{
+        const results = res.data
+        // console.log('daily news result', results)
+        if(results.base_currency) setRates(results)
+      }).catch(e=>{
+        console.error(e)
+        toast.error(e.message)
+        setRates(null)
       })
   }
 
@@ -223,8 +237,16 @@ export default function Psge({}) {
       checkLocation()
       getTrendingData()
       getDailyNews()
+      getRates({c:currencyValue})
     }
   }, [isMounted])
+
+  useEffect(()=>{
+    if(isMounted){ 
+      console.log('currencyValue', currencyValue)
+      getRates({c:currencyValue})
+    }
+  }, [currencyValue])
 
   return (
     <main className="w-full min-h-screen overflow-hidden relative">
@@ -247,7 +269,7 @@ export default function Psge({}) {
       <SearchPage data={newSearchData} setBgImg={setBgImg} searchDropdownValue={searchTypeDropdownValue} setVidDis={setVidDis}
       statusData={newSearchData? newSearchData[3]?.cards?.filter(card=>card.ty=='shorts'): []} setCurrentVid={setCurrentVid} weather={weather}
       searchValue={searchValue} openStatus={setIsPopupOpen} activeTabIndex={activeTabIndex} setActiveTabIndex={setActiveTabIndex}
-      trendingData={terndingData} tagsData={fetchedData?.tags} dailyNews={dailyNews} /> 
+      trendingData={terndingData} tagsData={fetchedData?.tags} dailyNews={dailyNews} rates={rates} currencyValue={currencyValue} setCurrencyValue={setCurrencyValue} /> 
       <MediaPlayer isPopupOpen={isPopupOpen} setIsPopupOpen={setIsPopupOpen} isExpanded={isExpanded} vidDis={vidDis} 
       setVidDis={setVidDis} setCurrentVid={setCurrentVid} currentVid={currentVid}
       setIsExpanded={setIsExpanded} actionDropdownValue={actionDropdownValue} setActionDropdownValue={setActionDropdownValue} />

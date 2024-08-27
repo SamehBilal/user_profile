@@ -25,12 +25,14 @@ const CarouselCard = ({
     }
     return () => {};
   }, [titles]);
+  console.log('titles', titles)
+  console.log('images', images)
 
   return (
     <>
-    {titles && <div className="h-52 w-full max-w-80 overflow-hidden rounded-large relative border-b border-solid shadow-2xl text-tiny">
+    {titles && images && <div className="h-52 w-full max-w-80 overflow-hidden rounded-large relative border-b border-solid shadow-2xl text-tiny">
         <Image
-          src={images[currentImage]}
+          src={images[currentImage] ?? Img1}
           alt="Dynamic Image"
           className='object-cover h-2/3 w-full'
           width={1280}
