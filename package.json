@@ -31,6 +31,7 @@
     "react-dom": "^18",
     "react-google-recaptcha-v3": "^1.10.1",
     "react-hot-toast": "^2.4.1",
+    "react-range": "^1.10.0",
     "react-select": "^5.8.0",
     "sharp": "^0.33.4",
     "simple-icons": "^12.4.0",

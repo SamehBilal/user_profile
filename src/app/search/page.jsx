@@ -64,11 +64,11 @@ export default function Psge({}) {
       }
     }).sort((a, b) => new Date(b.publishAt) - new Date(a.publishAt))
     .filter(card=>card.ty!='reviews'&&card.ty!='videos') || []
-    console.log('posts: ', processed)
+    // console.log('posts: ', processed)
     return processed
   }
   const processStore = (cards) => {
-    console.log('store cards', cards)
+    // console.log('store cards', cards)
     const processed = cards?.map((card, index)=>{ // keeping the same sturcutre and number of elements
       return{
         type: 'products', 
@@ -83,7 +83,7 @@ export default function Psge({}) {
     return processed
   }
   const processvideos = (cards) => {
-    console.log('video cards', cards)
+    // console.log('video cards', cards)
     const processed = cards?.map((card, index)=>{ // keeping the same sturcutre and number of elements
       const videoInfo = getYouTubeVideoInfo(card?.url)
       return{
@@ -133,7 +133,7 @@ export default function Psge({}) {
       await axios.post(`${ApiBaseNet}/search`, {s:searchValue??'', for: '', PerPage: ''})
       .then(res=>{
         const results = res.data?.results
-        console.log('results', results)
+        // console.log('results', results)
         setFechedData(results)
         const newSearchRes = processData({results})
         setNewSearchData(newSearchRes)

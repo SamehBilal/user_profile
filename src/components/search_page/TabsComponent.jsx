@@ -37,7 +37,7 @@ currencyValue, setCurrencyValue, }) => {
   return (
     <div className="w-full grid grid-cols-5 mx-auto">
       <div className="col-span-5 xl:col-span-4 relative">
-        
+
         <div className="h-10 relative w-full">
           {/* <p className="font-bold text-tiny">نتائج البحث عن:</p> */}
           <p className="absolute inset-0 z-10 text-large text-ellipsis md:line-clamp-1 space-x-2">
@@ -76,7 +76,7 @@ currencyValue, setCurrencyValue, }) => {
       </div>
       <div className="xl:col-span-1 hidden xl:block">
         <RightSectoin trendingData={trendingData} tagsData={tagsData} weather={weather} dailyNews={dailyNews} 
-        rates={rates} currencyValue={currencyValue} setCurrencyValue={setCurrencyValue} />
+        rates={rates} currencyValue={currencyValue} setCurrencyValue={setCurrencyValue} isStoreTabOpen={activeTab=='products'} />
       </div>
     </div>
   );

@@ -9,7 +9,7 @@ const CarouselCard = ({titles, images = [], timing = 3000}) => {
     if (titles && images.length > 0) {
       const interval = setInterval(() => {
         setCurrentImage((prevIndex) => {
-          console.log(images, images.length, prevIndex)
+          // console.log(images, images.length, prevIndex)
           if (prevIndex >= images.length - 1) return 0
           else return prevIndex + 1
         });
@@ -35,8 +35,8 @@ const CarouselCard = ({titles, images = [], timing = 3000}) => {
             />
           )}
           <div className="relative h-1/3 w-full overflow-hidden bg-white/50 dark:bg-black/50 drop-shadow-md">
-            <p style={{ '--timing': `${timing}ms` }} className="rotating-text absolute bottom-6 left-0 w-full px-4 line-clamp-1">
-              {titles[currentImage]}
+            <p style={{ '--timing': `${timing}ms` }} className="rotating-text absolute w-full h-8 left-0 bottom-4 px-4 line-clamp-2">
+                {titles[currentImage]}
             </p>
           </div>
         </div>
