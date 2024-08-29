@@ -89,12 +89,13 @@ function PriceFilter({ min = 12, max = 48, minPriceVal = 0, maxPriceVal = 25000 
                     {children}
                   </div>
                 )}
-                renderThumb={({ props }) => (
-                  <div
-                    {...props}
+                renderThumb={({ index, props }) => {
+                  const { key, ...restProps } = props;
+                  return <div
+                    {...restProps}
                     className="size-4 border-3 border-solid border-gray-700 dark:border-gray-200 bg-primaryLight rounded-full shadow"
                   />
-                )}
+                }}
               />
               <div className="mt-2 text-center">
                 <p>Screen Size</p>

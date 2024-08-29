@@ -40,14 +40,15 @@ const CardComponent = ({i=0, id, card, cardTypeLastIndex, cardTypeIndex, openSta
   return <>
   {/* title */}
   {i==cardTypeIndex[card.type] && 
-  <div className="col-span-6 h-14 relative">
+  <div className="col-span-6 h-14 relative mb-2">
     <p className="absolute inset-0 font-bold text-3xl top-2/3 -translate-y-1/2">
       {titles[card.type]}
     </p>
   </div>}
   {/* cards */}
   {(id!='all' || getIndex(card.type, i)<maxLengthPreviewAll[card.type]) && //في الصفحة الرئيسية، رندر بس اللعدد المحدد
-  <SingleCard key={i} index={id!='all'?i:getIndex(card.type, i)} openStatus={openStatus} setVidDis={setVidDis} setCurrentVid={setCurrentVid}
+  <SingleCard key={i} index={id!='all'?i:getIndex(card.type, i)}
+  openStatus={openStatus} setVidDis={setVidDis} setCurrentVid={setCurrentVid}
   type={card.type} title={card.title} subTitle={card.subTitle} imgUrl={card.imgUrl} moreVideos={card.moreVideos} comments={card.comments}
   desc={card.desc} price={card.price} inStock={card.inStock} url={card.url} youtubeId={card.youtubeId} />}
 

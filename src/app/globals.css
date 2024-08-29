@@ -173,7 +173,7 @@ nav > header {
 }
 
 .rotating-text {
-  animation: slideUp var(--timing) infinite;
+  animation: slideUp var(--timing) 1s infinite;
 }
 @keyframes slideUp {
   0% {

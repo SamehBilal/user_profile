@@ -47,9 +47,29 @@ module.exports = {
           'wiggle': 'wiggle 1s ease-in-out infinite',
           'background-transition': 'background-transition 60s ease-in-out infinite',
           'hue-change': 'hue-change 30s ease-in-out infinite',
-          'dropdwon-appearance-in': 'dropdwon-appearance-in 250ms ease-out normal both'
+          'dropdwon-appearance-in': 'dropdwon-appearance-in 250ms ease-out normal both',
+          'glowPink': 'glowPink 1s infinite alternate',
+          'glowYellow': 'glowYellow 1s infinite alternate',
+          'glowGray': 'glowGray 1s infinite alternate',
+          'glowGrayDark': 'glowGray 1s infinite alternate',
       },
       keyframes: {
+        glowPink: {
+          '0%, 100%': { boxShadow: '0 0 5px #ffffff40, 0 0 10px #ffffff40, 0 0 15px #ffffff40, 0 0 20px #ff00ff40, 0 0 25px #ff00ff40, 0 0 28px #ff00ff40' },
+          '50%': { boxShadow: '0 0 2px #ffffff40, 0 0 5px #ffffff40, 0 0 10px #ffffff40, 0 0 15px #ff00ff40, 0 0 20px #ff00ff40, 0 0 25px #ff00ff40' },
+        },
+        glowYellow: {
+          '0%, 100%': { boxShadow: '0 0 5px #ffffff40, 0 0 10px #ffffff40, 0 0 15px #ffffff40, 0 0 20px #ffff0040, 0 0 25px #ffff0040, 0 0 28px #ffff0040' },
+          '50%': { boxShadow: '0 0 2px #ffffff40, 0 0 5px #ffffff40, 0 0 10px #ffffff40, 0 0 15px #ffff0040, 0 0 20px #ffff0040, 0 0 25px #ffff0040' },
+        },
+        glowGray: {
+          '0%, 100%': { boxShadow: '0 0 5px #ffffff80, 0 0 10px #ffffff80, 0 0 15px #ffffff80, 0 0 20px #80808080, 0 0 25px #80808080, 0 0 28px #80808080' },
+          '50%': { boxShadow: '0 0 2px #ffffff80, 0 0 5px #ffffff80, 0 0 10px #ffffff80, 0 0 15px #80808080, 0 0 20px #80808080, 0 0 25px #80808080' },
+        },
+        glowGrayDark: {
+          '0%, 100%': { boxShadow: '0 0 5px #00000080, 0 0 10px #00000080, 0 0 15px #00000080, 0 0 20px #20202080, 0 0 25px #20202080, 0 0 28px #20202080' },
+          '50%': { boxShadow: '0 0 2px #00000080, 0 0 5px #00000080, 0 0 10px #00000080, 0 0 15px #20202080, 0 0 20px #20202080, 0 0 25px #20202080' },
+        },
         'background-transition': {
           '0%, 50%, 100%': { transform: 'rotate(0deg) scale(1, 1)' },
           '25%': { transform: 'rotate(45deg) scale(2, 2)' },

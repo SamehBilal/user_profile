@@ -1,12 +1,13 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
-const CarouselCard = ({titles, images = [], timing = 3000}) => {
+const CarouselCard = ({titles, images = [], urls=[],timing = 3000}) => {
   const [currentImage, setCurrentImage] = useState(0);
 
   useEffect(() => {
-    if (titles && images.length > 0) {
+    if (titles && titles.length > 0 && images.length > 0) {
       const interval = setInterval(() => {
         setCurrentImage((prevIndex) => {
           // console.log(images, images.length, prevIndex)
@@ -20,8 +21,9 @@ const CarouselCard = ({titles, images = [], timing = 3000}) => {
 
   return (
     <>
-      {titles && images.length > 0 && (
-        <div className="h-52 w-full max-w-80 overflow-hidden rounded-large relative border-b border-solid shadow-2xl text-tiny">
+      {titles && titles.length > 0 && images.length > 0 && (
+        <a target='_blank' href={urls[currentImage] ?? '#'}
+        className="block h-52 w-full max-w-80 overflow-hidden rounded-large relative border-b border-solid shadow-2xl text-tiny cursor-pointer">
           {images[currentImage] && (
             <Image
               src={images[currentImage]}
@@ -39,7 +41,7 @@ const CarouselCard = ({titles, images = [], timing = 3000}) => {
                 {titles[currentImage]}
             </p>
           </div>
-        </div>
+        </a>
       )}
     </>
   );
