@@ -11,7 +11,7 @@ function FastFilter({}) {
     ]
   return (
     <div className={`bg-gray-200/70 dark:bg-black/70
-    shadow-medium transition w-full rounded-large p-2 space-y-2`}>
+    shadow-md dark:shadow-gray-700 transition w-full rounded-large p-2 space-y-2`}>
     <Accordion isCompact>
       <AccordionItem key="1" aria-label="fast filter" title="فلاتر سريعة" indicator={<ChevronLeft />}>
         <div className="flex justify-between items-center w-full gap-2">

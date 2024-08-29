@@ -18,7 +18,7 @@ function PriceFilter({ min = 12, max = 48, minPriceVal = 0, maxPriceVal = 25000 
   };
 
   return (
-    <div className={`bg-gray-200/70 dark:bg-black/70 shadow-medium transition w-full rounded-large p-2 space-y-2`}>
+    <div className={`bg-gray-200/70 dark:bg-black/70 shadow-md dark:shadow-gray-700 transition w-full rounded-large p-2 space-y-2`}>
       <Accordion isCompact>
         <AccordionItem key="1" aria-label="price filter" title="الأسعار واحجام الشاشة" indicator={<ChevronLeft />}>
           <div className="flex flex-col items-center w-full p-4">
