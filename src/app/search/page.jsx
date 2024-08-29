@@ -53,7 +53,7 @@ export default function Psge({}) {
 
   const processPosts = (cards) => {
     const processed = cards?.map((card, index)=>{ // keeping the same sturcutre and number of elements
-    console.log('posts: ', card)
+    // console.log('posts: ', card)
       return{
         type: 'blogs', 
         ty: card?.type,
@@ -268,7 +268,7 @@ export default function Psge({}) {
       <SearchPage data={newSearchData} setBgImg={setBgImg} searchDropdownValue={searchTypeDropdownValue} setVidDis={setVidDis}
       statusData={newSearchData? newSearchData[3]?.cards?.filter(card=>card.ty=='shorts'): []} setCurrentVid={setCurrentVid} weather={weather}
       searchValue={searchValue} openStatus={setIsPopupOpen} activeTabIndex={activeTabIndex} setActiveTabIndex={setActiveTabIndex}
-      trendingData={terndingData} tagsData={fetchedData?.tags} dailyNews={dailyNews} rates={rates} currencyValue={currencyValue} setCurrencyValue={setCurrencyValue} /> 
+      trendingData={terndingData} tagsData={fetchedData?.tags?.data} dailyNews={dailyNews} rates={rates} currencyValue={currencyValue} setCurrencyValue={setCurrencyValue} /> 
       <MediaPlayer isPopupOpen={isPopupOpen} setIsPopupOpen={setIsPopupOpen} isExpanded={isExpanded} vidDis={vidDis} 
       setVidDis={setVidDis} setCurrentVid={setCurrentVid} currentVid={currentVid}
       setIsExpanded={setIsExpanded} actionDropdownValue={actionDropdownValue} setActionDropdownValue={setActionDropdownValue} />
