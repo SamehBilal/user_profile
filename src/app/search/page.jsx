@@ -53,6 +53,7 @@ export default function Psge({}) {
 
   const processPosts = (cards) => {
     const processed = cards?.map((card, index)=>{ // keeping the same sturcutre and number of elements
+    console.log('posts: ', card)
       return{
         type: 'blogs', 
         ty: card?.type,
@@ -64,7 +65,6 @@ export default function Psge({}) {
       }
     }).sort((a, b) => new Date(b.publishAt) - new Date(a.publishAt))
     .filter(card=>card.ty!='reviews'&&card.ty!='videos') || []
-    // console.log('posts: ', processed)
     return processed
   }
   const processStore = (cards) => {
@@ -116,21 +116,21 @@ export default function Psge({}) {
 
   const processData = ({results}) => {
     const newRes = [...searchData];
-      newRes[1].cards = results.posts //for posts / blogs
-      newRes[2].cards = results.store //for store / products
-      newRes[3].cards = results.videos //for videos / videos
-      newRes[4].cards = results.posts //for posts / reviews
-      newRes[1].cards = processPosts(results.posts)
-      newRes[2].cards = processStore(results.store)
-      newRes[3].cards = processvideos(results.videos)
-      newRes[4].cards = processReviews(results.posts)
+      newRes[1].cards = results.posts?.data //for posts / blogs
+      newRes[2].cards = results.store?.data //for store / products
+      newRes[3].cards = results.videos?.data //for videos / videos
+      newRes[4].cards = results.posts?.data //for posts / reviews
+      newRes[1].cards = processPosts(results.posts?.data)
+      newRes[2].cards = processStore(results.store?.data)
+      newRes[3].cards = processvideos(results.videos?.data)
+      newRes[4].cards = processReviews(results.posts?.data)
       newRes[0].cards = newRes[1].cards.slice(0, 5).concat(newRes[2].cards, newRes[3].cards.slice(0, 4), newRes[4].cards.slice(0, 5))
 
       return newRes
   }
 
   const getfetchedData = async () => {
-      await axios.post(`${ApiBaseNet}/search`, {s:searchValue??'', for: '', PerPage: ''})
+      await axios.post(`${ApiBaseNet}/search`, {s:searchValue??'', for: '', i: 8, p: 1})
       .then(res=>{
         const results = res.data?.results
         // console.log('results', results)
