@@ -57,6 +57,12 @@ const nextConfig = {
             },
             {
                 protocol: 'https',
+                hostname: 'ahw.store',
+                port: '',
+                pathname: '/**',
+            },
+            {
+                protocol: 'https',
                 hostname: 'picsum.photos',
                 port: '',
                 pathname: '/**',
