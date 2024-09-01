@@ -29,6 +29,8 @@ module.exports = {
         tritory: "#13B6F1",
         tritoryDark: "#3f9cbd",
         lightGray: "#dddddd55",
+        goldLight: '#FEC053',
+        goldDark: '#464646',
         darkGray: "#031D26"
       },
       maxWidth: {
@@ -48,27 +50,27 @@ module.exports = {
           'background-transition': 'background-transition 60s ease-in-out infinite',
           'hue-change': 'hue-change 30s ease-in-out infinite',
           'dropdwon-appearance-in': 'dropdwon-appearance-in 250ms ease-out normal both',
-          'glowPink': 'glowPink 1s infinite alternate',
-          'glowYellow': 'glowYellow 1s infinite alternate',
-          'glowGray': 'glowGray 1s infinite alternate',
-          'glowGrayDark': 'glowGray 1s infinite alternate',
+          'glowPink': 'glowPink 3s infinite alternate',
+          'glowYellow': 'glowYellow 3s infinite alternate',
+          'glowGray': 'glowGray 3s infinite alternate',
+          'glowGrayDark': 'glowGray 3s infinite alternate',
       },
       keyframes: {
         glowPink: {
-          '0%, 100%': { boxShadow: '0 0 5px #ffffff40, 0 0 10px #ffffff40, 0 0 15px #ffffff40, 0 0 20px #ff00ff40, 0 0 25px #ff00ff40, 0 0 28px #ff00ff40' },
-          '50%': { boxShadow: '0 0 2px #ffffff40, 0 0 5px #ffffff40, 0 0 10px #ffffff40, 0 0 15px #ff00ff40, 0 0 20px #ff00ff40, 0 0 25px #ff00ff40' },
+          '0%, 100%': { boxShadow: '0 0 5px #F9556040, 0 0 10px #F9556040, 0 0 15px #F9556040, 0 0 20px #ff00ff40, 0 0 25px #ff00ff40, 0 0 28px #ff00ff40' },
+          '50%': { boxShadow: '0 0 2px #9747FF40, 0 0 5px #9747FF40, 0 0 10px #9747FF40, 0 0 15px #ff00ff40, 0 0 20px #ff00ff40, 0 0 25px #ff00ff40' },
         },
         glowYellow: {
-          '0%, 100%': { boxShadow: '0 0 5px #ffffff40, 0 0 10px #ffffff40, 0 0 15px #ffffff40, 0 0 20px #ffff0040, 0 0 25px #ffff0040, 0 0 28px #ffff0040' },
-          '50%': { boxShadow: '0 0 2px #ffffff40, 0 0 5px #ffffff40, 0 0 10px #ffffff40, 0 0 15px #ffff0040, 0 0 20px #ffff0040, 0 0 25px #ffff0040' },
+          '0%, 100%': { boxShadow: '0 0 5px #FEC053, 0 0 10px #FEC053, 0 0 15px #FEC053, 0 0 20px #FEC05340, 0 0 25px #FEC05340, 0 0 28px #FEC05340' },
+          '50%': { boxShadow: '0 0 2px #FEC053, 0 0 5px #FEC053, 0 0 10px #FEC053, 0 0 15px #fdba7440, 0 0 20px #fdba7440, 0 0 25px #fdba7440' },
         },
         glowGray: {
-          '0%, 100%': { boxShadow: '0 0 5px #ffffff80, 0 0 10px #ffffff80, 0 0 15px #ffffff80, 0 0 20px #80808080, 0 0 25px #80808080, 0 0 28px #80808080' },
-          '50%': { boxShadow: '0 0 2px #ffffff80, 0 0 5px #ffffff80, 0 0 10px #ffffff80, 0 0 15px #80808080, 0 0 20px #80808080, 0 0 25px #80808080' },
+          '0%, 100%': { boxShadow: '0 0 5px #e4e4e480, 0 0 10px #e4e4e480, 0 0 15px #e4e4e480, 0 0 20px #e4e4e480, 0 0 25px #e4e4e480, 0 0 28px #e4e4e480' },
+          '50%': { boxShadow: '0 0 2px #e4e4e480, 0 0 5px #e4e4e480, 0 0 10px #e4e4e480, 0 0 15px #e4e4e480, 0 0 20px #e4e4e480, 0 0 25px #e4e4e480' },
         },
         glowGrayDark: {
-          '0%, 100%': { boxShadow: '0 0 5px #00000080, 0 0 10px #00000080, 0 0 15px #00000080, 0 0 20px #20202080, 0 0 25px #20202080, 0 0 28px #20202080' },
-          '50%': { boxShadow: '0 0 2px #00000080, 0 0 5px #00000080, 0 0 10px #00000080, 0 0 15px #20202080, 0 0 20px #20202080, 0 0 25px #20202080' },
+          '0%, 100%': { boxShadow: '0 0 5px #d1d5db80, 0 0 10px #d1d5db80, 0 0 15px #d1d5db80, 0 0 20px #d1d5db40, 0 0 25px #d1d5db40, 0 0 28px #d1d5db40' },
+          '50%': { boxShadow: '0 0 2px #d1d5db80, 0 0 5px #d1d5db80, 0 0 10px #d1d5db80, 0 0 15px #d1d5db40, 0 0 20px #d1d5db40, 0 0 25px #d1d5db40' },
         },
         'background-transition': {
           '0%, 50%, 100%': { transform: 'rotate(0deg) scale(1, 1)' },

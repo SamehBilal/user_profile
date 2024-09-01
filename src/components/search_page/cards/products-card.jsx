@@ -18,10 +18,12 @@ function ProductsCard({index=0, title='', imgUrl='https://nextui.org/images/card
         />
       </div>
       <CardHeader className="px-4 flex-col items-start">
-        <p className="text-large rounded-large uppercase font-bold flex items-center gap-1">
-          <span className='line-clamp-1'>{`${price}`}</span>
-          <span>EGP</span>
-        </p>
+      <p className="text-large text-transparent rounded-large uppercase font-bold flex items-center gap-1 p-2">
+      <span className={`line-clamp-1 bg-gradient-conic bg-clip-text 
+        ${index==0?'from-primary to-goldDark':(index==1?'from-goldLight to-goldDark':'')} `}>{`${price}`}</span>
+      <span className={`bg-gradient-conic bg-clip-text 
+        ${index==0?'from-primary to-goldDark':(index==1?'from-goldLight to-goldDark':'')} `}>EGP</span>
+    </p>
         <h4 className="font-medium text-small line-clamp-2 h-10">{title}</h4>
             <a href={url || `#`} target="_blank" rel="noopener noreferrer"
             className='text-tiny text-primary dark:text-primaryLight mr-auto'>
