@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import "swiper/swiper-bundle.css";
 import "swiper/css/pagination";
 
-function StatusBar({statusData, openStatus, setVidDis, setCurrentVid, youtubeId, title}) {
+function StatusBar({statusData, openStatus, setVidDis, setCurrentVid, setActiveVidIndex ,youtubeId, title}) {
   const sliderRef = useRef() 
   
   // useEffect(()=>{
@@ -16,20 +16,22 @@ function StatusBar({statusData, openStatus, setVidDis, setCurrentVid, youtubeId,
   //   return () => clearTimeout(timer)
   // }, [sliderRef?.current?.swiper?.realIndex])
 
-  const handlePrev = () => {
-    if (!sliderRef.current) return;
-    sliderRef.current.swiper.slidePrev(500);
-  }
-  const handleNext = () => {
-    if (!sliderRef.current) return;
-    sliderRef.current.swiper.slideNext(500);
-  }
+  // const handlePrev = () => {
+  //   if (!sliderRef.current) return;
+  //   sliderRef.current.swiper.slidePrev(500);
+  // }
+  // const handleNext = () => {
+  //   if (!sliderRef.current) return;
+  //   sliderRef.current.swiper.slideNext(500);
+  // }
 
   const handleOpenStatus = (i=0) => {
     openStatus(prev=>!prev)
     setVidDis('small')
     console.log({youtubeId: statusData[i].youtubeId, title: statusData[i].title})
     setCurrentVid({youtubeId: statusData[i].youtubeId, title: statusData[i].title})
+    setActiveVidIndex(i)
+    console.log('activeVidIndex', i)
   }
 
   return (
@@ -44,7 +46,7 @@ function StatusBar({statusData, openStatus, setVidDis, setCurrentVid, youtubeId,
       slidesPerView={'auto'}
       spaceBetween={40}
       className='absolute inset-0 w-full z-10'>
-            {statusData.map((_, i)=>{
+        {statusData.map((_, i)=>{
         return <SwiperSlide key={i} 
         onClick={()=>handleOpenStatus(i)}
         className="!size-14 !flex items-center justify-center rounded-full overflow-hidden bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 cursor-pointer">

@@ -10,6 +10,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      aspectRatio: {
+        'shorts': '9 / 16',
+      },
       fontFamily: {
         sans: ['var(--font-helv)']
       },

@@ -24,6 +24,7 @@ export default function Psge({}) {
   const [totalPages, setTotalPages] = useState(1);
   const [vidDis, setVidDis] = useState('full') //full / small
   const [currentVid, setCurrentVid] = useState(null)
+  const [activeVidIndex, setActiveVidIndex] = useState(0)
   const [currencyValue, setCurrencyValue] = useState('EGP')
   const [isMounted, setIsMounted] = useState(false)
 
@@ -285,12 +286,14 @@ export default function Psge({}) {
       activeTabIndex={activeTabIndex} setActiveTabIndex={setActiveTabIndex}
       searchTypeDropdownValue={searchTypeDropdownValue} setSearchTypeDropdownValue={setSearchTypeDropdownValue} />
       <SearchPage data={newSearchData} setBgImg={setBgImg} searchDropdownValue={searchTypeDropdownValue} setVidDis={setVidDis}
-      statusData={newSearchData? newSearchData[3]?.cards?.filter(card=>card.ty=='shorts'): []} setCurrentVid={setCurrentVid} weather={weather}
+      statusData={newSearchData? newSearchData[3]?.cards?.filter(card=>card.ty=='shorts'): []} setCurrentVid={setCurrentVid} 
+      weather={weather} setActiveVidIndex={setActiveVidIndex}
       searchValue={searchValue} openStatus={setIsPopupOpen} activeTabIndex={activeTabIndex} setActiveTabIndex={setActiveTabIndex}
       trendingData={terndingData} tagsData={fetchedData?.tags?.data} dailyNews={dailyNews} rates={rates} setCurrentPage={setCurrentPage}
       currencyValue={currencyValue} setCurrencyValue={setCurrencyValue} totalPages={totalPages} currentPage={currentPage} /> 
       <MediaPlayer isPopupOpen={isPopupOpen} setIsPopupOpen={setIsPopupOpen} isExpanded={isExpanded} vidDis={vidDis} 
-      setVidDis={setVidDis} setCurrentVid={setCurrentVid} currentVid={currentVid}
+      setVidDis={setVidDis} setCurrentVid={setCurrentVid} currentVid={currentVid} setActiveVidIndex={setActiveVidIndex}
+      statusData={newSearchData? newSearchData[3]?.cards?.filter(card=>card.ty=='shorts'): []} activeVidIndex={activeVidIndex}
       setIsExpanded={setIsExpanded} actionDropdownValue={actionDropdownValue} setActionDropdownValue={setActionDropdownValue} />
       <Footer />
     </main>

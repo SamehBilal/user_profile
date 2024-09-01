@@ -8,7 +8,8 @@ import StatusBar from "./status-bar";
 import { Loader2Icon } from "lucide-react";
 import PaginationSection from "./pagination";
 
-const TabsComponent = ({ data=null, setBgImg=()=>{console.log('define setBgImg ')}, setVidDis, trendingData, tagsData, setCurrentVid, setCurrentPage,
+const TabsComponent = ({ data=null, setBgImg=()=>{console.log('define setBgImg ')}, setVidDis, trendingData, tagsData, setCurrentVid,
+setActiveVidIndex, setCurrentPage,
 statusData=[], searchValue, openStatus, activeTabIndex, setActiveTabIndex, searchDropdownValue, weather, dailyNews, rates, totalPages, currentPage,
 currencyValue, setCurrencyValue, }) => {
   const { theme, setTheme } = useTheme(); // 'light' : 'dark'
@@ -68,7 +69,7 @@ currencyValue, setCurrencyValue, }) => {
             </div>
           }>
           {statusData && statusData.length>0 && <div className="col-span-5 xl:col-span-4 w-full h-14 relative">
-            <StatusBar statusData={statusData} openStatus={openStatus} setVidDis={setVidDis} setCurrentVid={setCurrentVid} />
+            <StatusBar statusData={statusData} openStatus={openStatus} setVidDis={setVidDis} setCurrentVid={setCurrentVid} setActiveVidIndex={setActiveVidIndex} />
           </div>}
             <CardsComponent cards={item.cards} id={item.id} openStatus={openStatus} setVidDis={setVidDis} setCurrentVid={setCurrentVid} />
             {item.id!='all' && <PaginationSection totalPages={totalPages} currentPage={currentPage} searchValue={searchValue} setCurrentPage={setCurrentPage} />}
