@@ -6,9 +6,10 @@ import { useTheme } from 'next-themes';
 import RightSectoin from "./right-sections/right-section";
 import StatusBar from "./status-bar";
 import { Loader2Icon } from "lucide-react";
+import PaginationSection from "./pagination";
 
-const TabsComponent = ({ data=null, setBgImg=()=>{console.log('define setBgImg ')}, setVidDis, trendingData, tagsData, setCurrentVid,
-statusData=[], searchValue, openStatus, activeTabIndex, setActiveTabIndex, searchDropdownValue, weather, dailyNews, rates,
+const TabsComponent = ({ data=null, setBgImg=()=>{console.log('define setBgImg ')}, setVidDis, trendingData, tagsData, setCurrentVid, setCurrentPage,
+statusData=[], searchValue, openStatus, activeTabIndex, setActiveTabIndex, searchDropdownValue, weather, dailyNews, rates, totalPages, currentPage,
 currencyValue, setCurrencyValue, }) => {
   const { theme, setTheme } = useTheme(); // 'light' : 'dark'
   const [activeTab, setActiveTab] = useState('all')
@@ -70,6 +71,7 @@ currencyValue, setCurrencyValue, }) => {
             <StatusBar statusData={statusData} openStatus={openStatus} setVidDis={setVidDis} setCurrentVid={setCurrentVid} />
           </div>}
             <CardsComponent cards={item.cards} id={item.id} openStatus={openStatus} setVidDis={setVidDis} setCurrentVid={setCurrentVid} />
+            {item.id!='all' && <PaginationSection totalPages={totalPages} currentPage={currentPage} searchValue={searchValue} setCurrentPage={setCurrentPage} />}
           </Tab>
         )}
         </Tabs>}

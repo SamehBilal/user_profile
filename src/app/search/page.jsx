@@ -19,6 +19,9 @@ export default function Psge({}) {
   const [actionDropdownValue, setActionDropdownValue] = useState(0)
   const [activeTabIndex, setActiveTabIndex] = useState(0)
   const [searchTypeDropdownValue, setSearchTypeDropdownValue] = useState(0)
+  const [perPage, setPerPage] = useState(12)
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
   const [vidDis, setVidDis] = useState('full') //full / small
   const [currentVid, setCurrentVid] = useState(null)
   const [currencyValue, setCurrencyValue] = useState('EGP')
@@ -63,7 +66,7 @@ export default function Psge({}) {
         url: card?.slug
       }
     }).sort((a, b) => new Date(b.publishAt) - new Date(a.publishAt)) || []
-    console.log('blogs: ', processed)
+    // console.log('blogs: ', processed)
     return processed
   }
   const processStore = (cards) => {
@@ -125,14 +128,26 @@ export default function Psge({}) {
       return newRes
   }
 
+  const findMaxTotal = ({results}) => {
+    const maxTotal = Math.max(
+      results.articles.total,
+      results.reviews.total,
+      results.store.total,
+      results.videos.total
+    );
+    // console.log('maxTotal', maxTotal, Math.ceil(maxTotal/perPage))
+    setTotalPages(Math.ceil(maxTotal/perPage))
+  }
+
   const getfetchedData = async () => {
-      await axios.post(`${ApiBaseNet}/search`, {s:searchValue??'', for: '', i: 12, p: 1})
+      await axios.post(`${ApiBaseNet}/search`, {s:searchValue??'', for: '', i: perPage, p: currentPage})
       .then(res=>{
         const results = res.data?.results
-        // console.log('results', results)
+        console.log('results', results)
         setFechedData(results)
         const newSearchRes = processData({results})
         setNewSearchData(newSearchRes)
+        findMaxTotal({results});
       }).catch(e=>{
         console.error(e.message)
         setFechedData([])
@@ -228,14 +243,21 @@ export default function Psge({}) {
     setIsMounted(true)
     
     if(isMounted){
-      // console.log('fetchingData...')
-      getfetchedData()
       checkLocation()
       getTrendingData()
       getDailyNews()
       getRates({c:currencyValue})
     }
   }, [isMounted])
+
+  useEffect(()=>{
+    setIsMounted(true)
+    if(isMounted){
+      console.log('fetchingData...')
+      getfetchedData()
+    }
+
+  }, [currentPage, isMounted])
 
   useEffect(()=>{
     if(isMounted){
@@ -245,7 +267,8 @@ export default function Psge({}) {
 
   return (
     <main className="w-full min-h-screen overflow-hidden relative">
-      <SearchParamsComponent setSearchTypeDropdownValue={setSearchTypeDropdownValue} setSearchValue={setSearchValue} />
+      <SearchParamsComponent setSearchTypeDropdownValue={setSearchTypeDropdownValue} setSearchValue={setSearchValue}
+      setPerPage={setPerPage} setCurrentPage={setCurrentPage} />
       <ToasterComponent />
       
       <div className="absolute inset-0 w-full h-[70vh] animate-hue-change">
@@ -264,7 +287,8 @@ export default function Psge({}) {
       <SearchPage data={newSearchData} setBgImg={setBgImg} searchDropdownValue={searchTypeDropdownValue} setVidDis={setVidDis}
       statusData={newSearchData? newSearchData[3]?.cards?.filter(card=>card.ty=='shorts'): []} setCurrentVid={setCurrentVid} weather={weather}
       searchValue={searchValue} openStatus={setIsPopupOpen} activeTabIndex={activeTabIndex} setActiveTabIndex={setActiveTabIndex}
-      trendingData={terndingData} tagsData={fetchedData?.tags?.data} dailyNews={dailyNews} rates={rates} currencyValue={currencyValue} setCurrencyValue={setCurrencyValue} /> 
+      trendingData={terndingData} tagsData={fetchedData?.tags?.data} dailyNews={dailyNews} rates={rates} setCurrentPage={setCurrentPage}
+      currencyValue={currencyValue} setCurrencyValue={setCurrencyValue} totalPages={totalPages} currentPage={currentPage} /> 
       <MediaPlayer isPopupOpen={isPopupOpen} setIsPopupOpen={setIsPopupOpen} isExpanded={isExpanded} vidDis={vidDis} 
       setVidDis={setVidDis} setCurrentVid={setCurrentVid} currentVid={currentVid}
       setIsExpanded={setIsExpanded} actionDropdownValue={actionDropdownValue} setActionDropdownValue={setActionDropdownValue} />
