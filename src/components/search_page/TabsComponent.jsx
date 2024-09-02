@@ -68,7 +68,7 @@ currencyValue, setCurrencyValue, }) => {
               <span>{item.label}</span>
             </div>
           }>
-          {statusData && statusData.length>0 && <div className="col-span-5 xl:col-span-4 w-full h-14 relative">
+          {statusData && statusData.length>0 && <div className="col-span-5 xl:col-span-4 w-full relative">
             <StatusBar statusData={statusData} openStatus={openStatus} setVidDis={setVidDis} setCurrentVid={setCurrentVid} setActiveVidIndex={setActiveVidIndex} />
           </div>}
             <CardsComponent cards={item.cards} id={item.id} openStatus={openStatus} setVidDis={setVidDis} setCurrentVid={setCurrentVid} />

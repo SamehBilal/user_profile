@@ -28,10 +28,8 @@ function StatusBar({statusData, openStatus, setVidDis, setCurrentVid, setActiveV
   const handleOpenStatus = (i=0) => {
     openStatus(prev=>!prev)
     setVidDis('small')
-    console.log({youtubeId: statusData[i].youtubeId, title: statusData[i].title})
     setCurrentVid({youtubeId: statusData[i].youtubeId, title: statusData[i].title})
     setActiveVidIndex(i)
-    console.log('activeVidIndex', i)
   }
 
   return (
@@ -44,14 +42,18 @@ function StatusBar({statusData, openStatus, setVidDis, setCurrentVid, setActiveV
       pagination={false}
       grabCursor={true}
       slidesPerView={'auto'}
-      spaceBetween={40}
+      spaceBetween={20}
       className='absolute inset-0 w-full z-10'>
         {statusData.map((_, i)=>{
         return <SwiperSlide key={i} 
         onClick={()=>handleOpenStatus(i)}
-        className="!size-14 !flex items-center justify-center rounded-full overflow-hidden bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 cursor-pointer">
-            <div className="size-12 flex items-center justify-center">
-                <Image src={_.imgUrl} alt={_.title} width={100} height={100} className="size-full object-cover rounded-full" />
+        className="!aspect-shorts !w-28 !flex items-center justify-center cursor-pointer relative">
+            <div className="size-full flex items-center justify-center relative">
+                <Image src={_.imgUrl} alt={_.title} width={1000} height={1000} className="size-full object-cover" />
+                <div className="absolute inset-0  bg-gradient-to-t from-black/90 to-transparent" />
+                <div className="absolute w-full bottom-0 left-0 pb-4 text-white text-tiny line-clamp-3 py-1 px-2">
+                  {_.title}
+                </div>
             </div>
         </SwiperSlide>
         })}
