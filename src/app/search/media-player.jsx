@@ -50,25 +50,8 @@ function MediaPlayer({isPopupOpen, setIsPopupOpen, isExpanded, setIsExpanded, ac
             }
         }; // main swipe function to handle mouse swipe
         const container = containerRef.current;
-        if (container) {
-            container.addEventListener('touchstart', handleTouchStart);
-            container.addEventListener('touchend', handleTouchEnd);
-            container.addEventListener('mousedown', handleMouseDown);
-            container.addEventListener('mousemove', handleMouseMove);
-            container.addEventListener('mouseup', handleMouseUp);
-            console.log('Event listeners added');
-        }
-
         return () => {
-            if (container) {
-                container.removeEventListener('touchstart', handleTouchStart);
-                container.removeEventListener('touchend', handleTouchEnd);
-                container.removeEventListener('mousedown', handleMouseDown);
-                container.removeEventListener('mousemove', handleMouseMove);
-                container.removeEventListener('mouseup', handleMouseUp);
-                console.log('Event listeners removed');
-            }
-    };
+        };
     }, [activeVidIndex])
 
     const handlePrevVid = () => {
@@ -123,17 +106,17 @@ function MediaPlayer({isPopupOpen, setIsPopupOpen, isExpanded, setIsExpanded, ac
             </div>}
             {vidDis=='small' && 
             <div className="absolute bottom-1/2 right-[5%] translate-y-1/2 flex flex-col items-center justify-center gap-4">
-            <button className="bg-white/10 hover:bg-white/20 rounded-full p-4 text-gray-100 size-fit disabled:hover:bg-white/10"
-            onClick={handlePrevVid} disabled={activeVidIndex<=0}>
-                <ChevronUp className='size-8' />
-            </button>
-            <button className="bg-white/10 hover:bg-white/20 rounded-full p-4 text-gray-100 size-fit disabled:hover:bg-white/10"
-            onClick={handleNextVid} disabled={activeVidIndex>=statusData?.length-1}>
-                <ChevronDown className='size-8' />
-            </button>
-        </div>}
+                <button className="bg-white/10 hover:bg-white/20 rounded-full p-4 text-gray-100 size-fit disabled:hover:bg-white/10"
+                onClick={handlePrevVid} disabled={activeVidIndex<=0}>
+                    <ChevronUp className='size-8' />
+                </button>
+                <button className="bg-white/10 hover:bg-white/20 rounded-full p-4 text-gray-100 size-fit disabled:hover:bg-white/10"
+                onClick={handleNextVid} disabled={activeVidIndex>=statusData?.length-1}>
+                    <ChevronDown className='size-8' />
+                </button>
+            </div>}
             {vidDis=='small' && <div ref={containerRef} 
-            className='absolute z-40 max-w-grid group left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 px-32'>
+            className='absolute z-40 max-w-grid group left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'>
                 <div className="flex items-center justify-center w-full h-10">
                     {activeVidIndex>=statusData?.length-1 && <ChevronsUp className='size-10 animate-pulse' onClick={handlePrevVid} />}
                 </div>
@@ -182,73 +165,3 @@ function MediaPlayer({isPopupOpen, setIsPopupOpen, isExpanded, setIsExpanded, ac
 }
 
 export default MediaPlayer
-
-
-/* player controller, (if needed...) */
-// const playerRef = useRef(null);
-// const [player, setPlayer] = useState(null);
-// const [isMuted, setIsMuted] = useState(false);
-// const [isPlaying, setIsPlaying] = useState(true);
-// const [likes, setLikes] = useState(651);
-// const [dislikes, setDislikes] = useState(0);
-
-//     useEffect(() => {
-//         const onYouTubeIframeAPIReady = () => {
-//             if(currentVid?.youtubeId){
-//                 const newPlayer = new YT.Player(playerRef.current, {
-//                     videoId: currentVid?.youtubeId,
-//                     playerVars: { autoplay: 1, controls: 0 },
-//                     events: {
-//                       onReady: (event) => {
-//                         setPlayer(event.target);
-//                         const iframe = event.target.getIframe();
-//                         iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
-//                         iframe.setAttribute('allowFullScreen', 'true');
-//                         iframe.setAttribute('autoplay', 'true');
-//                       },
-//                       onStateChange: (event) => {
-//                         if (event.data === YT.PlayerState.PLAYING) { setIsPlaying(true); } 
-//                         else { setIsPlaying(false); }
-//                         if (event.target && event.target.isMuted()) { setIsMuted(true); } 
-//                         else { setIsMuted(false); }
-//                       },
-//                     }
-//                 });
-//             }
-//         };
-    
-//         if (!window.YT) {
-//           const tag = document.createElement('script');
-//           tag.src = 'https://www.youtube.com/iframe_api';
-//           window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
-//           const firstScriptTag = document.getElementsByTagName('script')[0];
-//           firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-//         } else {
-//           onYouTubeIframeAPIReady();
-//         }
-//       }, [currentVid?.youtubeId]);
-      
-//   const handleMute = () => {
-//     if (player) {
-//       if (isMuted) {
-//         player.unMute();
-//       } else {
-//         player.mute();
-//       }
-//       setIsMuted(!isMuted);
-//     }
-//   };
-
-//   const handlePlayPause = () => {
-//     if (player) {
-//       if (isPlaying) {
-//         player.pauseVideo();
-//       } else {
-//         player.playVideo();
-//       }
-//       setIsPlaying(!isPlaying);
-//     }
-//   };
-
-
-    // console.log('videoId, shortVideoId', videoId, shortVideoId)

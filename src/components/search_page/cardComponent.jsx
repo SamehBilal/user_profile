@@ -8,12 +8,14 @@ const CardComponent = ({id, category, openStatus, setVidDis, setCurrentVid}) => 
       blogs:  "أحدث المقالات", 
       products: "أحدث المنتجات", 
       videos: "أحدث الفيديوهات", 
+      news: "أحدث الأخبار", 
       reviews: "أحدث المراجعات"
     }
     const links = {
       blogs: "https://arabhardware.net/articles",
       products: "https://ahw.store",
       videos: "https://www.youtube.com/@Arabhardware",
+      news: "https://arabhardware.net/news",
       reviews: "https://arabhardware.net/reviews"
     }
     
@@ -29,7 +31,7 @@ const CardComponent = ({id, category, openStatus, setVidDis, setCurrentVid}) => 
         </div>}
 
         {/* cards */}
-        <div className="grid grid-cols-6 gap-4 xl:gap-y-6 items-center justify-between">
+        <div className="grid grid-cols-6 gap-4 items-center justify-between">
             {category && category?.length > 0 && category.map((_, i)=>{
                 return <SingleCard key={i} index={i}
                 openStatus={openStatus} setVidDis={setVidDis} setCurrentVid={setCurrentVid}

@@ -19,7 +19,7 @@ export default function Psge({}) {
   const [actionDropdownValue, setActionDropdownValue] = useState(0)
   const [activeTabIndex, setActiveTabIndex] = useState(0)
   const [searchTypeDropdownValue, setSearchTypeDropdownValue] = useState(0)
-  const [perPage, setPerPage] = useState(12)
+  const [perPage, setPerPage] = useState(11)
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [vidDis, setVidDis] = useState('full') //full / small
@@ -55,10 +55,10 @@ export default function Psge({}) {
     }
 }
 
-  const processPosts = (cards) => {
+  const processTypes = (cards, type='blogs') => {
     const processed = cards?.map((card, index)=>{ // keeping the same sturcutre and number of elements
       return{
-        type: 'blogs', 
+        type, 
         ty: card?.type,
         title: card?.title,
         desc: card?.excerpt,
@@ -101,30 +101,17 @@ export default function Psge({}) {
     // console.log('videos: ', processed)
     return processed
   }
-  const processReviews = (cards) => {
-    // console.log('reviews cards', cards)
-    const processed = cards?.map((card, index)=>{ // keeping the same sturcutre and number of elements
-      return{
-        type: 'reviews', 
-        ty: card?.type,
-        title: card?.title,
-        desc: card?.excerpt,
-        imgUrl: card?.thumbnail,
-        url: card?.slug
-      }
-    }).sort((a, b) => new Date(b.publishAt) - new Date(a.publishAt))|| []
-    // console.log('reviews: ', processed)
-    return processed
-  }
 
   const processData = ({results}) => {
     const newRes = [...searchData];
     // console.log('results', results)
-      newRes[1].cards = processPosts(results.articles?.data?.concat(results?.news?.data))
+      newRes[1].cards = processTypes(results.articles?.data, 'blogs')
       newRes[2].cards = processStore(results.store?.data)
       newRes[3].cards = processvideos(results.videos?.data)
-      newRes[4].cards = processReviews(results.reviews?.data)
-      newRes[0].cards = newRes[1].cards.slice(0, 5).concat(newRes[2].cards.slice(0, 6), newRes[3].cards.slice(0, 4), newRes[4].cards.slice(0, 5))
+      newRes[4].cards = processTypes(results.news?.data, 'news')
+      newRes[5].cards = processTypes(results.reviews?.data, 'reviews')
+      newRes[0].cards = newRes[1].cards.slice(0, 5).concat(
+        newRes[2].cards.slice(0, 6), newRes[3].cards.slice(0, 4), newRes[4].cards.slice(0, 5), newRes[5].cards.slice(0, 5))
 
       return newRes
   }
@@ -139,6 +126,7 @@ export default function Psge({}) {
     // console.log('maxTotal', maxTotal, Math.ceil(maxTotal/perPage))
     setTotalPages(Math.ceil(maxTotal/perPage))
   }
+  console.log('perPage', perPage)
 
   const getfetchedData = async () => {
       await axios.post(`${ApiBaseNet}/search`, {s:searchValue??'', for: '', i: perPage, p: currentPage})

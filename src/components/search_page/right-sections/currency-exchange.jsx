@@ -31,7 +31,7 @@ function CurrencyExchange({
   }
 
   useEffect(()=>{
-    setInputValue(0)
+    setInputValue(1)
   }, [currencyValue])
   
   return (
@@ -41,7 +41,7 @@ function CurrencyExchange({
     style={maxWidth?{maxWidth}:{}}>
         <div className="px-4 pt-2 pb-4 bg-gradient-to-tr from-transparent to-white/30 dark:to-black/30 backdrop-blur-md">
             <p className="font-bold">محول العملات</p>
-            <p className="text-tiny">القيمة الافتراضية 0 جنيه مصري</p>
+            <p className="text-tiny">القيمة الافتراضية للعملات مقابل الجنيه</p>
         </div>
       <div className="flex items-center justify-between">
         <div className="flex items-center justify-start gap-4 relative overflow-visible">

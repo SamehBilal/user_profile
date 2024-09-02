@@ -44,6 +44,38 @@ const blogsCards = [
         imgUrl: "https://arabhardware.net/storage/uploads/2024-07/66a514cd917fe.meta-47.pngmedium_large66a514cda1a5a.webp"
     },
 ]
+const newsCards = [
+    {
+        type: 'news', 
+        title: "الذكاء الاصطناعي يحمل شعلة الأولمبياد", 
+        desc: "الألعاب الأولمبية، ذلك الحدث العالمي الذي يترقبه المليارات كل أربع سنوات، يعود مجددًا ليبهر العالم. ومنذ آخر دورة أولمبية في عام 2020، شهد العالم تحولًا جذريًا مع ظهور الجيل الجديد من الذكاء الاصطناعي، الذي بدأ في إحداث تغييرات عميقة في مختلف جوانب حياتنا.",
+        imgUrl: "https://arabhardware.net/storage/uploads/2024-07/66a514cd917fe.meta-47.pngmedium_large66a514cda1a5a.webp"
+    },
+    {
+        type: 'news', 
+        title: "الذكاء الاصطناعي يحمل شعلة الأولمبياد", 
+        desc: "الألعاب الأولمبية، ذلك الحدث العالمي الذي يترقبه المليارات كل أربع سنوات، يعود مجددًا ليبهر العالم. ومنذ آخر دورة أولمبية في عام 2020، شهد العالم تحولًا جذريًا مع ظهور الجيل الجديد من الذكاء الاصطناعي، الذي بدأ في إحداث تغييرات عميقة في مختلف جوانب حياتنا.",
+        imgUrl: "https://arabhardware.net/storage/uploads/2024-07/66a514cd917fe.meta-47.pngmedium_large66a514cda1a5a.webp"
+    },
+    {
+        type: 'news', 
+        title: "الذكاء الاصطناعي يحمل شعلة الأولمبياد", 
+        desc: "الألعاب الأولمبية، ذلك الحدث العالمي الذي يترقبه المليارات كل أربع سنوات، يعود مجددًا ليبهر العالم. ومنذ آخر دورة أولمبية في عام 2020، شهد العالم تحولًا جذريًا مع ظهور الجيل الجديد من الذكاء الاصطناعي، الذي بدأ في إحداث تغييرات عميقة في مختلف جوانب حياتنا.",
+        imgUrl: "https://arabhardware.net/storage/uploads/2024-07/66a514cd917fe.meta-47.pngmedium_large66a514cda1a5a.webp"
+    },
+    {
+        type: 'news', 
+        title: "الذكاء الاصطناعي يحمل شعلة الأولمبياد", 
+        desc: "الألعاب الأولمبية، ذلك الحدث العالمي الذي يترقبه المليارات كل أربع سنوات، يعود مجددًا ليبهر العالم. ومنذ آخر دورة أولمبية في عام 2020، شهد العالم تحولًا جذريًا مع ظهور الجيل الجديد من الذكاء الاصطناعي، الذي بدأ في إحداث تغييرات عميقة في مختلف جوانب حياتنا.",
+        imgUrl: "https://arabhardware.net/storage/uploads/2024-07/66a514cd917fe.meta-47.pngmedium_large66a514cda1a5a.webp"
+    },
+    {
+        type: 'news', 
+        title: "الذكاء الاصطناعي يحمل شعلة الأولمبياد", 
+        desc: "الألعاب الأولمبية، ذلك الحدث العالمي الذي يترقبه المليارات كل أربع سنوات، يعود مجددًا ليبهر العالم. ومنذ آخر دورة أولمبية في عام 2020، شهد العالم تحولًا جذريًا مع ظهور الجيل الجديد من الذكاء الاصطناعي، الذي بدأ في إحداث تغييرات عميقة في مختلف جوانب حياتنا.",
+        imgUrl: "https://arabhardware.net/storage/uploads/2024-07/66a514cd917fe.meta-47.pngmedium_large66a514cda1a5a.webp"
+    },
+]
 const productsCards = [
     {
         type: 'products', 
@@ -199,7 +231,7 @@ export const searchData = [
         id: "all", label: "الجميع", color: "",
         bgImg: {'dark': Dark1, 'light': Light1},
         backgroundImgDark: Dark1, backgroundImg: Light1, 
-        cards: blogsCards.concat(productsCards, videosCards, reviewsCards)
+        cards: blogsCards.concat(productsCards, videosCards, newsCards, reviewsCards)
     },
     {
         id: "blogs", label: "المقالات", color: "",
@@ -218,6 +250,12 @@ export const searchData = [
         backgroundImgDark: Dark1, backgroundImg: Light1, 
         bgImg: {'dark': Dark1, 'light': Light1},
         cards: videosCards
+    },
+    {
+        id: "news", label: "الأخبار", color: "",
+        backgroundImgDark: Dark2, backgroundImg: Light2, 
+        bgImg: {'dark': Dark2, 'light': Light2},
+        cards: newsCards
     },
     {
         id: "reviews", label: "المراجعات", color: "",

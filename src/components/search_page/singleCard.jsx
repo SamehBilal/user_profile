@@ -19,6 +19,8 @@ function SingleCard({
     {type=='videos' && <VideosCard moreVideos={moreVideos} comments={comments}
     index={index} title={title} subTitle={subTitle} imgUrl={imgUrl} openStatus={openStatus}
      youtubeId={youtubeId} setVidDis={setVidDis} setCurrentVid={setCurrentVid} />}
+     {/* news */}
+     {type=='news' && <ReviewsCard index={index} title={title} subTitle={subTitle} imgUrl={imgUrl} desc={desc} url={url} />}
     {/* reviews */}
     {type=='reviews' && <ReviewsCard index={index} title={title} subTitle={subTitle} imgUrl={imgUrl} desc={desc} url={url} />}
     </>

@@ -14,7 +14,7 @@ export default function SearchParamsComponent({setSearchTypeDropdownValue, setSe
 
       let forWhat = searchParams.get('for') ?? ''
       let search = searchParams.get('s') ?? ''
-      let itemsPerPage = searchParams.get('i') ?? 12
+      let itemsPerPage = searchParams.get('i') ?? 11
       let pageNumber = searchParams.get('p') ?? 1
       // if(!searchParams.get('s')) location.href = '/'
       setSearchTypeDropdownValue(forWhat)
