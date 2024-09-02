@@ -50,7 +50,6 @@ function MediaPlayer({isPopupOpen, setIsPopupOpen, isExpanded, setIsExpanded, ac
             }
         }; // main swipe function to handle mouse swipe
         const container = containerRef.current;
-        console.log('Container:', container);
         if (container) {
             container.addEventListener('touchstart', handleTouchStart);
             container.addEventListener('touchend', handleTouchEnd);

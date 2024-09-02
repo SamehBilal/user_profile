@@ -124,7 +124,7 @@ export default function Psge({}) {
       newRes[2].cards = processStore(results.store?.data)
       newRes[3].cards = processvideos(results.videos?.data)
       newRes[4].cards = processReviews(results.reviews?.data)
-      newRes[0].cards = newRes[1].cards.slice(0, 5).concat(newRes[2].cards, newRes[3].cards.slice(0, 4), newRes[4].cards.slice(0, 5))
+      newRes[0].cards = newRes[1].cards.slice(0, 5).concat(newRes[2].cards.slice(0, 6), newRes[3].cards.slice(0, 4), newRes[4].cards.slice(0, 5))
 
       return newRes
   }

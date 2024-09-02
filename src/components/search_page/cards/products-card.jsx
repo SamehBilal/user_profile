@@ -9,15 +9,15 @@ function ProductsCard({index=0, title='', imgUrl='https://nextui.org/images/card
   return (
     <Card className={`lg:col-span-1 md:col-span-2 col-span-3 group relative overflow-visible 
       ${index==0?'hover:animate-glowPink':(index==1?'hover:animate-glowYellow':'hover:animate-glowGray dark:hover:animate-glowGrayDark')}`}>
-      <div className="bg-white h-44 w-full p-4 relative rounded-t-lg">
+      <div className="bg-white h-44 w-full p-4 relative rounded-t-md">
       {!inStock &&
-      <div className="absolute top-4 -right-3 bg-primary text-white pb-1 px-4 z-20 rounded-l-lg">غير متوفر</div>}
+      <div className="absolute top-4 -right-3 bg-primary text-white pb-1 px-4 z-20 rounded-l-md">غير متوفر</div>}
       {inStock &&
-      <div className="absolute top-4 -right-3 bg-green-800 text-white pb-1 px-4 z-20 rounded-l-lg">متوفر</div>}
+      <div className="absolute top-4 -right-3 bg-green-800 text-white pb-1 px-4 z-20 rounded-l-md">متوفر</div>}
         <Image
           width={1000} height={1000}
           alt="Card background"
-          className="rounded-b-none rounded-t-lg object-contain size-full group-hover:scale-105 transition"
+          className="rounded-b-none rounded-t-md object-contain size-full group-hover:scale-105 transition"
           src={imgUrl}
         />
       </div>
