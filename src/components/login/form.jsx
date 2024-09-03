@@ -38,7 +38,7 @@ function LoginForm({toRegisterPage, returnUrl, sessionId}) {
     setCookie("jwt_logout", "deleted", {secure: true, sameSite: "None", domain: ".arabhardware.net", maxAge: 0})
     deleteCookie("jwt_logout", {secure: true, sameSite: "None", domain: ".arabhardware.net"})
     
-    // const recaptaSecretKey = process?.env?.RECAPTCHA_SECRET_KEY;
+    // const recaptaSecretKey = process?.env?.NEXT_PUBLIC_RECAPTCHA_SECRET_KEY;
     const recaptaSecretKey = "6Ld1uQsqAAAAAMxfabq4tdWDCGYbEZD0ZDdusTP3";
     // console.log('recaptaSecretKey', recaptaSecretKey)
 

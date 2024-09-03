@@ -3,7 +3,7 @@ import { Redis } from "@upstash/redis";
 import { NextResponse } from "next/server";
 import rateLimit from 'express-rate-limit';
 
-const redis = new Redis({ url: process.env.UPSTASH_REDIS_REST_URL, token: process.env.UPSTASH_REDIS_REST_TOKEN });
+const redis = new Redis({ url: process.env.NEXT_PUBLIC_UPSTASH_REDIS_REST_URL, token: process.env.NEXT_PUBLIC_UPSTASH_REDIS_REST_TOKEN });
 
 const ratelimit = new Ratelimit({
   redis,
