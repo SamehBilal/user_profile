@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Link } from "@nextui-org/react";
 import { StoreIcon, ArrowUpLeft, ArrowDownLeft } from "lucide-react";
 
-const CardComponent = ({id, category, openStatus, setVidDis, setCurrentVid, setIsBlogPopupOpen, setCurrentBlog}) => {
+const CardComponent = ({id, category, openStatus, setVidDis, setCurrentVid, setIsBlogPopupOpen, setCurrentBlog, changeTab}) => {
     const titles = {
       blogs:  "أحدث المقالات", 
       products: "أحدث المنتجات", 
@@ -19,6 +19,11 @@ const CardComponent = ({id, category, openStatus, setVidDis, setCurrentVid, setI
       news: "https://arabhardware.net/news",
       reviews: "https://arabhardware.net/reviews",
       how: "https://arabhardware.net/how",
+    }
+
+    const handleChangeTab = ()=>{
+        window.scrollTo({ top: 200, behavior: 'smooth' });
+        changeTab(category[0]?.type)
     }
     
   
@@ -46,15 +51,15 @@ const CardComponent = ({id, category, openStatus, setVidDis, setCurrentVid, setI
         
         {/* link to more in all */}
         {category[0]?.type && id=='all' && category[0]?.type!='products' &&
-        <Link href={links[category[0]?.type]} isExternal
+        <button onClick={handleChangeTab}
         className="font-bold text-small rounded-lg w-full flex items-center justify-center text-black dark:text-white py-8 bg-black/15 shadow-medium">
             <span>عرض المزيد</span>
             <ArrowDownLeft />
-        </Link>}
-        {category[0]?.type == 'products' && <Link href={links[category[0]?.type]} isExternal
+        </button>}
+        {category[0]?.type == 'products' && <button onClick={handleChangeTab}
         className="absolute top-0 left-8 text-black dark:text-white p-2">
             <ArrowUpLeft />
-        </Link>}
+        </button>}
 
         {/* pupup in blogs/how/reviews/news */}
         {category[0]?.type && id!='all' &&

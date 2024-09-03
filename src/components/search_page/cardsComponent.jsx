@@ -8,7 +8,7 @@ import CardComponent from "./cardComponent";
 
 // blogs: 0-4, products: 5-10, videos: 11-14, reviews: 15-19
 
-export default function CardsComponent({cards=[], id='blogs', openStatus, setVidDis, setCurrentVid, setIsBlogPopupOpen, setCurrentBlog}) {
+export default function CardsComponent({cards=[], id='blogs', openStatus, setVidDis, setCurrentVid, setIsBlogPopupOpen, setCurrentBlog, changeTab}) {
   const [categories, setCategories] = useState(null)
 
   useEffect(()=>{
@@ -43,10 +43,10 @@ export default function CardsComponent({cards=[], id='blogs', openStatus, setVid
       {id=='all' 
       ?categories && Object.keys(categories).map((_, i)=>{
         return <CardComponent key={i} category={categories[_]} setIsBlogPopupOpen={setIsBlogPopupOpen} setCurrentBlog={setCurrentBlog}
-        id={id} openStatus={openStatus} setVidDis={setVidDis} setCurrentVid={setCurrentVid} />
+        id={id} openStatus={openStatus} setVidDis={setVidDis} setCurrentVid={setCurrentVid} changeTab={changeTab} />
       })
       :categories && <CardComponent category={categories} setIsBlogPopupOpen={setIsBlogPopupOpen} setCurrentBlog={setCurrentBlog}
-      id={id} openStatus={openStatus} setVidDis={setVidDis} setCurrentVid={setCurrentVid} />}
+      id={id} openStatus={openStatus} setVidDis={setVidDis} setCurrentVid={setCurrentVid} changeTab={changeTab} />}
     </div>
   );
 }

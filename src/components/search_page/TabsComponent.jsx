@@ -71,7 +71,7 @@ currencyValue, setCurrencyValue, }) => {
             <StatusBar statusData={statusData} openStatus={openStatus} setVidDis={setVidDis} setCurrentVid={setCurrentVid} setActiveVidIndex={setActiveVidIndex} />
           </div>}
             <CardsComponent cards={item.cards} id={item.id} openStatus={openStatus} setVidDis={setVidDis} setCurrentVid={setCurrentVid}
-            setIsBlogPopupOpen={setIsBlogPopupOpen} setCurrentBlog={setCurrentBlog} />
+            setIsBlogPopupOpen={setIsBlogPopupOpen} setCurrentBlog={setCurrentBlog} changeTab={handleTabChange} />
             {/* {item.id!='all' && 
             <PaginationSection totalPages={totalPages} currentPage={currentPage} searchValue={searchValue} 
             setCurrentPage={setCurrentPage} />} */}
