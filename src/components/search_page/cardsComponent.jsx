@@ -13,27 +13,30 @@ export default function CardsComponent({cards=[], id='blogs', openStatus, setVid
 
   useEffect(()=>{
     if(id == 'all'){
-      const categories = {
-        blogs: [0, 4],
-        products: [5, 10],
-        videos: [11, 14],
-        news: [15, 19],
-        reviews: [20, 24],
-        how: [25, 29],
+      const maxCardsPerCategory = {
+        blogs: 5,
+        products: 6,
+        videos: 4,
+        news: 5,
+        reviews: 5,
+        how: 5,
       };
-      const sliceCardsIntoCategories = (cards, categories) => {
-        const categorizedCards = {};
+      const categories = Object.keys(maxCardsPerCategory); // categories array
+      const categorizedCards = categories.reduce((cat, i) => { 
+        cat[i] = []; return cat; 
+      }, {}); // object with catigories & an initial value of []
       
-        for (const [category, [start, end]] of Object.entries(categories)) {
-            categorizedCards[category] = cards.slice(start, end + 1);
+      cards.forEach(card => {
+        if (categorizedCards[card.type] && categorizedCards[card.type].length < maxCardsPerCategory[card.type]) {
+          categorizedCards[card.type].push(card);
         }
-        return categorizedCards;
-      };
-      setCategories(sliceCardsIntoCategories(cards, categories));
+      });
+      setCategories(categorizedCards);
     }else{
       setCategories([...cards])
     }
   }, [])
+  // console.log('categories', categories)
   
   return (
     <div className={`max-w-grid flex flex-col gap-8 items-center justify-between`}>
