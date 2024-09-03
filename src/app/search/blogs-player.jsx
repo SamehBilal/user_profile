@@ -3,7 +3,7 @@ import { useEffect, useState, useRef } from 'react'
 import BoxesBg from '@/components/ui/boxes-bg'
 import { Image } from '@nextui-org/react'
 import Logo from '@/public/images/logo_icon.png'
-import { Eye, EyeIcon, HeartIcon, PencilLineIcon } from 'lucide-react'
+import { ArrowUpLeft, Eye, EyeIcon, HeartIcon, PencilLineIcon } from 'lucide-react'
 // {
 //   "index": 0,
 //   "title": "مراجعة ماوس Deathadder V3 Hyperspeed من Razer",
@@ -28,13 +28,17 @@ function BlogsPlayer({isPopupOpen, setIsPopupOpen, currentBlog,
         return arabicDate
     }
 
+    const goToUrl = () => {
+        location.href=currentBlog.url??'#'
+    }
+
   return (
     <>
         
     {isPopupOpen && currentBlog && <div className="fixed z-[200] -top-[5%] left-0 w-screen h-[110dvh] flex items-center justify-center text-white">
         <BoxesBg setIsPopupOpen={setIsPopupOpen} >
-        <div className="absolute z-40 xl:w-[70%] space-y-4 max-w-grid w-[96%] h-[70dvh] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-black/25 p-8 flex items-center justify-between flex-col">
-            <div className="flex items-center justify-between gap-8 h-[calc(100%-2rem)]">
+        <div className="absolute z-40 xl:w-[70%] space-y-0 max-w-grid w-[96%] h-[80dvh] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-black/25 px-8 pt-8 flex items-center justify-between flex-col">
+            <div className="flex items-center justify-between gap-8 h-[calc(100%-6rem)]">
                 <div className="w-1/3 h-full flex">
                     <Image src={currentBlog.imgUrl} alt={currentBlog.title}
                     className='w-full rounded-r-md object-cover h-full' />
@@ -50,7 +54,7 @@ function BlogsPlayer({isPopupOpen, setIsPopupOpen, currentBlog,
                     </div>
                 </div>
             </div>
-            <div className="text-gray-400 text-tiny flex items-center justify-between w-full gap-[25%]">
+            <div className="text-gray-400 text-tiny flex items-start justify-between w-full gap-[25%]">
                 <p className=''>{toReadableData(currentBlog.publishAt)}</p>
                 <div className="flex items-center justify-start flex-1 gap-8">
                     <div className="flex gap-2 items-center">
@@ -68,6 +72,13 @@ function BlogsPlayer({isPopupOpen, setIsPopupOpen, currentBlog,
                 </div>
 
             </div>
+            <button className="py-4 w-full text-white bg-black/75 flex items-center justify-center group"
+            onClick={goToUrl}>
+                <p className='text-transparent scale-x-0 group-hover:scale-x-100 group-hover:text-white transition-all duration-300'>
+                    اقرأ باستفاضة على موقعنا
+                </p>
+                <ArrowUpLeft className='size-8 group-hover:size-4 translate-x-16 group-hover:translate-x-0 group-hover:-translate-y-2 transition-all duration-300' />
+            </button>
         </div>
         </BoxesBg>
     </div>}
