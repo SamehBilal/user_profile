@@ -186,7 +186,7 @@ export default function Psge({}) {
       })
   }
   const getDailyNews = async () => {
-      await axios.post(`${ApiBaseNet}/daily-news`)
+      await axios.post(`${ApiBaseNet}/editors-choice`)
       .then(res=>{
         const results = res.data
         // console.log('daily news result', results)

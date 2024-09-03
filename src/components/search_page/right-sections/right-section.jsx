@@ -11,8 +11,8 @@ function RightSectoin({trendingData, tagsData, weather, dailyNews, rates, curren
   return (
     <div className='max-w-grid p-6 h-full absolute top-32 w-1/5 space-y-10'>
       <StoreFilters isStoreTabOpen={isStoreTabOpen}/>
-      <CarouselCard titles={dailyNews?.map((_)=>_.news) || []} timing={5000} 
-      images={dailyNews?.map((_)=>_.image) || []} urls={dailyNews?.map((_)=>_.url) } />
+      <CarouselCard titles={dailyNews?.map((_)=>_.title) || []} timing={5000} 
+      images={dailyNews?.map((_)=>_.thumbnail) || []} urls={dailyNews?.map((_)=>_.slug) } />
       <CurrencyExchange rates={rates} currencyValue={currencyValue} setCurrencyValue={setCurrencyValue} />
       <ListCard title="الاكثر رواجاً" subjects={trendingData} />
       <ListCard title="الأوسمة" subjects={tagsData} />
