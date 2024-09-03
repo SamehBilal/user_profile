@@ -19,6 +19,7 @@ export default function CardsComponent({cards=[], id='blogs', openStatus, setVid
         videos: [11, 14],
         news: [15, 19],
         reviews: [20, 24],
+        how: [25, 29],
       };
       const sliceCardsIntoCategories = (cards, categories) => {
         const categorizedCards = {};

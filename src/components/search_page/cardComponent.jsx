@@ -9,14 +9,16 @@ const CardComponent = ({id, category, openStatus, setVidDis, setCurrentVid}) => 
       products: "أحدث المنتجات", 
       videos: "أحدث الفيديوهات", 
       news: "أحدث الأخبار", 
-      reviews: "أحدث المراجعات"
+      reviews: "أحدث المراجعات",
+      how: "كيف؟",
     }
     const links = {
       blogs: "https://arabhardware.net/articles",
       products: "https://ahw.store",
       videos: "https://www.youtube.com/@Arabhardware",
       news: "https://arabhardware.net/news",
-      reviews: "https://arabhardware.net/reviews"
+      reviews: "https://arabhardware.net/reviews",
+      how: "https://arabhardware.net/how",
     }
     
   

@@ -23,6 +23,8 @@ function SingleCard({
      {type=='news' && <ReviewsCard index={index} title={title} subTitle={subTitle} imgUrl={imgUrl} desc={desc} url={url} />}
     {/* reviews */}
     {type=='reviews' && <ReviewsCard index={index} title={title} subTitle={subTitle} imgUrl={imgUrl} desc={desc} url={url} />}
+     {/* how */}
+     {type=='how' && <ReviewsCard index={index} title={title} subTitle={subTitle} imgUrl={imgUrl} desc={desc} url={url} />}
     </>
   )
 }

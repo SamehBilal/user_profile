@@ -2,7 +2,7 @@
 import AppBar from "@/components/appbar";
 import Footer from "@/components/footer";
 import SearchPage from "@/components/search_page";
-import { searchData, statusData } from "@/components/search_page/data";
+import { searchData } from "@/components/search_page/data";
 import { useState, useEffect } from "react";
 import MediaPlayer from "./media-player";
 import SearchParamsComponent from "./searchParamsComponent";
@@ -30,6 +30,7 @@ export default function Psge({}) {
 
   const [fetchedData, setFechedData] = useState(null)
   const [newSearchData, setNewSearchData] = useState(null)
+  const [statusData, setStatusData] = useState([])
   const [weather, setWeather] = useState(null)
   const [terndingData, setTrendingData] = useState(null)
   const [dailyNews, setDailyNews] = useState(null)
@@ -101,7 +102,6 @@ export default function Psge({}) {
     // console.log('videos: ', processed)
     return processed
   }
-
   const processData = ({results}) => {
     const newRes = [...searchData];
     // console.log('results', results)
@@ -110,8 +110,10 @@ export default function Psge({}) {
       newRes[3].cards = processvideos(results.videos?.data)
       newRes[4].cards = processTypes(results.news?.data, 'news')
       newRes[5].cards = processTypes(results.reviews?.data, 'reviews')
+      newRes[6].cards = processTypes(results.how?.data, 'how')
       newRes[0].cards = newRes[1].cards.slice(0, 5).concat(
-        newRes[2].cards.slice(0, 6), newRes[3].cards.slice(0, 4), newRes[4].cards.slice(0, 5), newRes[5].cards.slice(0, 5))
+        newRes[2].cards.slice(0, 6), newRes[3].cards.slice(0, 4), newRes[4].cards.slice(0, 5), 
+        newRes[5].cards.slice(0, 5), newRes[6].cards.slice(0, 5))
 
       return newRes
   }
