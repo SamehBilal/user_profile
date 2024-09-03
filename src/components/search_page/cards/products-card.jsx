@@ -11,7 +11,7 @@ function ProductsCard({index=0, title='', imgUrl='https://nextui.org/images/card
       ${index==0?'hover:animate-glowPink':(index==1?'hover:animate-glowYellow':'hover:animate-glowGray dark:hover:animate-glowGrayDark')}`}>
       <div className="bg-white h-44 w-full p-4 relative rounded-t-md">
       <div className={`absolute top-4 -right-3 ${inStock?'bg-green-800':'bg-primary'}  text-white pb-1 px-4 z-20 rounded-l-md`}>
-        {inStock? "نفذت الكمية":"متوفر"}
+        {!inStock? "نفذت الكمية":"متوفر"}
       </div>
         <Image
           width={1000} height={1000}
