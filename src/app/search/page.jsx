@@ -30,6 +30,7 @@ export default function Psge({}) {
   const [activeVidIndex, setActiveVidIndex] = useState(0)
   const [currencyValue, setCurrencyValue] = useState('EGP')
   const [isMounted, setIsMounted] = useState(false)
+  const [statusData, setStatusData] = useState([])
 
   const [fetchedData, setFechedData] = useState(null)
   const [newSearchData, setNewSearchData] = useState(null)
@@ -196,6 +197,17 @@ export default function Psge({}) {
         setDailyNews([])
       })
   }
+  const getNewestShorts = async () => {
+      await axios.post(`${ApiBaseNet}/shorts`)
+      .then(res=>{
+        const results = res.data
+        setStatusData(processvideos(results.data))
+      }).catch(e=>{
+        console.error(e)
+        toast.error(e.message)
+        setStatusData([])
+      })
+  }
   const getRates = async ({c='EGP'}) => {
     // console.log('currencyValue', c)
       await axios.post(`${ApiBaseNet}/exchange-rates`, {c}
@@ -241,6 +253,7 @@ export default function Psge({}) {
       checkLocation()
       getTrendingData()
       getDailyNews()
+      getNewestShorts()
       getRates({c:currencyValue})
     }
   }, [isMounted])
@@ -281,7 +294,7 @@ export default function Psge({}) {
       searchTypeDropdownValue={searchTypeDropdownValue} setSearchTypeDropdownValue={setSearchTypeDropdownValue} />
 
       <SearchPage data={newSearchData} setBgImg={setBgImg} searchDropdownValue={searchTypeDropdownValue} setVidDis={setVidDis}
-      statusData={newSearchData? newSearchData[3]?.cards?.filter(card=>card.ty=='shorts'): []} setCurrentVid={setCurrentVid} 
+      statusData={statusData} setCurrentVid={setCurrentVid} 
       weather={weather} setActiveVidIndex={setActiveVidIndex} setIsBlogPopupOpen={setIsBlogPopupOpen} setCurrentBlog={setCurrentBlog}
       searchValue={searchValue} openStatus={setIsPopupOpen} activeTabIndex={activeTabIndex} setActiveTabIndex={setActiveTabIndex}
       trendingData={terndingData} tagsData={fetchedData?.tags?.data} dailyNews={dailyNews} rates={rates} setCurrentPage={setCurrentPage}
@@ -289,7 +302,7 @@ export default function Psge({}) {
 
       <MediaPlayer isPopupOpen={isPopupOpen} setIsPopupOpen={setIsPopupOpen} isExpanded={isExpanded} vidDis={vidDis} 
       setVidDis={setVidDis} setCurrentVid={setCurrentVid} currentVid={currentVid} setActiveVidIndex={setActiveVidIndex}
-      statusData={newSearchData? newSearchData[3]?.cards?.filter(card=>card.ty=='shorts'): []} activeVidIndex={activeVidIndex}
+      statusData={statusData} activeVidIndex={activeVidIndex}
       setIsExpanded={setIsExpanded} actionDropdownValue={actionDropdownValue} setActionDropdownValue={setActionDropdownValue} />
 
       <BlogsPlayer isPopupOpen={isBlogPopupOpen} setIsPopupOpen={setIsBlogPopupOpen} setCurrentBlog={setCurrentBlog} currentBlog={currentBlog} />
