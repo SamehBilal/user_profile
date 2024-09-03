@@ -3,7 +3,9 @@ import { useState, useEffect } from "react";
 import { Link } from "@nextui-org/react";
 import { StoreIcon, ArrowUpLeft, ArrowDownLeft } from "lucide-react";
 
-const CardComponent = ({id, category, openStatus, setVidDis, setCurrentVid, setIsBlogPopupOpen, setCurrentBlog, changeTab}) => {
+const CardComponent = ({id, category, openStatus, setVidDis, setCurrentVid, setIsBlogPopupOpen, setCurrentBlog, changeTab,
+    haMore=false, currentPage=1, setCurrentPage
+}) => {
     const titles = {
       blogs:  "أحدث المقالات", 
       products: "أحدث المنتجات", 
@@ -63,13 +65,13 @@ const CardComponent = ({id, category, openStatus, setVidDis, setCurrentVid, setI
 
         {/* pupup in blogs/how/reviews/news */}
         {category[0]?.type && id!='all' &&
-        <div onClick={()=>{
-            // load more data
+        <button onClick={()=>{
+            setCurrentPage(currentPage+1)
         }}
         className="font-bold text-small rounded-lg w-full flex items-center justify-center text-black dark:text-white py-8 bg-black/15 shadow-medium">
             <span>عرض المزيد</span>
             <ArrowDownLeft />
-        </div>}
+        </button>}
 
     </div>
 }

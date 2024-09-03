@@ -23,6 +23,7 @@ export default function Psge({}) {
   const [searchTypeDropdownValue, setSearchTypeDropdownValue] = useState(0)
   const [perPage, setPerPage] = useState(11)
   const [currentPage, setCurrentPage] = useState(1);
+  const [hasMore, setHasMore] = useState(false)
   const [totalPages, setTotalPages] = useState(1);
   const [vidDis, setVidDis] = useState('full') //full / small
   const [currentVid, setCurrentVid] = useState(null)
@@ -108,19 +109,30 @@ export default function Psge({}) {
     // console.log('videos: ', processed)
     return processed
   }
-  const processData = ({results}) => {
+  const processData = ({results, page=1}) => {
     const newRes = [...searchData];
     // console.log('results', results)
+    if(!newSearchData){
+      console.log('page, !newSearchData', page==1 && !newSearchData)
       newRes[1].cards = processTypes(results.articles?.data, 'blogs')
       newRes[2].cards = processStore(results.store?.data)
       newRes[3].cards = processvideos(results.videos?.data)
       newRes[4].cards = processTypes(results.news?.data, 'news')
       newRes[5].cards = processTypes(results.reviews?.data, 'reviews')
       newRes[6].cards = processTypes(results.how?.data, 'how')
+    }else{
+      console.log('else')
+      newRes[1].cards = newSearchData[1].cards.concat(processTypes(results.articles?.data, 'blogs'))
+      newRes[2].cards = newSearchData[2].cards.concat(processStore(results.store?.data))
+      newRes[3].cards = newSearchData[3].cards.concat(processvideos(results.videos?.data))
+      newRes[4].cards = newSearchData[4].cards.concat(processTypes(results.news?.data, 'news'))
+      newRes[5].cards = newSearchData[5].cards.concat(processTypes(results.reviews?.data, 'reviews'))
+      newRes[6].cards = newSearchData[6].cards.concat(processTypes(results.how?.data, 'how'))
+    }
       newRes[0].cards = newRes[1].cards.slice(0, 5).concat(
         newRes[2].cards.slice(0, 6), newRes[3].cards.slice(0, 4), newRes[4].cards.slice(0, 5), 
         newRes[5].cards.slice(0, 5), newRes[6].cards.slice(0, 5))
-
+console.log('newRes', newRes)
       return newRes
   }
 
@@ -141,9 +153,13 @@ export default function Psge({}) {
         const results = res.data?.results
         console.log('results', results)
         setFechedData(results)
-        const newSearchRes = processData({results})
+        const newSearchRes = processData({results, page: currentPage})
         setNewSearchData(newSearchRes)
         findMaxTotal({results});
+        setHasMore(
+          results.articles.has_more||results.reviews.has_more||results.store.has_more||results.videos.has_more
+          ||results.how.has_more||results.news.has_more
+        )
       }).catch(e=>{
         console.error(e.message)
         setFechedData([])
@@ -258,6 +274,8 @@ export default function Psge({}) {
     }
   }, [isMounted])
 
+  console.log('newSearchData', newSearchData)
+
   useEffect(()=>{
     setIsMounted(true)
     if(isMounted){
@@ -298,7 +316,7 @@ export default function Psge({}) {
       weather={weather} setActiveVidIndex={setActiveVidIndex} setIsBlogPopupOpen={setIsBlogPopupOpen} setCurrentBlog={setCurrentBlog}
       searchValue={searchValue} openStatus={setIsPopupOpen} activeTabIndex={activeTabIndex} setActiveTabIndex={setActiveTabIndex}
       trendingData={terndingData} tagsData={fetchedData?.tags?.data} dailyNews={dailyNews} rates={rates} setCurrentPage={setCurrentPage}
-      currencyValue={currencyValue} setCurrencyValue={setCurrencyValue} totalPages={totalPages} currentPage={currentPage} /> 
+      currencyValue={currencyValue} setCurrencyValue={setCurrencyValue} totalPages={totalPages} hasMore={hasMore} currentPage={currentPage} /> 
 
       <MediaPlayer isPopupOpen={isPopupOpen} setIsPopupOpen={setIsPopupOpen} isExpanded={isExpanded} vidDis={vidDis} 
       setVidDis={setVidDis} setCurrentVid={setCurrentVid} currentVid={currentVid} setActiveVidIndex={setActiveVidIndex}

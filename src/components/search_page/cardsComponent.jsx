@@ -5,10 +5,8 @@ import { Link } from "@nextui-org/react";
 import { StoreIcon } from "lucide-react";
 import CardComponent from "./cardComponent";
 
-
-// blogs: 0-4, products: 5-10, videos: 11-14, reviews: 15-19
-
-export default function CardsComponent({cards=[], id='blogs', openStatus, setVidDis, setCurrentVid, setIsBlogPopupOpen, setCurrentBlog, changeTab}) {
+export default function CardsComponent({cards=[], id='blogs', openStatus, setVidDis, setCurrentVid, setIsBlogPopupOpen, 
+  setCurrentBlog, changeTab, hasMore, currentPage, setCurrentPage}) {
   const [categories, setCategories] = useState(null)
 
   useEffect(()=>{
@@ -43,10 +41,12 @@ export default function CardsComponent({cards=[], id='blogs', openStatus, setVid
       {id=='all' 
       ?categories && Object.keys(categories).map((_, i)=>{
         return <CardComponent key={i} category={categories[_]} setIsBlogPopupOpen={setIsBlogPopupOpen} setCurrentBlog={setCurrentBlog}
-        id={id} openStatus={openStatus} setVidDis={setVidDis} setCurrentVid={setCurrentVid} changeTab={changeTab} />
+        id={id} openStatus={openStatus} setVidDis={setVidDis} setCurrentVid={setCurrentVid} 
+        changeTab={changeTab} hasMore={hasMore} currentPage={currentPage} setCurrentPage={setCurrentPage} />
       })
       :categories && <CardComponent category={categories} setIsBlogPopupOpen={setIsBlogPopupOpen} setCurrentBlog={setCurrentBlog}
-      id={id} openStatus={openStatus} setVidDis={setVidDis} setCurrentVid={setCurrentVid} changeTab={changeTab} />}
+      id={id} openStatus={openStatus} setVidDis={setVidDis} setCurrentVid={setCurrentVid} 
+      changeTab={changeTab} hasMore={hasMore} currentPage={currentPage} setCurrentPage={setCurrentPage} />}
     </div>
   );
 }

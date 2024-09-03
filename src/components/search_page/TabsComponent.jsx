@@ -8,8 +8,8 @@ import StatusBar from "./status-bar";
 import { Loader2Icon } from "lucide-react";
 
 const TabsComponent = ({ data=null, setBgImg=()=>{console.log('define setBgImg ')}, setVidDis, trendingData, tagsData, setCurrentVid,
-setActiveVidIndex, setCurrentPage, setIsBlogPopupOpen, setCurrentBlog,
-statusData=[], searchValue, openStatus, activeTabIndex, setActiveTabIndex, searchDropdownValue, weather, dailyNews, rates, totalPages, currentPage,
+setActiveVidIndex, setCurrentPage, setIsBlogPopupOpen, setCurrentBlog, hasMore, totalPages, currentPage, 
+statusData=[], searchValue, openStatus, activeTabIndex, setActiveTabIndex, searchDropdownValue, weather, dailyNews, rates,
 currencyValue, setCurrencyValue, }) => {
   const { theme, setTheme } = useTheme(); // 'light' : 'dark'
   const [activeTab, setActiveTab] = useState('all')
@@ -49,6 +49,7 @@ currencyValue, setCurrencyValue, }) => {
         </div>
         {!data && <Loader2Icon className="size-20 text-primary animate-spin" />}
         {data && <Tabs 
+        key={currentPage}
         variant="underlined" 
         aria-label="Arabhardware Companies" 
         color="prime"
@@ -71,10 +72,8 @@ currencyValue, setCurrencyValue, }) => {
             <StatusBar statusData={statusData} openStatus={openStatus} setVidDis={setVidDis} setCurrentVid={setCurrentVid} setActiveVidIndex={setActiveVidIndex} />
           </div>}
             <CardsComponent cards={item.cards} id={item.id} openStatus={openStatus} setVidDis={setVidDis} setCurrentVid={setCurrentVid}
-            setIsBlogPopupOpen={setIsBlogPopupOpen} setCurrentBlog={setCurrentBlog} changeTab={handleTabChange} />
-            {/* {item.id!='all' && 
-            <PaginationSection totalPages={totalPages} currentPage={currentPage} searchValue={searchValue} 
-            setCurrentPage={setCurrentPage} />} */}
+            setIsBlogPopupOpen={setIsBlogPopupOpen} setCurrentBlog={setCurrentBlog} changeTab={handleTabChange} 
+            hasMore={hasMore} currentPage={currentPage} setCurrentPage={setCurrentPage} />
           </Tab>
         )}
         </Tabs>}
