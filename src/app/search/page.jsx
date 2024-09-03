@@ -10,11 +10,13 @@ import axios from "axios";
 import { ApiBaseNet } from "@/config/api";
 import toast from 'react-hot-toast';
 import ToasterComponent from "@/components/toaster_top"
+import BlogsPlayer from "./blogs-player";
 
 export default function Psge({}) {
   const [bgImg, setBgImg] = useState(searchData[0].backgroundImg)
   const [searchValue, setSearchValue] = useState('')
   const [isPopupOpen, setIsPopupOpen] = useState(false)
+  const [isBlogPopupOpen, setIsBlogPopupOpen] = useState(false)
   const [isExpanded, setIsExpanded] = useState(false)
   const [actionDropdownValue, setActionDropdownValue] = useState(0)
   const [activeTabIndex, setActiveTabIndex] = useState(0)
@@ -24,13 +26,13 @@ export default function Psge({}) {
   const [totalPages, setTotalPages] = useState(1);
   const [vidDis, setVidDis] = useState('full') //full / small
   const [currentVid, setCurrentVid] = useState(null)
+  const [currentBlog, setCurrentBlog] = useState(null)
   const [activeVidIndex, setActiveVidIndex] = useState(0)
   const [currencyValue, setCurrencyValue] = useState('EGP')
   const [isMounted, setIsMounted] = useState(false)
 
   const [fetchedData, setFechedData] = useState(null)
   const [newSearchData, setNewSearchData] = useState(null)
-  const [statusData, setStatusData] = useState([])
   const [weather, setWeather] = useState(null)
   const [terndingData, setTrendingData] = useState(null)
   const [dailyNews, setDailyNews] = useState(null)
@@ -65,6 +67,9 @@ export default function Psge({}) {
         desc: card?.excerpt,
         imgUrl: card?.thumbnail,
         publishAt: card?.published_at,
+        author: card?.author,
+        views: card?.views,
+        likes: card?.likes,
         url: card?.slug
       }
     }).sort((a, b) => new Date(b.publishAt) - new Date(a.publishAt)) || []
@@ -128,7 +133,6 @@ export default function Psge({}) {
     // console.log('maxTotal', maxTotal, Math.ceil(maxTotal/perPage))
     setTotalPages(Math.ceil(maxTotal/perPage))
   }
-  console.log('perPage', perPage)
 
   const getfetchedData = async () => {
       await axios.post(`${ApiBaseNet}/search`, {s:searchValue??'', for: '', i: perPage, p: currentPage})
@@ -275,16 +279,20 @@ export default function Psge({}) {
       <AppBar shadow='transparent' bgTransparent={false} searchValue={searchValue} setSearchValue={setSearchValue}
       activeTabIndex={activeTabIndex} setActiveTabIndex={setActiveTabIndex}
       searchTypeDropdownValue={searchTypeDropdownValue} setSearchTypeDropdownValue={setSearchTypeDropdownValue} />
+
       <SearchPage data={newSearchData} setBgImg={setBgImg} searchDropdownValue={searchTypeDropdownValue} setVidDis={setVidDis}
       statusData={newSearchData? newSearchData[3]?.cards?.filter(card=>card.ty=='shorts'): []} setCurrentVid={setCurrentVid} 
-      weather={weather} setActiveVidIndex={setActiveVidIndex}
+      weather={weather} setActiveVidIndex={setActiveVidIndex} setIsBlogPopupOpen={setIsBlogPopupOpen} setCurrentBlog={setCurrentBlog}
       searchValue={searchValue} openStatus={setIsPopupOpen} activeTabIndex={activeTabIndex} setActiveTabIndex={setActiveTabIndex}
       trendingData={terndingData} tagsData={fetchedData?.tags?.data} dailyNews={dailyNews} rates={rates} setCurrentPage={setCurrentPage}
       currencyValue={currencyValue} setCurrencyValue={setCurrencyValue} totalPages={totalPages} currentPage={currentPage} /> 
+
       <MediaPlayer isPopupOpen={isPopupOpen} setIsPopupOpen={setIsPopupOpen} isExpanded={isExpanded} vidDis={vidDis} 
       setVidDis={setVidDis} setCurrentVid={setCurrentVid} currentVid={currentVid} setActiveVidIndex={setActiveVidIndex}
       statusData={newSearchData? newSearchData[3]?.cards?.filter(card=>card.ty=='shorts'): []} activeVidIndex={activeVidIndex}
       setIsExpanded={setIsExpanded} actionDropdownValue={actionDropdownValue} setActionDropdownValue={setActionDropdownValue} />
+
+      <BlogsPlayer isPopupOpen={isBlogPopupOpen} setIsPopupOpen={setIsBlogPopupOpen} setCurrentBlog={setCurrentBlog} currentBlog={currentBlog} />
       <Footer />
     </main>
   );

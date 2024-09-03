@@ -6,13 +6,14 @@ import VideosCard from './cards/videos-card';
 import ReviewsCard from './cards/reviews-card';
 
 function SingleCard({
-    type='blogs', index=0, title='', subTitle='', imgUrl='https://nextui.org/images/card-example-3.jpeg',
-    url, youtubeId, price=0, inStock=true, openStatus, setVidDis, moreVideos, comments, desc='', setCurrentVid
+    type='blogs', index=0, title='', subTitle='', imgUrl='https://nextui.org/images/card-example-3.jpeg', setCurrentBlog, setIsBlogPopupOpen,
+    url, youtubeId, price=0, inStock=true, openStatus, setVidDis, moreVideos, comments, desc='', setCurrentVid, author, likes, views, publishAt
   }) {
   return (
     <>
     {/* blogs */}
-    {type=='blogs' && <BlogsCard index={index} title={title} subTitle={subTitle} imgUrl={imgUrl} desc={desc} url={url} />}
+    {type=='blogs' && <ReviewsCard index={index} title={title} subTitle={subTitle} imgUrl={imgUrl} desc={desc} url={url}
+    setIsBlogPopupOpen={setIsBlogPopupOpen} setCurrentBlog={setCurrentBlog} author={author} likes={likes} views={views} publishAt={publishAt} />}
     {/* products */}
     {type=='products' && <ProductsCard index={index} title={title} subTitle={subTitle} imgUrl={imgUrl} price={price} inStock={inStock} url={url} />}
     {/* videos */}
@@ -20,11 +21,14 @@ function SingleCard({
     index={index} title={title} subTitle={subTitle} imgUrl={imgUrl} openStatus={openStatus}
      youtubeId={youtubeId} setVidDis={setVidDis} setCurrentVid={setCurrentVid} />}
      {/* news */}
-     {type=='news' && <ReviewsCard index={index} title={title} subTitle={subTitle} imgUrl={imgUrl} desc={desc} url={url} />}
+     {type=='news' && <ReviewsCard index={index} title={title} subTitle={subTitle} imgUrl={imgUrl} desc={desc} url={url}
+    setIsBlogPopupOpen={setIsBlogPopupOpen} setCurrentBlog={setCurrentBlog} author={author} likes={likes} views={views} publishAt={publishAt} />}
     {/* reviews */}
-    {type=='reviews' && <ReviewsCard index={index} title={title} subTitle={subTitle} imgUrl={imgUrl} desc={desc} url={url} />}
+    {type=='reviews' && <ReviewsCard index={index} title={title} subTitle={subTitle} imgUrl={imgUrl} desc={desc} url={url}
+    setIsBlogPopupOpen={setIsBlogPopupOpen} setCurrentBlog={setCurrentBlog} author={author} likes={likes} views={views} publishAt={publishAt} />}
      {/* how */}
-     {type=='how' && <ReviewsCard index={index} title={title} subTitle={subTitle} imgUrl={imgUrl} desc={desc} url={url} />}
+     {type=='how' && <ReviewsCard index={index} title={title} subTitle={subTitle} imgUrl={imgUrl} desc={desc} url={url}
+    setIsBlogPopupOpen={setIsBlogPopupOpen} setCurrentBlog={setCurrentBlog} author={author} likes={likes} views={views} publishAt={publishAt} />}
     </>
   )
 }

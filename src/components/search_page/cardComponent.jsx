@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Link } from "@nextui-org/react";
 import { StoreIcon, ArrowUpLeft, ArrowDownLeft } from "lucide-react";
 
-const CardComponent = ({id, category, openStatus, setVidDis, setCurrentVid}) => {
+const CardComponent = ({id, category, openStatus, setVidDis, setCurrentVid, setIsBlogPopupOpen, setCurrentBlog}) => {
     const titles = {
       blogs:  "أحدث المقالات", 
       products: "أحدث المنتجات", 
@@ -36,14 +36,15 @@ const CardComponent = ({id, category, openStatus, setVidDis, setCurrentVid}) => 
         <div className="grid grid-cols-6 gap-4 items-center justify-between">
             {category && category?.length > 0 && category.map((_, i)=>{
                 return <SingleCard key={i} index={i}
-                openStatus={openStatus} setVidDis={setVidDis} setCurrentVid={setCurrentVid}
-                type={_.type} title={_.title} subTitle={_.subTitle} imgUrl={_.imgUrl} moreVideos={_.moreVideos} comments={_.comments}
-                desc={_.desc} price={_.price} inStock={_.inStock} url={_.url} youtubeId={_.youtubeId} />
+                openStatus={openStatus} setVidDis={setVidDis} setCurrentVid={setCurrentVid} moreVideos={_.moreVideos} comments={_.comments} 
+                publishAt={_.publishAt} title={_.title} subTitle={_.subTitle} desc={_.desc}
+                type={_.type} imgUrl={_.imgUrl} setIsBlogPopupOpen={setIsBlogPopupOpen} setCurrentBlog={setCurrentBlog}
+                price={_.price} inStock={_.inStock} url={_.url} youtubeId={_.youtubeId} author={_.author} likes={_.likes} views={_.views} />
                 })
             }
         </div>
         
-        {/* link to more */}
+        {/* link to more in all */}
         {category[0]?.type && id=='all' && category[0]?.type!='products' &&
         <Link href={links[category[0]?.type]} isExternal
         className="font-bold text-small rounded-lg w-full flex items-center justify-center text-black dark:text-white py-8 bg-black/15 shadow-medium">
@@ -54,6 +55,17 @@ const CardComponent = ({id, category, openStatus, setVidDis, setCurrentVid}) => 
         className="absolute top-0 left-8 text-black dark:text-white p-2">
             <ArrowUpLeft />
         </Link>}
+
+        {/* pupup in blogs/how/reviews/news */}
+        {category[0]?.type && id!='all' &&
+        <div onClick={()=>{
+            // load more data
+        }}
+        className="font-bold text-small rounded-lg w-full flex items-center justify-center text-black dark:text-white py-8 bg-black/15 shadow-medium">
+            <span>عرض المزيد</span>
+            <ArrowDownLeft />
+        </div>}
+
     </div>
 }
 

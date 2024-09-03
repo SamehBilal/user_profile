@@ -1,5 +1,5 @@
 export const ApiBase = "https://arabhardware.com/api/v1"
-export const ApiBaseNet = "https://arabhardware.net/api/v1"
+export const ApiBaseNet = `https://arabhardware.net/${process.env.NEXT_PUBLIC_NET_API_KEY}/api/v1`
 export const callBack = ["https://arabhardware.net/auth/arabhardware/callback", "https://arabhardware.com/auth/arabhardware/callback"]
 // export const storeLoginDomain = "https://ahw.store/index.php?route=account/callback&token="
 export const storeLoginDomain = "https://ahw.store/index.php?route=extension/api/auth/login"
