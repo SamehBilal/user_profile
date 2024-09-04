@@ -42,16 +42,16 @@ function StatusBar({statusData, openStatus, setVidDis, setCurrentVid, setActiveV
       pagination={false}
       grabCursor={true}
       slidesPerView={'auto'}
-      spaceBetween={20}
+      spaceBetween={10}
       className='absolute inset-0 w-full z-10'>
         {statusData.map((_, i)=>{
         return <SwiperSlide key={i} 
         onClick={()=>handleOpenStatus(i)}
-        className="!aspect-shorts !w-28 !flex items-center justify-center cursor-pointer relative">
+        className="!aspect-[9/13] !w-36 !flex items-center justify-center cursor-pointer relative">
             <div className="size-full flex items-center justify-center relative">
-                <Image src={_.imgUrl} alt={_.title} width={1000} height={1000} className="size-full object-cover" />
+                <Image src={_.imgUrl} alt={_.title} width={1000} height={1000} className="w-full aspect-shorts object-cover" />
                 <div className="absolute inset-0  bg-gradient-to-t from-black/90 to-transparent" />
-                <div className="absolute w-full bottom-0 left-0 pb-4 text-white text-tiny line-clamp-3 py-1 px-2">
+                <div className="absolute w-[calc(100%-1rem)] bottom-0 left-0 text-white text-tiny line-clamp-3 mt-1 mb-2 mx-2">
                   {_.title}
                 </div>
             </div>

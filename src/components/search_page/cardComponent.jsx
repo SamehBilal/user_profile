@@ -4,7 +4,7 @@ import { Link } from "@nextui-org/react";
 import { StoreIcon, ArrowUpLeft, ArrowDownLeft } from "lucide-react";
 
 const CardComponent = ({id, category, openStatus, setVidDis, setCurrentVid, setIsBlogPopupOpen, setCurrentBlog, changeTab,
-    haMore=false, currentPage=1, setCurrentPage
+    haMore=false, currentPage=1, setCurrentPage, hasMore=false
 }) => {
     const titles = {
       blogs:  "أحدث المقالات", 
@@ -58,15 +58,15 @@ const CardComponent = ({id, category, openStatus, setVidDis, setCurrentVid, setI
             <span>عرض المزيد</span>
             <ArrowDownLeft />
         </button>}
-        {category[0]?.type == 'products' && <button onClick={handleChangeTab}
+        {category[0]?.type == 'products' && id=='all' && <button onClick={handleChangeTab}
         className="absolute top-0 left-8 text-black dark:text-white p-2">
             <ArrowUpLeft />
         </button>}
 
         {/* pupup in blogs/how/reviews/news */}
-        {category[0]?.type && id!='all' &&
+        {category[0]?.type && id!='all' && hasMore &&
         <button onClick={()=>{
-            setCurrentPage(currentPage+1)
+            setCurrentPage(prev=>prev+1)
         }}
         className="font-bold text-small rounded-lg w-full flex items-center justify-center text-black dark:text-white py-8 bg-black/15 shadow-medium">
             <span>عرض المزيد</span>
