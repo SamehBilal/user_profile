@@ -36,9 +36,9 @@ function BlogsPlayer({isPopupOpen, setIsPopupOpen, currentBlog,
     <>
         
     {isPopupOpen && currentBlog && <div className="fixed z-[200] -top-[5%] left-0 w-screen h-[110dvh] flex items-center justify-center text-white">
-        <BoxesBg setIsPopupOpen={setIsPopupOpen} >
-        <div className="absolute z-40 xl:w-[70%] space-y-0 max-w-grid w-[96%] h-[80dvh] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-black/25 px-8 pt-8 flex items-center justify-between flex-col">
-            <div className="flex items-center justify-between gap-8 h-[calc(100%-6rem)]">
+        <BoxesBg setIsPopupOpen={setIsPopupOpen} noBg={true} >
+        <div className="absolute z-40 xl:w-[70%] space-y-0 max-w-grid w-[96%] h-[80dvh] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-black/85 pt-8 flex items-center justify-between flex-col">
+            <div className="flex items-center justify-between gap-8 h-[calc(100%-6rem)]  px-8">
                 <div className="w-1/3 h-full flex">
                     <Image src={currentBlog.imgUrl} alt={currentBlog.title}
                     className='w-full rounded-r-md object-cover h-full' />
@@ -54,7 +54,7 @@ function BlogsPlayer({isPopupOpen, setIsPopupOpen, currentBlog,
                     </div>
                 </div>
             </div>
-            <div className="text-gray-400 text-tiny flex items-start justify-between w-full gap-[25%]">
+            <div className="text-gray-400 text-tiny flex items-start justify-between w-full gap-[25%] px-8">
                 <p className=''>{toReadableData(currentBlog.publishAt)}</p>
                 <div className="flex items-center justify-start flex-1 gap-8">
                     <div className="flex gap-2 items-center">
