@@ -31,7 +31,7 @@ function CurrencyExchange({
   }
 
   useEffect(()=>{
-    setInputValue(1)
+    setInputValue(0)
   }, [currencyValue])
   
   return (
@@ -62,7 +62,7 @@ function CurrencyExchange({
                     <p className="">{_}</p>
                     {React.createElement(FlagComponent, { title: `${rates[_]} flag`, className: "w-6 h-6" })}
                 </div>
-                <p className="">{ (inputValue/rates[_]).toFixed(2)}</p>
+                <p className="">{(inputValue == 0 ?  rates[_] : inputValue / rates[_]).toFixed(2)}</p>
             </div>
             }else{
               return <span key={i}></span>
